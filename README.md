@@ -1,5 +1,9 @@
 # Ember-flexberry-account
 
+[![Travis master branch](https://img.shields.io/travis/Flexberry/ember-flexberry-account/master.svg?label=master%20build%20)](https://travis-ci.org/Flexberry/ember-flexberry-account)
+[![Travis develop branch](https://img.shields.io/travis/Flexberry/ember-flexberry-account/develop.svg?label=develop%20build)](https://travis-ci.org/Flexberry/ember-flexberry-account/branches)
+[![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg)](https://github.com/orangemug/stability-badges#work-in-progress)
+
 This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
