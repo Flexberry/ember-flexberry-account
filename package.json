@@ -1,6 +1,6 @@
 {
   "name": "ember-flexberry-account",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha01",
   "description": "User account management addon.",
   "directories": {
     "doc": "doc",
@@ -11,11 +11,18 @@
     "start": "ember server",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Flexberry/ember-flexberry-account.git"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": {
+    "name": "Flexberry Team",
+    "email": "mail@flexberry.net",
+    "url": "http://flexberry.net/"
+  },
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
