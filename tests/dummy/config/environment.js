@@ -9,6 +9,7 @@ module.exports = function(environment) {
   }
 
   var ENV = {
+    repositoryName: 'ember-flexberry-account/dummy',
     modulePrefix: 'dummy',
     environment: environment,
     baseURL: '/',
