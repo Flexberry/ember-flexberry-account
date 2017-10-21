@@ -803,7 +803,7 @@ define("dummy/templates/register", ["exports"], function (exports) {
       meta: {
         "fragmentReason": {
           "name": "missing-wrapper",
-          "problems": ["wrong-type"]
+          "problems": ["multiple-nodes", "wrong-type"]
         },
         "revision": "Ember@2.4.6",
         "loc": {
@@ -813,8 +813,8 @@ define("dummy/templates/register", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 1,
-            "column": 18
+            "line": 38,
+            "column": 4
           }
         },
         "moduleName": "dummy/templates/register.hbs"
@@ -825,14 +825,170 @@ define("dummy/templates/register", ["exports"], function (exports) {
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
-        var el1 = dom.createTextNode("Register user form");
+        var el1 = dom.createElement("h3");
+        var el2 = dom.createTextNode("Register user form");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("p");
+        var el2 = dom.createTextNode("\nLogin (E-mail):");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("br");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n ");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n ");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("p");
+        var el2 = dom.createTextNode("\nName:");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("br");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("p");
+        var el2 = dom.createTextNode("Surname:");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("br");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("p");
+        var el2 = dom.createTextNode("\n  [Captcha]");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("br");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("p");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("p");
+        var el2 = dom.createTextNode("\n  Register with:");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("br");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("br");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\nAlready registered?\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("p");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         return el0;
       },
-      buildRenderNodes: function buildRenderNodes() {
-        return [];
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var element0 = dom.childAt(fragment, [12]);
+        var element1 = dom.childAt(fragment, [14]);
+        var morphs = new Array(17);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [2]), 3, 3);
+        morphs[1] = dom.createMorphAt(dom.childAt(fragment, [4]), 3, 3);
+        morphs[2] = dom.createMorphAt(dom.childAt(fragment, [6]), 3, 3);
+        morphs[3] = dom.createMorphAt(dom.childAt(fragment, [8]), 3, 3);
+        morphs[4] = dom.createMorphAt(dom.childAt(fragment, [10]), 1, 1);
+        morphs[5] = dom.createMorphAt(element0, 3, 3);
+        morphs[6] = dom.createMorphAt(element0, 5, 5);
+        morphs[7] = dom.createMorphAt(element0, 7, 7);
+        morphs[8] = dom.createMorphAt(element0, 9, 9);
+        morphs[9] = dom.createMorphAt(element0, 11, 11);
+        morphs[10] = dom.createMorphAt(element0, 15, 15);
+        morphs[11] = dom.createMorphAt(element0, 17, 17);
+        morphs[12] = dom.createMorphAt(element0, 19, 19);
+        morphs[13] = dom.createMorphAt(element0, 21, 21);
+        morphs[14] = dom.createMorphAt(element0, 23, 23);
+        morphs[15] = dom.createMorphAt(element1, 1, 1);
+        morphs[16] = dom.createMorphAt(element1, 3, 3);
+        return morphs;
       },
-      statements: [],
+      statements: [["inline", "input", [], ["type", "email", "value", ["subexpr", "@mut", [["get", "login", ["loc", [null, [4, 28], [4, 33]]]]], [], []]], ["loc", [null, [4, 1], [4, 35]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "name", ["loc", [null, [8, 27], [8, 31]]]]], [], []]], ["loc", [null, [8, 1], [8, 33]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "surname", ["loc", [null, [11, 27], [11, 34]]]]], [], []]], ["loc", [null, [11, 1], [11, 36]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "captchaValue", ["loc", [null, [15, 27], [15, 39]]]]], [], []]], ["loc", [null, [15, 1], [15, 41]]]], ["inline", "input", [], ["type", "button", "value", "Register"], ["loc", [null, [18, 2], [18, 42]]]], ["inline", "input", [], ["type", "button", "value", "VK"], ["loc", [null, [22, 2], [22, 36]]]], ["inline", "input", [], ["type", "button", "value", "Facebook"], ["loc", [null, [23, 2], [23, 42]]]], ["inline", "input", [], ["type", "button", "value", "Twitter"], ["loc", [null, [24, 2], [24, 41]]]], ["inline", "input", [], ["type", "button", "value", "Google"], ["loc", [null, [25, 2], [25, 40]]]], ["inline", "input", [], ["type", "button", "value", "Microsoft"], ["loc", [null, [26, 2], [26, 43]]]], ["inline", "input", [], ["type", "button", "value", "GitHub"], ["loc", [null, [28, 2], [28, 40]]]], ["inline", "input", [], ["type", "button", "value", "OK"], ["loc", [null, [29, 2], [29, 36]]]], ["inline", "input", [], ["type", "button", "value", "Mail.ru"], ["loc", [null, [30, 2], [30, 41]]]], ["inline", "input", [], ["type", "button", "value", "Yandex"], ["loc", [null, [31, 2], [31, 40]]]], ["inline", "input", [], ["type", "button", "value", "Gosuslugi"], ["loc", [null, [32, 2], [32, 43]]]], ["inline", "input", [], ["type", "button", "value", "Login"], ["loc", [null, [36, 2], [36, 39]]]], ["inline", "input", [], ["type", "button", "value", "Reset password"], ["loc", [null, [37, 2], [37, 48]]]]],
       locals: [],
       templates: []
     };
@@ -911,7 +1067,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"name":"ember-flexberry-account","version":"0.1.0-alpha01+eff047ab"});
+  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"name":"ember-flexberry-account","version":"0.1.0-alpha01+f0c56a98"});
 }
 
 /* jshint ignore:end */
