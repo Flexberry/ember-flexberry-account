@@ -181,16 +181,23 @@ define('dummy/initializers/ember-data', ['exports', 'ember-data/setup-container'
   
     For example, imagine an Ember.js application with the following classes:
   
-    App.StoreService = DS.Store.extend({
+    ```app/services/store.js
+    import DS from 'ember-data';
+  
+    export default DS.Store.extend({
       adapter: 'custom'
     });
+    ```
   
-    App.PostsController = Ember.Controller.extend({
+    ```app/controllers/posts.js
+    import { Controller } from '@ember/controller';
+  
+    export default Controller.extend({
       // ...
     });
   
-    When the application is initialized, `App.ApplicationStore` will automatically be
-    instantiated, and the instance of `App.PostsController` will have its `store`
+    When the application is initialized, `ApplicationStore` will automatically be
+    instantiated, and the instance of `PostsController` will have its `store`
     property set to that instance.
   
     Note that this code will only be run if the `ember-application` package is
@@ -1067,7 +1074,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"name":"ember-flexberry-account","version":"0.1.0-alpha01+f0c56a98"});
+  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"name":"ember-flexberry-account","version":"0.0.1-alpha.0"});
 }
 
 /* jshint ignore:end */
