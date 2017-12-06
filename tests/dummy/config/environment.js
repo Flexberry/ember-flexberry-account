@@ -29,6 +29,20 @@ module.exports = function(environment) {
         root: backendUrl,
         api: backendUrl + '/odata'
       },
+
+      userAccount: {
+        enabled: true,
+        vk: false,
+        facebook: false,
+        twitter: false,
+        google: false,
+        microsoft: false,
+        github: true,
+        ok: false,
+        mailru: false,
+        yandex: false,
+        gosuslugi: false
+      }
     }
   };
 

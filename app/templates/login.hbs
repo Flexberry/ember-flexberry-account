@@ -11,19 +11,21 @@ Password: <br/>
 Remember: {{input type="checkbox" checked=remember}}
 {{input type="button" value="Log in"}}
 </p>
+{{#if useSocialBlock}}
 <p>
   Login with:<br/>
-  {{input type="button" value="VK"}}
-  {{input type="button" value="Facebook"}}
-  {{input type="button" value="Twitter"}}
-  {{input type="button" value="Google"}}
-  {{input type="button" value="Microsoft"}}
-  {{input type="button" value="GitHub"}}
-  {{input type="button" value="OK"}}
-  {{input type="button" value="Mail.ru"}}
-  {{input type="button" value="Yandex"}}
-  {{input type="button" value="Gosuslugi"}}
+  {{#if vk}}{{input type="button" value="VK"}}{{/if}}
+  {{#if facebook}}{{input type="button" value="Facebook"}}{{/if}}
+  {{#if twitter}}{{input type="button" value="Twitter"}}{{/if}}
+  {{#if google}}{{input type="button" value="Google"}}{{/if}}
+  {{#if microsoft}}{{input type="button" value="Microsoft"}}{{/if}}
+  {{#if github}}{{input type="button" value="GitHub"}}{{/if}}
+  {{#if ok}}{{input type="button" value="OK"}}{{/if}}
+  {{#if mailru}}{{input type="button" value="Mail.ru"}}{{/if}}
+  {{#if yandex}}{{input type="button" value="Yandex"}}{{/if}}
+  {{#if gosuslugi}}{{input type="button" value="Gosuslugi"}}{{/if}}
 </p>
+{{/if}}
 <p>
   {{input type="button" value="Register"}}
   {{input type="button" value="Reset password"}}
