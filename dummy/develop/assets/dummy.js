@@ -127,6 +127,13 @@ define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/rout
     assert.ok(true, 'modules/ember-flexberry-account/routes/user-profile.js should pass jshint.');
   });
 });
+define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/services/user-account.jshint', ['exports'], function (exports) {
+  QUnit.module('JSHint - modules/ember-flexberry-account/services/user-account.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(false, 'modules/ember-flexberry-account/services/user-account.js should pass jshint.\nmodules/ember-flexberry-account/services/user-account.js: line 63, col 19, \'password\' is defined but never used.\nmodules/ember-flexberry-account/services/user-account.js: line 63, col 9, \'username\' is defined but never used.\n\n2 errors');
+  });
+});
 define('dummy/helpers/pluralize', ['exports', 'ember-inflector/lib/helpers/pluralize'], function (exports, _emberInflectorLibHelpersPluralize) {
   exports['default'] = _emberInflectorLibHelpersPluralize['default'];
 });
@@ -371,6 +378,87 @@ define('dummy/services/ajax', ['exports', 'ember-ajax/services/ajax'], function 
     }
   });
 });
+define('dummy/services/user-account', ['exports', 'ember', 'ember-flexberry-account/services/user-account', 'dummy/config/environment'], function (exports, _ember, _emberFlexberryAccountServicesUserAccount, _dummyConfigEnvironment) {
+
+  var enabled = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.enabled');
+  if (_ember['default'].typeOf(enabled) === 'boolean') {
+    _emberFlexberryAccountServicesUserAccount['default'].reopen({
+      enabled: enabled
+    });
+  }
+
+  var vk = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.vk');
+  if (_ember['default'].typeOf(vk) === 'boolean') {
+    _emberFlexberryAccountServicesUserAccount['default'].reopen({
+      vk: vk
+    });
+  }
+
+  var facebook = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.facebook');
+  if (_ember['default'].typeOf(facebook) === 'boolean') {
+    _emberFlexberryAccountServicesUserAccount['default'].reopen({
+      facebook: facebook
+    });
+  }
+
+  var twitter = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.twitter');
+  if (_ember['default'].typeOf(twitter) === 'boolean') {
+    _emberFlexberryAccountServicesUserAccount['default'].reopen({
+      twitter: twitter
+    });
+  }
+
+  var google = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.google');
+  if (_ember['default'].typeOf(google) === 'boolean') {
+    _emberFlexberryAccountServicesUserAccount['default'].reopen({
+      google: google
+    });
+  }
+
+  var microsoft = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.microsoft');
+  if (_ember['default'].typeOf(microsoft) === 'boolean') {
+    _emberFlexberryAccountServicesUserAccount['default'].reopen({
+      microsoft: microsoft
+    });
+  }
+
+  var github = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.github');
+  if (_ember['default'].typeOf(github) === 'boolean') {
+    _emberFlexberryAccountServicesUserAccount['default'].reopen({
+      github: github
+    });
+  }
+
+  var ok = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.ok');
+  if (_ember['default'].typeOf(ok) === 'boolean') {
+    _emberFlexberryAccountServicesUserAccount['default'].reopen({
+      ok: ok
+    });
+  }
+
+  var mailru = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.mailru');
+  if (_ember['default'].typeOf(mailru) === 'boolean') {
+    _emberFlexberryAccountServicesUserAccount['default'].reopen({
+      mailru: mailru
+    });
+  }
+
+  var yandex = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.yandex');
+  if (_ember['default'].typeOf(yandex) === 'boolean') {
+    _emberFlexberryAccountServicesUserAccount['default'].reopen({
+      yandex: yandex
+    });
+  }
+
+  var gosuslugi = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.gosuslugi');
+  if (_ember['default'].typeOf(gosuslugi) === 'boolean') {
+    _emberFlexberryAccountServicesUserAccount['default'].reopen({
+      gosuslugi: gosuslugi
+    });
+  }
+
+  exports['default'] = _emberFlexberryAccountServicesUserAccount['default'];
+});
 define("dummy/templates/application", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
@@ -596,11 +684,507 @@ define("dummy/templates/application", ["exports"], function (exports) {
 });
 define("dummy/templates/login", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 17,
+                "column": 2
+              },
+              "end": {
+                "line": 17,
+                "column": 46
+              }
+            },
+            "moduleName": "dummy/templates/login.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(1);
+            morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+            dom.insertBoundary(fragment, 0);
+            dom.insertBoundary(fragment, null);
+            return morphs;
+          },
+          statements: [["inline", "input", [], ["type", "button", "value", "VK"], ["loc", [null, [17, 12], [17, 46]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child1 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 18,
+                "column": 2
+              },
+              "end": {
+                "line": 18,
+                "column": 58
+              }
+            },
+            "moduleName": "dummy/templates/login.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(1);
+            morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+            dom.insertBoundary(fragment, 0);
+            dom.insertBoundary(fragment, null);
+            return morphs;
+          },
+          statements: [["inline", "input", [], ["type", "button", "value", "Facebook"], ["loc", [null, [18, 18], [18, 58]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child2 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 19,
+                "column": 2
+              },
+              "end": {
+                "line": 19,
+                "column": 56
+              }
+            },
+            "moduleName": "dummy/templates/login.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(1);
+            morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+            dom.insertBoundary(fragment, 0);
+            dom.insertBoundary(fragment, null);
+            return morphs;
+          },
+          statements: [["inline", "input", [], ["type", "button", "value", "Twitter"], ["loc", [null, [19, 17], [19, 56]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child3 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 20,
+                "column": 2
+              },
+              "end": {
+                "line": 20,
+                "column": 54
+              }
+            },
+            "moduleName": "dummy/templates/login.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(1);
+            morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+            dom.insertBoundary(fragment, 0);
+            dom.insertBoundary(fragment, null);
+            return morphs;
+          },
+          statements: [["inline", "input", [], ["type", "button", "value", "Google"], ["loc", [null, [20, 16], [20, 54]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child4 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 21,
+                "column": 2
+              },
+              "end": {
+                "line": 21,
+                "column": 60
+              }
+            },
+            "moduleName": "dummy/templates/login.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(1);
+            morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+            dom.insertBoundary(fragment, 0);
+            dom.insertBoundary(fragment, null);
+            return morphs;
+          },
+          statements: [["inline", "input", [], ["type", "button", "value", "Microsoft"], ["loc", [null, [21, 19], [21, 60]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child5 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 22,
+                "column": 2
+              },
+              "end": {
+                "line": 22,
+                "column": 54
+              }
+            },
+            "moduleName": "dummy/templates/login.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(1);
+            morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+            dom.insertBoundary(fragment, 0);
+            dom.insertBoundary(fragment, null);
+            return morphs;
+          },
+          statements: [["inline", "input", [], ["type", "button", "value", "GitHub"], ["loc", [null, [22, 16], [22, 54]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child6 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 23,
+                "column": 2
+              },
+              "end": {
+                "line": 23,
+                "column": 46
+              }
+            },
+            "moduleName": "dummy/templates/login.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(1);
+            morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+            dom.insertBoundary(fragment, 0);
+            dom.insertBoundary(fragment, null);
+            return morphs;
+          },
+          statements: [["inline", "input", [], ["type", "button", "value", "OK"], ["loc", [null, [23, 12], [23, 46]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child7 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 24,
+                "column": 2
+              },
+              "end": {
+                "line": 24,
+                "column": 55
+              }
+            },
+            "moduleName": "dummy/templates/login.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(1);
+            morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+            dom.insertBoundary(fragment, 0);
+            dom.insertBoundary(fragment, null);
+            return morphs;
+          },
+          statements: [["inline", "input", [], ["type", "button", "value", "Mail.ru"], ["loc", [null, [24, 16], [24, 55]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child8 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 25,
+                "column": 2
+              },
+              "end": {
+                "line": 25,
+                "column": 54
+              }
+            },
+            "moduleName": "dummy/templates/login.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(1);
+            morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+            dom.insertBoundary(fragment, 0);
+            dom.insertBoundary(fragment, null);
+            return morphs;
+          },
+          statements: [["inline", "input", [], ["type", "button", "value", "Yandex"], ["loc", [null, [25, 16], [25, 54]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child9 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 26,
+                "column": 2
+              },
+              "end": {
+                "line": 26,
+                "column": 60
+              }
+            },
+            "moduleName": "dummy/templates/login.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createComment("");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var morphs = new Array(1);
+            morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+            dom.insertBoundary(fragment, 0);
+            dom.insertBoundary(fragment, null);
+            return morphs;
+          },
+          statements: [["inline", "input", [], ["type", "button", "value", "Gosuslugi"], ["loc", [null, [26, 19], [26, 60]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.4.6",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 14,
+              "column": 0
+            },
+            "end": {
+              "line": 28,
+              "column": 0
+            }
+          },
+          "moduleName": "dummy/templates/login.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createElement("p");
+          var el2 = dom.createTextNode("\n  Login with:");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("br");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element0 = dom.childAt(fragment, [0]);
+          var morphs = new Array(10);
+          morphs[0] = dom.createMorphAt(element0, 3, 3);
+          morphs[1] = dom.createMorphAt(element0, 5, 5);
+          morphs[2] = dom.createMorphAt(element0, 7, 7);
+          morphs[3] = dom.createMorphAt(element0, 9, 9);
+          morphs[4] = dom.createMorphAt(element0, 11, 11);
+          morphs[5] = dom.createMorphAt(element0, 13, 13);
+          morphs[6] = dom.createMorphAt(element0, 15, 15);
+          morphs[7] = dom.createMorphAt(element0, 17, 17);
+          morphs[8] = dom.createMorphAt(element0, 19, 19);
+          morphs[9] = dom.createMorphAt(element0, 21, 21);
+          return morphs;
+        },
+        statements: [["block", "if", [["get", "vk", ["loc", [null, [17, 8], [17, 10]]]]], [], 0, null, ["loc", [null, [17, 2], [17, 53]]]], ["block", "if", [["get", "facebook", ["loc", [null, [18, 8], [18, 16]]]]], [], 1, null, ["loc", [null, [18, 2], [18, 65]]]], ["block", "if", [["get", "twitter", ["loc", [null, [19, 8], [19, 15]]]]], [], 2, null, ["loc", [null, [19, 2], [19, 63]]]], ["block", "if", [["get", "google", ["loc", [null, [20, 8], [20, 14]]]]], [], 3, null, ["loc", [null, [20, 2], [20, 61]]]], ["block", "if", [["get", "microsoft", ["loc", [null, [21, 8], [21, 17]]]]], [], 4, null, ["loc", [null, [21, 2], [21, 67]]]], ["block", "if", [["get", "github", ["loc", [null, [22, 8], [22, 14]]]]], [], 5, null, ["loc", [null, [22, 2], [22, 61]]]], ["block", "if", [["get", "ok", ["loc", [null, [23, 8], [23, 10]]]]], [], 6, null, ["loc", [null, [23, 2], [23, 53]]]], ["block", "if", [["get", "mailru", ["loc", [null, [24, 8], [24, 14]]]]], [], 7, null, ["loc", [null, [24, 2], [24, 62]]]], ["block", "if", [["get", "yandex", ["loc", [null, [25, 8], [25, 14]]]]], [], 8, null, ["loc", [null, [25, 2], [25, 61]]]], ["block", "if", [["get", "gosuslugi", ["loc", [null, [26, 8], [26, 17]]]]], [], 9, null, ["loc", [null, [26, 2], [26, 67]]]]],
+        locals: [],
+        templates: [child0, child1, child2, child3, child4, child5, child6, child7, child8, child9]
+      };
+    })();
     return {
       meta: {
         "fragmentReason": {
           "name": "missing-wrapper",
-          "problems": ["multiple-nodes"]
+          "problems": ["multiple-nodes", "wrong-type"]
         },
         "revision": "Ember@2.4.6",
         "loc": {
@@ -610,7 +1194,7 @@ define("dummy/templates/login", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 30,
+            "line": 32,
             "column": 4
           }
         },
@@ -670,55 +1254,7 @@ define("dummy/templates/login", ["exports"], function (exports) {
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
-        var el1 = dom.createElement("p");
-        var el2 = dom.createTextNode("\n  Login with:");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("br");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
+        var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("p");
         var el2 = dom.createTextNode("\n  ");
@@ -735,31 +1271,21 @@ define("dummy/templates/login", ["exports"], function (exports) {
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [6]);
-        var element1 = dom.childAt(fragment, [8]);
-        var element2 = dom.childAt(fragment, [10]);
-        var morphs = new Array(16);
+        var element1 = dom.childAt(fragment, [6]);
+        var element2 = dom.childAt(fragment, [9]);
+        var morphs = new Array(7);
         morphs[0] = dom.createMorphAt(dom.childAt(fragment, [2]), 3, 3);
         morphs[1] = dom.createMorphAt(dom.childAt(fragment, [4]), 3, 3);
-        morphs[2] = dom.createMorphAt(element0, 1, 1);
-        morphs[3] = dom.createMorphAt(element0, 3, 3);
-        morphs[4] = dom.createMorphAt(element1, 3, 3);
-        morphs[5] = dom.createMorphAt(element1, 5, 5);
-        morphs[6] = dom.createMorphAt(element1, 7, 7);
-        morphs[7] = dom.createMorphAt(element1, 9, 9);
-        morphs[8] = dom.createMorphAt(element1, 11, 11);
-        morphs[9] = dom.createMorphAt(element1, 13, 13);
-        morphs[10] = dom.createMorphAt(element1, 15, 15);
-        morphs[11] = dom.createMorphAt(element1, 17, 17);
-        morphs[12] = dom.createMorphAt(element1, 19, 19);
-        morphs[13] = dom.createMorphAt(element1, 21, 21);
-        morphs[14] = dom.createMorphAt(element2, 1, 1);
-        morphs[15] = dom.createMorphAt(element2, 3, 3);
+        morphs[2] = dom.createMorphAt(element1, 1, 1);
+        morphs[3] = dom.createMorphAt(element1, 3, 3);
+        morphs[4] = dom.createMorphAt(fragment, 8, 8, contextualElement);
+        morphs[5] = dom.createMorphAt(element2, 1, 1);
+        morphs[6] = dom.createMorphAt(element2, 3, 3);
         return morphs;
       },
-      statements: [["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "login", ["loc", [null, [4, 27], [4, 32]]]]], [], []]], ["loc", [null, [4, 1], [4, 34]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "password", ["loc", [null, [8, 26], [8, 34]]]]], [], []]], ["loc", [null, [8, 0], [8, 36]]]], ["inline", "input", [], ["type", "checkbox", "checked", ["subexpr", "@mut", [["get", "remember", ["loc", [null, [11, 42], [11, 50]]]]], [], []]], ["loc", [null, [11, 10], [11, 52]]]], ["inline", "input", [], ["type", "button", "value", "Log in"], ["loc", [null, [12, 0], [12, 38]]]], ["inline", "input", [], ["type", "button", "value", "VK"], ["loc", [null, [16, 2], [16, 36]]]], ["inline", "input", [], ["type", "button", "value", "Facebook"], ["loc", [null, [17, 2], [17, 42]]]], ["inline", "input", [], ["type", "button", "value", "Twitter"], ["loc", [null, [18, 2], [18, 41]]]], ["inline", "input", [], ["type", "button", "value", "Google"], ["loc", [null, [19, 2], [19, 40]]]], ["inline", "input", [], ["type", "button", "value", "Microsoft"], ["loc", [null, [20, 2], [20, 43]]]], ["inline", "input", [], ["type", "button", "value", "GitHub"], ["loc", [null, [21, 2], [21, 40]]]], ["inline", "input", [], ["type", "button", "value", "OK"], ["loc", [null, [22, 2], [22, 36]]]], ["inline", "input", [], ["type", "button", "value", "Mail.ru"], ["loc", [null, [23, 2], [23, 41]]]], ["inline", "input", [], ["type", "button", "value", "Yandex"], ["loc", [null, [24, 2], [24, 40]]]], ["inline", "input", [], ["type", "button", "value", "Gosuslugi"], ["loc", [null, [25, 2], [25, 43]]]], ["inline", "input", [], ["type", "button", "value", "Register"], ["loc", [null, [28, 2], [28, 42]]]], ["inline", "input", [], ["type", "button", "value", "Reset password"], ["loc", [null, [29, 2], [29, 48]]]]],
+      statements: [["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "login", ["loc", [null, [4, 27], [4, 32]]]]], [], []]], ["loc", [null, [4, 1], [4, 34]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "password", ["loc", [null, [8, 26], [8, 34]]]]], [], []]], ["loc", [null, [8, 0], [8, 36]]]], ["inline", "input", [], ["type", "checkbox", "checked", ["subexpr", "@mut", [["get", "remember", ["loc", [null, [11, 42], [11, 50]]]]], [], []]], ["loc", [null, [11, 10], [11, 52]]]], ["inline", "input", [], ["type", "button", "value", "Log in"], ["loc", [null, [12, 0], [12, 38]]]], ["block", "if", [["get", "useSocialBlock", ["loc", [null, [14, 6], [14, 20]]]]], [], 0, null, ["loc", [null, [14, 0], [28, 7]]]], ["inline", "input", [], ["type", "button", "value", "Register"], ["loc", [null, [30, 2], [30, 42]]]], ["inline", "input", [], ["type", "button", "value", "Reset password"], ["loc", [null, [31, 2], [31, 48]]]]],
       locals: [],
-      templates: []
+      templates: [child0]
     };
   })());
 });
@@ -1074,7 +1600,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"name":"ember-flexberry-account","version":"0.0.1-alpha.0"});
+  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.0.1-alpha.0+1bb3c589"});
 }
 
 /* jshint ignore:end */

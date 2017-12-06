@@ -327,6 +327,28 @@ define('dummy/tests/unit/routes/user-profile-test.jshint', ['exports'], function
     assert.ok(true, 'unit/routes/user-profile-test.js should pass jshint.');
   });
 });
+define('dummy/tests/unit/services/user-account-test', ['exports', 'ember-qunit'], function (exports, _emberQunit) {
+
+  (0, _emberQunit.moduleFor)('service:user-account', 'Unit | Service | user account', {
+    // Specify the other units that are required for this test.
+    // needs: ['service:foo']
+  });
+
+  // Replace this with your real tests.
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var service = this.subject();
+    assert.ok(service);
+  });
+});
+define('dummy/tests/unit/services/user-account-test.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - unit/services/user-account-test.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/services/user-account-test.js should pass jshint.');
+  });
+});
 /* jshint ignore:start */
 
 require('dummy/tests/test-helper');

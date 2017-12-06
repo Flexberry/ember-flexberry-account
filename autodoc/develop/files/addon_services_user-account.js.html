@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Flexberry Documentation</title>
+    <title>addon/services/user-account.js - Flexberry Documentation</title>
     <link rel="stylesheet" href="">
-    <link rel="stylesheet" href="./assets/vendor/prettify/prettify-min.css">
-    <link rel="stylesheet" href="./assets/css/main.css" id="site_styles">
-    <link rel="stylesheet" href="./assets/css/custom.css">
-    <link rel="stylesheet" href="./assets/vendor/bootstrap/css/bootstrap.css">
-    <link rel="shortcut icon" type="image/png" href="./assets/favicon.png">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
 </head>
 <body class="yui3-skin-sam">
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
-	    <img alt="Flexberry Documentation" src="./assets/css/logo.png" style="max-height: 65%;" title="Flexberry Documentation">
+	    <img alt="Flexberry Documentation" src="../assets/css/logo.png" style="max-height: 65%;" title="Flexberry Documentation">
             Flexberry Documentation
         </h1>
 	<div class="nav">
@@ -53,7 +53,7 @@
 	    
 	                <div class="tab-pane" id="modules">
 	                    <ul id="api-modules" class="nav nav-list">
-	                            <li><a href="./modules/ember-flexberry-account.html">ember-flexberry-account</a></li>
+	                            <li><a href="../modules/ember-flexberry-account.html">ember-flexberry-account</a></li>
 	                    </ul>
 	                </div>
 	            </div>
@@ -87,29 +87,101 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<p>Browse to a module or class using the sidebar to view its API documentation.</p>
+<div class="page-header">
+    <h1>addon/services/user-account.js <small>File</small></h1>
+</div>
 
-<h2>Keyboard Shortcuts</h2>
+<div class="file">
+    <pre class="prettyprint linenums">
+/**
+  @module ember-flexberry-account
+*/
 
-<ul>
-    <li><p>Press <kbd>s</kbd> to focus the API search box.</p></li>
+import Ember from &#x27;ember&#x27;;
 
-    <li><p>Use <kbd>Up</kbd> and <kbd>Down</kbd> to select classes, modules, and search results.</p></li>
+export default Ember.Service.extend({
+  /**
+    Flag indicates whether user-account service is enabled or not.
 
-    <li class="mac-only"><p>With the API search box or sidebar focused, use <kbd><span class="cmd">&#x2318;</span>-Left</kbd> or <kbd><span class="cmd">&#x2318;</span>-Right</kbd> to switch sidebar tabs.</p></li>
+    @property enabled
+    @type Boolean
+    @default true
 
-    <li class="pc-only"><p>With the API search box or sidebar focused, use <kbd>Ctrl+Left</kbd> and <kbd>Ctrl+Right</kbd> to switch sidebar tabs.</p></li>
-</ul>
+    @example
+      &#x60;&#x60;&#x60;
+      // UserAccount &#x27;enabled&#x27; setting could be also defined through application config/environment.js
+      module.exports = function(environment) {
+        let ENV = {
+          ...
+          APP: {
+            ...
+            user-account: {
+              enabled: true
+            }
+            ...
+          }
+          ...
+      };
+      &#x60;&#x60;&#x60;
+  */
+  enabled: true,
+
+  vk: false,
+  facebook: false,
+  twitter: false,
+  google: false,
+  microsoft: false,
+  github: false,
+  ok: false,
+  mailru: false,
+  yandex: false,
+  gosuslugi: false,
+
+  /**
+    Is user authenticated?
+
+    @method login
+    @return {Boolean} Returns user authenticated status.
+  */
+  isUserAuthnticated() {
+    // TODO: Assert.
+  },
+
+  /**
+    Log in.
+
+    @method login
+    @param username {String} User name for log in.
+    @param password {String} Password phrase for log in.
+    @return {Boolean} Returns log in result.
+  */
+  login(username, password) {
+    // TODO: assert that developer must redefine this method in own code.
+  },
+
+  /**
+    Log out.
+
+    @method logout
+    @return {Boolean} Returns log out result.
+  */
+  logout() {
+    // TODO: assert that developer must redefine this method in own code.
+  }
+});
+
+    </pre>
+</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script src="./assets/vendor/jquery/jquery-1.8.2.min.js"></script>
-<script src="./assets/vendor/bootstrap/js/bootstrap.js"></script>
-<script src="./assets/vendor/prettify/prettify-min.js"></script>
-<script src="./assets/js/yuidoc-bootstrap.js"></script>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
 <script>prettyPrint();</script>
 </body>
 </html>

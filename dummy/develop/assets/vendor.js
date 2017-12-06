@@ -80454,7 +80454,38 @@ define("ember-data/version", ["exports"], function (exports) {
 define('ember-flexberry-account/controllers/login', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
-  exports['default'] = _ember['default'].Controller.extend({});
+  exports['default'] = _ember['default'].Controller.extend({
+    userAccount: _ember['default'].inject.service('user-account'),
+    init: function init() {
+      this.set('vk', this.get('userAccount.vk'));
+      this.set('facebook', this.get('userAccount.facebook'));
+      this.set('twitter', this.get('userAccount.twitter'));
+      this.set('google', this.get('userAccount.google'));
+      this.set('microsoft', this.get('userAccount.microsoft'));
+      this.set('github', this.get('userAccount.github'));
+      this.set('ok', this.get('userAccount.ok'));
+      this.set('mailru', this.get('userAccount.mailru'));
+      this.set('yandex', this.get('userAccount.yandex'));
+      this.set('gosuslugi', this.get('userAccount.gosuslugi'));
+      this.set('useSocialBlock', this.get('vk') || this.get('facebook') || this.get('twitter') || this.get('google') || this.get('microsoft') || this.get('github') || this.get('ok') || this.get('mailru') || this.get('yandex') || this.get('gosuslugi'));
+    },
+
+    vk: false,
+    facebook: false,
+    twitter: false,
+    google: false,
+    microsoft: false,
+    github: false,
+    ok: false,
+    mailru: false,
+    yandex: false,
+    gosuslugi: false,
+    useSocialBlock: false,
+
+    login: undefined,
+    password: undefined,
+    remember: true
+  });
 });
 define('ember-flexberry-account/controllers/pwd-reset', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
@@ -80495,6 +80526,79 @@ define('ember-flexberry-account/routes/user-profile', ['exports', 'ember'], func
   'use strict';
 
   exports['default'] = _ember['default'].Route.extend({});
+});
+define('ember-flexberry-account/services/user-account', ['exports', 'ember'], function (exports, _ember) {
+  /**
+    @module ember-flexberry-account
+  */
+
+  'use strict';
+
+  exports['default'] = _ember['default'].Service.extend({
+    /**
+      Flag indicates whether user-account service is enabled or not.
+       @property enabled
+      @type Boolean
+      @default true
+       @example
+        ```
+        // UserAccount 'enabled' setting could be also defined through application config/environment.js
+        module.exports = function(environment) {
+          let ENV = {
+            ...
+            APP: {
+              ...
+              user-account: {
+                enabled: true
+              }
+              ...
+            }
+            ...
+        };
+        ```
+    */
+    enabled: true,
+
+    vk: false,
+    facebook: false,
+    twitter: false,
+    google: false,
+    microsoft: false,
+    github: false,
+    ok: false,
+    mailru: false,
+    yandex: false,
+    gosuslugi: false,
+
+    /**
+      Is user authenticated?
+       @method login
+      @return {Boolean} Returns user authenticated status.
+    */
+    isUserAuthnticated: function isUserAuthnticated() {
+      // TODO: Assert.
+    },
+
+    /**
+      Log in.
+       @method login
+      @param username {String} User name for log in.
+      @param password {String} Password phrase for log in.
+      @return {Boolean} Returns log in result.
+    */
+    login: function login(username, password) {
+      // TODO: assert that developer must redefine this method in own code.
+    },
+
+    /**
+      Log out.
+       @method logout
+      @return {Boolean} Returns log out result.
+    */
+    logout: function logout() {
+      // TODO: assert that developer must redefine this method in own code.
+    }
+  });
 });
 define('ember-inflector/index', ['exports', 'ember-inflector/lib/system', 'ember-inflector/lib/ext/string'], function (exports, _emberInflectorLibSystem, _emberInflectorLibExtString) {
   'use strict';

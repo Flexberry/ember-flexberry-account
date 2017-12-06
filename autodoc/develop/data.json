@@ -3,10 +3,98 @@
         "name": "Flexberry Documentation",
         "version": "develop"
     },
-    "files": {},
-    "modules": {},
+    "files": {
+        "addon/services/user-account.js": {
+            "name": "addon/services/user-account.js",
+            "modules": {
+                "ember-flexberry-account": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "ember-flexberry-account": {
+            "name": "ember-flexberry-account",
+            "submodules": {},
+            "elements": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "addon/services/user-account.js",
+            "line": 1
+        }
+    },
     "classes": {},
     "elements": {},
-    "classitems": [],
+    "classitems": [
+        {
+            "file": "addon/services/user-account.js",
+            "line": 8,
+            "description": "Flag indicates whether user-account service is enabled or not.",
+            "itemtype": "property",
+            "name": "enabled",
+            "type": "Boolean",
+            "default": "true",
+            "example": [
+                "\n  ```\n  // UserAccount 'enabled' setting could be also defined through application config/environment.js\n  module.exports = function(environment) {\n    let ENV = {\n      ...\n      APP: {\n        ...\n        user-account: {\n          enabled: true\n        }\n        ...\n      }\n      ...\n  };\n  ```"
+            ],
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/services/user-account.js",
+            "line": 45,
+            "description": "Is user authenticated?",
+            "itemtype": "method",
+            "name": "login",
+            "return": {
+                "description": "Returns user authenticated status.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/services/user-account.js",
+            "line": 55,
+            "description": "Log in.",
+            "itemtype": "method",
+            "name": "login",
+            "params": [
+                {
+                    "name": "username",
+                    "description": "User name for log in.",
+                    "type": "String"
+                },
+                {
+                    "name": "password",
+                    "description": "Password phrase for log in.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns log in result.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/services/user-account.js",
+            "line": 67,
+            "description": "Log out.",
+            "itemtype": "method",
+            "name": "logout",
+            "return": {
+                "description": "Returns log out result.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "ember-flexberry-account"
+        }
+    ],
     "warnings": []
 }
