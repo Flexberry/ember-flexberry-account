@@ -16,15 +16,16 @@ export default {
     register: {
       caption: 'Регистрация нового пользователя',
       'username-label': 'Логин:',
-      'name-label': 'Имя:',
       'surname-label': 'Фамилия:',
+      'name-label': 'Имя:',
+      'middlename-label': 'Отчество:',
       'captcha-label': '[CAPTCHA]',
       'register-button-title': 'Зарегистрировать пользователя',
       'register-button-text': 'Регистрация',
       'register-with-label': 'Зарегистрироваться при помощи:',
       'login-reset-label': 'Регистрировались ранее?',
       'login-button-title': 'Войти в систему по логину и паролю',
-      'login-button-text': 'Логин',
+      'login-button-text': 'Войти',
       'pwd-reset-button-title': 'Если пароль был утерян, то его можно восстановить',
       'pwd-reset-button-text': 'Восстановить пароль'
     },

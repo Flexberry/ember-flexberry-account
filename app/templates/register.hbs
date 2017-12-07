@@ -2,14 +2,21 @@
 <div class="username-div">
 {{t "forms.register.username-label"}}<br/>
 {{input type="email" value=username}}
+{{#if validUsername}}
+ok!
+{{/if}}
+</div>
+<div class="surname-div">
+ {{t "forms.register.surname-label"}}<br/>
+ {{input type="text" value=surname}}
 </div>
 <div class="name-div">
 {{t "forms.register.name-label"}}<br/>
  {{input type="text" value=name}}
 </div>
-<div class="surname-div">
- {{t "forms.register.surname-label"}}<br/>
- {{input type="text" value=surname}}
+<div class="middle-name-div">
+{{t "forms.register.middlename-label"}}<br/>
+ {{input type="text" value=middlename}}
 </div>
 <div class="captcha-div">
    {{t "forms.register.captcha-label"}}<br/>

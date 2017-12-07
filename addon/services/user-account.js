@@ -49,7 +49,13 @@ export default Ember.Service.extend({
     @return {Boolean} Returns user authenticated status.
   */
   isUserAuthnticated() {
-    // TODO: Assert.
+    let enabled = this.get('enabled');
+
+    if (!enabled) {
+      return;
+    }
+
+    Ember.assert('Developer must override isUserAuthnticated method of user-account service.');
   },
 
   /**
@@ -61,7 +67,14 @@ export default Ember.Service.extend({
     @return {Boolean} Returns log in result.
   */
   login(username, password) {
-    // TODO: assert that developer must redefine this method in own code.
+    let enabled = this.get('enabled');
+
+    if (!enabled) {
+      return;
+    }
+
+    Ember.assert('Developer must override login method of user-account service.' +
+    ' You try login with ' + username + ' and password ' + password + '.');
   },
 
   /**
@@ -71,6 +84,52 @@ export default Ember.Service.extend({
     @return {Boolean} Returns log out result.
   */
   logout() {
-    // TODO: assert that developer must redefine this method in own code.
-  }
+    let enabled = this.get('enabled');
+
+    if (!enabled) {
+      return;
+    }
+
+    Ember.assert('Developer must override logout method of user-account service.');
+  },
+
+  /**
+    Validate username.
+
+    @method validateUsername
+    @param username {String} User name for validation.
+    @return {Boolean} Returns validation result.
+  */
+  validateUsername(username) {
+    let enabled = this.get('enabled');
+
+    if (!enabled) {
+      return;
+    }
+
+    Ember.assert('Developer must override validateUsername method of user-account service.' +
+    'Validate username: ' + username + '.');
+  },
+
+  /**
+    Register user.
+
+    @method register
+    @param username {String} User name for log in.
+    @param surname {String} User surname.
+    @param name {String} User name.
+    @param middlename {String} User middlename.
+    @return {Boolean} Returns register result.
+  */
+  register(username, surname, name, middlename) {
+    let enabled = this.get('enabled');
+
+    if (!enabled) {
+      return;
+    }
+
+    Ember.assert('Developer must override register method of user-account service.' +
+    ' You try register with username: ' + username + ', surname: ' + surname +
+    ', name: ' + name + ', middlename: ' + middlename + '.');
+  },
 });
