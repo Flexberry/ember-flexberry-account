@@ -28,3 +28,11 @@ This README outlines the details of collaborating on this Ember addon.
 * `ember build`
 
 For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+
+## Addon usage
+
+Этот аддон предназначен для добавления в Ember-приложение форм для аутентификации пользователя (`login`), регистрации пользователя (`register`), восстановления пароля пользователя (`pwd-reset`) и вывода информации из профиля пользователя (`user-profile`).  
+Всё взаимодействие с бакендом вынесено в сервис `user-account`, что подразумевает переопределение всех необходимых методов в конечном приложении.  
+Включение или выключени тех или иных функций аддона вынесено в `config\environment.js` в секцию `APP.userAccount`.  
+Аутентификация и регистрация пользователя возможна как "обычным" образом по логину-паролю, так и с использованием сторонних провайдеров: Vk, Facebook, Twitter, Google, Microsoft, GitHub, Ok, Mail.ru, Yandex, Gosuslugi (в аддоне предлагается только базовая реализация кнопок).
+Поддерживается локализация интерфейса с использованием `ember-i18n`.
