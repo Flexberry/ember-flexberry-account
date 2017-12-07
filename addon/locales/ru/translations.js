@@ -2,7 +2,7 @@ export default {
   forms: {
     login: {
       caption: 'Вход в систему',
-      'username-label': 'Имя пользователя (E-mail):',
+      'username-label': 'Логин (E-mail):',
       'password-label': 'Пароль:',
       'remember-label': 'Запомнить:',
       'login-button-title': 'Выполнить вход в систему по логину и паролю',
@@ -15,7 +15,7 @@ export default {
     },
     register: {
       caption: 'Регистрация нового пользователя',
-      'username-label': 'Логин:',
+      'username-label': 'Логин (E-mail):',
       'surname-label': 'Фамилия:',
       'name-label': 'Имя:',
       'middlename-label': 'Отчество:',
@@ -30,7 +30,15 @@ export default {
       'pwd-reset-button-text': 'Восстановить пароль'
     },
     'pwd-reset': {
-      caption: 'Восстановление пароля'
+      caption: 'Восстановление пароля',
+      'username-label': 'Логин (E-mail)',
+      'captcha-label': '[CAPTCHA]',
+      'pwd-reset-button-title': 'Запрос на восстановление пароля для указанного логина',
+      'pwd-reset-button-text': 'Восстановить пароль',
+      'login-button-title': 'Войти в систему по логину и паролю',
+      'login-button-text': 'Войти',
+      'register-button-title': 'Пройти быструю процедуру регистрации',
+      'register-button-text': 'Зарегистрироваться'
     },
     'user-profile': {
       caption: 'Профиль пользователя'

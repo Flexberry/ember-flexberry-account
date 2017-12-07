@@ -30,7 +30,15 @@ export default {
       'pwd-reset-button-text': 'Reset password'
     },
     'pwd-reset': {
-      caption: 'Reset password'
+      caption: 'Reset password',
+      'username-label': 'Username',
+      'captcha-label': '[CAPTCHA]',
+      'pwd-reset-button-title': 'Reset password request',
+      'pwd-reset-button-text': 'Reset password',
+      'login-button-title': 'Login with username and password',
+      'login-button-text': 'Login',
+      'register-button-title': 'Quick registration process',
+      'register-button-text': 'Register'
     },
     'user-profile': {
       caption: 'User profile'

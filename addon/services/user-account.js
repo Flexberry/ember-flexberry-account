@@ -132,4 +132,21 @@ export default Ember.Service.extend({
     ' You try register with username: ' + username + ', surname: ' + surname +
     ', name: ' + name + ', middlename: ' + middlename + '.');
   },
+  /**
+    Reset password request for username.
+
+    @method pwdReset
+    @param username {String} User name for reset password request.
+    @return {Boolean} Returns reset request result.
+  */
+  pwdReset(username) {
+    let enabled = this.get('enabled');
+
+    if (!enabled) {
+      return;
+    }
+
+    Ember.assert('Developer must override pwdReset method of user-account service.' +
+    'Request for username: ' + username + '.');
+  }
 });

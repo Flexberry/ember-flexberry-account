@@ -1,1 +1,29 @@
-Password reset form
+<h3>{{t "forms.pwd-reset.caption"}}</h3>
+<div class="username-div">
+  {{t "forms.pwd-reset.username-label"}}<br/>
+  {{input type="text" value=username}}
+</div>
+<div class="captcha-div">
+   {{t "forms.pwd-reset.captcha-label"}}<br/>
+ {{input type="text" value=captchaValue}}
+</div>
+<div class="pwd-reset-div">
+  <button
+    class="ui pwd-reset-button button"
+    title={{t "forms.pwd-reset.pwd-reset-button-title"}}
+    {{action "pwdReset"}}>
+      {{t "forms.pwd-reset.pwd-reset-button-text"}}
+  </button>
+</div>
+<div class="login-register-div">
+  <button class="ui login-button button"
+    title={{t "forms.pwd-reset.login-button-title"}}
+    {{action "login"}}>
+      {{t "forms.pwd-reset.login-button-text"}}
+  </button>
+  <button class="ui register-button button"
+    title={{t "forms.pwd-reset.register-button-title"}}
+    {{action "register"}}>
+      {{t "forms.pwd-reset.register-button-text"}}
+  </button>
+</div>
