@@ -80583,9 +80583,20 @@ define('ember-flexberry-account/controllers/login', ['exports', 'ember'], functi
     gosuslugi: false,
     useSocialBlock: false,
 
-    login: undefined,
+    username: undefined,
     password: undefined,
-    remember: true
+    remember: true,
+    actions: {
+      login: function login() {
+        this.get('userAccount').login(this.get('username'), this.get('password'));
+      },
+      register: function register() {
+        this.transitionToRoute('register');
+      },
+      pwdReset: function pwdReset() {
+        this.transitionToRoute('pwd-reset');
+      }
+    }
   });
 });
 define('ember-flexberry-account/controllers/pwd-reset', ['exports', 'ember'], function (exports, _ember) {
@@ -80620,6 +80631,27 @@ define('ember-flexberry-account/locales/en/translations', ['exports'], function 
         'register-button-text': 'Register',
         'pwd-reset-button-title': 'If the password was lost, you can reset it',
         'pwd-reset-button-text': 'Reset password'
+      },
+      register: {
+        caption: 'Register new user',
+        'username-label': 'Login (E-mail):',
+        'name-label': 'Name:',
+        'surname-label': 'Surname:',
+        'captcha-label': '[Captcha]',
+        'register-button-title': 'Register new user',
+        'register-button-text': 'Register',
+        'register-with-label': 'Register with:',
+        'login-reset-label': 'Already registered? ',
+        'login-button-title': 'Login with username and password',
+        'login-button-text': 'Login',
+        'pwd-reset-button-title': 'If the password was lost, you can reset it',
+        'pwd-reset-button-text': 'Reset password'
+      },
+      'pwd-reset': {
+        caption: 'Reset password'
+      },
+      'user-profile': {
+        caption: 'User profile'
       }
     }
   };
@@ -80641,6 +80673,27 @@ define('ember-flexberry-account/locales/ru/translations', ['exports'], function 
         'register-button-text': 'Зарегистрироваться',
         'pwd-reset-button-title': 'Если пароль был утерян, то его можно восстановить',
         'pwd-reset-button-text': 'Восстановить пароль'
+      },
+      register: {
+        caption: 'Регистрация нового пользователя',
+        'username-label': 'Логин:',
+        'name-label': 'Имя:',
+        'surname-label': 'Фамилия:',
+        'captcha-label': '[CAPTCHA]',
+        'register-button-title': 'Зарегистрировать пользователя',
+        'register-button-text': 'Регистрация',
+        'register-with-label': 'Зарегистрироваться при помощи:',
+        'login-reset-label': 'Регистрировались ранее?',
+        'login-button-title': 'Войти в систему по логину и паролю',
+        'login-button-text': 'Логин',
+        'pwd-reset-button-title': 'Если пароль был утерян, то его можно восстановить',
+        'pwd-reset-button-text': 'Восстановить пароль'
+      },
+      'pwd-reset': {
+        caption: 'Восстановление пароля'
+      },
+      'user-profile': {
+        caption: 'Профиль пользователя'
       }
     }
   };
