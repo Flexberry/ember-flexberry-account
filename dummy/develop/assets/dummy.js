@@ -1409,7 +1409,7 @@ define("dummy/templates/pwd-reset", ["exports"], function (exports) {
       meta: {
         "fragmentReason": {
           "name": "missing-wrapper",
-          "problems": ["wrong-type"]
+          "problems": ["multiple-nodes"]
         },
         "revision": "Ember@2.4.6",
         "loc": {
@@ -1419,8 +1419,8 @@ define("dummy/templates/pwd-reset", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 1,
-            "column": 19
+            "line": 29,
+            "column": 6
           }
         },
         "moduleName": "dummy/templates/pwd-reset.hbs"
@@ -1431,14 +1431,118 @@ define("dummy/templates/pwd-reset", ["exports"], function (exports) {
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
-        var el1 = dom.createTextNode("Password reset form");
+        var el1 = dom.createElement("h3");
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "username-div");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("br");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "captcha-div");
+        var el2 = dom.createTextNode("\n   ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("br");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "pwd-reset-div");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("button");
+        dom.setAttribute(el2, "class", "ui pwd-reset-button button");
+        var el3 = dom.createTextNode("\n      ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n  ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "login-register-div");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("button");
+        dom.setAttribute(el2, "class", "ui login-button button");
+        var el3 = dom.createTextNode("\n      ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n  ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("button");
+        dom.setAttribute(el2, "class", "ui register-button button");
+        var el3 = dom.createTextNode("\n      ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n  ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         return el0;
       },
-      buildRenderNodes: function buildRenderNodes() {
-        return [];
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var element0 = dom.childAt(fragment, [2]);
+        var element1 = dom.childAt(fragment, [4]);
+        var element2 = dom.childAt(fragment, [6, 1]);
+        var element3 = dom.childAt(fragment, [8]);
+        var element4 = dom.childAt(element3, [1]);
+        var element5 = dom.childAt(element3, [3]);
+        var morphs = new Array(14);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0]), 0, 0);
+        morphs[1] = dom.createMorphAt(element0, 1, 1);
+        morphs[2] = dom.createMorphAt(element0, 4, 4);
+        morphs[3] = dom.createMorphAt(element1, 1, 1);
+        morphs[4] = dom.createMorphAt(element1, 4, 4);
+        morphs[5] = dom.createAttrMorph(element2, 'title');
+        morphs[6] = dom.createElementMorph(element2);
+        morphs[7] = dom.createMorphAt(element2, 1, 1);
+        morphs[8] = dom.createAttrMorph(element4, 'title');
+        morphs[9] = dom.createElementMorph(element4);
+        morphs[10] = dom.createMorphAt(element4, 1, 1);
+        morphs[11] = dom.createAttrMorph(element5, 'title');
+        morphs[12] = dom.createElementMorph(element5);
+        morphs[13] = dom.createMorphAt(element5, 1, 1);
+        return morphs;
       },
-      statements: [],
+      statements: [["inline", "t", ["forms.pwd-reset.caption"], [], ["loc", [null, [1, 4], [1, 35]]]], ["inline", "t", ["forms.pwd-reset.username-label"], [], ["loc", [null, [3, 2], [3, 40]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "username", ["loc", [null, [4, 28], [4, 36]]]]], [], []]], ["loc", [null, [4, 2], [4, 38]]]], ["inline", "t", ["forms.pwd-reset.captcha-label"], [], ["loc", [null, [7, 3], [7, 40]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "captchaValue", ["loc", [null, [8, 27], [8, 39]]]]], [], []]], ["loc", [null, [8, 1], [8, 41]]]], ["attribute", "title", ["subexpr", "t", ["forms.pwd-reset.pwd-reset-button-title"], [], ["loc", [null, [13, 10], [13, 56]]]]], ["element", "action", ["pwdReset"], [], ["loc", [null, [14, 4], [14, 25]]]], ["inline", "t", ["forms.pwd-reset.pwd-reset-button-text"], [], ["loc", [null, [15, 6], [15, 51]]]], ["attribute", "title", ["subexpr", "t", ["forms.pwd-reset.login-button-title"], [], ["loc", [null, [20, 10], [20, 52]]]]], ["element", "action", ["login"], [], ["loc", [null, [21, 4], [21, 22]]]], ["inline", "t", ["forms.pwd-reset.login-button-text"], [], ["loc", [null, [22, 6], [22, 47]]]], ["attribute", "title", ["subexpr", "t", ["forms.pwd-reset.register-button-title"], [], ["loc", [null, [25, 10], [25, 55]]]]], ["element", "action", ["register"], [], ["loc", [null, [26, 4], [26, 25]]]], ["inline", "t", ["forms.pwd-reset.register-button-text"], [], ["loc", [null, [27, 6], [27, 50]]]]],
       locals: [],
       templates: []
     };
@@ -2295,7 +2399,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.0.1-alpha.0+6275cbc1"});
+  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.0.1-alpha.0+b9614777"});
 }
 
 /* jshint ignore:end */

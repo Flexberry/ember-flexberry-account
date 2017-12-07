@@ -149,6 +149,26 @@
             },
             "class": "",
             "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/services/user-account.js",
+            "line": 135,
+            "description": "Reset password request for username.",
+            "itemtype": "method",
+            "name": "pwdReset",
+            "params": [
+                {
+                    "name": "username",
+                    "description": "User name for reset password request.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns reset request result.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "ember-flexberry-account"
         }
     ],
     "warnings": []

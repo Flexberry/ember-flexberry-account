@@ -80602,7 +80602,21 @@ define('ember-flexberry-account/controllers/login', ['exports', 'ember'], functi
 define('ember-flexberry-account/controllers/pwd-reset', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
-  exports['default'] = _ember['default'].Controller.extend({});
+  exports['default'] = _ember['default'].Controller.extend({
+    username: undefined,
+    actions: {
+      register: function register() {
+        this.transitionToRoute('register');
+      },
+      login: function login() {
+        this.transitionToRoute('login');
+      },
+      pwdReset: function pwdReset() {
+        var username = this.get('username');
+        this.get('userAccount').pwdReset(username);
+      }
+    }
+  });
 });
 define('ember-flexberry-account/controllers/register', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
@@ -80704,7 +80718,15 @@ define('ember-flexberry-account/locales/en/translations', ['exports'], function 
         'pwd-reset-button-text': 'Reset password'
       },
       'pwd-reset': {
-        caption: 'Reset password'
+        caption: 'Reset password',
+        'username-label': 'Username',
+        'captcha-label': '[CAPTCHA]',
+        'pwd-reset-button-title': 'Reset password request',
+        'pwd-reset-button-text': 'Reset password',
+        'login-button-title': 'Login with username and password',
+        'login-button-text': 'Login',
+        'register-button-title': 'Quick registration process',
+        'register-button-text': 'Register'
       },
       'user-profile': {
         caption: 'User profile'
@@ -80719,7 +80741,7 @@ define('ember-flexberry-account/locales/ru/translations', ['exports'], function 
     forms: {
       login: {
         caption: 'Вход в систему',
-        'username-label': 'Имя пользователя (E-mail):',
+        'username-label': 'Логин (E-mail):',
         'password-label': 'Пароль:',
         'remember-label': 'Запомнить:',
         'login-button-title': 'Выполнить вход в систему по логину и паролю',
@@ -80732,7 +80754,7 @@ define('ember-flexberry-account/locales/ru/translations', ['exports'], function 
       },
       register: {
         caption: 'Регистрация нового пользователя',
-        'username-label': 'Логин:',
+        'username-label': 'Логин (E-mail):',
         'surname-label': 'Фамилия:',
         'name-label': 'Имя:',
         'middlename-label': 'Отчество:',
@@ -80747,7 +80769,15 @@ define('ember-flexberry-account/locales/ru/translations', ['exports'], function 
         'pwd-reset-button-text': 'Восстановить пароль'
       },
       'pwd-reset': {
-        caption: 'Восстановление пароля'
+        caption: 'Восстановление пароля',
+        'username-label': 'Логин (E-mail)',
+        'captcha-label': '[CAPTCHA]',
+        'pwd-reset-button-title': 'Запрос на восстановление пароля для указанного логина',
+        'pwd-reset-button-text': 'Восстановить пароль',
+        'login-button-title': 'Войти в систему по логину и паролю',
+        'login-button-text': 'Войти',
+        'register-button-title': 'Пройти быструю процедуру регистрации',
+        'register-button-text': 'Зарегистрироваться'
       },
       'user-profile': {
         caption: 'Профиль пользователя'
@@ -80903,6 +80933,21 @@ define('ember-flexberry-account/services/user-account', ['exports', 'ember'], fu
       }
 
       _ember['default'].assert('Developer must override register method of user-account service.' + ' You try register with username: ' + username + ', surname: ' + surname + ', name: ' + name + ', middlename: ' + middlename + '.');
+    },
+    /**
+      Reset password request for username.
+       @method pwdReset
+      @param username {String} User name for reset password request.
+      @return {Boolean} Returns reset request result.
+    */
+    pwdReset: function pwdReset(username) {
+      var enabled = this.get('enabled');
+
+      if (!enabled) {
+        return;
+      }
+
+      _ember['default'].assert('Developer must override pwdReset method of user-account service.' + 'Request for username: ' + username + '.');
     }
   });
 });
