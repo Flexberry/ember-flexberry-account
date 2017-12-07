@@ -39,7 +39,18 @@ export default Ember.Controller.extend({
   gosuslugi: false,
   useSocialBlock: false,
 
-  login: undefined,
+  username: undefined,
   password: undefined,
-  remember: true
+  remember: true,
+  actions: {
+    login: function() {
+      this.get('userAccount').login(this.get('username'), this.get('password'));
+    },
+    register: function() {
+      this.transitionToRoute('register');
+    },
+    pwdReset: function() {
+      this.transitionToRoute('pwd-reset');
+    }
+  }
 });
