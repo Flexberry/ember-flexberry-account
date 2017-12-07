@@ -80607,7 +80607,62 @@ define('ember-flexberry-account/controllers/pwd-reset', ['exports', 'ember'], fu
 define('ember-flexberry-account/controllers/register', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
-  exports['default'] = _ember['default'].Controller.extend({});
+  exports['default'] = _ember['default'].Controller.extend({
+    userAccount: _ember['default'].inject.service('user-account'),
+    init: function init() {
+      this.set('vk', this.get('userAccount.vk'));
+      this.set('facebook', this.get('userAccount.facebook'));
+      this.set('twitter', this.get('userAccount.twitter'));
+      this.set('google', this.get('userAccount.google'));
+      this.set('microsoft', this.get('userAccount.microsoft'));
+      this.set('github', this.get('userAccount.github'));
+      this.set('ok', this.get('userAccount.ok'));
+      this.set('mailru', this.get('userAccount.mailru'));
+      this.set('yandex', this.get('userAccount.yandex'));
+      this.set('gosuslugi', this.get('userAccount.gosuslugi'));
+      this.set('useSocialBlock', this.get('vk') || this.get('facebook') || this.get('twitter') || this.get('google') || this.get('microsoft') || this.get('github') || this.get('ok') || this.get('mailru') || this.get('yandex') || this.get('gosuslugi'));
+    },
+
+    vk: false,
+    facebook: false,
+    twitter: false,
+    google: false,
+    microsoft: false,
+    github: false,
+    ok: false,
+    mailru: false,
+    yandex: false,
+    gosuslugi: false,
+    useSocialBlock: false,
+
+    username: undefined,
+    surname: undefined,
+    name: undefined,
+    middlename: undefined,
+    validUsername: false,
+
+    actions: {
+      validateUsername: function validateUsername() {
+        var username = this.get('username');
+        var userAccountService = this.get('userAccount');
+        var validateUsernameResult = userAccountService.validateUsername(username);
+        this.set('validUsername', validateUsernameResult);
+      },
+      register: function register() {
+        var username = this.get('username');
+        var surname = this.get('surname');
+        var name = this.get('name');
+        var middlename = this.get('middlename');
+        this.get('userAccount').register(username, surname, name, middlename);
+      },
+      login: function login() {
+        this.transitionToRoute('login');
+      },
+      pwdReset: function pwdReset() {
+        this.transitionToRoute('pwd-reset');
+      }
+    }
+  });
 });
 define('ember-flexberry-account/controllers/user-profile', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
@@ -80635,8 +80690,9 @@ define('ember-flexberry-account/locales/en/translations', ['exports'], function 
       register: {
         caption: 'Register new user',
         'username-label': 'Login (E-mail):',
-        'name-label': 'Name:',
         'surname-label': 'Surname:',
+        'name-label': 'Name:',
+        'middlename-label': 'Middlename:',
         'captcha-label': '[Captcha]',
         'register-button-title': 'Register new user',
         'register-button-text': 'Register',
@@ -80677,15 +80733,16 @@ define('ember-flexberry-account/locales/ru/translations', ['exports'], function 
       register: {
         caption: 'Регистрация нового пользователя',
         'username-label': 'Логин:',
-        'name-label': 'Имя:',
         'surname-label': 'Фамилия:',
+        'name-label': 'Имя:',
+        'middlename-label': 'Отчество:',
         'captcha-label': '[CAPTCHA]',
         'register-button-title': 'Зарегистрировать пользователя',
         'register-button-text': 'Регистрация',
         'register-with-label': 'Зарегистрироваться при помощи:',
         'login-reset-label': 'Регистрировались ранее?',
         'login-button-title': 'Войти в систему по логину и паролю',
-        'login-button-text': 'Логин',
+        'login-button-text': 'Войти',
         'pwd-reset-button-title': 'Если пароль был утерян, то его можно восстановить',
         'pwd-reset-button-text': 'Восстановить пароль'
       },
@@ -80772,7 +80829,13 @@ define('ember-flexberry-account/services/user-account', ['exports', 'ember'], fu
       @return {Boolean} Returns user authenticated status.
     */
     isUserAuthnticated: function isUserAuthnticated() {
-      // TODO: Assert.
+      var enabled = this.get('enabled');
+
+      if (!enabled) {
+        return;
+      }
+
+      _ember['default'].assert('Developer must override isUserAuthnticated method of user-account service.');
     },
 
     /**
@@ -80783,7 +80846,13 @@ define('ember-flexberry-account/services/user-account', ['exports', 'ember'], fu
       @return {Boolean} Returns log in result.
     */
     login: function login(username, password) {
-      // TODO: assert that developer must redefine this method in own code.
+      var enabled = this.get('enabled');
+
+      if (!enabled) {
+        return;
+      }
+
+      _ember['default'].assert('Developer must override login method of user-account service.' + ' You try login with ' + username + ' and password ' + password + '.');
     },
 
     /**
@@ -80792,7 +80861,48 @@ define('ember-flexberry-account/services/user-account', ['exports', 'ember'], fu
       @return {Boolean} Returns log out result.
     */
     logout: function logout() {
-      // TODO: assert that developer must redefine this method in own code.
+      var enabled = this.get('enabled');
+
+      if (!enabled) {
+        return;
+      }
+
+      _ember['default'].assert('Developer must override logout method of user-account service.');
+    },
+
+    /**
+      Validate username.
+       @method validateUsername
+      @param username {String} User name for validation.
+      @return {Boolean} Returns validation result.
+    */
+    validateUsername: function validateUsername(username) {
+      var enabled = this.get('enabled');
+
+      if (!enabled) {
+        return;
+      }
+
+      _ember['default'].assert('Developer must override validateUsername method of user-account service.' + 'Validate username: ' + username + '.');
+    },
+
+    /**
+      Register user.
+       @method register
+      @param username {String} User name for log in.
+      @param surname {String} User surname.
+      @param name {String} User name.
+      @param middlename {String} User middlename.
+      @return {Boolean} Returns register result.
+    */
+    register: function register(username, surname, name, middlename) {
+      var enabled = this.get('enabled');
+
+      if (!enabled) {
+        return;
+      }
+
+      _ember['default'].assert('Developer must override register method of user-account service.' + ' You try register with username: ' + username + ', surname: ' + surname + ', name: ' + name + ', middlename: ' + middlename + '.');
     }
   });
 });

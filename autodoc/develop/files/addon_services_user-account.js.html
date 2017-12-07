@@ -144,7 +144,13 @@ export default Ember.Service.extend({
     @return {Boolean} Returns user authenticated status.
   */
   isUserAuthnticated() {
-    // TODO: Assert.
+    let enabled = this.get(&#x27;enabled&#x27;);
+
+    if (!enabled) {
+      return;
+    }
+
+    Ember.assert(&#x27;Developer must override isUserAuthnticated method of user-account service.&#x27;);
   },
 
   /**
@@ -156,7 +162,14 @@ export default Ember.Service.extend({
     @return {Boolean} Returns log in result.
   */
   login(username, password) {
-    // TODO: assert that developer must redefine this method in own code.
+    let enabled = this.get(&#x27;enabled&#x27;);
+
+    if (!enabled) {
+      return;
+    }
+
+    Ember.assert(&#x27;Developer must override login method of user-account service.&#x27; +
+    &#x27; You try login with &#x27; + username + &#x27; and password &#x27; + password + &#x27;.&#x27;);
   },
 
   /**
@@ -166,8 +179,54 @@ export default Ember.Service.extend({
     @return {Boolean} Returns log out result.
   */
   logout() {
-    // TODO: assert that developer must redefine this method in own code.
-  }
+    let enabled = this.get(&#x27;enabled&#x27;);
+
+    if (!enabled) {
+      return;
+    }
+
+    Ember.assert(&#x27;Developer must override logout method of user-account service.&#x27;);
+  },
+
+  /**
+    Validate username.
+
+    @method validateUsername
+    @param username {String} User name for validation.
+    @return {Boolean} Returns validation result.
+  */
+  validateUsername(username) {
+    let enabled = this.get(&#x27;enabled&#x27;);
+
+    if (!enabled) {
+      return;
+    }
+
+    Ember.assert(&#x27;Developer must override validateUsername method of user-account service.&#x27; +
+    &#x27;Validate username: &#x27; + username + &#x27;.&#x27;);
+  },
+
+  /**
+    Register user.
+
+    @method register
+    @param username {String} User name for log in.
+    @param surname {String} User surname.
+    @param name {String} User name.
+    @param middlename {String} User middlename.
+    @return {Boolean} Returns register result.
+  */
+  register(username, surname, name, middlename) {
+    let enabled = this.get(&#x27;enabled&#x27;);
+
+    if (!enabled) {
+      return;
+    }
+
+    Ember.assert(&#x27;Developer must override register method of user-account service.&#x27; +
+    &#x27; You try register with username: &#x27; + username + &#x27;, surname: &#x27; + surname +
+    &#x27;, name: &#x27; + name + &#x27;, middlename: &#x27; + middlename + &#x27;.&#x27;);
+  },
 });
 
     </pre>

@@ -59,7 +59,7 @@
         },
         {
             "file": "addon/services/user-account.js",
-            "line": 55,
+            "line": 61,
             "description": "Log in.",
             "itemtype": "method",
             "name": "login",
@@ -84,12 +84,67 @@
         },
         {
             "file": "addon/services/user-account.js",
-            "line": 67,
+            "line": 80,
             "description": "Log out.",
             "itemtype": "method",
             "name": "logout",
             "return": {
                 "description": "Returns log out result.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/services/user-account.js",
+            "line": 96,
+            "description": "Validate username.",
+            "itemtype": "method",
+            "name": "validateUsername",
+            "params": [
+                {
+                    "name": "username",
+                    "description": "User name for validation.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns validation result.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/services/user-account.js",
+            "line": 114,
+            "description": "Register user.",
+            "itemtype": "method",
+            "name": "register",
+            "params": [
+                {
+                    "name": "username",
+                    "description": "User name for log in.",
+                    "type": "String"
+                },
+                {
+                    "name": "surname",
+                    "description": "User surname.",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "User name.",
+                    "type": "String"
+                },
+                {
+                    "name": "middlename",
+                    "description": "User middlename.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns register result.",
                 "type": "Boolean"
             },
             "class": "",

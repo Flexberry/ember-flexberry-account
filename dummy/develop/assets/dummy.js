@@ -145,7 +145,7 @@ define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/serv
   QUnit.module('JSHint - modules/ember-flexberry-account/services/user-account.js');
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'modules/ember-flexberry-account/services/user-account.js should pass jshint.\nmodules/ember-flexberry-account/services/user-account.js: line 63, col 19, \'password\' is defined but never used.\nmodules/ember-flexberry-account/services/user-account.js: line 63, col 9, \'username\' is defined but never used.\n\n2 errors');
+    assert.ok(true, 'modules/ember-flexberry-account/services/user-account.js should pass jshint.');
   });
 });
 define('dummy/helpers/pluralize', ['exports', 'ember-inflector/lib/helpers/pluralize'], function (exports, _emberInflectorLibHelpersPluralize) {
@@ -1447,6 +1447,42 @@ define("dummy/templates/pwd-reset", ["exports"], function (exports) {
 define("dummy/templates/register", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     var child0 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.4.6",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 7,
+              "column": 0
+            }
+          },
+          "moduleName": "dummy/templates/register.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("ok!\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes() {
+          return [];
+        },
+        statements: [],
+        locals: [],
+        templates: []
+      };
+    })();
+    var child1 = (function () {
       var child0 = (function () {
         return {
           meta: {
@@ -1455,11 +1491,11 @@ define("dummy/templates/register", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 30,
+                "line": 37,
                 "column": 4
               },
               "end": {
-                "line": 30,
+                "line": 37,
                 "column": 48
               }
             },
@@ -1482,7 +1518,7 @@ define("dummy/templates/register", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "VK"], ["loc", [null, [30, 14], [30, 48]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "VK"], ["loc", [null, [37, 14], [37, 48]]]]],
           locals: [],
           templates: []
         };
@@ -1495,11 +1531,11 @@ define("dummy/templates/register", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 31,
+                "line": 38,
                 "column": 4
               },
               "end": {
-                "line": 31,
+                "line": 38,
                 "column": 60
               }
             },
@@ -1522,7 +1558,7 @@ define("dummy/templates/register", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Facebook"], ["loc", [null, [31, 20], [31, 60]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Facebook"], ["loc", [null, [38, 20], [38, 60]]]]],
           locals: [],
           templates: []
         };
@@ -1535,11 +1571,11 @@ define("dummy/templates/register", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 32,
+                "line": 39,
                 "column": 4
               },
               "end": {
-                "line": 32,
+                "line": 39,
                 "column": 58
               }
             },
@@ -1562,7 +1598,7 @@ define("dummy/templates/register", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Twitter"], ["loc", [null, [32, 19], [32, 58]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Twitter"], ["loc", [null, [39, 19], [39, 58]]]]],
           locals: [],
           templates: []
         };
@@ -1575,11 +1611,11 @@ define("dummy/templates/register", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 33,
+                "line": 40,
                 "column": 4
               },
               "end": {
-                "line": 33,
+                "line": 40,
                 "column": 56
               }
             },
@@ -1602,7 +1638,7 @@ define("dummy/templates/register", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Google"], ["loc", [null, [33, 18], [33, 56]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Google"], ["loc", [null, [40, 18], [40, 56]]]]],
           locals: [],
           templates: []
         };
@@ -1615,11 +1651,11 @@ define("dummy/templates/register", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 34,
+                "line": 41,
                 "column": 4
               },
               "end": {
-                "line": 34,
+                "line": 41,
                 "column": 62
               }
             },
@@ -1642,7 +1678,7 @@ define("dummy/templates/register", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Microsoft"], ["loc", [null, [34, 21], [34, 62]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Microsoft"], ["loc", [null, [41, 21], [41, 62]]]]],
           locals: [],
           templates: []
         };
@@ -1655,11 +1691,11 @@ define("dummy/templates/register", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 35,
+                "line": 42,
                 "column": 4
               },
               "end": {
-                "line": 35,
+                "line": 42,
                 "column": 56
               }
             },
@@ -1682,7 +1718,7 @@ define("dummy/templates/register", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "GitHub"], ["loc", [null, [35, 18], [35, 56]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "GitHub"], ["loc", [null, [42, 18], [42, 56]]]]],
           locals: [],
           templates: []
         };
@@ -1695,11 +1731,11 @@ define("dummy/templates/register", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 36,
+                "line": 43,
                 "column": 4
               },
               "end": {
-                "line": 36,
+                "line": 43,
                 "column": 48
               }
             },
@@ -1722,7 +1758,7 @@ define("dummy/templates/register", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "OK"], ["loc", [null, [36, 14], [36, 48]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "OK"], ["loc", [null, [43, 14], [43, 48]]]]],
           locals: [],
           templates: []
         };
@@ -1735,11 +1771,11 @@ define("dummy/templates/register", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 37,
+                "line": 44,
                 "column": 4
               },
               "end": {
-                "line": 37,
+                "line": 44,
                 "column": 57
               }
             },
@@ -1762,7 +1798,7 @@ define("dummy/templates/register", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Mail.ru"], ["loc", [null, [37, 18], [37, 57]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Mail.ru"], ["loc", [null, [44, 18], [44, 57]]]]],
           locals: [],
           templates: []
         };
@@ -1775,11 +1811,11 @@ define("dummy/templates/register", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 38,
+                "line": 45,
                 "column": 4
               },
               "end": {
-                "line": 38,
+                "line": 45,
                 "column": 56
               }
             },
@@ -1802,7 +1838,7 @@ define("dummy/templates/register", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Yandex"], ["loc", [null, [38, 18], [38, 56]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Yandex"], ["loc", [null, [45, 18], [45, 56]]]]],
           locals: [],
           templates: []
         };
@@ -1815,11 +1851,11 @@ define("dummy/templates/register", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 39,
+                "line": 46,
                 "column": 4
               },
               "end": {
-                "line": 39,
+                "line": 46,
                 "column": 62
               }
             },
@@ -1842,7 +1878,7 @@ define("dummy/templates/register", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Gosuslugi"], ["loc", [null, [39, 21], [39, 62]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Gosuslugi"], ["loc", [null, [46, 21], [46, 62]]]]],
           locals: [],
           templates: []
         };
@@ -1854,11 +1890,11 @@ define("dummy/templates/register", ["exports"], function (exports) {
           "loc": {
             "source": null,
             "start": {
-              "line": 26,
+              "line": 33,
               "column": 0
             },
             "end": {
-              "line": 42,
+              "line": 49,
               "column": 0
             }
           },
@@ -1949,7 +1985,7 @@ define("dummy/templates/register", ["exports"], function (exports) {
           morphs[10] = dom.createMorphAt(element1, 19, 19);
           return morphs;
         },
-        statements: [["inline", "t", ["forms.register.register-with-label"], [], ["loc", [null, [28, 2], [28, 44]]]], ["block", "if", [["get", "vk", ["loc", [null, [30, 10], [30, 12]]]]], [], 0, null, ["loc", [null, [30, 4], [30, 55]]]], ["block", "if", [["get", "facebook", ["loc", [null, [31, 10], [31, 18]]]]], [], 1, null, ["loc", [null, [31, 4], [31, 67]]]], ["block", "if", [["get", "twitter", ["loc", [null, [32, 10], [32, 17]]]]], [], 2, null, ["loc", [null, [32, 4], [32, 65]]]], ["block", "if", [["get", "google", ["loc", [null, [33, 10], [33, 16]]]]], [], 3, null, ["loc", [null, [33, 4], [33, 63]]]], ["block", "if", [["get", "microsoft", ["loc", [null, [34, 10], [34, 19]]]]], [], 4, null, ["loc", [null, [34, 4], [34, 69]]]], ["block", "if", [["get", "github", ["loc", [null, [35, 10], [35, 16]]]]], [], 5, null, ["loc", [null, [35, 4], [35, 63]]]], ["block", "if", [["get", "ok", ["loc", [null, [36, 10], [36, 12]]]]], [], 6, null, ["loc", [null, [36, 4], [36, 55]]]], ["block", "if", [["get", "mailru", ["loc", [null, [37, 10], [37, 16]]]]], [], 7, null, ["loc", [null, [37, 4], [37, 64]]]], ["block", "if", [["get", "yandex", ["loc", [null, [38, 10], [38, 16]]]]], [], 8, null, ["loc", [null, [38, 4], [38, 63]]]], ["block", "if", [["get", "gosuslugi", ["loc", [null, [39, 10], [39, 19]]]]], [], 9, null, ["loc", [null, [39, 4], [39, 69]]]]],
+        statements: [["inline", "t", ["forms.register.register-with-label"], [], ["loc", [null, [35, 2], [35, 44]]]], ["block", "if", [["get", "vk", ["loc", [null, [37, 10], [37, 12]]]]], [], 0, null, ["loc", [null, [37, 4], [37, 55]]]], ["block", "if", [["get", "facebook", ["loc", [null, [38, 10], [38, 18]]]]], [], 1, null, ["loc", [null, [38, 4], [38, 67]]]], ["block", "if", [["get", "twitter", ["loc", [null, [39, 10], [39, 17]]]]], [], 2, null, ["loc", [null, [39, 4], [39, 65]]]], ["block", "if", [["get", "google", ["loc", [null, [40, 10], [40, 16]]]]], [], 3, null, ["loc", [null, [40, 4], [40, 63]]]], ["block", "if", [["get", "microsoft", ["loc", [null, [41, 10], [41, 19]]]]], [], 4, null, ["loc", [null, [41, 4], [41, 69]]]], ["block", "if", [["get", "github", ["loc", [null, [42, 10], [42, 16]]]]], [], 5, null, ["loc", [null, [42, 4], [42, 63]]]], ["block", "if", [["get", "ok", ["loc", [null, [43, 10], [43, 12]]]]], [], 6, null, ["loc", [null, [43, 4], [43, 55]]]], ["block", "if", [["get", "mailru", ["loc", [null, [44, 10], [44, 16]]]]], [], 7, null, ["loc", [null, [44, 4], [44, 64]]]], ["block", "if", [["get", "yandex", ["loc", [null, [45, 10], [45, 16]]]]], [], 8, null, ["loc", [null, [45, 4], [45, 63]]]], ["block", "if", [["get", "gosuslugi", ["loc", [null, [46, 10], [46, 19]]]]], [], 9, null, ["loc", [null, [46, 4], [46, 69]]]]],
         locals: [],
         templates: [child0, child1, child2, child3, child4, child5, child6, child7, child8, child9]
       };
@@ -1968,7 +2004,7 @@ define("dummy/templates/register", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 55,
+            "line": 62,
             "column": 6
           }
         },
@@ -2000,6 +2036,25 @@ define("dummy/templates/register", ["exports"], function (exports) {
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "surname-div");
+        var el2 = dom.createTextNode("\n ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("br");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
@@ -2021,8 +2076,8 @@ define("dummy/templates/register", ["exports"], function (exports) {
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "surname-div");
-        var el2 = dom.createTextNode("\n ");
+        dom.setAttribute(el1, "class", "middle-name-div");
+        var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
@@ -2114,36 +2169,40 @@ define("dummy/templates/register", ["exports"], function (exports) {
         var element3 = dom.childAt(fragment, [4]);
         var element4 = dom.childAt(fragment, [6]);
         var element5 = dom.childAt(fragment, [8]);
-        var element6 = dom.childAt(fragment, [10, 1]);
-        var element7 = dom.childAt(fragment, [13]);
-        var element8 = dom.childAt(element7, [4]);
-        var element9 = dom.childAt(element7, [6]);
-        var morphs = new Array(20);
+        var element6 = dom.childAt(fragment, [10]);
+        var element7 = dom.childAt(fragment, [12, 1]);
+        var element8 = dom.childAt(fragment, [15]);
+        var element9 = dom.childAt(element8, [4]);
+        var element10 = dom.childAt(element8, [6]);
+        var morphs = new Array(23);
         morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0]), 0, 0);
         morphs[1] = dom.createMorphAt(element2, 1, 1);
         morphs[2] = dom.createMorphAt(element2, 4, 4);
-        morphs[3] = dom.createMorphAt(element3, 1, 1);
-        morphs[4] = dom.createMorphAt(element3, 4, 4);
-        morphs[5] = dom.createMorphAt(element4, 1, 1);
-        morphs[6] = dom.createMorphAt(element4, 4, 4);
-        morphs[7] = dom.createMorphAt(element5, 1, 1);
-        morphs[8] = dom.createMorphAt(element5, 4, 4);
-        morphs[9] = dom.createAttrMorph(element6, 'title');
-        morphs[10] = dom.createElementMorph(element6);
-        morphs[11] = dom.createMorphAt(element6, 1, 1);
-        morphs[12] = dom.createMorphAt(fragment, 12, 12, contextualElement);
-        morphs[13] = dom.createMorphAt(element7, 1, 1);
-        morphs[14] = dom.createAttrMorph(element8, 'title');
-        morphs[15] = dom.createElementMorph(element8);
+        morphs[3] = dom.createMorphAt(element2, 6, 6);
+        morphs[4] = dom.createMorphAt(element3, 1, 1);
+        morphs[5] = dom.createMorphAt(element3, 4, 4);
+        morphs[6] = dom.createMorphAt(element4, 1, 1);
+        morphs[7] = dom.createMorphAt(element4, 4, 4);
+        morphs[8] = dom.createMorphAt(element5, 1, 1);
+        morphs[9] = dom.createMorphAt(element5, 4, 4);
+        morphs[10] = dom.createMorphAt(element6, 1, 1);
+        morphs[11] = dom.createMorphAt(element6, 4, 4);
+        morphs[12] = dom.createAttrMorph(element7, 'title');
+        morphs[13] = dom.createElementMorph(element7);
+        morphs[14] = dom.createMorphAt(element7, 1, 1);
+        morphs[15] = dom.createMorphAt(fragment, 14, 14, contextualElement);
         morphs[16] = dom.createMorphAt(element8, 1, 1);
         morphs[17] = dom.createAttrMorph(element9, 'title');
         morphs[18] = dom.createElementMorph(element9);
         morphs[19] = dom.createMorphAt(element9, 1, 1);
+        morphs[20] = dom.createAttrMorph(element10, 'title');
+        morphs[21] = dom.createElementMorph(element10);
+        morphs[22] = dom.createMorphAt(element10, 1, 1);
         return morphs;
       },
-      statements: [["inline", "t", ["forms.register.caption"], [], ["loc", [null, [1, 4], [1, 34]]]], ["inline", "t", ["forms.register.username-label"], [], ["loc", [null, [3, 0], [3, 37]]]], ["inline", "input", [], ["type", "email", "value", ["subexpr", "@mut", [["get", "username", ["loc", [null, [4, 27], [4, 35]]]]], [], []]], ["loc", [null, [4, 0], [4, 37]]]], ["inline", "t", ["forms.register.name-label"], [], ["loc", [null, [7, 0], [7, 33]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "name", ["loc", [null, [8, 27], [8, 31]]]]], [], []]], ["loc", [null, [8, 1], [8, 33]]]], ["inline", "t", ["forms.register.surname-label"], [], ["loc", [null, [11, 1], [11, 37]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "surname", ["loc", [null, [12, 27], [12, 34]]]]], [], []]], ["loc", [null, [12, 1], [12, 36]]]], ["inline", "t", ["forms.register.captcha-label"], [], ["loc", [null, [15, 3], [15, 39]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "captchaValue", ["loc", [null, [16, 27], [16, 39]]]]], [], []]], ["loc", [null, [16, 1], [16, 41]]]], ["attribute", "title", ["subexpr", "t", ["forms.register.register-button-title"], [], ["loc", [null, [21, 10], [21, 54]]]]], ["element", "action", ["register"], [], ["loc", [null, [22, 4], [22, 25]]]], ["inline", "t", ["forms.register.register-button-text"], [], ["loc", [null, [23, 6], [23, 49]]]], ["block", "if", [["get", "useSocialBlock", ["loc", [null, [26, 6], [26, 20]]]]], [], 0, null, ["loc", [null, [26, 0], [42, 7]]]], ["inline", "t", ["forms.register.login-reset-label"], [], ["loc", [null, [44, 2], [44, 42]]]], ["attribute", "title", ["subexpr", "t", ["forms.register.login-button-title"], [], ["loc", [null, [46, 10], [46, 51]]]]], ["element", "action", ["login"], [], ["loc", [null, [47, 4], [47, 22]]]], ["inline", "t", ["forms.register.login-button-text"], [], ["loc", [null, [48, 6], [48, 46]]]], ["attribute", "title", ["subexpr", "t", ["forms.register.pwd-reset-button-title"], [], ["loc", [null, [51, 10], [51, 55]]]]], ["element", "action", ["pwdReset"], [], ["loc", [null, [52, 4], [52, 25]]]], ["inline", "t", ["forms.register.pwd-reset-button-text"], [], ["loc", [null, [53, 6], [53, 50]]]]],
+      statements: [["inline", "t", ["forms.register.caption"], [], ["loc", [null, [1, 4], [1, 34]]]], ["inline", "t", ["forms.register.username-label"], [], ["loc", [null, [3, 0], [3, 37]]]], ["inline", "input", [], ["type", "email", "value", ["subexpr", "@mut", [["get", "username", ["loc", [null, [4, 27], [4, 35]]]]], [], []]], ["loc", [null, [4, 0], [4, 37]]]], ["block", "if", [["get", "validUsername", ["loc", [null, [5, 6], [5, 19]]]]], [], 0, null, ["loc", [null, [5, 0], [7, 7]]]], ["inline", "t", ["forms.register.surname-label"], [], ["loc", [null, [10, 1], [10, 37]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "surname", ["loc", [null, [11, 27], [11, 34]]]]], [], []]], ["loc", [null, [11, 1], [11, 36]]]], ["inline", "t", ["forms.register.name-label"], [], ["loc", [null, [14, 0], [14, 33]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "name", ["loc", [null, [15, 27], [15, 31]]]]], [], []]], ["loc", [null, [15, 1], [15, 33]]]], ["inline", "t", ["forms.register.middlename-label"], [], ["loc", [null, [18, 0], [18, 39]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "middlename", ["loc", [null, [19, 27], [19, 37]]]]], [], []]], ["loc", [null, [19, 1], [19, 39]]]], ["inline", "t", ["forms.register.captcha-label"], [], ["loc", [null, [22, 3], [22, 39]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "captchaValue", ["loc", [null, [23, 27], [23, 39]]]]], [], []]], ["loc", [null, [23, 1], [23, 41]]]], ["attribute", "title", ["subexpr", "t", ["forms.register.register-button-title"], [], ["loc", [null, [28, 10], [28, 54]]]]], ["element", "action", ["register"], [], ["loc", [null, [29, 4], [29, 25]]]], ["inline", "t", ["forms.register.register-button-text"], [], ["loc", [null, [30, 6], [30, 49]]]], ["block", "if", [["get", "useSocialBlock", ["loc", [null, [33, 6], [33, 20]]]]], [], 1, null, ["loc", [null, [33, 0], [49, 7]]]], ["inline", "t", ["forms.register.login-reset-label"], [], ["loc", [null, [51, 2], [51, 42]]]], ["attribute", "title", ["subexpr", "t", ["forms.register.login-button-title"], [], ["loc", [null, [53, 10], [53, 51]]]]], ["element", "action", ["login"], [], ["loc", [null, [54, 4], [54, 22]]]], ["inline", "t", ["forms.register.login-button-text"], [], ["loc", [null, [55, 6], [55, 46]]]], ["attribute", "title", ["subexpr", "t", ["forms.register.pwd-reset-button-title"], [], ["loc", [null, [58, 10], [58, 55]]]]], ["element", "action", ["pwdReset"], [], ["loc", [null, [59, 4], [59, 25]]]], ["inline", "t", ["forms.register.pwd-reset-button-text"], [], ["loc", [null, [60, 6], [60, 50]]]]],
       locals: [],
-      templates: [child0]
+      templates: [child0, child1]
     };
   })());
 });
@@ -2236,7 +2295,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.0.1-alpha.0+bc1b8ac2"});
+  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.0.1-alpha.0+6275cbc1"});
 }
 
 /* jshint ignore:end */
