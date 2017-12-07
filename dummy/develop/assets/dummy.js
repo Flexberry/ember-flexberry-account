@@ -92,6 +92,20 @@ define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/cont
     assert.ok(true, 'modules/ember-flexberry-account/controllers/user-profile.js should pass jshint.');
   });
 });
+define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/locales/en/translations.jshint', ['exports'], function (exports) {
+  QUnit.module('JSHint - modules/ember-flexberry-account/locales/en/translations.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'modules/ember-flexberry-account/locales/en/translations.js should pass jshint.');
+  });
+});
+define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/locales/ru/translations.jshint', ['exports'], function (exports) {
+  QUnit.module('JSHint - modules/ember-flexberry-account/locales/ru/translations.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'modules/ember-flexberry-account/locales/ru/translations.js should pass jshint.');
+  });
+});
 define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/models/user-profile.jshint', ['exports'], function (exports) {
   QUnit.module('JSHint - modules/ember-flexberry-account/models/user-profile.js');
   QUnit.test('should pass jshint', function (assert) {
@@ -139,6 +153,14 @@ define('dummy/helpers/pluralize', ['exports', 'ember-inflector/lib/helpers/plura
 });
 define('dummy/helpers/singularize', ['exports', 'ember-inflector/lib/helpers/singularize'], function (exports, _emberInflectorLibHelpersSingularize) {
   exports['default'] = _emberInflectorLibHelpersSingularize['default'];
+});
+define('dummy/helpers/t', ['exports', 'ember-i18n/helper'], function (exports, _emberI18nHelper) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberI18nHelper['default'];
+    }
+  });
 });
 define('dummy/initializers/app-version', ['exports', 'ember-cli-app-version/initializer-factory', 'dummy/config/environment'], function (exports, _emberCliAppVersionInitializerFactory, _dummyConfigEnvironment) {
   exports['default'] = {
@@ -217,6 +239,9 @@ define('dummy/initializers/ember-data', ['exports', 'ember-data/setup-container'
     name: 'ember-data',
     initialize: _emberDataSetupContainer['default']
   };
+});
+define('dummy/initializers/ember-i18n', ['exports', 'ember-i18n/initializers/ember-i18n'], function (exports, _emberI18nInitializersEmberI18n) {
+  exports['default'] = _emberI18nInitializersEmberI18n['default'];
 });
 define('dummy/initializers/export-application-global', ['exports', 'ember', 'dummy/config/environment'], function (exports, _ember, _dummyConfigEnvironment) {
   exports.initialize = initialize;
@@ -312,6 +337,27 @@ define("dummy/instance-initializers/ember-data", ["exports", "ember-data/instanc
     initialize: _emberDataInstanceInitializersInitializeStoreService["default"]
   };
 });
+define('dummy/instance-initializers/ember-i18n', ['exports', 'ember-i18n/instance-initializers/ember-i18n'], function (exports, _emberI18nInstanceInitializersEmberI18n) {
+  exports['default'] = _emberI18nInstanceInitializersEmberI18n['default'];
+});
+define('dummy/locales/en/translations', ['exports', 'ember', 'ember-flexberry-account/locales/en/translations'], function (exports, _ember, _emberFlexberryAccountLocalesEnTranslations) {
+
+  var translations = {};
+  _ember['default'].$.extend(true, translations, _emberFlexberryAccountLocalesEnTranslations['default']);
+
+  _ember['default'].$.extend(true, translations, {});
+
+  exports['default'] = translations;
+});
+define('dummy/locales/ru/translations', ['exports', 'ember', 'ember-flexberry-account/locales/ru/translations'], function (exports, _ember, _emberFlexberryAccountLocalesRuTranslations) {
+
+  var translations = {};
+  _ember['default'].$.extend(true, translations, _emberFlexberryAccountLocalesRuTranslations['default']);
+
+  _ember['default'].$.extend(true, translations, {});
+
+  exports['default'] = translations;
+});
 define('dummy/models/user-profile', ['exports', 'ember-flexberry-account/models/user-profile'], function (exports, _emberFlexberryAccountModelsUserProfile) {
   Object.defineProperty(exports, 'default', {
     enumerable: true,
@@ -375,6 +421,14 @@ define('dummy/services/ajax', ['exports', 'ember-ajax/services/ajax'], function 
     enumerable: true,
     get: function get() {
       return _emberAjaxServicesAjax['default'];
+    }
+  });
+});
+define('dummy/services/i18n', ['exports', 'ember-i18n/services/i18n'], function (exports, _emberI18nServicesI18n) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberI18nServicesI18n['default'];
     }
   });
 });
@@ -693,11 +747,11 @@ define("dummy/templates/login", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 17,
+                "line": 23,
                 "column": 2
               },
               "end": {
-                "line": 17,
+                "line": 23,
                 "column": 46
               }
             },
@@ -720,7 +774,7 @@ define("dummy/templates/login", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "VK"], ["loc", [null, [17, 12], [17, 46]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "VK"], ["loc", [null, [23, 12], [23, 46]]]]],
           locals: [],
           templates: []
         };
@@ -733,11 +787,11 @@ define("dummy/templates/login", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 18,
+                "line": 24,
                 "column": 2
               },
               "end": {
-                "line": 18,
+                "line": 24,
                 "column": 58
               }
             },
@@ -760,7 +814,7 @@ define("dummy/templates/login", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Facebook"], ["loc", [null, [18, 18], [18, 58]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Facebook"], ["loc", [null, [24, 18], [24, 58]]]]],
           locals: [],
           templates: []
         };
@@ -773,11 +827,11 @@ define("dummy/templates/login", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 19,
+                "line": 25,
                 "column": 2
               },
               "end": {
-                "line": 19,
+                "line": 25,
                 "column": 56
               }
             },
@@ -800,7 +854,7 @@ define("dummy/templates/login", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Twitter"], ["loc", [null, [19, 17], [19, 56]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Twitter"], ["loc", [null, [25, 17], [25, 56]]]]],
           locals: [],
           templates: []
         };
@@ -813,11 +867,11 @@ define("dummy/templates/login", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 20,
+                "line": 26,
                 "column": 2
               },
               "end": {
-                "line": 20,
+                "line": 26,
                 "column": 54
               }
             },
@@ -840,7 +894,7 @@ define("dummy/templates/login", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Google"], ["loc", [null, [20, 16], [20, 54]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Google"], ["loc", [null, [26, 16], [26, 54]]]]],
           locals: [],
           templates: []
         };
@@ -853,11 +907,11 @@ define("dummy/templates/login", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 21,
+                "line": 27,
                 "column": 2
               },
               "end": {
-                "line": 21,
+                "line": 27,
                 "column": 60
               }
             },
@@ -880,7 +934,7 @@ define("dummy/templates/login", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Microsoft"], ["loc", [null, [21, 19], [21, 60]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Microsoft"], ["loc", [null, [27, 19], [27, 60]]]]],
           locals: [],
           templates: []
         };
@@ -893,11 +947,11 @@ define("dummy/templates/login", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 22,
+                "line": 28,
                 "column": 2
               },
               "end": {
-                "line": 22,
+                "line": 28,
                 "column": 54
               }
             },
@@ -920,7 +974,7 @@ define("dummy/templates/login", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "GitHub"], ["loc", [null, [22, 16], [22, 54]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "GitHub"], ["loc", [null, [28, 16], [28, 54]]]]],
           locals: [],
           templates: []
         };
@@ -933,11 +987,11 @@ define("dummy/templates/login", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 23,
+                "line": 29,
                 "column": 2
               },
               "end": {
-                "line": 23,
+                "line": 29,
                 "column": 46
               }
             },
@@ -960,7 +1014,7 @@ define("dummy/templates/login", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "OK"], ["loc", [null, [23, 12], [23, 46]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "OK"], ["loc", [null, [29, 12], [29, 46]]]]],
           locals: [],
           templates: []
         };
@@ -973,11 +1027,11 @@ define("dummy/templates/login", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 24,
+                "line": 30,
                 "column": 2
               },
               "end": {
-                "line": 24,
+                "line": 30,
                 "column": 55
               }
             },
@@ -1000,7 +1054,7 @@ define("dummy/templates/login", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Mail.ru"], ["loc", [null, [24, 16], [24, 55]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Mail.ru"], ["loc", [null, [30, 16], [30, 55]]]]],
           locals: [],
           templates: []
         };
@@ -1013,11 +1067,11 @@ define("dummy/templates/login", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 25,
+                "line": 31,
                 "column": 2
               },
               "end": {
-                "line": 25,
+                "line": 31,
                 "column": 54
               }
             },
@@ -1040,7 +1094,7 @@ define("dummy/templates/login", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Yandex"], ["loc", [null, [25, 16], [25, 54]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Yandex"], ["loc", [null, [31, 16], [31, 54]]]]],
           locals: [],
           templates: []
         };
@@ -1053,11 +1107,11 @@ define("dummy/templates/login", ["exports"], function (exports) {
             "loc": {
               "source": null,
               "start": {
-                "line": 26,
+                "line": 32,
                 "column": 2
               },
               "end": {
-                "line": 26,
+                "line": 32,
                 "column": 60
               }
             },
@@ -1080,7 +1134,7 @@ define("dummy/templates/login", ["exports"], function (exports) {
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Gosuslugi"], ["loc", [null, [26, 19], [26, 60]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Gosuslugi"], ["loc", [null, [32, 19], [32, 60]]]]],
           locals: [],
           templates: []
         };
@@ -1092,11 +1146,11 @@ define("dummy/templates/login", ["exports"], function (exports) {
           "loc": {
             "source": null,
             "start": {
-              "line": 14,
+              "line": 19,
               "column": 0
             },
             "end": {
-              "line": 28,
+              "line": 35,
               "column": 0
             }
           },
@@ -1108,50 +1162,60 @@ define("dummy/templates/login", ["exports"], function (exports) {
         hasRendered: false,
         buildFragment: function buildFragment(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createElement("p");
-          var el2 = dom.createTextNode("\n  Login with:");
+          var el1 = dom.createElement("div");
+          dom.setAttribute(el1, "class", "social-div");
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
           var el2 = dom.createElement("br");
           dom.appendChild(el1, el2);
           var el2 = dom.createTextNode("\n  ");
           dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n  ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n  ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n  ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n  ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n  ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n  ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n  ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n  ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n  ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
+          var el2 = dom.createElement("div");
+          dom.setAttribute(el2, "class", "social-buttons");
+          var el3 = dom.createTextNode("\n  ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n  ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n  ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n  ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n  ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n  ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n  ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n  ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n  ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n  ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n  ");
+          dom.appendChild(el2, el3);
           dom.appendChild(el1, el2);
           var el2 = dom.createTextNode("\n");
           dom.appendChild(el1, el2);
@@ -1162,20 +1226,22 @@ define("dummy/templates/login", ["exports"], function (exports) {
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
           var element0 = dom.childAt(fragment, [0]);
-          var morphs = new Array(10);
-          morphs[0] = dom.createMorphAt(element0, 3, 3);
-          morphs[1] = dom.createMorphAt(element0, 5, 5);
-          morphs[2] = dom.createMorphAt(element0, 7, 7);
-          morphs[3] = dom.createMorphAt(element0, 9, 9);
-          morphs[4] = dom.createMorphAt(element0, 11, 11);
-          morphs[5] = dom.createMorphAt(element0, 13, 13);
-          morphs[6] = dom.createMorphAt(element0, 15, 15);
-          morphs[7] = dom.createMorphAt(element0, 17, 17);
-          morphs[8] = dom.createMorphAt(element0, 19, 19);
-          morphs[9] = dom.createMorphAt(element0, 21, 21);
+          var element1 = dom.childAt(element0, [4]);
+          var morphs = new Array(11);
+          morphs[0] = dom.createMorphAt(element0, 1, 1);
+          morphs[1] = dom.createMorphAt(element1, 1, 1);
+          morphs[2] = dom.createMorphAt(element1, 3, 3);
+          morphs[3] = dom.createMorphAt(element1, 5, 5);
+          morphs[4] = dom.createMorphAt(element1, 7, 7);
+          morphs[5] = dom.createMorphAt(element1, 9, 9);
+          morphs[6] = dom.createMorphAt(element1, 11, 11);
+          morphs[7] = dom.createMorphAt(element1, 13, 13);
+          morphs[8] = dom.createMorphAt(element1, 15, 15);
+          morphs[9] = dom.createMorphAt(element1, 17, 17);
+          morphs[10] = dom.createMorphAt(element1, 19, 19);
           return morphs;
         },
-        statements: [["block", "if", [["get", "vk", ["loc", [null, [17, 8], [17, 10]]]]], [], 0, null, ["loc", [null, [17, 2], [17, 53]]]], ["block", "if", [["get", "facebook", ["loc", [null, [18, 8], [18, 16]]]]], [], 1, null, ["loc", [null, [18, 2], [18, 65]]]], ["block", "if", [["get", "twitter", ["loc", [null, [19, 8], [19, 15]]]]], [], 2, null, ["loc", [null, [19, 2], [19, 63]]]], ["block", "if", [["get", "google", ["loc", [null, [20, 8], [20, 14]]]]], [], 3, null, ["loc", [null, [20, 2], [20, 61]]]], ["block", "if", [["get", "microsoft", ["loc", [null, [21, 8], [21, 17]]]]], [], 4, null, ["loc", [null, [21, 2], [21, 67]]]], ["block", "if", [["get", "github", ["loc", [null, [22, 8], [22, 14]]]]], [], 5, null, ["loc", [null, [22, 2], [22, 61]]]], ["block", "if", [["get", "ok", ["loc", [null, [23, 8], [23, 10]]]]], [], 6, null, ["loc", [null, [23, 2], [23, 53]]]], ["block", "if", [["get", "mailru", ["loc", [null, [24, 8], [24, 14]]]]], [], 7, null, ["loc", [null, [24, 2], [24, 62]]]], ["block", "if", [["get", "yandex", ["loc", [null, [25, 8], [25, 14]]]]], [], 8, null, ["loc", [null, [25, 2], [25, 61]]]], ["block", "if", [["get", "gosuslugi", ["loc", [null, [26, 8], [26, 17]]]]], [], 9, null, ["loc", [null, [26, 2], [26, 67]]]]],
+        statements: [["inline", "t", ["forms.login.login-with-label"], [], ["loc", [null, [21, 2], [21, 38]]]], ["block", "if", [["get", "vk", ["loc", [null, [23, 8], [23, 10]]]]], [], 0, null, ["loc", [null, [23, 2], [23, 53]]]], ["block", "if", [["get", "facebook", ["loc", [null, [24, 8], [24, 16]]]]], [], 1, null, ["loc", [null, [24, 2], [24, 65]]]], ["block", "if", [["get", "twitter", ["loc", [null, [25, 8], [25, 15]]]]], [], 2, null, ["loc", [null, [25, 2], [25, 63]]]], ["block", "if", [["get", "google", ["loc", [null, [26, 8], [26, 14]]]]], [], 3, null, ["loc", [null, [26, 2], [26, 61]]]], ["block", "if", [["get", "microsoft", ["loc", [null, [27, 8], [27, 17]]]]], [], 4, null, ["loc", [null, [27, 2], [27, 67]]]], ["block", "if", [["get", "github", ["loc", [null, [28, 8], [28, 14]]]]], [], 5, null, ["loc", [null, [28, 2], [28, 61]]]], ["block", "if", [["get", "ok", ["loc", [null, [29, 8], [29, 10]]]]], [], 6, null, ["loc", [null, [29, 2], [29, 53]]]], ["block", "if", [["get", "mailru", ["loc", [null, [30, 8], [30, 14]]]]], [], 7, null, ["loc", [null, [30, 2], [30, 62]]]], ["block", "if", [["get", "yandex", ["loc", [null, [31, 8], [31, 14]]]]], [], 8, null, ["loc", [null, [31, 2], [31, 61]]]], ["block", "if", [["get", "gosuslugi", ["loc", [null, [32, 8], [32, 17]]]]], [], 9, null, ["loc", [null, [32, 2], [32, 67]]]]],
         locals: [],
         templates: [child0, child1, child2, child3, child4, child5, child6, child7, child8, child9]
       };
@@ -1194,8 +1260,8 @@ define("dummy/templates/login", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 32,
-            "column": 4
+            "line": 49,
+            "column": 6
           }
         },
         "moduleName": "dummy/templates/login.hbs"
@@ -1207,13 +1273,16 @@ define("dummy/templates/login", ["exports"], function (exports) {
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createElement("h3");
-        var el2 = dom.createTextNode("Login form");
+        var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
-        var el1 = dom.createElement("p");
-        var el2 = dom.createTextNode("\nLogin (E-mail):");
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "username-div");
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("br");
         dom.appendChild(el1, el2);
@@ -1226,8 +1295,11 @@ define("dummy/templates/login", ["exports"], function (exports) {
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
-        var el1 = dom.createElement("p");
-        var el2 = dom.createTextNode("\nPassword: ");
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "password-div");
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("br");
         dom.appendChild(el1, el2);
@@ -1240,14 +1312,26 @@ define("dummy/templates/login", ["exports"], function (exports) {
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
-        var el1 = dom.createElement("p");
-        var el2 = dom.createTextNode("\nRemember: ");
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "login-div");
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode(" ");
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
+        var el2 = dom.createElement("button");
+        dom.setAttribute(el2, "class", "ui login-button button");
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n");
+        dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
@@ -1256,14 +1340,29 @@ define("dummy/templates/login", ["exports"], function (exports) {
         dom.appendChild(el0, el1);
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
-        var el1 = dom.createElement("p");
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "register-reset-div");
         var el2 = dom.createTextNode("\n  ");
         dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
+        var el2 = dom.createElement("button");
+        dom.setAttribute(el2, "class", "ui register-button button");
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n");
+        dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
+        var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
+        var el2 = dom.createElement("button");
+        dom.setAttribute(el2, "class", "ui pwd-reset-button button");
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n");
+        dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
@@ -1271,19 +1370,34 @@ define("dummy/templates/login", ["exports"], function (exports) {
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element1 = dom.childAt(fragment, [6]);
-        var element2 = dom.childAt(fragment, [9]);
-        var morphs = new Array(7);
-        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [2]), 3, 3);
-        morphs[1] = dom.createMorphAt(dom.childAt(fragment, [4]), 3, 3);
-        morphs[2] = dom.createMorphAt(element1, 1, 1);
-        morphs[3] = dom.createMorphAt(element1, 3, 3);
-        morphs[4] = dom.createMorphAt(fragment, 8, 8, contextualElement);
-        morphs[5] = dom.createMorphAt(element2, 1, 1);
-        morphs[6] = dom.createMorphAt(element2, 3, 3);
+        var element2 = dom.childAt(fragment, [2]);
+        var element3 = dom.childAt(fragment, [4]);
+        var element4 = dom.childAt(fragment, [6]);
+        var element5 = dom.childAt(element4, [5]);
+        var element6 = dom.childAt(fragment, [9]);
+        var element7 = dom.childAt(element6, [1]);
+        var element8 = dom.childAt(element6, [3]);
+        var morphs = new Array(17);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0]), 0, 0);
+        morphs[1] = dom.createMorphAt(element2, 1, 1);
+        morphs[2] = dom.createMorphAt(element2, 4, 4);
+        morphs[3] = dom.createMorphAt(element3, 1, 1);
+        morphs[4] = dom.createMorphAt(element3, 4, 4);
+        morphs[5] = dom.createMorphAt(element4, 1, 1);
+        morphs[6] = dom.createMorphAt(element4, 3, 3);
+        morphs[7] = dom.createAttrMorph(element5, 'title');
+        morphs[8] = dom.createElementMorph(element5);
+        morphs[9] = dom.createMorphAt(element5, 1, 1);
+        morphs[10] = dom.createMorphAt(fragment, 8, 8, contextualElement);
+        morphs[11] = dom.createAttrMorph(element7, 'title');
+        morphs[12] = dom.createElementMorph(element7);
+        morphs[13] = dom.createMorphAt(element7, 1, 1);
+        morphs[14] = dom.createAttrMorph(element8, 'title');
+        morphs[15] = dom.createElementMorph(element8);
+        morphs[16] = dom.createMorphAt(element8, 1, 1);
         return morphs;
       },
-      statements: [["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "login", ["loc", [null, [4, 27], [4, 32]]]]], [], []]], ["loc", [null, [4, 1], [4, 34]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "password", ["loc", [null, [8, 26], [8, 34]]]]], [], []]], ["loc", [null, [8, 0], [8, 36]]]], ["inline", "input", [], ["type", "checkbox", "checked", ["subexpr", "@mut", [["get", "remember", ["loc", [null, [11, 42], [11, 50]]]]], [], []]], ["loc", [null, [11, 10], [11, 52]]]], ["inline", "input", [], ["type", "button", "value", "Log in"], ["loc", [null, [12, 0], [12, 38]]]], ["block", "if", [["get", "useSocialBlock", ["loc", [null, [14, 6], [14, 20]]]]], [], 0, null, ["loc", [null, [14, 0], [28, 7]]]], ["inline", "input", [], ["type", "button", "value", "Register"], ["loc", [null, [30, 2], [30, 42]]]], ["inline", "input", [], ["type", "button", "value", "Reset password"], ["loc", [null, [31, 2], [31, 48]]]]],
+      statements: [["inline", "t", ["forms.login.caption"], [], ["loc", [null, [1, 4], [1, 31]]]], ["inline", "t", ["forms.login.username-label"], [], ["loc", [null, [3, 0], [3, 34]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "username", ["loc", [null, [4, 27], [4, 35]]]]], [], []]], ["loc", [null, [4, 1], [4, 37]]]], ["inline", "t", ["forms.login.password-label"], [], ["loc", [null, [7, 0], [7, 34]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "password", ["loc", [null, [8, 26], [8, 34]]]]], [], []]], ["loc", [null, [8, 0], [8, 36]]]], ["inline", "t", ["forms.login.remember-label"], [], ["loc", [null, [11, 0], [11, 34]]]], ["inline", "input", [], ["type", "checkbox", "checked", ["subexpr", "@mut", [["get", "remember", ["loc", [null, [11, 67], [11, 75]]]]], [], []]], ["loc", [null, [11, 35], [11, 77]]]], ["attribute", "title", ["subexpr", "t", ["forms.login.login-button-title"], [], ["loc", [null, [14, 8], [14, 46]]]]], ["element", "action", ["login"], [], ["loc", [null, [15, 2], [15, 20]]]], ["inline", "t", ["forms.login.login-button-text"], [], ["loc", [null, [16, 4], [16, 41]]]], ["block", "if", [["get", "useSocialBlock", ["loc", [null, [19, 6], [19, 20]]]]], [], 0, null, ["loc", [null, [19, 0], [35, 7]]]], ["attribute", "title", ["subexpr", "t", ["forms.login.register-button-title"], [], ["loc", [null, [39, 8], [39, 49]]]]], ["element", "action", ["register"], [], ["loc", [null, [40, 2], [40, 23]]]], ["inline", "t", ["forms.login.register-button-text"], [], ["loc", [null, [41, 4], [41, 44]]]], ["attribute", "title", ["subexpr", "t", ["forms.login.pwd-reset-button-title"], [], ["loc", [null, [45, 8], [45, 50]]]]], ["element", "action", ["pwd-reset"], [], ["loc", [null, [46, 2], [46, 24]]]], ["inline", "t", ["forms.login.pwd-reset-button-text"], [], ["loc", [null, [47, 4], [47, 45]]]]],
       locals: [],
       templates: [child0]
     };
@@ -1568,6 +1682,22 @@ define("dummy/templates/user-profile", ["exports"], function (exports) {
     };
   })());
 });
+define('dummy/utils/i18n/compile-template', ['exports', 'ember-i18n/utils/i18n/compile-template'], function (exports, _emberI18nUtilsI18nCompileTemplate) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberI18nUtilsI18nCompileTemplate['default'];
+    }
+  });
+});
+define('dummy/utils/i18n/missing-message', ['exports', 'ember-i18n/utils/i18n/missing-message'], function (exports, _emberI18nUtilsI18nMissingMessage) {
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function get() {
+      return _emberI18nUtilsI18nMissingMessage['default'];
+    }
+  });
+});
 /* jshint ignore:start */
 
 
@@ -1600,7 +1730,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.0.1-alpha.0+1bb3c589"});
+  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.0.1-alpha.0+ca1f21b1"});
 }
 
 /* jshint ignore:end */

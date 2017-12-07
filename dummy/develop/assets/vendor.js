@@ -66810,6 +66810,107 @@ requireModule("ember");
   }
 })();
 
+;/* globals Ember, Proxy, define */
+(function() {
+  'use strict';
+
+  var HAS_NATIVE_PROXY = typeof Proxy === 'function';
+
+  var SAFE_LOOKUP_FACTORY_METHOD = '_lookupFactory';
+  function factoryFor(fullName, options) {
+    var factory = this[SAFE_LOOKUP_FACTORY_METHOD](fullName, options);
+
+    if (!factory) {
+      return;
+    }
+
+    var FactoryManager = {
+      class: factory,
+      create: function() {
+        return this.class.create.apply(this.class, arguments);
+      }
+    };
+
+    Ember.runInDebug(function() {
+      if (HAS_NATIVE_PROXY) {
+        var validator = {
+          get: function(obj, prop) {
+            if (prop !== 'class' && prop !== 'create') {
+              throw new Error('You attempted to access "' + prop + '" on a factory manager created by container#factoryFor. "' + prop + '" is not a member of a factory manager.');
+            }
+
+            return obj[prop];
+          },
+          set: function(obj, prop, value) {
+            throw new Error('You attempted to set "' + prop + '" on a factory manager created by container#factoryFor. A factory manager is a read-only construct.');
+          }
+        };
+
+        // Note:
+        // We have to proxy access to the manager here so that private property
+        // access doesn't cause the above errors to occur.
+        var m = FactoryManager;
+        var proxiedManager = {
+          class: m.class,
+          create: function(props) {
+            return m.create(props);
+          }
+        };
+
+        FactoryManager = new Proxy(proxiedManager, validator);
+      }
+    });
+
+    return FactoryManager;
+  }
+
+  if (typeof define === 'function') {
+    define('ember-factory-for-polyfill/vendor/ember-factory-for-polyfill/index', ['exports'], function(exports) {
+      exports._factoryFor = factoryFor;
+
+      exports._updateSafeLookupFactoryMethod = function(methodName) {
+        SAFE_LOOKUP_FACTORY_METHOD = methodName;
+      };
+
+      return exports;
+    });
+  }
+
+  var FactoryForMixin = Ember.Mixin.create({
+    factoryFor: factoryFor
+  });
+
+  // added in Ember 2.8
+  if (Ember.ApplicationInstance) {
+    // augment the main application's "owner"
+    Ember.ApplicationInstance.reopen(FactoryForMixin);
+  } else {
+    // in Ember < 2.8 the Ember.ApplicationInstance is not
+    // exposed globally, so we have to monkey patch the
+    // `Ember.Application#buildInstance` method to ensure
+    // that the built instance has a `factoryFor` method
+    // this gives us support for Ember 2.3 - 2.7
+    Ember.Application.reopen({
+      buildInstance: function(_options) {
+        var options = _options || {};
+        options.factoryFor = factoryFor;
+
+        var instance = this._super(options);
+
+        return instance;
+      }
+    });
+  }
+
+  // added in Ember 2.3
+  if (Ember._ContainerProxyMixin) {
+    // supports ember-test-helpers's build-registry (and other tooling that use
+    // Ember._ContainerProxyMixin to emulate an "owner")
+    var ContainerProxyMixinWithFactoryFor = Ember.Mixin.create(Ember._ContainerProxyMixin, FactoryForMixin);
+    Ember._ContainerProxyMixin = ContainerProxyMixinWithFactoryFor;
+  }
+})();
+
 ;/* globals define */
 define('ember/load-initializers', ['exports', 'ember-load-initializers', 'ember'], function(exports, loadInitializers, Ember) {
   Ember['default'].deprecate(
@@ -80502,6 +80603,48 @@ define('ember-flexberry-account/controllers/user-profile', ['exports', 'ember'],
 
   exports['default'] = _ember['default'].Controller.extend({});
 });
+define('ember-flexberry-account/locales/en/translations', ['exports'], function (exports) {
+  'use strict';
+
+  exports['default'] = {
+    forms: {
+      login: {
+        caption: 'Login',
+        'username-label': 'User name (E-mail):',
+        'password-label': 'Password:',
+        'remember-label': 'Remember:',
+        'login-button-title': 'Log in to the system using login and password',
+        'login-button-text': 'Login',
+        'login-with-label': 'Login with:',
+        'register-button-title': 'Quick registration process',
+        'register-button-text': 'Register',
+        'pwd-reset-button-title': 'If the password was lost, you can reset it',
+        'pwd-reset-button-text': 'Reset password'
+      }
+    }
+  };
+});
+define('ember-flexberry-account/locales/ru/translations', ['exports'], function (exports) {
+  'use strict';
+
+  exports['default'] = {
+    forms: {
+      login: {
+        caption: 'Вход в систему',
+        'username-label': 'Имя пользователя (E-mail):',
+        'password-label': 'Пароль:',
+        'remember-label': 'Запомнить:',
+        'login-button-title': 'Выполнить вход в систему по логину и паролю',
+        'login-button-text': 'Войти',
+        'login-with-label': 'Войти с помощью:',
+        'register-button-title': 'Пройти быструю процедуру регистрации',
+        'register-button-text': 'Зарегистрироваться',
+        'pwd-reset-button-title': 'Если пароль был утерян, то его можно восстановить',
+        'pwd-reset-button-text': 'Восстановить пароль'
+      }
+    }
+  };
+});
 define('ember-flexberry-account/models/user-profile', ['exports', 'ember-data'], function (exports, _emberData) {
   'use strict';
 
@@ -80599,6 +80742,819 @@ define('ember-flexberry-account/services/user-account', ['exports', 'ember'], fu
       // TODO: assert that developer must redefine this method in own code.
     }
   });
+});
+define("ember-getowner-polyfill/index", ["exports", "ember"], function (exports, _ember) {
+  "use strict";
+
+  _ember["default"].deprecate("ember-getowner-polyfill is now a true polyfill. Use Ember.getOwner directly instead of importing from ember-getowner-polyfill", false, {
+    id: "ember-getowner-polyfill.import",
+    until: '2.0.0'
+  });
+
+  exports["default"] = _ember["default"].getOwner;
+});
+define('ember-i18n/config/ar', ['exports', 'ember-i18n/config/constants'], function (exports, _emberI18nConfigConstants) {
+  'use strict';
+
+  exports['default'] = {
+    rtl: true,
+
+    pluralForm: function pluralForm(n) {
+      var mod100 = n % 100;
+
+      if (n === 0) {
+        return _emberI18nConfigConstants.ZERO;
+      }
+      if (n === 1) {
+        return _emberI18nConfigConstants.ONE;
+      }
+      if (n === 2) {
+        return _emberI18nConfigConstants.TWO;
+      }
+      if (mod100 >= 3 && mod100 <= 10) {
+        return _emberI18nConfigConstants.FEW;
+      }
+      if (mod100 >= 11 && mod100 <= 99) {
+        return _emberI18nConfigConstants.MANY;
+      }
+      return _emberI18nConfigConstants.OTHER;
+    }
+  };
+});
+define('ember-i18n/config/bn', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define('ember-i18n/config/constants', ['exports'], function (exports) {
+  'use strict';
+
+  var ZERO = 'zero';
+  exports.ZERO = ZERO;
+
+  var ONE = 'one';
+  exports.ONE = ONE;
+
+  var TWO = 'two';
+  exports.TWO = TWO;
+
+  var FEW = 'few';
+  exports.FEW = FEW;
+
+  var MANY = 'many';
+  exports.MANY = MANY;
+
+  var OTHER = 'other';
+  exports.OTHER = OTHER;
+});
+define('ember-i18n/config/da', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define('ember-i18n/config/de', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define("ember-i18n/config/en", ["exports", "ember-i18n/config/constants"], function (exports, _emberI18nConfigConstants) {
+  "use strict";
+
+  exports["default"] = {
+    rtl: false,
+
+    pluralForm: function pluralForm(n) {
+      if (n === 1) {
+        return _emberI18nConfigConstants.ONE;
+      }
+      return _emberI18nConfigConstants.OTHER;
+    }
+  };
+});
+define('ember-i18n/config/es', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define('ember-i18n/config/fa', ['exports', 'ember-i18n/config/zh'], function (exports, _emberI18nConfigZh) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigZh['default'];
+});
+define("ember-i18n/config/fr", ["exports", "ember-i18n/config/constants"], function (exports, _emberI18nConfigConstants) {
+  "use strict";
+
+  exports["default"] = {
+    rtl: false,
+
+    pluralForm: function pluralForm(n) {
+      if (n >= 0 && n < 2) {
+        return _emberI18nConfigConstants.ONE;
+      }
+      return _emberI18nConfigConstants.OTHER;
+    }
+  };
+});
+define('ember-i18n/config/fy', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define('ember-i18n/config/he', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = {
+    rtl: true,
+
+    pluralForm: _emberI18nConfigEn['default'].pluralForm
+  };
+});
+define("ember-i18n/config/hi", ["exports", "ember-i18n/config/constants"], function (exports, _emberI18nConfigConstants) {
+  "use strict";
+
+  exports["default"] = {
+    rtl: false,
+
+    pluralForm: function pluralForm(n) {
+      if (n === 0) {
+        return _emberI18nConfigConstants.ONE;
+      }
+      if (n === 1) {
+        return _emberI18nConfigConstants.ONE;
+      }
+      return _emberI18nConfigConstants.OTHER;
+    }
+  };
+});
+define('ember-i18n/config/it', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define("ember-i18n/config/iw", ["exports", "ember-i18n/config/he"], function (exports, _emberI18nConfigHe) {
+  "use strict";
+
+  exports["default"] = _emberI18nConfigHe["default"];
+});
+define('ember-i18n/config/ja', ['exports', 'ember-i18n/config/zh'], function (exports, _emberI18nConfigZh) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigZh['default'];
+});
+define('ember-i18n/config/jv', ['exports', 'ember-i18n/config/zh'], function (exports, _emberI18nConfigZh) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigZh['default'];
+});
+define('ember-i18n/config/ko', ['exports', 'ember-i18n/config/zh'], function (exports, _emberI18nConfigZh) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigZh['default'];
+});
+define('ember-i18n/config/mr', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define('ember-i18n/config/ms', ['exports', 'ember-i18n/config/zh'], function (exports, _emberI18nConfigZh) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigZh['default'];
+});
+define('ember-i18n/config/nl', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define('ember-i18n/config/no', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define('ember-i18n/config/pa', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define('ember-i18n/config/pl', ['exports', 'ember-i18n/config/constants'], function (exports, _emberI18nConfigConstants) {
+  'use strict';
+
+  exports['default'] = {
+    rtl: false,
+
+    pluralForm: function pluralForm(n) {
+      var mod1 = n % 1;
+      var mod10 = n % 10;
+      var mod100 = n % 100;
+
+      if (n === 1) {
+        return _emberI18nConfigConstants.ONE;
+      }
+      if (mod1 === 0 && mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) {
+        return _emberI18nConfigConstants.FEW;
+      }
+      if (mod1 === 0 && (mod10 === 0 || mod10 === 1 || mod10 >= 5 && mod10 <= 9 || mod100 >= 12 && mod100 <= 14)) {
+        return _emberI18nConfigConstants.MANY;
+      }
+      return _emberI18nConfigConstants.OTHER;
+    }
+  };
+});
+define('ember-i18n/config/pt', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define('ember-i18n/config/ru', ['exports', 'ember-i18n/config/constants'], function (exports, _emberI18nConfigConstants) {
+  'use strict';
+
+  exports['default'] = {
+    rtl: false,
+
+    pluralForm: function pluralForm(n) {
+      var mod1 = n % 1;
+      var mod10 = n % 10;
+      var mod100 = n % 100;
+
+      if (mod10 === 1 && mod100 !== 11) {
+        return _emberI18nConfigConstants.ONE;
+      }
+      if (mod1 === 0 && mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) {
+        return _emberI18nConfigConstants.FEW;
+      }
+      if (mod1 === 0 && (mod10 === 0 || mod10 >= 5 && mod10 <= 9 || mod100 >= 11 && mod100 <= 14)) {
+        return _emberI18nConfigConstants.MANY;
+      }
+      return _emberI18nConfigConstants.OTHER;
+    }
+  };
+});
+define('ember-i18n/config/sv', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define('ember-i18n/config/ta', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define('ember-i18n/config/te', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define('ember-i18n/config/tr', ['exports', 'ember-i18n/config/constants'], function (exports, _emberI18nConfigConstants) {
+  'use strict';
+
+  exports['default'] = {
+    rtl: false,
+
+    pluralForm: function pluralForm() /* n */{
+      return _emberI18nConfigConstants.ONE;
+    }
+  };
+});
+define('ember-i18n/config/ur', ['exports', 'ember-i18n/config/en'], function (exports, _emberI18nConfigEn) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigEn['default'];
+});
+define('ember-i18n/config/vi', ['exports', 'ember-i18n/config/zh'], function (exports, _emberI18nConfigZh) {
+  'use strict';
+
+  exports['default'] = _emberI18nConfigZh['default'];
+});
+define('ember-i18n/config/zh', ['exports', 'ember-i18n/config/constants'], function (exports, _emberI18nConfigConstants) {
+  'use strict';
+
+  exports['default'] = {
+    rtl: false,
+
+    pluralForm: function pluralForm() /* n */{
+      return _emberI18nConfigConstants.OTHER;
+    }
+  };
+});
+define('ember-i18n/helper', ['exports', 'ember'], function (exports, _ember) {
+  'use strict';
+
+  function _toArray(arr) {
+    return Array.isArray(arr) ? arr : Array.from(arr);
+  }
+
+  var get = _ember['default'].get;
+  var inject = _ember['default'].inject;
+  var Helper = _ember['default'].Helper;
+  var EmberObject = _ember['default'].Object;
+  var observer = _ember['default'].observer;
+
+  function mergedContext(objectContext, hashContext) {
+    return EmberObject.extend({
+      unknownProperty: function unknownProperty(key) {
+        var fromHash = get(hashContext, key);
+        return fromHash === undefined ? get(objectContext, key) : fromHash;
+      }
+    }).create();
+  }
+
+  exports['default'] = Helper.extend({
+    i18n: inject.service(),
+
+    compute: function compute(_ref, interpolations) {
+      var _ref2 = _toArray(_ref);
+
+      var key = _ref2[0];
+      var _ref2$1 = _ref2[1];
+      var contextObject = _ref2$1 === undefined ? {} : _ref2$1;
+
+      var rest = _ref2.slice(2);
+
+      var mergedInterpolations = mergedContext(contextObject, interpolations);
+
+      var i18n = get(this, 'i18n');
+      return i18n.t(key, mergedInterpolations);
+    },
+
+    _recomputeOnLocaleChange: observer('i18n.locale', function () {
+      this.recompute();
+    })
+  });
+});
+define("ember-i18n/index", ["exports", "ember-i18n/utils/i18n/compile-template", "ember-i18n/services/i18n", "ember-i18n/utils/macro"], function (exports, _emberI18nUtilsI18nCompileTemplate, _emberI18nServicesI18n, _emberI18nUtilsMacro) {
+  "use strict";
+
+  exports.compileTemplate = _emberI18nUtilsI18nCompileTemplate["default"];
+  exports.Service = _emberI18nServicesI18n["default"];
+  exports.translationMacro = _emberI18nUtilsMacro["default"];
+});
+define('ember-i18n/initializers/ember-i18n', ['exports'], function (exports) {
+  // As of 4.3.0 using the ember-i18n initializer is no longer necessary.
+  //
+  // This is a no-op initializer to prevent applications that relied on the
+  // 'ember-i18n' initializer in their own workflow from breaking.
+  'use strict';
+
+  exports['default'] = {
+    name: 'ember-i18n',
+    initialize: function initialize() {
+      // No-op.
+    }
+  };
+});
+define('ember-i18n/instance-initializers/ember-i18n', ['exports'], function (exports) {
+  // As of 4.3.0 using the ember-i18n instance initializer is no longer
+  // necessary.
+  //
+  // This is a no-op initializer to prevent applications that relied on the
+  // 'ember-i18n' instance initializer in their own workflow from breaking.
+  'use strict';
+
+  exports['default'] = {
+    name: 'ember-i18n',
+    initialize: function initialize() {
+      // No-op.
+    }
+  };
+});
+define("ember-i18n/services/i18n", ["exports", "ember", "ember-i18n/utils/locale", "ember-i18n/utils/add-translations", "ember-i18n/utils/get-locales"], function (exports, _ember, _emberI18nUtilsLocale, _emberI18nUtilsAddTranslations, _emberI18nUtilsGetLocales) {
+  "use strict";
+
+  var assert = _ember["default"].assert;
+  var computed = _ember["default"].computed;
+  var get = _ember["default"].get;
+  var Evented = _ember["default"].Evented;
+  var makeArray = _ember["default"].makeArray;
+  var on = _ember["default"].on;
+  var typeOf = _ember["default"].typeOf;
+  var warn = _ember["default"].warn;
+  var getOwner = _ember["default"].getOwner;
+
+  var Parent = _ember["default"].Service || _ember["default"].Object;
+
+  // @public
+  exports["default"] = Parent.extend(Evented, {
+    // @public
+    // The user's locale.
+    locale: null,
+
+    // @public
+    // A list of found locales.
+    locales: computed(_emberI18nUtilsGetLocales["default"]),
+
+    // @public
+    //
+    // Returns the translation `key` interpolated with `data`
+    // in the current `locale`.
+    t: function t(key) {
+      var data = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+      _ember["default"].deprecate('locale is a reserved attribute', data['locale'] === undefined, {
+        id: 'ember-i18n.reserve-locale',
+        until: '5.0.0'
+      });
+
+      _ember["default"].deprecate('htmlSafe is a reserved attribute', data['htmlSafe'] === undefined, {
+        id: 'ember-i18n.reserve-htmlSafe',
+        until: '5.0.0'
+      });
+
+      var locale = this.get('_locale');
+      assert("I18n: Cannot translate when locale is null", locale);
+      var count = get(data, 'count');
+
+      var defaults = makeArray(get(data, 'default'));
+
+      defaults.unshift(key);
+      var template = locale.getCompiledTemplate(defaults, count);
+
+      if (template._isMissing) {
+        this.trigger('missing', this.get('locale'), key, data);
+      }
+
+      return template(data);
+    },
+
+    // @public
+    exists: function exists(key) {
+      var data = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+      var locale = this.get('_locale');
+      assert("I18n: Cannot check existance when locale is null", locale);
+      var count = get(data, 'count');
+
+      var translation = locale.findTranslation(makeArray(key), count);
+      return typeOf(translation.result) !== 'undefined' && !translation.result._isMissing;
+    },
+
+    // @public
+    addTranslations: function addTranslations(locale, translations) {
+      (0, _emberI18nUtilsAddTranslations["default"])(locale, translations, getOwner(this));
+      this._addLocale(locale);
+
+      if (this.get('locale').indexOf(locale) === 0) {
+        this.get('_locale').rebuild();
+      }
+    },
+
+    // @private
+    _initDefaults: on('init', function () {
+      var owner = getOwner(this);
+      var ENV = owner.factoryFor('config:environment')["class"];
+
+      if (this.get('locale') == null) {
+        var defaultLocale = (ENV.i18n || {}).defaultLocale;
+        if (defaultLocale == null) {
+          warn('ember-i18n did not find a default locale; falling back to "en".', false, {
+            id: 'ember-i18n.default-locale'
+          });
+
+          defaultLocale = 'en';
+        }
+        this.set('locale', defaultLocale);
+      }
+    }),
+
+    // @private
+    //
+    // adds a runtime locale to the array of locales on disk
+    _addLocale: function _addLocale(locale) {
+      this.get('locales').addObject(locale);
+    },
+
+    _locale: computed('locale', function () {
+      var locale = this.get('locale');
+
+      return locale ? new _emberI18nUtilsLocale["default"](this.get('locale'), getOwner(this)) : null;
+    })
+  });
+});
+define("ember-i18n/utils/add-translations", ["exports", "ember"], function (exports, _ember) {
+  "use strict";
+
+  exports["default"] = addTranslations;
+
+  var assign = _ember["default"].assign || _ember["default"].merge;
+  function addTranslations(locale, newTranslations, owner) {
+    var key = "locale:" + locale + "/translations";
+    var factory = owner.factoryFor(key);
+    var existingTranslations = factory && factory["class"];
+
+    if (existingTranslations == null) {
+      existingTranslations = {};
+      owner.register(key, existingTranslations);
+    }
+
+    assign(existingTranslations, newTranslations);
+  }
+});
+define('ember-i18n/utils/get-locales', ['exports', 'ember'], function (exports, _ember) {
+  'use strict';
+
+  exports['default'] = getLocales;
+
+  var matchKey = '/locales/(.+)/translations$';
+  function getLocales() {
+    return Object.keys(requirejs.entries).reduce(function (locales, module) {
+      var match = module.match(matchKey);
+      if (match) {
+        locales.pushObject(match[1]);
+      }
+      return locales;
+    }, _ember['default'].A()).sort();
+  }
+});
+define("ember-i18n/utils/i18n/compile-template", ["exports", "ember"], function (exports, _ember) {
+  "use strict";
+
+  exports["default"] = compileTemplate;
+
+  var htmlSafe = _ember["default"].String.htmlSafe;
+  var get = _ember["default"].get;
+  var escapeExpression = _ember["default"].Handlebars.Utils.escapeExpression;
+  var tripleStache = /\{\{\{\s*(.*?)\s*\}\}\}/g;
+  var doubleStache = /\{\{\s*(.*?)\s*\}\}/g;
+
+  // @public
+  //
+  // Compile a translation template.
+  //
+  // To override this, define `util:i18n/compile-template` with
+  // the signature
+  // `Function(String, Boolean) -> Function(Object) -> String`.
+
+  function compileTemplate(template) {
+    var rtl = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
+
+    return function renderTemplate(data) {
+      var result = template.replace(tripleStache, function (i, match) {
+        return get(data, match);
+      }).replace(doubleStache, function (i, match) {
+        return escapeExpression(get(data, match));
+      });
+
+      var wrapped = rtl ? "‫" + result + "‬" : result;
+
+      return htmlSafe(wrapped);
+    };
+  }
+});
+define("ember-i18n/utils/i18n/missing-message", ["exports"], function (exports) {
+  "use strict";
+
+  exports["default"] = missingMessage;
+
+  // @public
+  //
+  // Generate a "missing template" message that will be used
+  // as a translation.
+  //
+  // To override this, define `util:i18n/missing-message` with
+  // the signature
+  //
+  // `Function(String, String, Object) -> String`.
+
+  function missingMessage(locale, key /*, data */) {
+    return "Missing translation: " + key;
+  }
+});
+define('ember-i18n/utils/locale', ['exports', 'ember'], function (exports, _ember) {
+  'use strict';
+
+  var assert = _ember['default'].assert;
+  var typeOf = _ember['default'].typeOf;
+  var warn = _ember['default'].warn;
+
+  var assign = _ember['default'].assign || _ember['default'].merge;
+
+  // @private
+  //
+  // This class is the work-horse of localization look-up.
+  function Locale(id, owner) {
+    // On Construction:
+    //  1. look for translations in the locale (e.g. pt-BR) and all parent
+    //     locales (e.g. pt), flatten any nested keys, and then merge them.
+    //  2. walk through the configs from most specific to least specific
+    //     and use the first value for `rtl` and `pluralForm`
+    //  3. Default `rtl` to `false`
+    //  4. Ensure `pluralForm` is defined
+    this.id = id;
+    this.owner = owner;
+    this.rebuild();
+  }
+
+  Locale.prototype = {
+    rebuild: function rebuild() {
+      this.translations = getFlattenedTranslations(this.id, this.owner);
+      this._setConfig();
+    },
+
+    _setConfig: function _setConfig() {
+      var _this = this;
+
+      walkConfigs(this.id, this.owner, function (config) {
+        if (_this.rtl === undefined) {
+          _this.rtl = config.rtl;
+        }
+        if (_this.pluralForm === undefined) {
+          _this.pluralForm = config.pluralForm;
+        }
+      });
+
+      // Exit early if we already have an RTL and pluralForm config set
+      if (this.rtl !== undefined && this.pluralForm !== undefined) {
+        return;
+      }
+
+      var defaultConfigFactory = this.owner.factoryFor('ember-i18n@config:zh');
+      var defaultConfig = defaultConfigFactory ? defaultConfigFactory['class'] : null;
+
+      if (this.rtl === undefined) {
+        warn('ember-i18n: No RTL configuration found for ' + this.id + '.', false, { id: 'ember-i18n.no-rtl-configuration' });
+        this.rtl = defaultConfig.rtl;
+      }
+
+      if (this.pluralForm === undefined) {
+        warn('ember-i18n: No pluralForm configuration found for ' + this.id + '.', false, { id: 'ember-i18n.no-plural-form' });
+        this.pluralForm = defaultConfig.pluralForm;
+      }
+    },
+
+    getCompiledTemplate: function getCompiledTemplate(fallbackChain, count) {
+      var translation = this.findTranslation(fallbackChain, count);
+      var result = translation.result;
+
+      if (typeOf(result) === 'string') {
+        result = this._compileTemplate(translation.key, result);
+      }
+
+      if (result == null) {
+        result = this._defineMissingTranslationTemplate(fallbackChain[0]);
+      }
+
+      assert('Template for ' + translation.key + ' in ' + this.id + ' is not a function', typeOf(result) === 'function');
+
+      return result;
+    },
+
+    findTranslation: function findTranslation(fallbackChain, count) {
+      if (this.translations === undefined) {
+        this._init();
+      }
+
+      var result = undefined;
+      var i = undefined;
+      for (i = 0; i < fallbackChain.length; i++) {
+        var key = fallbackChain[i];
+        if (count != null) {
+          var inflection = this.pluralForm(+count);
+          result = this.translations[key + '.' + inflection];
+        }
+
+        if (result == null) {
+          result = this.translations[key];
+        }
+
+        if (result) {
+          break;
+        }
+      }
+
+      return {
+        key: fallbackChain[i],
+        result: result
+      };
+    },
+
+    _defineMissingTranslationTemplate: function _defineMissingTranslationTemplate(key) {
+      var i18n = this.owner.lookup('service:i18n');
+      var locale = this.id;
+      var missingMessage = this.owner.factoryFor('util:i18n/missing-message')['class'];
+
+      function missingTranslation(data) {
+        return missingMessage.call(i18n, locale, key, data);
+      }
+
+      missingTranslation._isMissing = true;
+      this.translations[key] = missingTranslation;
+      return missingTranslation;
+    },
+
+    _compileTemplate: function _compileTemplate(key, string) {
+      var compile = this.owner.factoryFor('util:i18n/compile-template')['class'];
+      var template = compile(string, this.rtl);
+      this.translations[key] = template;
+      return template;
+    }
+  };
+
+  function getFlattenedTranslations(id, owner) {
+    var result = {};
+
+    var parentId = parentLocale(id);
+    if (parentId) {
+      assign(result, getFlattenedTranslations(parentId, owner));
+    }
+
+    var factory = owner.factoryFor('locale:' + id + '/translations');
+    var translations = factory && factory['class'];
+    assign(result, withFlattenedKeys(translations || {}));
+
+    return result;
+  }
+
+  // Walk up confiugration objects from most specific to least.
+  function walkConfigs(id, owner, fn) {
+    var maybeAppConfig = owner.factoryFor('locale:' + id + '/config');
+    var appConfig = maybeAppConfig && maybeAppConfig['class'];
+    if (appConfig) {
+      fn(appConfig);
+    }
+
+    var maybeAddonConfig = owner.factoryFor('ember-i18n@config:' + id);
+    var addonConfig = maybeAddonConfig && maybeAddonConfig['class'];
+    if (addonConfig) {
+      fn(addonConfig);
+    }
+
+    var parentId = parentLocale(id);
+    if (parentId) {
+      walkConfigs(parentId, owner, fn);
+    }
+  }
+
+  function parentLocale(id) {
+    var lastDash = id.lastIndexOf('-');
+    return lastDash > 0 ? id.substr(0, lastDash) : null;
+  }
+
+  function withFlattenedKeys(object) {
+    var result = {};
+
+    Object.keys(object).forEach(function (key) {
+      var value = object[key];
+
+      if (typeOf(value) === 'object') {
+        value = withFlattenedKeys(value);
+
+        Object.keys(value).forEach(function (suffix) {
+          result[key + '.' + suffix] = value[suffix];
+        });
+      } else {
+        result[key] = value;
+      }
+    });
+
+    return result;
+  }
+
+  exports['default'] = Locale;
+});
+define('ember-i18n/utils/macro', ['exports', 'ember'], function (exports, _ember) {
+  'use strict';
+
+  exports['default'] = createTranslatedComputedProperty;
+
+  function _toConsumableArray(arr) {
+    if (Array.isArray(arr)) {
+      for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];return arr2;
+    } else {
+      return Array.from(arr);
+    }
+  }
+
+  var keys = Object.keys;
+  var get = _ember['default'].get;
+
+  // @public
+
+  function createTranslatedComputedProperty(key) {
+    var interpolations = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+    var dependencies = ['i18n.locale'].concat(values(interpolations));
+
+    return _ember['default'].computed.apply(_ember['default'], _toConsumableArray(dependencies).concat([function () {
+      var i18n = get(this, 'i18n');
+      _ember['default'].assert('Cannot translate ' + key + '. ' + this + ' does not have an i18n.', i18n);
+      return i18n.t(key, mapPropertiesByHash(this, interpolations));
+    }]));
+  }
+
+  function values(object) {
+    return keys(object).map(function (key) {
+      return object[key];
+    });
+  }
+
+  function mapPropertiesByHash(object, hash) {
+    var result = {};
+
+    keys(hash).forEach(function (key) {
+      result[key] = get(object, hash[key]);
+    });
+
+    return result;
+  }
 });
 define('ember-inflector/index', ['exports', 'ember-inflector/lib/system', 'ember-inflector/lib/ext/string'], function (exports, _emberInflectorLibSystem, _emberInflectorLibExtString) {
   'use strict';

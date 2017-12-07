@@ -23,6 +23,38 @@ define('dummy/tests/helpers/destroy-app.jshint', ['exports'], function (exports)
     assert.ok(true, 'helpers/destroy-app.js should pass jshint.');
   });
 });
+define('dummy/tests/helpers/ember-i18n/test-helpers', ['exports', 'ember'], function (exports, _ember) {
+
+  // example usage: find(`.header:contains(${t('welcome_message')})`)
+  _ember['default'].Test.registerHelper('t', function (app, key, interpolations) {
+    var i18n = app.__container__.lookup('service:i18n');
+    return i18n.t(key, interpolations);
+  });
+
+  // example usage: expectTranslation('.header', 'welcome_message');
+  _ember['default'].Test.registerHelper('expectTranslation', function (app, element, key, interpolations) {
+    var text = app.testHelpers.t(key, interpolations);
+
+    assertTranslation(element, key, text);
+  });
+
+  var assertTranslation = (function () {
+    if (typeof QUnit !== 'undefined' && typeof QUnit.assert.ok === 'function') {
+      return function (element, key, text) {
+        QUnit.assert.ok(find(element + ':contains(' + text + ')').length, 'Found translation key ' + key + ' in ' + element);
+      };
+    } else if (typeof expect === 'function') {
+      return function (element, key, text) {
+        var found = !!find(element + ':contains(' + text + ')').length;
+        expect(found).to.equal(true);
+      };
+    } else {
+      return function () {
+        throw new Error("ember-i18n could not find a compatible test framework");
+      };
+    }
+  })();
+});
 define('dummy/tests/helpers/module-for-acceptance', ['exports', 'qunit', 'dummy/tests/helpers/start-app', 'dummy/tests/helpers/destroy-app'], function (exports, _qunit, _dummyTestsHelpersStartApp, _dummyTestsHelpersDestroyApp) {
   exports['default'] = function (name) {
     var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
@@ -100,6 +132,24 @@ define('dummy/tests/helpers/start-app.jshint', ['exports'], function (exports) {
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'helpers/start-app.js should pass jshint.');
+  });
+});
+define('dummy/tests/locales/en/translations.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - locales/en/translations.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'locales/en/translations.js should pass jshint.');
+  });
+});
+define('dummy/tests/locales/ru/translations.jshint', ['exports'], function (exports) {
+  'use strict';
+
+  QUnit.module('JSHint - locales/ru/translations.js');
+  QUnit.test('should pass jshint', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'locales/ru/translations.js should pass jshint.');
   });
 });
 define('dummy/tests/resolver.jshint', ['exports'], function (exports) {
