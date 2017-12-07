@@ -13,5 +13,26 @@ export default {
       'pwd-reset-button-title': 'Если пароль был утерян, то его можно восстановить',
       'pwd-reset-button-text': 'Восстановить пароль'
     },
+    register: {
+      caption: 'Регистрация нового пользователя',
+      'username-label': 'Логин:',
+      'name-label': 'Имя:',
+      'surname-label': 'Фамилия:',
+      'captcha-label': '[CAPTCHA]',
+      'register-button-title': 'Зарегистрировать пользователя',
+      'register-button-text': 'Регистрация',
+      'register-with-label': 'Зарегистрироваться при помощи:',
+      'login-reset-label': 'Регистрировались ранее?',
+      'login-button-title': 'Войти в систему по логину и паролю',
+      'login-button-text': 'Логин',
+      'pwd-reset-button-title': 'Если пароль был утерян, то его можно восстановить',
+      'pwd-reset-button-text': 'Восстановить пароль'
+    },
+    'pwd-reset': {
+      caption: 'Восстановление пароля'
+    },
+    'user-profile': {
+      caption: 'Профиль пользователя'
+    }
   }
 };
