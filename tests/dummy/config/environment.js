@@ -14,6 +14,12 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'hash',
+    recaptcha: {
+      //These values are for automated tests.
+      //Values are taken from https://developers.google.com/recaptcha/docs/faq
+      siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+      secretKey: '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -53,6 +59,8 @@ module.exports = function(environment) {
   ENV.contentSecurityPolicy = {
     'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com",
     'font-src': "'self' data: https://fonts.gstatic.com",
+    'script-src': "'self' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/",
+    'frame-src': "'self' https://www.google.com/recaptcha/",
     'connect-src': "'self' " + ENV.APP.backendUrls.root
   };
 
