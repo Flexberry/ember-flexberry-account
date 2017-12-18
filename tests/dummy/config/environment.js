@@ -17,8 +17,7 @@ module.exports = function(environment) {
     recaptcha: {
       //These values are for automated tests.
       //Values are taken from https://developers.google.com/recaptcha/docs/faq
-      siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
-      secretKey: '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
+      siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
     },
     EmberENV: {
       FEATURES: {
