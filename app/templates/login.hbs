@@ -8,7 +8,7 @@
   {{input type="password" value=password}}
 </div>
 <div class="captcha-div">
-  {{flexberry-recaptcha}}
+  {{flexberry-recaptcha onSuccess=(action "Test")}}
 </div>
 <div class="login-div">
   {{t "forms.login.remember-label"}} {{input type="checkbox" checked=remember}}

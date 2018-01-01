@@ -7,11 +7,63 @@ const { getOwner } = Ember;
 
 export default Ember.Component.extend({
 
+  classNames: ['flexberry-recaptcha'],
+
   appConfig: undefined,
 
-  siteKey: undefined,
+  sitekey: undefined,
 
-  init() {
+  tabindex: Ember.computed.alias('tabIndex'),
+
+  renderReCaptcha() {
+    if (Ember.isNone(window.grecaptcha)) {
+      Ember.run.later(() => {
+        this.renderReCaptcha();
+      }, 500);
+    } else {
+      let container = this.$()[0];
+      let properties = this.getProperties(
+        'sitekey',
+        'theme',
+        'type',
+        'size',
+        'tabindex'
+      );
+      let parameters = Ember.merge(properties, {
+        callback: this.get('successCallback').bind(this),
+        'expired-callback': this.get('expiredCallback').bind(this)
+      });
+      let widgetId = window.grecaptcha.render(container, parameters);
+      this.set('widgetId', widgetId);
+      this.set('ref', this);
+    }
+  },
+
+  resetReCaptcha() {
+    if (Ember.isPresent(this.get('widgetId'))) {
+      window.grecaptcha.reset(this.get('widgetId'));
+    }
+  },
+
+  successCallback(reCaptchaResponse) {
+    let action = this.get('onSuccess');
+    if (Ember.isPresent(action)) {
+      action(reCaptchaResponse);
+    }
+  },
+
+  expiredCallback() {
+    let action = this.get('onExpired');
+    if (Ember.isPresent(action)) {
+      action();
+    } else {
+      this.resetReCaptcha();
+    }
+  },
+
+  // Lifecycle Hooks
+
+  didInsertElement() {
     this._super(...arguments);
 
     // Import application config\environment.
@@ -20,10 +72,10 @@ export default Ember.Component.extend({
       this.set('appConfig', appConfig);
     }
 
-    this.set('siteKey', appConfig.recaptcha.siteKey);
-  },
+    this.set('sitekey', appConfig.recaptcha.siteKey);
 
-  actions: {
-
+    Ember.run.next(() => {
+      this.renderReCaptcha();
+    });
   }
 });
