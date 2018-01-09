@@ -148,5 +148,21 @@ export default Ember.Service.extend({
 
     Ember.assert('Developer must override pwdReset method of user-account service.' +
     'Request for username: ' + username + '.');
+  },
+
+  /**
+    Reset password request for username.
+
+    @method validateCaptcha
+    @return {Boolean} Returns if captcha valid.
+  */
+  validateCaptcha() {
+    let enabled = this.get('enabled');
+
+    if (!enabled) {
+      return;
+    }
+
+    Ember.assert('Developer must override validateCaptcha() method of user-account service.');
   }
 });
