@@ -52,7 +52,7 @@ export default Ember.Controller.extend({
     pwdReset: function() {
       this.transitionToRoute('pwd-reset');
     },
-    Test(reCaptchaResponse) {
+    test(reCaptchaResponse) {
       console.log(reCaptchaResponse);
     }
   }
