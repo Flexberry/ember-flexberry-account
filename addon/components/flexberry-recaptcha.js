@@ -77,7 +77,7 @@ export default Ember.Component.extend({
   */
   successCallback(reCaptchaResponse) {
     let action = this.get('onSuccess');
-    if (Ember.isPresent(action)) {
+    if (Ember.isPresent(action) && typeof(action)==='function') {
       action(reCaptchaResponse);
     }
   },
@@ -87,7 +87,7 @@ export default Ember.Component.extend({
   */
   expiredCallback() {
     let action = this.get('onExpired');
-    if (Ember.isPresent(action)) {
+    if (Ember.isPresent(action) && typeof(action)==='function') {
       action();
     } else {
       this.resetReCaptcha();
