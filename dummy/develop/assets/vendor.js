@@ -80500,6 +80500,119 @@ define("ember-data/version", ["exports"], function (exports) {
 
   exports["default"] = "2.18.0";
 });
+define('ember-flexberry-account/components/flexberry-recaptcha', ['exports', 'ember'], function (exports, _ember) {
+  /**
+    @module ember-flexberry-account
+  */
+  'use strict';
+
+  var getOwner = _ember['default'].getOwner;
+
+  exports['default'] = _ember['default'].Component.extend({
+
+    /**
+      Component's CSS-classes names.
+    */
+
+    classNames: ['flexberry-recaptcha'],
+
+    /**
+      Environment configuration.
+       @property appConfig
+      @type Object
+      @default undefined
+    */
+    appConfig: undefined,
+
+    /**
+      ReCaptcha public (site) key. Obtained from env
+       @property sitekey
+      @type String
+      @default undefined
+    */
+    sitekey: undefined,
+
+    /**
+      Tabindex for reCaptcha component.
+    */
+    tabindex: _ember['default'].computed.alias('tabIndex'),
+
+    /**
+      Renders ReCaptcha according to given properties.
+    */
+    renderReCaptcha: function renderReCaptcha() {
+      var _this = this;
+
+      if (_ember['default'].isNone(window.grecaptcha)) {
+        _ember['default'].run.later(function () {
+          _this.renderReCaptcha();
+        }, 500);
+      } else {
+        var container = this.$()[0];
+        var properties = this.getProperties('sitekey', 'theme', 'type', 'size', 'tabindex');
+        var parameters = _ember['default'].merge(properties, {
+          callback: this.get('successCallback').bind(this),
+          'expired-callback': this.get('expiredCallback').bind(this)
+        });
+        var widgetId = window.grecaptcha.render(container, parameters);
+        this.set('widgetId', widgetId);
+        this.set('ref', this);
+      }
+    },
+
+    /**
+      Resets ReCaptcha.
+    */
+    resetReCaptcha: function resetReCaptcha() {
+      if (_ember['default'].isPresent(this.get('widgetId'))) {
+        window.grecaptcha.reset(this.get('widgetId'));
+      }
+    },
+
+    /**
+      Allows to use onSuccess action.
+    */
+    successCallback: function successCallback(reCaptchaResponse) {
+      var action = this.get('onSuccess');
+      if (_ember['default'].isPresent(action) && typeof action === 'function') {
+        action(reCaptchaResponse);
+      }
+    },
+
+    /**
+      Allows to use onExpired action.
+    */
+    expiredCallback: function expiredCallback() {
+      var action = this.get('onExpired');
+      if (_ember['default'].isPresent(action) && typeof action === 'function') {
+        action();
+      } else {
+        this.resetReCaptcha();
+      }
+    },
+
+    /**
+    Initializes DOM-related component's properties.
+    */
+    didInsertElement: function didInsertElement() {
+      var _this2 = this;
+
+      this._super.apply(this, arguments);
+
+      // Import application config\environment.
+      var appConfig = getOwner(this)._lookupFactory('config:environment');
+      if (!_ember['default'].isNone(appConfig)) {
+        this.set('appConfig', appConfig);
+      }
+
+      this.set('sitekey', appConfig.recaptcha.siteKey);
+
+      _ember['default'].run.next(function () {
+        _this2.renderReCaptcha();
+      });
+    }
+  });
+});
 define('ember-flexberry-account/controllers/login', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
@@ -80543,6 +80656,9 @@ define('ember-flexberry-account/controllers/login', ['exports', 'ember'], functi
       },
       pwdReset: function pwdReset() {
         this.transitionToRoute('pwd-reset');
+      },
+      test: function test(reCaptchaResponse) {
+        console.log(reCaptchaResponse);
       }
     }
   });
@@ -80896,6 +81012,21 @@ define('ember-flexberry-account/services/user-account', ['exports', 'ember'], fu
       }
 
       _ember['default'].assert('Developer must override pwdReset method of user-account service.' + 'Request for username: ' + username + '.');
+    },
+
+    /**
+      Reset password request for username.
+       @method validateCaptcha
+      @return {Boolean} Returns if captcha valid.
+    */
+    validateCaptcha: function validateCaptcha() {
+      var enabled = this.get('enabled');
+
+      if (!enabled) {
+        return;
+      }
+
+      _ember['default'].assert('Developer must override validateCaptcha() method of user-account service.');
     }
   });
 });

@@ -4,11 +4,18 @@
         "version": "develop"
     },
     "files": {
-        "addon/services/user-account.js": {
-            "name": "addon/services/user-account.js",
+        "addon/components/flexberry-recaptcha.js": {
+            "name": "addon/components/flexberry-recaptcha.js",
             "modules": {
                 "ember-flexberry-account": 1
             },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "addon/services/user-account.js": {
+            "name": "addon/services/user-account.js",
+            "modules": {},
             "classes": {},
             "fors": {},
             "namespaces": {}
@@ -23,13 +30,84 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "addon/services/user-account.js",
+            "file": "addon/components/flexberry-recaptcha.js",
             "line": 1
         }
     },
     "classes": {},
     "elements": {},
     "classitems": [
+        {
+            "file": "addon/components/flexberry-recaptcha.js",
+            "line": 10,
+            "description": "Component's CSS-classes names.",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-recaptcha.js",
+            "line": 16,
+            "description": "Environment configuration.",
+            "itemtype": "property",
+            "name": "appConfig",
+            "type": "Object",
+            "default": "undefined",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-recaptcha.js",
+            "line": 25,
+            "description": "ReCaptcha public (site) key. Obtained from env",
+            "itemtype": "property",
+            "name": "sitekey",
+            "type": "String",
+            "default": "undefined",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-recaptcha.js",
+            "line": 34,
+            "description": "Tabindex for reCaptcha component.",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-recaptcha.js",
+            "line": 39,
+            "description": "Renders ReCaptcha according to given properties.",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-recaptcha.js",
+            "line": 66,
+            "description": "Resets ReCaptcha.",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-recaptcha.js",
+            "line": 75,
+            "description": "Allows to use onSuccess action.",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-recaptcha.js",
+            "line": 85,
+            "description": "Allows to use onExpired action.",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-recaptcha.js",
+            "line": 97,
+            "description": "Initializes DOM-related component's properties.",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
         {
             "file": "addon/services/user-account.js",
             "line": 8,
@@ -169,7 +247,49 @@
             },
             "class": "",
             "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/services/user-account.js",
+            "line": 153,
+            "description": "Reset password request for username.",
+            "itemtype": "method",
+            "name": "validateCaptcha",
+            "return": {
+                "description": "Returns if captcha valid.",
+                "type": "Boolean"
+            },
+            "class": "",
+            "module": "ember-flexberry-account"
         }
     ],
-    "warnings": []
+    "warnings": [
+        {
+            "message": "Missing item type\nComponent's CSS-classes names.",
+            "line": " addon/components/flexberry-recaptcha.js:10"
+        },
+        {
+            "message": "Missing item type\nTabindex for reCaptcha component.",
+            "line": " addon/components/flexberry-recaptcha.js:34"
+        },
+        {
+            "message": "Missing item type\nRenders ReCaptcha according to given properties.",
+            "line": " addon/components/flexberry-recaptcha.js:39"
+        },
+        {
+            "message": "Missing item type\nResets ReCaptcha.",
+            "line": " addon/components/flexberry-recaptcha.js:66"
+        },
+        {
+            "message": "Missing item type\nAllows to use onSuccess action.",
+            "line": " addon/components/flexberry-recaptcha.js:75"
+        },
+        {
+            "message": "Missing item type\nAllows to use onExpired action.",
+            "line": " addon/components/flexberry-recaptcha.js:85"
+        },
+        {
+            "message": "Missing item type\nInitializes DOM-related component's properties.",
+            "line": " addon/components/flexberry-recaptcha.js:97"
+        }
+    ]
 }

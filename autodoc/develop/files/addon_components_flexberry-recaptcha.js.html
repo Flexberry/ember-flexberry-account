@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>addon/services/user-account.js - Flexberry Documentation</title>
+    <title>addon/components/flexberry-recaptcha.js - Flexberry Documentation</title>
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -88,7 +88,7 @@
                 <div id="docs-main">
                     <div class="content">
 <div class="page-header">
-    <h1>addon/services/user-account.js <small>File</small></h1>
+    <h1>addon/components/flexberry-recaptcha.js <small>File</small></h1>
 </div>
 
 <div class="file">
@@ -96,169 +96,116 @@
 /**
   @module ember-flexberry-account
 */
-
 import Ember from &#x27;ember&#x27;;
 
-export default Ember.Service.extend({
-  /**
-    Flag indicates whether user-account service is enabled or not.
+const { getOwner } = Ember;
 
-    @property enabled
-    @type Boolean
-    @default true
-
-    @example
-      &#x60;&#x60;&#x60;
-      // UserAccount &#x27;enabled&#x27; setting could be also defined through application config/environment.js
-      module.exports = function(environment) {
-        let ENV = {
-          ...
-          APP: {
-            ...
-            user-account: {
-              enabled: true
-            }
-            ...
-          }
-          ...
-      };
-      &#x60;&#x60;&#x60;
-  */
-  enabled: true,
-
-  vk: false,
-  facebook: false,
-  twitter: false,
-  google: false,
-  microsoft: false,
-  github: false,
-  ok: false,
-  mailru: false,
-  yandex: false,
-  gosuslugi: false,
+export default Ember.Component.extend({
 
   /**
-    Is user authenticated?
-
-    @method login
-    @return {Boolean} Returns user authenticated status.
+    Component&#x27;s CSS-classes names.
   */
-  isUserAuthnticated() {
-    let enabled = this.get(&#x27;enabled&#x27;);
 
-    if (!enabled) {
-      return;
+  classNames: [&#x27;flexberry-recaptcha&#x27;],
+
+  /**
+    Environment configuration.
+
+    @property appConfig
+    @type Object
+    @default undefined
+  */
+  appConfig: undefined,
+
+  /**
+    ReCaptcha public (site) key. Obtained from env
+
+    @property sitekey
+    @type String
+    @default undefined
+  */
+  sitekey: undefined,
+
+  /**
+    Tabindex for reCaptcha component.
+  */
+  tabindex: Ember.computed.alias(&#x27;tabIndex&#x27;),
+
+  /**
+    Renders ReCaptcha according to given properties.
+  */
+  renderReCaptcha() {
+    if (Ember.isNone(window.grecaptcha)) {
+      Ember.run.later(() =&gt; {
+        this.renderReCaptcha();
+      }, 500);
+    } else {
+      let container = this.$()[0];
+      let properties = this.getProperties(
+        &#x27;sitekey&#x27;,
+        &#x27;theme&#x27;,
+        &#x27;type&#x27;,
+        &#x27;size&#x27;,
+        &#x27;tabindex&#x27;
+      );
+      let parameters = Ember.merge(properties, {
+        callback: this.get(&#x27;successCallback&#x27;).bind(this),
+        &#x27;expired-callback&#x27;: this.get(&#x27;expiredCallback&#x27;).bind(this)
+      });
+      let widgetId = window.grecaptcha.render(container, parameters);
+      this.set(&#x27;widgetId&#x27;, widgetId);
+      this.set(&#x27;ref&#x27;, this);
     }
-
-    Ember.assert(&#x27;Developer must override isUserAuthnticated method of user-account service.&#x27;);
   },
 
   /**
-    Log in.
-
-    @method login
-    @param username {String} User name for log in.
-    @param password {String} Password phrase for log in.
-    @return {Boolean} Returns log in result.
+    Resets ReCaptcha.
   */
-  login(username, password) {
-    let enabled = this.get(&#x27;enabled&#x27;);
-
-    if (!enabled) {
-      return;
+  resetReCaptcha() {
+    if (Ember.isPresent(this.get(&#x27;widgetId&#x27;))) {
+      window.grecaptcha.reset(this.get(&#x27;widgetId&#x27;));
     }
-
-    Ember.assert(&#x27;Developer must override login method of user-account service.&#x27; +
-    &#x27; You try login with &#x27; + username + &#x27; and password &#x27; + password + &#x27;.&#x27;);
   },
 
   /**
-    Log out.
-
-    @method logout
-    @return {Boolean} Returns log out result.
+    Allows to use onSuccess action.
   */
-  logout() {
-    let enabled = this.get(&#x27;enabled&#x27;);
-
-    if (!enabled) {
-      return;
+  successCallback(reCaptchaResponse) {
+    let action = this.get(&#x27;onSuccess&#x27;);
+    if (Ember.isPresent(action) &amp;&amp; typeof (action) === &#x27;function&#x27;) {
+      action(reCaptchaResponse);
     }
-
-    Ember.assert(&#x27;Developer must override logout method of user-account service.&#x27;);
   },
 
   /**
-    Validate username.
-
-    @method validateUsername
-    @param username {String} User name for validation.
-    @return {Boolean} Returns validation result.
+    Allows to use onExpired action.
   */
-  validateUsername(username) {
-    let enabled = this.get(&#x27;enabled&#x27;);
-
-    if (!enabled) {
-      return;
+  expiredCallback() {
+    let action = this.get(&#x27;onExpired&#x27;);
+    if (Ember.isPresent(action) &amp;&amp; typeof (action) === &#x27;function&#x27;) {
+      action();
+    } else {
+      this.resetReCaptcha();
     }
-
-    Ember.assert(&#x27;Developer must override validateUsername method of user-account service.&#x27; +
-    &#x27;Validate username: &#x27; + username + &#x27;.&#x27;);
   },
 
   /**
-    Register user.
-
-    @method register
-    @param username {String} User name for log in.
-    @param surname {String} User surname.
-    @param name {String} User name.
-    @param middlename {String} User middlename.
-    @return {Boolean} Returns register result.
+  Initializes DOM-related component&#x27;s properties.
   */
-  register(username, surname, name, middlename) {
-    let enabled = this.get(&#x27;enabled&#x27;);
+  didInsertElement() {
+    this._super(...arguments);
 
-    if (!enabled) {
-      return;
+    // Import application config\environment.
+    let appConfig = getOwner(this)._lookupFactory(&#x27;config:environment&#x27;);
+    if (!Ember.isNone(appConfig)) {
+      this.set(&#x27;appConfig&#x27;, appConfig);
     }
 
-    Ember.assert(&#x27;Developer must override register method of user-account service.&#x27; +
-    &#x27; You try register with username: &#x27; + username + &#x27;, surname: &#x27; + surname +
-    &#x27;, name: &#x27; + name + &#x27;, middlename: &#x27; + middlename + &#x27;.&#x27;);
-  },
-  /**
-    Reset password request for username.
+    this.set(&#x27;sitekey&#x27;, appConfig.recaptcha.siteKey);
 
-    @method pwdReset
-    @param username {String} User name for reset password request.
-    @return {Boolean} Returns reset request result.
-  */
-  pwdReset(username) {
-    let enabled = this.get(&#x27;enabled&#x27;);
-
-    if (!enabled) {
-      return;
-    }
-
-    Ember.assert(&#x27;Developer must override pwdReset method of user-account service.&#x27; +
-    &#x27;Request for username: &#x27; + username + &#x27;.&#x27;);
-  },
-
-  /**
-    Reset password request for username.
-
-    @method validateCaptcha
-    @return {Boolean} Returns if captcha valid.
-  */
-  validateCaptcha() {
-    let enabled = this.get(&#x27;enabled&#x27;);
-
-    if (!enabled) {
-      return;
-    }
-
-    Ember.assert(&#x27;Developer must override validateCaptcha() method of user-account service.&#x27;);
+    Ember.run.next(() =&gt; {
+      this.renderReCaptcha();
+    });
   }
 });
 
