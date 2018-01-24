@@ -1,27 +1,26 @@
-<h3>{{t "forms.login.caption"}}</h3>
 <div class="username-div">
-  {{t "forms.login.username-label"}}<br/>
+  {{t "components.login.username-label"}}<br/>
   {{input type="text" value=username}}
 </div>
 <div class="password-div">
-  {{t "forms.login.password-label"}}<br/>
+  {{t "components.login.password-label"}}<br/>
   {{input type="password" value=password}}
 </div>
 <div class="captcha-div">
   {{flexberry-recaptcha onSuccess=(action "test")}}
 </div>
 <div class="login-div">
-  {{t "forms.login.remember-label"}} {{input type="checkbox" checked=remember}}
+  {{t "components.login.remember-label"}} {{input type="checkbox" checked=remember}}
   <button
     class="ui login-button button"
-    title={{t "forms.login.login-button-title"}}
+    title={{t "components.login.login-button-title"}}
     {{action "login"}}>
-      {{t "forms.login.login-button-text"}}
+      {{t "components.login.login-button-text"}}
   </button>
 </div>
 {{#if useSocialBlock}}
 <div class="social-div">
-  {{t "forms.login.login-with-label"}}<br/>
+  {{t "components.login.login-with-label"}}<br/>
   <div class="social-buttons">
     {{#if vk}}{{input type="button" value="VK"}}{{/if}}
     {{#if facebook}}{{input type="button" value="Facebook"}}{{/if}}
@@ -38,13 +37,13 @@
 {{/if}}
 <div class="register-reset-div">
   <button class="ui register-button button"
-    title={{t "forms.login.register-button-title"}}
+    title={{t "components.login.register-button-title"}}
     {{action "register"}}>
-      {{t "forms.login.register-button-text"}}
+      {{t "components.login.register-button-text"}}
   </button>
   <button class="ui pwd-reset-button button"
-  title={{t "forms.login.pwd-reset-button-title"}}
+  title={{t "components.login.pwd-reset-button-title"}}
   {{action "pwdReset"}}>
-    {{t "forms.login.pwd-reset-button-text"}}
+    {{t "components.login.pwd-reset-button-text"}}
   </button>
 </div>

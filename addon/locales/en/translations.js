@@ -2,6 +2,20 @@ export default {
   forms: {
     login: {
       caption: 'Login',
+    },
+    register: {
+      caption: 'Register new user',
+    },
+    'pwd-reset': {
+      caption: 'Reset password',
+    },
+
+    'user-profile': {
+      caption: 'User profile'
+    }
+  },
+  components: {
+    login: {
       'username-label': 'User name (E-mail):',
       'password-label': 'Password:',
       'remember-label': 'Remember:',
@@ -14,7 +28,6 @@ export default {
       'pwd-reset-button-text': 'Reset password'
     },
     register: {
-      caption: 'Register new user',
       'username-label': 'Login (E-mail):',
       'surname-label': 'Surname:',
       'name-label': 'Name:',
@@ -30,7 +43,6 @@ export default {
       'pwd-reset-button-text': 'Reset password'
     },
     'pwd-reset': {
-      caption: 'Reset password',
       'username-label': 'Username',
       'captcha-label': '[CAPTCHA]',
       'pwd-reset-button-title': 'Reset password request',
@@ -41,7 +53,6 @@ export default {
       'register-button-text': 'Register'
     },
     'user-profile': {
-      caption: 'User profile'
     }
   }
 };
