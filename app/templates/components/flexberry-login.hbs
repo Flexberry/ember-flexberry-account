@@ -1,0 +1,49 @@
+<div class="username-div">
+  {{t "components.login.username-label"}}<br/>
+  {{input type="text" value=username}}
+</div>
+<div class="password-div">
+  {{t "components.login.password-label"}}<br/>
+  {{input type="password" value=password}}
+</div>
+<div class="captcha-div">
+  {{flexberry-recaptcha onSuccess=(action "test")}}
+</div>
+<div class="login-div">
+  {{t "components.login.remember-label"}} {{input type="checkbox" checked=remember}}
+  <button
+    class="ui login-button button"
+    title={{t "components.login.login-button-title"}}
+    {{action "login"}}>
+      {{t "components.login.login-button-text"}}
+  </button>
+</div>
+{{#if useSocialBlock}}
+<div class="social-div">
+  {{t "components.login.login-with-label"}}<br/>
+  <div class="social-buttons">
+    {{#if vk}}{{input type="button" value="VK"}}{{/if}}
+    {{#if facebook}}{{input type="button" value="Facebook"}}{{/if}}
+    {{#if twitter}}{{input type="button" value="Twitter"}}{{/if}}
+    {{#if google}}{{input type="button" value="Google"}}{{/if}}
+    {{#if microsoft}}{{input type="button" value="Microsoft"}}{{/if}}
+    {{#if github}}{{input type="button" value="GitHub"}}{{/if}}
+    {{#if ok}}{{input type="button" value="OK"}}{{/if}}
+    {{#if mailru}}{{input type="button" value="Mail.ru"}}{{/if}}
+    {{#if yandex}}{{input type="button" value="Yandex"}}{{/if}}
+    {{#if gosuslugi}}{{input type="button" value="Gosuslugi"}}{{/if}}
+  </div>
+</div>
+{{/if}}
+<div class="register-reset-div">
+  <button class="ui register-button button"
+    title={{t "components.login.register-button-title"}}
+    {{action "register"}}>
+      {{t "components.login.register-button-text"}}
+  </button>
+  <button class="ui pwd-reset-button button"
+  title={{t "components.login.pwd-reset-button-title"}}
+  {{action "pwdReset"}}>
+    {{t "components.login.pwd-reset-button-text"}}
+  </button>
+</div>

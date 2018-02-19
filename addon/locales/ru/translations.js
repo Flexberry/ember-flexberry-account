@@ -2,6 +2,21 @@ export default {
   forms: {
     login: {
       caption: 'Вход в систему',
+    },
+    register: {
+      caption: 'Регистрация нового пользователя',
+    },
+    'pwd-reset': {
+      caption: 'Восстановление пароля',
+    },
+
+    'user-profile': {
+      caption: 'Профиль пользователя'
+    }
+  },
+
+  components: {
+    login: {
       'username-label': 'Логин (E-mail):',
       'password-label': 'Пароль:',
       'remember-label': 'Запомнить:',
@@ -14,7 +29,6 @@ export default {
       'pwd-reset-button-text': 'Восстановить пароль'
     },
     register: {
-      caption: 'Регистрация нового пользователя',
       'username-label': 'Логин (E-mail):',
       'surname-label': 'Фамилия:',
       'name-label': 'Имя:',
@@ -30,7 +44,6 @@ export default {
       'pwd-reset-button-text': 'Восстановить пароль'
     },
     'pwd-reset': {
-      caption: 'Восстановление пароля',
       'username-label': 'Логин (E-mail)',
       'captcha-label': '[CAPTCHA]',
       'pwd-reset-button-title': 'Запрос на восстановление пароля для указанного логина',
@@ -41,7 +54,6 @@ export default {
       'register-button-text': 'Зарегистрироваться'
     },
     'user-profile': {
-      caption: 'Профиль пользователя'
     }
   }
 };
