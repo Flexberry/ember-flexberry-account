@@ -2,15 +2,17 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Added
+* Components:
+    * `flexberry-login`. Incapsulates logic for user login.
+    * `flexberry-register`. Incapsulates logic for registering new user.
+    * `flexberry-user-profile`. Incapsulates logic for changing user profile.
+    * `flexberry-pwd-reset`. Incapsulates logic for reset user password.
+    * `flexberry-recaptcha`. Incapsulates logic for displaying and verifying captcha.
 
-## [0.1.2] - 2018-01-17
 ### Changed
 * Now forms are incapsulated into components.
 
-## [0.1.1] - 2018-01-12
+## [0.0.1] - 2017-11-27
 ### Added
-* `flexberry-recaptcha` component.
-
-## [0.1.0] - 2017-10-13
-### Added
-* Forms for login, password reset, registering users and changing user profile.
+* Form tamplates for user login and user register.
