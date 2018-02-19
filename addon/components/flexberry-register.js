@@ -53,6 +53,21 @@ export default Ember.Component.extend({
   middlename: undefined,
   validUsername: false,
 
+  captchaPassed: false,
+
+  readonly: Ember.computed('captchaPassed', function() { return this.captchaPassed; }),
+
+  p1: undefined,
+  p2: undefined,
+  validPassword: Ember.computed('p1', 'p2', function() { return p1 === p2; }),
+
+  allowRegistration: Ember.computed(
+    'validUsername',
+    'validPassword',
+    'captchaPassed',
+    function() { return !this.validUsername && !this.validPassword && !this.captchaPassed;}
+  ),
+
   actions: {
     validateUsername: function() {
       let username = this.get('username');
@@ -72,6 +87,9 @@ export default Ember.Component.extend({
     },
     pwdReset: function() {
       this.transitionToRoute('pwd-reset');
+    },
+    captchaSuccess: function() {
+
     }
   }
 });
