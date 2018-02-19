@@ -69655,16 +69655,17 @@ var meta=value.meta();meta.parentType = proto.constructor;}}});}var SOURCE_POINT
   @param {String} link
   @return {Object|null}
   @for DS
-*/function _normalizeLink(link){switch(typeof link){case 'object':return link;case 'string':return {href:link};}return null;}var _createClass$4=(function(){function defineProperties(target,props){for(var i=0;i < props.length;i++) {var descriptor=props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if("value" in descriptor)descriptor.writable = true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};})();function _classCallCheck$5(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}} /* global heimdall */var Relationship=(function(){function Relationship(store,internalModel,inverseKey,relationshipMeta){_classCallCheck$5(this,Relationship);var async=relationshipMeta.options.async;var polymorphic=relationshipMeta.options.polymorphic;this.members = new OrderedSet();this.canonicalMembers = new OrderedSet();this.store = store;this.key = relationshipMeta.key;this.inverseKey = inverseKey;this.internalModel = internalModel;this.isAsync = typeof async === 'undefined'?true:async;this.isPolymorphic = typeof polymorphic === 'undefined'?true:polymorphic;this.relationshipMeta = relationshipMeta; //This probably breaks for polymorphic relationship in complex scenarios, due to
+*/function _normalizeLink(link){switch(typeof link){case 'object':return link;case 'string':return {href:link};}return null;}var _createClass$4=(function(){function defineProperties(target,props){for(var i=0;i < props.length;i++) {var descriptor=props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if("value" in descriptor)descriptor.writable = true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};})(); /* global heimdall */function _classCallCheck$5(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}var Relationship=(function(){function Relationship(store,internalModel,inverseKey,relationshipMeta){_classCallCheck$5(this,Relationship);var async=relationshipMeta.options.async;var polymorphic=relationshipMeta.options.polymorphic;this.members = new OrderedSet();this.canonicalMembers = new OrderedSet();this.store = store;this.key = relationshipMeta.key;this.inverseKey = inverseKey;this.internalModel = internalModel;this.isAsync = typeof async === 'undefined'?true:async;this.isPolymorphic = typeof polymorphic === 'undefined'?true:polymorphic;this.relationshipMeta = relationshipMeta; //This probably breaks for polymorphic relationship in complex scenarios, due to
 //multiple possible modelNames
-this.inverseKeyForImplicit = this.internalModel.modelName + this.key;this.linkPromise = null;this.meta = null;this.hasData = false;this.hasLoaded = false;}Relationship.prototype._inverseIsAsync = function _inverseIsAsync(){if(!this.inverseKey || !this.inverseInternalModel){return false;}return this.inverseInternalModel._relationships.get(this.inverseKey).isAsync;};Relationship.prototype.removeInverseRelationships = function removeInverseRelationships(){if(!this.inverseKey){return;}var allMembers= // we actually want a union of members and canonicalMembers
-// they should be disjoint but currently are not due to a bug
-this.members.list.concat(this.canonicalMembers.list);for(var i=0;i < allMembers.length;i++) {var inverseInternalModel=allMembers[i];var relationship=inverseInternalModel._relationships.get(this.inverseKey);relationship.inverseDidDematerialize();}};Relationship.prototype.inverseDidDematerialize = function inverseDidDematerialize(){};Relationship.prototype.updateMeta = function updateMeta(meta){this.meta = meta;};Relationship.prototype.clear = function clear(){var members=this.members.list;while(members.length > 0) {var member=members[0];this.removeInternalModel(member);}var canonicalMembers=this.canonicalMembers.list;while(canonicalMembers.length > 0) {var _member=canonicalMembers[0];this.removeCanonicalInternalModel(_member);}};Relationship.prototype.removeInternalModels = function removeInternalModels(internalModels){var _this=this;internalModels.forEach(function(internalModel){return _this.removeInternalModel(internalModel);});};Relationship.prototype.addInternalModels = function addInternalModels(internalModels,idx){var _this2=this;internalModels.forEach(function(internalModel){_this2.addInternalModel(internalModel,idx);if(idx !== undefined){idx++;}});};Relationship.prototype.addCanonicalInternalModels = function addCanonicalInternalModels(internalModels,idx){for(var i=0;i < internalModels.length;i++) {if(idx !== undefined){this.addCanonicalInternalModel(internalModels[i],i + idx);}else {this.addCanonicalInternalModel(internalModels[i]);}}};Relationship.prototype.addCanonicalInternalModel = function addCanonicalInternalModel(internalModel,idx){if(!this.canonicalMembers.has(internalModel)){this.canonicalMembers.add(internalModel);this.setupInverseRelationship(internalModel);}this.flushCanonicalLater();this.setHasData(true);};Relationship.prototype.setupInverseRelationship = function setupInverseRelationship(internalModel){if(this.inverseKey){var relationships=internalModel._relationships;var relationshipExisted=relationships.has(this.inverseKey);var relationship=relationships.get(this.inverseKey);if(relationshipExisted || this.isPolymorphic){ // if we have only just initialized the inverse relationship, then it
+this.inverseKeyForImplicit = this.internalModel.modelName + this.key;this.linkPromise = null;this.meta = null;this.hasData = false;this.hasLoaded = false;this.__inverseMeta = undefined;}Relationship.prototype._inverseIsAsync = function _inverseIsAsync(){var inverseMeta=this._inverseMeta;if(!inverseMeta){return false;}var inverseAsync=inverseMeta.options.async;return typeof inverseAsync === 'undefined'?true:inverseAsync;};Relationship.prototype._inverseIsSync = function _inverseIsSync(){var inverseMeta=this._inverseMeta;if(!inverseMeta){return false;}var inverseAsync=inverseMeta.options.async;return typeof inverseAsync === 'undefined'?false:!inverseAsync;};Relationship.prototype.internalModelDidDematerialize = function internalModelDidDematerialize(){var _this=this;if(!this.inverseKey){return;}this.forAllMembers(function(inverseInternalModel){var relationship=inverseInternalModel._relationships.get(_this.inverseKey);relationship.inverseDidDematerialize(_this.internalModel);});};Relationship.prototype.inverseDidDematerialize = function inverseDidDematerialize(inverseInternalModel){if(!this.isAsync){ // unloading inverse of a sync relationship is treated as a client-side
+// delete, so actually remove the models don't merely invalidate the cp
+// cache.
+this.removeInternalModelFromOwn(inverseInternalModel);this.removeCanonicalInternalModelFromOwn(inverseInternalModel);}};Relationship.prototype.updateMeta = function updateMeta(meta){this.meta = meta;};Relationship.prototype.clear = function clear(){var members=this.members.list;while(members.length > 0) {var member=members[0];this.removeInternalModel(member);}var canonicalMembers=this.canonicalMembers.list;while(canonicalMembers.length > 0) {var _member=canonicalMembers[0];this.removeCanonicalInternalModel(_member);}};Relationship.prototype.removeAllInternalModelsFromOwn = function removeAllInternalModelsFromOwn(){this.members.clear();this.internalModel.updateRecordArrays();};Relationship.prototype.removeAllCanonicalInternalModelsFromOwn = function removeAllCanonicalInternalModelsFromOwn(){this.canonicalMembers.clear();this.flushCanonicalLater();};Relationship.prototype.removeInternalModels = function removeInternalModels(internalModels){var _this2=this;internalModels.forEach(function(internalModel){return _this2.removeInternalModel(internalModel);});};Relationship.prototype.addInternalModels = function addInternalModels(internalModels,idx){var _this3=this;internalModels.forEach(function(internalModel){_this3.addInternalModel(internalModel,idx);if(idx !== undefined){idx++;}});};Relationship.prototype.addCanonicalInternalModels = function addCanonicalInternalModels(internalModels,idx){for(var i=0;i < internalModels.length;i++) {if(idx !== undefined){this.addCanonicalInternalModel(internalModels[i],i + idx);}else {this.addCanonicalInternalModel(internalModels[i]);}}};Relationship.prototype.addCanonicalInternalModel = function addCanonicalInternalModel(internalModel,idx){if(!this.canonicalMembers.has(internalModel)){this.canonicalMembers.add(internalModel);this.setupInverseRelationship(internalModel);}this.flushCanonicalLater();this.setHasData(true);};Relationship.prototype.setupInverseRelationship = function setupInverseRelationship(internalModel){if(this.inverseKey){var relationships=internalModel._relationships;var relationshipExisted=relationships.has(this.inverseKey);var relationship=relationships.get(this.inverseKey);if(relationshipExisted || this.isPolymorphic){ // if we have only just initialized the inverse relationship, then it
 // already has this.internalModel in its canonicalMembers, so skip the
 // unnecessary work.  The exception to this is polymorphic
 // relationships whose members are determined by their inverse, as those
 // relationships cannot efficiently find their inverse payloads.
-relationship.addCanonicalInternalModel(this.internalModel);}}else {var _relationships=internalModel._implicitRelationships;var _relationship=_relationships[this.inverseKeyForImplicit];if(!_relationship){_relationship = _relationships[this.inverseKeyForImplicit] = new Relationship(this.store,internalModel,this.key,{options:{async:this.isAsync}});}_relationship.addCanonicalInternalModel(this.internalModel);}};Relationship.prototype.removeCanonicalInternalModels = function removeCanonicalInternalModels(internalModels,idx){for(var i=0;i < internalModels.length;i++) {if(idx !== undefined){this.removeCanonicalInternalModel(internalModels[i],i + idx);}else {this.removeCanonicalInternalModel(internalModels[i]);}}};Relationship.prototype.removeCanonicalInternalModel = function removeCanonicalInternalModel(internalModel,idx){if(this.canonicalMembers.has(internalModel)){this.removeCanonicalInternalModelFromOwn(internalModel);if(this.inverseKey){this.removeCanonicalInternalModelFromInverse(internalModel);}else {if(internalModel._implicitRelationships[this.inverseKeyForImplicit]){internalModel._implicitRelationships[this.inverseKeyForImplicit].removeCanonicalInternalModel(this.internalModel);}}}this.flushCanonicalLater();};Relationship.prototype.addInternalModel = function addInternalModel(internalModel,idx){if(!this.members.has(internalModel)){this.members.addWithIndex(internalModel,idx);this.notifyRecordRelationshipAdded(internalModel,idx);if(this.inverseKey){internalModel._relationships.get(this.inverseKey).addInternalModel(this.internalModel);}else {if(!internalModel._implicitRelationships[this.inverseKeyForImplicit]){internalModel._implicitRelationships[this.inverseKeyForImplicit] = new Relationship(this.store,internalModel,this.key,{options:{async:this.isAsync}});}internalModel._implicitRelationships[this.inverseKeyForImplicit].addInternalModel(this.internalModel);}this.internalModel.updateRecordArrays();}this.setHasData(true);};Relationship.prototype.removeInternalModel = function removeInternalModel(internalModel){if(this.members.has(internalModel)){this.removeInternalModelFromOwn(internalModel);if(this.inverseKey){this.removeInternalModelFromInverse(internalModel);}else {if(internalModel._implicitRelationships[this.inverseKeyForImplicit]){internalModel._implicitRelationships[this.inverseKeyForImplicit].removeInternalModel(this.internalModel);}}}};Relationship.prototype.removeInternalModelFromInverse = function removeInternalModelFromInverse(internalModel){var inverseRelationship=internalModel._relationships.get(this.inverseKey); //Need to check for existence, as the record might unloading at the moment
+relationship.addCanonicalInternalModel(this.internalModel);}}else {var _relationships=internalModel._implicitRelationships;var _relationship=_relationships[this.inverseKeyForImplicit];if(!_relationship){_relationship = _relationships[this.inverseKeyForImplicit] = new Relationship(this.store,internalModel,this.key,{options:{async:this.isAsync},type:this.parentType});}_relationship.addCanonicalInternalModel(this.internalModel);}};Relationship.prototype.removeCanonicalInternalModels = function removeCanonicalInternalModels(internalModels,idx){for(var i=0;i < internalModels.length;i++) {if(idx !== undefined){this.removeCanonicalInternalModel(internalModels[i],i + idx);}else {this.removeCanonicalInternalModel(internalModels[i]);}}};Relationship.prototype.removeCanonicalInternalModel = function removeCanonicalInternalModel(internalModel,idx){if(this.canonicalMembers.has(internalModel)){this.removeCanonicalInternalModelFromOwn(internalModel);if(this.inverseKey){this.removeCanonicalInternalModelFromInverse(internalModel);}else {if(internalModel._implicitRelationships[this.inverseKeyForImplicit]){internalModel._implicitRelationships[this.inverseKeyForImplicit].removeCanonicalInternalModel(this.internalModel);}}}this.flushCanonicalLater();};Relationship.prototype.addInternalModel = function addInternalModel(internalModel,idx){if(!this.members.has(internalModel)){this.members.addWithIndex(internalModel,idx);this.notifyRecordRelationshipAdded(internalModel,idx);if(this.inverseKey){internalModel._relationships.get(this.inverseKey).addInternalModel(this.internalModel);}else {if(!internalModel._implicitRelationships[this.inverseKeyForImplicit]){internalModel._implicitRelationships[this.inverseKeyForImplicit] = new Relationship(this.store,internalModel,this.key,{options:{async:this.isAsync},type:this.parentType});}internalModel._implicitRelationships[this.inverseKeyForImplicit].addInternalModel(this.internalModel);}this.internalModel.updateRecordArrays();}this.setHasData(true);};Relationship.prototype.removeInternalModel = function removeInternalModel(internalModel){if(this.members.has(internalModel)){this.removeInternalModelFromOwn(internalModel);if(this.inverseKey){this.removeInternalModelFromInverse(internalModel);}else {if(internalModel._implicitRelationships[this.inverseKeyForImplicit]){internalModel._implicitRelationships[this.inverseKeyForImplicit].removeInternalModel(this.internalModel);}}}};Relationship.prototype.removeInternalModelFromInverse = function removeInternalModelFromInverse(internalModel){var inverseRelationship=internalModel._relationships.get(this.inverseKey); //Need to check for existence, as the record might unloading at the moment
 if(inverseRelationship){inverseRelationship.removeInternalModelFromOwn(this.internalModel);}};Relationship.prototype.removeInternalModelFromOwn = function removeInternalModelFromOwn(internalModel){this.members['delete'](internalModel);this.internalModel.updateRecordArrays();};Relationship.prototype.removeCanonicalInternalModelFromInverse = function removeCanonicalInternalModelFromInverse(internalModel){var inverseRelationship=internalModel._relationships.get(this.inverseKey); //Need to check for existence, as the record might unloading at the moment
 if(inverseRelationship){inverseRelationship.removeCanonicalInternalModelFromOwn(this.internalModel);}};Relationship.prototype.removeCanonicalInternalModelFromOwn = function removeCanonicalInternalModelFromOwn(internalModel){this.canonicalMembers['delete'](internalModel);this.flushCanonicalLater();}; /*
     Call this method once a record deletion has been persisted
@@ -69672,16 +69673,16 @@ if(inverseRelationship){inverseRelationship.removeCanonicalInternalModelFromOwn(
     relationships.
      @method removeCompletelyFromInverse
     @private
-   */Relationship.prototype.removeCompletelyFromInverse = function removeCompletelyFromInverse(){var _this3=this;if(!this.inverseKey){return;} // we actually want a union of members and canonicalMembers
+   */Relationship.prototype.removeCompletelyFromInverse = function removeCompletelyFromInverse(){var _this4=this;if(!this.inverseKey){return;} // we actually want a union of members and canonicalMembers
 // they should be disjoint but currently are not due to a bug
-var seen=Object.create(null);var internalModel=this.internalModel;var unload=function unload(inverseInternalModel){var id=Ember.guidFor(inverseInternalModel);if(seen[id] === undefined){var relationship=inverseInternalModel._relationships.get(_this3.inverseKey);relationship.removeCompletelyFromOwn(internalModel);seen[id] = true;}};this.members.forEach(unload);this.canonicalMembers.forEach(unload);}; /*
+var seen=Object.create(null);var internalModel=this.internalModel;var unload=function unload(inverseInternalModel){var id=Ember.guidFor(inverseInternalModel);if(seen[id] === undefined){var relationship=inverseInternalModel._relationships.get(_this4.inverseKey);relationship.removeCompletelyFromOwn(internalModel);seen[id] = true;}};this.members.forEach(unload);this.canonicalMembers.forEach(unload);if(!this.isAsync){this.clear();}};Relationship.prototype.forAllMembers = function forAllMembers(callback){var seen=Object.create(null);for(var i=0;i < this.members.list.length;i++) {var inverseInternalModel=this.members.list[i];var id=Ember.guidFor(inverseInternalModel);if(!seen[id]){seen[id] = true;callback(inverseInternalModel);}}for(var _i=0;_i < this.canonicalMembers.list.length;_i++) {var _inverseInternalModel=this.canonicalMembers.list[_i];var _id=Ember.guidFor(_inverseInternalModel);if(!seen[_id]){seen[_id] = true;callback(_inverseInternalModel);}}}; /*
     Removes the given internalModel from BOTH canonical AND current state.
      This method is useful when either a deletion or a rollback on a new record
     needs to entirely purge itself from an inverse relationship.
    */Relationship.prototype.removeCompletelyFromOwn = function removeCompletelyFromOwn(internalModel){this.canonicalMembers['delete'](internalModel);this.members['delete'](internalModel);this.internalModel.updateRecordArrays();};Relationship.prototype.flushCanonical = function flushCanonical(){var list=this.members.list;this.willSync = false; //a hack for not removing new internalModels
 //TODO remove once we have proper diffing
 var newInternalModels=[];for(var i=0;i < list.length;i++) {if(list[i].isNew()){newInternalModels.push(list[i]);}} //TODO(Igor) make this less abysmally slow
-this.members = this.canonicalMembers.copy();for(var _i=0;_i < newInternalModels.length;_i++) {this.members.add(newInternalModels[_i]);}};Relationship.prototype.flushCanonicalLater = function flushCanonicalLater(){if(this.willSync){return;}this.willSync = true;this.store._updateRelationshipState(this);};Relationship.prototype.updateLink = function updateLink(link,initial){true && Ember.warn('You pushed a record of type \'' + this.internalModel.modelName + '\' with a relationship \'' + this.key + '\' configured as \'async: false\'. You\'ve included a link but no primary data, this may be an error in your payload.',this.isAsync || this.hasData,{id:'ds.store.push-link-for-sync-relationship'});true && !(typeof link === 'string' || link === null) && Ember.assert('You have pushed a record of type \'' + this.internalModel.modelName + '\' with \'' + this.key + '\' as a link, but the value of that link is not a string.',typeof link === 'string' || link === null);this.link = link;this.linkPromise = null;if(!initial){this.internalModel.notifyPropertyChange(this.key);}};Relationship.prototype.findLink = function findLink(){if(this.linkPromise){return this.linkPromise;}else {var promise=this.fetchLink();this.linkPromise = promise;return promise.then(function(result){return result;});}};Relationship.prototype.updateInternalModelsFromAdapter = function updateInternalModelsFromAdapter(internalModels){this.setHasData(true); //TODO(Igor) move this to a proper place
+this.members = this.canonicalMembers.copy();for(var _i2=0;_i2 < newInternalModels.length;_i2++) {this.members.add(newInternalModels[_i2]);}};Relationship.prototype.flushCanonicalLater = function flushCanonicalLater(){if(this.willSync){return;}this.willSync = true;this.store._updateRelationshipState(this);};Relationship.prototype.updateLink = function updateLink(link,initial){true && Ember.warn('You pushed a record of type \'' + this.internalModel.modelName + '\' with a relationship \'' + this.key + '\' configured as \'async: false\'. You\'ve included a link but no primary data, this may be an error in your payload.',this.isAsync || this.hasData,{id:'ds.store.push-link-for-sync-relationship'});true && !(typeof link === 'string' || link === null) && Ember.assert('You have pushed a record of type \'' + this.internalModel.modelName + '\' with \'' + this.key + '\' as a link, but the value of that link is not a string.',typeof link === 'string' || link === null);this.link = link;this.linkPromise = null;if(!initial){this.internalModel.notifyPropertyChange(this.key);}};Relationship.prototype.findLink = function findLink(){if(this.linkPromise){return this.linkPromise;}else {var promise=this.fetchLink();this.linkPromise = promise;return promise.then(function(result){return result;});}};Relationship.prototype.updateInternalModelsFromAdapter = function updateInternalModelsFromAdapter(internalModels){this.setHasData(true); //TODO(Igor) move this to a proper place
 //TODO Once we have adapter support, we need to handle updated and canonical changes
 this.computeChanges(internalModels);};Relationship.prototype.notifyRecordRelationshipAdded = function notifyRecordRelationshipAdded(){}; /*
    `hasData` for a relationship is a flag to indicate if we consider the
@@ -69713,7 +69714,7 @@ this.computeChanges(internalModels);};Relationship.prototype.notifyRecordRelatio
       If we have no data but a link is present we want to set hasLoaded to false
      without modifying the hasData flag. This will ensure we fetch the updated
      link next time the relationship is accessed.
-     */if(hasData){this.setHasData(true);this.setHasLoaded(true);}else if(hasLink){this.setHasLoaded(false);}};Relationship.prototype.updateData = function updateData(){};Relationship.prototype.destroy = function destroy(){};_createClass$4(Relationship,[{key:'parentType',get:function get(){return this.internalModel.modelName;}}]);return Relationship;})();function _bind(fn){for(var _len=arguments.length,args=Array(_len > 1?_len - 1:0),_key=1;_key < _len;_key++) {args[_key - 1] = arguments[_key];}return function(){return fn.apply(undefined,args);};}function _guard(promise,test){var guarded=promise['finally'](function(){if(!test()){guarded._subscribers.length = 0;}});return guarded;}function _objectIsAlive(object){return !(Ember.get(object,"isDestroyed") || Ember.get(object,"isDestroying"));} /**
+     */if(hasData){this.setHasData(true);this.setHasLoaded(true);}else if(hasLink){this.setHasLoaded(false);}};Relationship.prototype.updateData = function updateData(){};Relationship.prototype.destroy = function destroy(){};_createClass$4(Relationship,[{key:'_inverseMeta',get:function get(){if(this.__inverseMeta === undefined){var inverseMeta=null;if(this.inverseKey){var inverseModelClass=this.store.modelFor(this.relationshipMeta.type);var inverseRelationships=Ember.get(inverseModelClass,'relationshipsByName');inverseMeta = inverseRelationships.get(this.inverseKey);}this.__inverseMeta = inverseMeta;}return this.__inverseMeta;}},{key:'parentType',get:function get(){return this.internalModel.modelName;}}]);return Relationship;})();function _bind(fn){for(var _len=arguments.length,args=Array(_len > 1?_len - 1:0),_key=1;_key < _len;_key++) {args[_key - 1] = arguments[_key];}return function(){return fn.apply(undefined,args);};}function _guard(promise,test){var guarded=promise['finally'](function(){if(!test()){guarded._subscribers.length = 0;}});return guarded;}function _objectIsAlive(object){return !(Ember.get(object,"isDestroyed") || Ember.get(object,"isDestroying"));} /**
   @namespace
   @method diffArray
   @private
@@ -69871,19 +69872,33 @@ _addInternalModels:function _addInternalModels(internalModels,idx){if(idx === un
     @private
     @param {Object} hash
     @return {DS.Model} record
-  */createRecord:function createRecord(hash){var store=Ember.get(this,'store');var type=Ember.get(this,'type');true && !!Ember.get(this,'isPolymorphic') && Ember.assert('You cannot add \'' + type.modelName + '\' records to this polymorphic relationship.',!Ember.get(this,'isPolymorphic'));var record=store.createRecord(type.modelName,hash);this.pushObject(record);return record;}});var _createClass$3=(function(){function defineProperties(target,props){for(var i=0;i < props.length;i++) {var descriptor=props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if("value" in descriptor)descriptor.writable = true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};})();function _classCallCheck$4(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call && (typeof call === "object" || typeof call === "function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass !== "function" && superClass !== null){throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__ = superClass;}var ManyRelationship=(function(_Relationship){_inherits(ManyRelationship,_Relationship);function ManyRelationship(store,internalModel,inverseKey,relationshipMeta){_classCallCheck$4(this,ManyRelationship);var _this=_possibleConstructorReturn(this,_Relationship.call(this,store,internalModel,inverseKey,relationshipMeta));_this.belongsToType = relationshipMeta.type;_this.canonicalState = [];_this.isPolymorphic = relationshipMeta.options.polymorphic;_this._manyArray = null;_this.__loadingPromise = null;return _this;}ManyRelationship.prototype._updateLoadingPromise = function _updateLoadingPromise(promise,content){if(this.__loadingPromise){if(content){this.__loadingPromise.set('content',content);}this.__loadingPromise.set('promise',promise);}else {this.__loadingPromise = PromiseManyArray.create({promise:promise,content:content});}return this.__loadingPromise;};ManyRelationship.prototype.removeInverseRelationships = function removeInverseRelationships(){_Relationship.prototype.removeInverseRelationships.call(this);if(this._manyArray){this._manyArray.destroy();this._manyArray = null;}if(this._loadingPromise){this._loadingPromise.destroy();}};ManyRelationship.prototype.updateMeta = function updateMeta(meta){_Relationship.prototype.updateMeta.call(this,meta);if(this._manyArray){this._manyArray.set('meta',meta);}};ManyRelationship.prototype.addCanonicalInternalModel = function addCanonicalInternalModel(internalModel,idx){if(this.canonicalMembers.has(internalModel)){return;}if(idx !== undefined){this.canonicalState.splice(idx,0,internalModel);}else {this.canonicalState.push(internalModel);}_Relationship.prototype.addCanonicalInternalModel.call(this,internalModel,idx);};ManyRelationship.prototype.inverseDidDematerialize = function inverseDidDematerialize(){if(this._manyArray){this._manyArray.destroy();this._manyArray = null;}this.notifyHasManyChanged();};ManyRelationship.prototype.addInternalModel = function addInternalModel(internalModel,idx){if(this.members.has(internalModel)){return;}(0,_emberDataDebug.assertPolymorphicType)(this.internalModel,this.relationshipMeta,internalModel);_Relationship.prototype.addInternalModel.call(this,internalModel,idx); // make lazy later
-this.manyArray._addInternalModels([internalModel],idx);};ManyRelationship.prototype.removeCanonicalInternalModelFromOwn = function removeCanonicalInternalModelFromOwn(internalModel,idx){var i=idx;if(!this.canonicalMembers.has(internalModel)){return;}if(i === undefined){i = this.canonicalState.indexOf(internalModel);}if(i > -1){this.canonicalState.splice(i,1);}_Relationship.prototype.removeCanonicalInternalModelFromOwn.call(this,internalModel,idx);};ManyRelationship.prototype.removeCompletelyFromOwn = function removeCompletelyFromOwn(internalModel){_Relationship.prototype.removeCompletelyFromOwn.call(this,internalModel);var canonicalIndex=this.canonicalState.indexOf(internalModel);if(canonicalIndex !== -1){this.canonicalState.splice(canonicalIndex,1);}var manyArray=this._manyArray;if(manyArray){var idx=manyArray.currentState.indexOf(internalModel);if(idx !== -1){manyArray.internalReplace(idx,1);}}};ManyRelationship.prototype.flushCanonical = function flushCanonical(){if(this._manyArray){this._manyArray.flushCanonical();}_Relationship.prototype.flushCanonical.call(this);};ManyRelationship.prototype.removeInternalModelFromOwn = function removeInternalModelFromOwn(internalModel,idx){if(!this.members.has(internalModel)){return;}_Relationship.prototype.removeInternalModelFromOwn.call(this,internalModel,idx);var manyArray=this.manyArray;if(idx !== undefined){ //TODO(Igor) not used currently, fix
+  */createRecord:function createRecord(hash){var store=Ember.get(this,'store');var type=Ember.get(this,'type');true && !!Ember.get(this,'isPolymorphic') && Ember.assert('You cannot add \'' + type.modelName + '\' records to this polymorphic relationship.',!Ember.get(this,'isPolymorphic'));var record=store.createRecord(type.modelName,hash);this.pushObject(record);return record;}});var _createClass$3=(function(){function defineProperties(target,props){for(var i=0;i < props.length;i++) {var descriptor=props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if("value" in descriptor)descriptor.writable = true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};})();function _classCallCheck$4(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call && (typeof call === "object" || typeof call === "function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass !== "function" && superClass !== null){throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__ = superClass;}var ManyRelationship=(function(_Relationship){_inherits(ManyRelationship,_Relationship);function ManyRelationship(store,internalModel,inverseKey,relationshipMeta){_classCallCheck$4(this,ManyRelationship);var _this=_possibleConstructorReturn(this,_Relationship.call(this,store,internalModel,inverseKey,relationshipMeta));_this.belongsToType = relationshipMeta.type;_this.canonicalState = [];_this.isPolymorphic = relationshipMeta.options.polymorphic; // The ManyArray for this relationship
+_this._manyArray = null; // The previous ManyArray for this relationship.  It will be destroyed when
+// we create a new many array, but in the interim it will be updated if
+// inverse internal models are unloaded.
+_this._retainedManyArray = null;_this.__loadingPromise = null;return _this;}ManyRelationship.prototype._updateLoadingPromise = function _updateLoadingPromise(promise,content){if(this.__loadingPromise){if(content){this.__loadingPromise.set('content',content);}this.__loadingPromise.set('promise',promise);}else {this.__loadingPromise = PromiseManyArray.create({promise:promise,content:content});}return this.__loadingPromise;};ManyRelationship.prototype.removeInverseRelationships = function removeInverseRelationships(){_Relationship.prototype.removeInverseRelationships.call(this);if(this._manyArray){this._manyArray.destroy();this._manyArray = null;}if(this._loadingPromise){this._loadingPromise.destroy();}};ManyRelationship.prototype.updateMeta = function updateMeta(meta){_Relationship.prototype.updateMeta.call(this,meta);if(this._manyArray){this._manyArray.set('meta',meta);}};ManyRelationship.prototype.addCanonicalInternalModel = function addCanonicalInternalModel(internalModel,idx){if(this.canonicalMembers.has(internalModel)){return;}if(idx !== undefined){this.canonicalState.splice(idx,0,internalModel);}else {this.canonicalState.push(internalModel);}_Relationship.prototype.addCanonicalInternalModel.call(this,internalModel,idx);};ManyRelationship.prototype.inverseDidDematerialize = function inverseDidDematerialize(inverseInternalModel){_Relationship.prototype.inverseDidDematerialize.call(this,inverseInternalModel);if(this.isAsync){if(this._manyArray){this._retainedManyArray = this._manyArray;this._manyArray = null;}this._removeInternalModelFromManyArray(this._retainedManyArray,inverseInternalModel);}this.notifyHasManyChanged();};ManyRelationship.prototype.addInternalModel = function addInternalModel(internalModel,idx){if(this.members.has(internalModel)){return;}(0,_emberDataDebug.assertPolymorphicType)(this.internalModel,this.relationshipMeta,internalModel);_Relationship.prototype.addInternalModel.call(this,internalModel,idx); // make lazy later
+this.manyArray._addInternalModels([internalModel],idx);};ManyRelationship.prototype.removeCanonicalInternalModelFromOwn = function removeCanonicalInternalModelFromOwn(internalModel,idx){var i=idx;if(!this.canonicalMembers.has(internalModel)){return;}if(i === undefined){i = this.canonicalState.indexOf(internalModel);}if(i > -1){this.canonicalState.splice(i,1);}_Relationship.prototype.removeCanonicalInternalModelFromOwn.call(this,internalModel,idx);};ManyRelationship.prototype.removeAllCanonicalInternalModelsFromOwn = function removeAllCanonicalInternalModelsFromOwn(){_Relationship.prototype.removeAllCanonicalInternalModelsFromOwn.call(this);this.canonicalMembers.clear();this.canonicalState.splice(0,this.canonicalState.length);};ManyRelationship.prototype.removeCompletelyFromOwn = function removeCompletelyFromOwn(internalModel){_Relationship.prototype.removeCompletelyFromOwn.call(this,internalModel);var canonicalIndex=this.canonicalState.indexOf(internalModel);if(canonicalIndex !== -1){this.canonicalState.splice(canonicalIndex,1);}var manyArray=this._manyArray;if(manyArray){var idx=manyArray.currentState.indexOf(internalModel);if(idx !== -1){manyArray.internalReplace(idx,1);}}};ManyRelationship.prototype.flushCanonical = function flushCanonical(){if(this._manyArray){this._manyArray.flushCanonical();}_Relationship.prototype.flushCanonical.call(this);};ManyRelationship.prototype.removeInternalModelFromOwn = function removeInternalModelFromOwn(internalModel,idx){if(!this.members.has(internalModel)){return;}_Relationship.prototype.removeInternalModelFromOwn.call(this,internalModel,idx); // note that ensuring the many array is created, via `this.manyArray`
+// (instead of `this._manyArray`) is intentional.
+//
+// Because we're removing from local, and not canonical, state, it is
+// important that the many array is initialized now with those changes,
+// otherwise it will be initialized with canonical state and we'll have
+// lost the fact that this internalModel was removed.
+this._removeInternalModelFromManyArray(this.manyArray,internalModel,idx);this._removeInternalModelFromManyArray(this._retainedManyArray,internalModel,idx);};ManyRelationship.prototype.removeAllInternalModelsFromOwn = function removeAllInternalModelsFromOwn(){_Relationship.prototype.removeAllInternalModelsFromOwn.call(this); // as with removeInternalModelFromOwn, we make sure the many array is
+// instantiated, or we'll lose local removals, as we're not updating
+// canonical state here.
+this.manyArray.clear();if(this._retainedManyArray){this._retainedManyArray.clear();}};ManyRelationship.prototype._removeInternalModelFromManyArray = function _removeInternalModelFromManyArray(manyArray,internalModel,idx){if(manyArray === null){return;}if(idx !== undefined){ //TODO(Igor) not used currently, fix
 manyArray.currentState.removeAt(idx);}else {manyArray._removeInternalModels([internalModel]);}};ManyRelationship.prototype.notifyRecordRelationshipAdded = function notifyRecordRelationshipAdded(internalModel,idx){this.internalModel.notifyHasManyAdded(this.key,internalModel,idx);};ManyRelationship.prototype.reload = function reload(){var manyArray=this.manyArray;var manyArrayLoadedState=manyArray.get('isLoaded');if(this._loadingPromise){if(this._loadingPromise.get('isPending')){return this._loadingPromise;}if(this._loadingPromise.get('isRejected')){manyArray.set('isLoaded',manyArrayLoadedState);}}var promise=void 0;if(this.link){promise = this.fetchLink();}else {promise = this.store._scheduleFetchMany(manyArray.currentState).then(function(){return manyArray;});}this._updateLoadingPromise(promise);return this._loadingPromise;};ManyRelationship.prototype.computeChanges = function computeChanges(){var internalModels=arguments.length > 0 && arguments[0] !== undefined?arguments[0]:[];var members=this.canonicalMembers;var internalModelsToRemove=[];var internalModelSet=setForArray(internalModels);members.forEach(function(member){if(internalModelSet.has(member)){return;}internalModelsToRemove.push(member);});this.removeCanonicalInternalModels(internalModelsToRemove);for(var i=0,l=internalModels.length;i < l;i++) {var internalModel=internalModels[i];this.removeCanonicalInternalModel(internalModel);this.addCanonicalInternalModel(internalModel,i);}};ManyRelationship.prototype.setInitialInternalModels = function setInitialInternalModels(internalModels){if(Array.isArray(internalModels) === false || internalModels.length === 0){return;}for(var i=0;i < internalModels.length;i++) {var internalModel=internalModels[i];if(this.canonicalMembers.has(internalModel)){continue;}this.canonicalMembers.add(internalModel);this.members.add(internalModel);this.setupInverseRelationship(internalModel);}this.canonicalState = this.canonicalMembers.toArray();};ManyRelationship.prototype.fetchLink = function fetchLink(){var _this2=this;return this.store.findHasMany(this.internalModel,this.link,this.relationshipMeta).then(function(records){if(records.hasOwnProperty('meta')){_this2.updateMeta(records.meta);}_this2.store._backburner.join(function(){_this2.updateInternalModelsFromAdapter(records);_this2.manyArray.set('isLoaded',true);_this2.setHasData(true);});return _this2.manyArray;});};ManyRelationship.prototype.findRecords = function findRecords(){var manyArray=this.manyArray;var internalModels=manyArray.currentState; //TODO CLEANUP
 return this.store.findMany(internalModels).then(function(){if(!manyArray.get('isDestroyed')){ //Goes away after the manyArray refactor
 manyArray.set('isLoaded',true);}return manyArray;});};ManyRelationship.prototype.notifyHasManyChanged = function notifyHasManyChanged(){this.internalModel.notifyHasManyAdded(this.key);};ManyRelationship.prototype.getRecords = function getRecords(){var _this3=this; //TODO(Igor) sync server here, once our syncing is not stupid
 var manyArray=this.manyArray;if(this.isAsync){var promise=void 0;if(this.link){if(this.hasLoaded){promise = this.findRecords();}else {promise = this.findLink().then(function(){return _this3.findRecords();});}}else {promise = this.findRecords();}return this._updateLoadingPromise(promise,manyArray);}else {true && !manyArray.isEvery('isEmpty',false) && Ember.assert('You looked up the \'' + this.key + '\' relationship on a \'' + this.internalModel.type.modelName + '\' with id ' + this.internalModel.id + ' but some of the associated records were not loaded. Either make sure they are all loaded together with the parent record, or specify that the relationship is async (\'DS.hasMany({ async: true })\')',manyArray.isEvery('isEmpty',false)); //TODO(Igor) WTF DO I DO HERE?
 // TODO @runspired equal WTFs to Igor
-if(!manyArray.get('isDestroyed')){manyArray.set('isLoaded',true);}return manyArray;}};ManyRelationship.prototype.updateData = function updateData(data,initial){var internalModels=this.store._pushResourceIdentifiers(this,data);if(initial){this.setInitialInternalModels(internalModels);}else {this.updateInternalModelsFromAdapter(internalModels);}};ManyRelationship.prototype.destroy = function destroy(){_Relationship.prototype.destroy.call(this);var manyArray=this._manyArray;if(manyArray){manyArray.destroy();}var proxy=this.__loadingPromise;if(proxy){proxy.destroy();}};_createClass$3(ManyRelationship,[{key:'_loadingPromise',get:function get(){return this.__loadingPromise;}},{key:'manyArray',get:function get(){if(!this._manyArray){this._manyArray = ManyArray.create({canonicalState:this.canonicalState,store:this.store,relationship:this,type:this.store.modelFor(this.belongsToType),record:this.internalModel,meta:this.meta,isPolymorphic:this.isPolymorphic});}return this._manyArray;}}]);return ManyRelationship;})(Relationship);function setForArray(array){var set=new OrderedSet();if(array){for(var i=0,l=array.length;i < l;i++) {set.add(array[i]);}}return set;}function _classCallCheck$6(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn$1(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call && (typeof call === "object" || typeof call === "function")?call:self;}function _inherits$1(subClass,superClass){if(typeof superClass !== "function" && superClass !== null){throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__ = superClass;}var BelongsToRelationship=(function(_Relationship){_inherits$1(BelongsToRelationship,_Relationship);function BelongsToRelationship(store,internalModel,inverseKey,relationshipMeta){_classCallCheck$6(this,BelongsToRelationship);var _this=_possibleConstructorReturn$1(this,_Relationship.call(this,store,internalModel,inverseKey,relationshipMeta));_this.internalModel = internalModel;_this.key = relationshipMeta.key;_this.inverseInternalModel = null;_this.canonicalState = null;return _this;}BelongsToRelationship.prototype.setInternalModel = function setInternalModel(internalModel){if(internalModel){this.addInternalModel(internalModel);}else if(this.inverseInternalModel){this.removeInternalModel(this.inverseInternalModel);}this.setHasData(true);this.setHasLoaded(true);};BelongsToRelationship.prototype.setCanonicalInternalModel = function setCanonicalInternalModel(internalModel){if(internalModel){this.addCanonicalInternalModel(internalModel);}else if(this.canonicalState){this.removeCanonicalInternalModel(this.canonicalState);}this.flushCanonicalLater();};BelongsToRelationship.prototype.setInitialCanonicalInternalModel = function setInitialCanonicalInternalModel(internalModel){if(!internalModel){return;} // When we initialize a belongsTo relationship, we want to avoid work like
+if(!manyArray.get('isDestroyed')){manyArray.set('isLoaded',true);}return manyArray;}};ManyRelationship.prototype.updateData = function updateData(data,initial){var internalModels=this.store._pushResourceIdentifiers(this,data);if(initial){this.setInitialInternalModels(internalModels);}else {this.updateInternalModelsFromAdapter(internalModels);}};ManyRelationship.prototype.destroy = function destroy(){_Relationship.prototype.destroy.call(this);var manyArray=this._manyArray;if(manyArray){manyArray.destroy();this._manyArray = null;}var proxy=this.__loadingPromise;if(proxy){proxy.destroy();this.__loadingPromise = null;}};_createClass$3(ManyRelationship,[{key:'_loadingPromise',get:function get(){return this.__loadingPromise;}},{key:'manyArray',get:function get(){true && !(this._manyArray === null || this._retainedManyArray === null) && Ember.assert('Error: relationship ' + this.parentType + ':' + this.key + ' has both many array and retained many array',this._manyArray === null || this._retainedManyArray === null);if(!this._manyArray){this._manyArray = ManyArray.create({canonicalState:this.canonicalState,store:this.store,relationship:this,type:this.store.modelFor(this.belongsToType),record:this.internalModel,meta:this.meta,isPolymorphic:this.isPolymorphic});if(this._retainedManyArray !== null){this._retainedManyArray.destroy();this._retainedManyArray = null;}}return this._manyArray;}}]);return ManyRelationship;})(Relationship);function setForArray(array){var set=new OrderedSet();if(array){for(var i=0,l=array.length;i < l;i++) {set.add(array[i]);}}return set;}function _classCallCheck$6(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn$1(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call && (typeof call === "object" || typeof call === "function")?call:self;}function _inherits$1(subClass,superClass){if(typeof superClass !== "function" && superClass !== null){throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);}subClass.prototype = Object.create(superClass && superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__ = superClass;}var BelongsToRelationship=(function(_Relationship){_inherits$1(BelongsToRelationship,_Relationship);function BelongsToRelationship(store,internalModel,inverseKey,relationshipMeta){_classCallCheck$6(this,BelongsToRelationship);var _this=_possibleConstructorReturn$1(this,_Relationship.call(this,store,internalModel,inverseKey,relationshipMeta));_this.internalModel = internalModel;_this.key = relationshipMeta.key;_this.inverseInternalModel = null;_this.canonicalState = null;return _this;}BelongsToRelationship.prototype.setInternalModel = function setInternalModel(internalModel){if(internalModel){this.addInternalModel(internalModel);}else if(this.inverseInternalModel){this.removeInternalModel(this.inverseInternalModel);}this.setHasData(true);this.setHasLoaded(true);};BelongsToRelationship.prototype.setCanonicalInternalModel = function setCanonicalInternalModel(internalModel){if(internalModel){this.addCanonicalInternalModel(internalModel);}else if(this.canonicalState){this.removeCanonicalInternalModel(this.canonicalState);}this.flushCanonicalLater();};BelongsToRelationship.prototype.setInitialCanonicalInternalModel = function setInitialCanonicalInternalModel(internalModel){if(!internalModel){return;} // When we initialize a belongsTo relationship, we want to avoid work like
 // notifying our internalModel that we've "changed" and excessive thrash on
 // setting up inverse relationships
-this.canonicalMembers.add(internalModel);this.members.add(internalModel);this.inverseInternalModel = this.canonicalState = internalModel;this.setupInverseRelationship(internalModel);};BelongsToRelationship.prototype.addCanonicalInternalModel = function addCanonicalInternalModel(internalModel){if(this.canonicalMembers.has(internalModel)){return;}if(this.canonicalState){this.removeCanonicalInternalModel(this.canonicalState);}this.canonicalState = internalModel;_Relationship.prototype.addCanonicalInternalModel.call(this,internalModel);};BelongsToRelationship.prototype.inverseDidDematerialize = function inverseDidDematerialize(){this.notifyBelongsToChanged();};BelongsToRelationship.prototype.removeCompletelyFromOwn = function removeCompletelyFromOwn(internalModel){_Relationship.prototype.removeCompletelyFromOwn.call(this,internalModel);if(this.canonicalState === internalModel){this.canonicalState = null;}if(this.inverseInternalModel === internalModel){this.inverseInternalModel = null;this.notifyBelongsToChanged();}};BelongsToRelationship.prototype.flushCanonical = function flushCanonical(){ //temporary fix to not remove newly created records if server returned null.
+this.canonicalMembers.add(internalModel);this.members.add(internalModel);this.inverseInternalModel = this.canonicalState = internalModel;this.setupInverseRelationship(internalModel);};BelongsToRelationship.prototype.addCanonicalInternalModel = function addCanonicalInternalModel(internalModel){if(this.canonicalMembers.has(internalModel)){return;}if(this.canonicalState){this.removeCanonicalInternalModel(this.canonicalState);}this.canonicalState = internalModel;_Relationship.prototype.addCanonicalInternalModel.call(this,internalModel);};BelongsToRelationship.prototype.inverseDidDematerialize = function inverseDidDematerialize(){_Relationship.prototype.inverseDidDematerialize.call(this,this.inverseInternalModel);this.notifyBelongsToChanged();};BelongsToRelationship.prototype.removeCompletelyFromOwn = function removeCompletelyFromOwn(internalModel){_Relationship.prototype.removeCompletelyFromOwn.call(this,internalModel);if(this.canonicalState === internalModel){this.canonicalState = null;}if(this.inverseInternalModel === internalModel){this.inverseInternalModel = null;this.notifyBelongsToChanged();}};BelongsToRelationship.prototype.removeCompletelyFromInverse = function removeCompletelyFromInverse(){_Relationship.prototype.removeCompletelyFromInverse.call(this);this.inverseInternalModel = null;};BelongsToRelationship.prototype.flushCanonical = function flushCanonical(){ //temporary fix to not remove newly created records if server returned null.
 //TODO remove once we have proper diffing
-if(this.inverseInternalModel && this.inverseInternalModel.isNew() && !this.canonicalState){return;}if(this.inverseInternalModel !== this.canonicalState){this.inverseInternalModel = this.canonicalState;this.notifyBelongsToChanged();}_Relationship.prototype.flushCanonical.call(this);};BelongsToRelationship.prototype.addInternalModel = function addInternalModel(internalModel){if(this.members.has(internalModel)){return;}(0,_emberDataDebug.assertPolymorphicType)(this.internalModel,this.relationshipMeta,internalModel);if(this.inverseInternalModel){this.removeInternalModel(this.inverseInternalModel);}this.inverseInternalModel = internalModel;_Relationship.prototype.addInternalModel.call(this,internalModel);this.notifyBelongsToChanged();};BelongsToRelationship.prototype.setRecordPromise = function setRecordPromise(newPromise){var content=newPromise.get && newPromise.get('content');true && !(content !== undefined) && Ember.assert("You passed in a promise that did not originate from an EmberData relationship. You can only pass promises that come from a belongsTo or hasMany relationship to the get call.",content !== undefined);this.setInternalModel(content?content._internalModel:content);};BelongsToRelationship.prototype.removeInternalModelFromOwn = function removeInternalModelFromOwn(internalModel){if(!this.members.has(internalModel)){return;}this.inverseInternalModel = null;_Relationship.prototype.removeInternalModelFromOwn.call(this,internalModel);this.notifyBelongsToChanged();};BelongsToRelationship.prototype.notifyBelongsToChanged = function notifyBelongsToChanged(){this.internalModel.notifyBelongsToChanged(this.key);};BelongsToRelationship.prototype.removeCanonicalInternalModelFromOwn = function removeCanonicalInternalModelFromOwn(internalModel){if(!this.canonicalMembers.has(internalModel)){return;}this.canonicalState = null;_Relationship.prototype.removeCanonicalInternalModelFromOwn.call(this,internalModel);};BelongsToRelationship.prototype.findRecord = function findRecord(){if(this.inverseInternalModel){return this.store._findByInternalModel(this.inverseInternalModel);}else {return Ember.RSVP.Promise.resolve(null);}};BelongsToRelationship.prototype.fetchLink = function fetchLink(){var _this2=this;return this.store.findBelongsTo(this.internalModel,this.link,this.relationshipMeta).then(function(internalModel){if(internalModel){_this2.addInternalModel(internalModel);}return internalModel;});};BelongsToRelationship.prototype.getRecord = function getRecord(){var _this3=this; //TODO(Igor) flushCanonical here once our syncing is not stupid
+if(this.inverseInternalModel && this.inverseInternalModel.isNew() && !this.canonicalState){return;}if(this.inverseInternalModel !== this.canonicalState){this.inverseInternalModel = this.canonicalState;this.notifyBelongsToChanged();}_Relationship.prototype.flushCanonical.call(this);};BelongsToRelationship.prototype.addInternalModel = function addInternalModel(internalModel){if(this.members.has(internalModel)){return;}(0,_emberDataDebug.assertPolymorphicType)(this.internalModel,this.relationshipMeta,internalModel);if(this.inverseInternalModel){this.removeInternalModel(this.inverseInternalModel);}this.inverseInternalModel = internalModel;_Relationship.prototype.addInternalModel.call(this,internalModel);this.notifyBelongsToChanged();};BelongsToRelationship.prototype.setRecordPromise = function setRecordPromise(newPromise){var content=newPromise.get && newPromise.get('content');true && !(content !== undefined) && Ember.assert("You passed in a promise that did not originate from an EmberData relationship. You can only pass promises that come from a belongsTo or hasMany relationship to the get call.",content !== undefined);this.setInternalModel(content?content._internalModel:content);};BelongsToRelationship.prototype.removeInternalModelFromOwn = function removeInternalModelFromOwn(internalModel){if(!this.members.has(internalModel)){return;}this.inverseInternalModel = null;_Relationship.prototype.removeInternalModelFromOwn.call(this,internalModel);this.notifyBelongsToChanged();};BelongsToRelationship.prototype.removeAllInternalModelsFromOwn = function removeAllInternalModelsFromOwn(){_Relationship.prototype.removeAllInternalModelsFromOwn.call(this);this.inverseInternalModel = null;this.notifyBelongsToChanged();};BelongsToRelationship.prototype.notifyBelongsToChanged = function notifyBelongsToChanged(){this.internalModel.notifyBelongsToChanged(this.key);};BelongsToRelationship.prototype.removeCanonicalInternalModelFromOwn = function removeCanonicalInternalModelFromOwn(internalModel){if(!this.canonicalMembers.has(internalModel)){return;}this.canonicalState = null;_Relationship.prototype.removeCanonicalInternalModelFromOwn.call(this,internalModel);};BelongsToRelationship.prototype.removeAllCanonicalInternalModelsFromOwn = function removeAllCanonicalInternalModelsFromOwn(){_Relationship.prototype.removeAllCanonicalInternalModelsFromOwn.call(this);this.canonicalState = null;};BelongsToRelationship.prototype.findRecord = function findRecord(){if(this.inverseInternalModel){return this.store._findByInternalModel(this.inverseInternalModel);}else {return Ember.RSVP.Promise.resolve(null);}};BelongsToRelationship.prototype.fetchLink = function fetchLink(){var _this2=this;return this.store.findBelongsTo(this.internalModel,this.link,this.relationshipMeta).then(function(internalModel){if(internalModel){_this2.addInternalModel(internalModel);}return internalModel;});};BelongsToRelationship.prototype.getRecord = function getRecord(){var _this3=this; //TODO(Igor) flushCanonical here once our syncing is not stupid
 if(this.isAsync){var promise=void 0;if(this.link){if(this.hasLoaded){promise = this.findRecord();}else {promise = this.findLink().then(function(){return _this3.findRecord();});}}else {promise = this.findRecord();}return PromiseObject.create({promise:promise,content:this.inverseInternalModel?this.inverseInternalModel.getRecord():null});}else {if(this.inverseInternalModel === null){return null;}var toReturn=this.inverseInternalModel.getRecord();true && !(toReturn === null || !toReturn.get('isEmpty')) && Ember.assert("You looked up the '" + this.key + "' relationship on a '" + this.internalModel.modelName + "' with id " + this.internalModel.id + " but some of the associated records were not loaded. Either make sure they are all loaded together with the parent record, or specify that the relationship is async (`DS.belongsTo({ async: true })`)",toReturn === null || !toReturn.get('isEmpty'));return toReturn;}};BelongsToRelationship.prototype.reload = function reload(){ // TODO handle case when reload() is triggered multiple times
 if(this.link){return this.fetchLink();} // reload record, if it is already loaded
 if(this.inverseInternalModel && this.inverseInternalModel.hasRecord){return this.inverseInternalModel.getRecord().reload();}return this.findRecord();};BelongsToRelationship.prototype.updateData = function updateData(data,initial){true && !(data === null || data.id !== undefined && data.type !== undefined) && Ember.assert('Ember Data expected the data for the ' + this.key + ' relationship on a ' + this.internalModel.toString() + ' to be in a JSON API format and include an `id` and `type` property but it found ' + Ember.inspect(data) + '. Please check your serializer and make sure it is serializing the relationship payload into a JSON API format.',data === null || data.id !== undefined && data.type !== undefined);var internalModel=this.store._pushResourceIdentifier(this,data);if(initial){this.setInitialCanonicalInternalModel(internalModel);}else {this.setCanonicalInternalModel(internalModel);}};return BelongsToRelationship;})(Relationship);var _createClass$2=(function(){function defineProperties(target,props){for(var i=0;i < props.length;i++) {var descriptor=props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if("value" in descriptor)descriptor.writable = true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};})();function _classCallCheck$3(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function shouldFindInverse(relationshipMeta){var options=relationshipMeta.options;return !(options && options.inverse === null);}function createRelationshipFor(internalModel,relationshipMeta,store){var inverseKey=void 0;var inverse=null;if(shouldFindInverse(relationshipMeta)){inverse = internalModel.type.inverseFor(relationshipMeta.key,store);}else {internalModel.type.typeForRelationship(relationshipMeta.key,store);}if(inverse){inverseKey = inverse.name;}if(relationshipMeta.kind === 'hasMany'){return new ManyRelationship(store,internalModel,inverseKey,relationshipMeta);}else {return new BelongsToRelationship(store,internalModel,inverseKey,relationshipMeta);}}var Relationships=(function(){function Relationships(internalModel){_classCallCheck$3(this,Relationships);this.internalModel = internalModel;this.initializedRelationships = Object.create(null);} // TODO @runspired deprecate this as it was never truly a record instance
@@ -70783,7 +70798,19 @@ owner._lookupFactory = function(){var _owner;return (_owner = owner).lookupFacto
    A future optimization would be to build a single chained method out of the collected enters
    and setups. It may also be faster to do a two level cache (from: { to }) instead of caching based
    on a key that adds the two together.
- */var TransitionChainMap=Object.create(null);var _extractPivotNameCache=Object.create(null);var _splitOnDotCache=Object.create(null);function splitOnDot(name){return _splitOnDotCache[name] || (_splitOnDotCache[name] = name.split('.'));}function extractPivotName(name){return _extractPivotNameCache[name] || (_extractPivotNameCache[name] = splitOnDot(name)[0]);}function areAllModelsUnloaded(internalModels){for(var i=0;i < internalModels.length;++i) {var record=internalModels[i]._record;if(record && !(record.get('isDestroyed') || record.get('isDestroying'))){return false;}}return true;}function destroyRelationship(rel){if(rel._inverseIsAsync()){rel.removeInternalModelFromInverse(rel.inverseInternalModel);rel.removeInverseRelationships();}else {rel.removeCompletelyFromInverse();}} // this (and all heimdall instrumentation) will be stripped by a babel transform
+ */var TransitionChainMap=Object.create(null);var _extractPivotNameCache=Object.create(null);var _splitOnDotCache=Object.create(null);function splitOnDot(name){return _splitOnDotCache[name] || (_splitOnDotCache[name] = name.split('.'));}function extractPivotName(name){return _extractPivotNameCache[name] || (_extractPivotNameCache[name] = splitOnDot(name)[0]);}function areAllModelsUnloaded(internalModels){for(var i=0;i < internalModels.length;++i) {var record=internalModels[i]._record;if(record && !(record.get('isDestroyed') || record.get('isDestroying'))){return false;}}return true;} // Handle dematerialization for relationship `rel`.  In all cases, notify the
+// relatinoship of the dematerialization: this is done so the relationship can
+// notify its inverse which needs to update state
+//
+// If the inverse is sync, unloading this record is treated as a client-side
+// delete, so we remove the inverse records from this relationship to
+// disconnect the graph.  Because it's not async, we don't need to keep around
+// the internalModel as an id-wrapper for references and because the graph is
+// disconnected we can actually destroy the internalModel when checking for
+// orphaned models.
+function destroyRelationship(rel){rel.internalModelDidDematerialize();if(rel._inverseIsSync()){ // disconnect the graph so that the sync inverse relationship does not
+// prevent us from cleaning up during `_cleanupOrphanedInternalModels`
+rel.removeAllInternalModelsFromOwn();rel.removeAllCanonicalInternalModelsFromOwn();}} // this (and all heimdall instrumentation) will be stripped by a babel transform
 //  https://github.com/heimdalljs/babel5-plugin-strip-heimdall
 var InternalModelReferenceId=1;var nextBfsId=1; /*
   `InternalModel` is the Model class that we use internally inside Ember Data to represent models.
@@ -70914,7 +70941,7 @@ if(!this.hasRecord){return;}var triggers=this._deferredTriggers;var record=this.
    */InternalModel.prototype.removeFromInverseRelationships = function removeFromInverseRelationships(){var isNew=arguments.length > 0 && arguments[0] !== undefined?arguments[0]:false;this._relationships.forEach(function(name,rel){rel.removeCompletelyFromInverse();if(isNew === true){rel.clear();}});var implicitRelationships=this._implicitRelationships;this.__implicitRelationships = null;Object.keys(implicitRelationships).forEach(function(key){var rel=implicitRelationships[key];rel.removeCompletelyFromInverse();if(isNew === true){rel.clear();}});}; /*
     Notify all inverses that this internalModel has been dematerialized
     and destroys any ManyArrays.
-   */InternalModel.prototype.destroyRelationships = function destroyRelationships(){var relationships=this._relationships;relationships.forEach(function(name,rel){return destroyRelationship(rel);});var implicitRelationships=this._implicitRelationships;this.__implicitRelationships = null;Object.keys(implicitRelationships).forEach(function(key){var rel=implicitRelationships[key];destroyRelationship(rel);rel.destroy();});}; /*
+   */InternalModel.prototype.destroyRelationships = function destroyRelationships(){var relationships=this._relationships;relationships.forEach(function(name,rel){return destroyRelationship(rel);});var implicitRelationships=this._implicitRelationships;this.__implicitRelationships = null;Object.keys(implicitRelationships).forEach(function(key){var rel=implicitRelationships[key];destroyRelationship(rel);});}; /*
     When a find request is triggered on the store, the user can optionally pass in
     attributes and relationships to be preloaded. These are meant to behave as if they
     came back from the server, except the user obtained them out of band and is informing
@@ -80498,7 +80525,88 @@ define("ember-data/transforms/transform", ["exports"], function (exports) {
 define("ember-data/version", ["exports"], function (exports) {
   "use strict";
 
-  exports["default"] = "2.18.0";
+  exports["default"] = "2.18.1";
+});
+define('ember-flexberry-account/components/flexberry-login', ['exports', 'ember'], function (exports, _ember) {
+  /**
+    @module ember-flexberry-account
+  */
+
+  'use strict';
+
+  exports['default'] = _ember['default'].Component.extend({
+
+    userAccount: _ember['default'].inject.service('user-account'),
+
+    init: function init() {
+      this._super.apply(this, arguments);
+
+      this.set('vk', this.get('userAccount.vk'));
+      this.set('facebook', this.get('userAccount.facebook'));
+      this.set('twitter', this.get('userAccount.twitter'));
+      this.set('google', this.get('userAccount.google'));
+      this.set('microsoft', this.get('userAccount.microsoft'));
+      this.set('github', this.get('userAccount.github'));
+      this.set('ok', this.get('userAccount.ok'));
+      this.set('mailru', this.get('userAccount.mailru'));
+      this.set('yandex', this.get('userAccount.yandex'));
+      this.set('gosuslugi', this.get('userAccount.gosuslugi'));
+      this.set('useSocialBlock', this.get('vk') || this.get('facebook') || this.get('twitter') || this.get('google') || this.get('microsoft') || this.get('github') || this.get('ok') || this.get('mailru') || this.get('yandex') || this.get('gosuslugi'));
+    },
+
+    vk: false,
+    facebook: false,
+    twitter: false,
+    google: false,
+    microsoft: false,
+    github: false,
+    ok: false,
+    mailru: false,
+    yandex: false,
+    gosuslugi: false,
+    useSocialBlock: false,
+
+    username: undefined,
+    password: undefined,
+    remember: true,
+    actions: {
+      login: function login() {
+        this.get('userAccount').login(this.get('username'), this.get('password'));
+      },
+      register: function register() {
+        this.transitionToRoute('register');
+      },
+      pwdReset: function pwdReset() {
+        this.transitionToRoute('pwd-reset');
+      },
+      test: function test(reCaptchaResponse) {
+        console.log(reCaptchaResponse);
+      }
+    }
+  });
+});
+define('ember-flexberry-account/components/flexberry-pwd-reset', ['exports', 'ember'], function (exports, _ember) {
+  /**
+    @module ember-flexberry-account
+  */
+
+  'use strict';
+
+  exports['default'] = _ember['default'].Component.extend({
+    username: undefined,
+    actions: {
+      register: function register() {
+        this.transitionToRoute('register');
+      },
+      login: function login() {
+        this.transitionToRoute('login');
+      },
+      pwdReset: function pwdReset() {
+        var username = this.get('username');
+        this.get('userAccount').pwdReset(username);
+      }
+    }
+  });
 });
 define('ember-flexberry-account/components/flexberry-recaptcha', ['exports', 'ember'], function (exports, _ember) {
   /**
@@ -80613,81 +80721,20 @@ define('ember-flexberry-account/components/flexberry-recaptcha', ['exports', 'em
     }
   });
 });
-define('ember-flexberry-account/controllers/login', ['exports', 'ember'], function (exports, _ember) {
+define('ember-flexberry-account/components/flexberry-register', ['exports', 'ember'], function (exports, _ember) {
+  /**
+    @module ember-flexberry-account
+  */
+
   'use strict';
 
-  exports['default'] = _ember['default'].Controller.extend({
+  exports['default'] = _ember['default'].Component.extend({
+
     userAccount: _ember['default'].inject.service('user-account'),
+
     init: function init() {
-      this.set('vk', this.get('userAccount.vk'));
-      this.set('facebook', this.get('userAccount.facebook'));
-      this.set('twitter', this.get('userAccount.twitter'));
-      this.set('google', this.get('userAccount.google'));
-      this.set('microsoft', this.get('userAccount.microsoft'));
-      this.set('github', this.get('userAccount.github'));
-      this.set('ok', this.get('userAccount.ok'));
-      this.set('mailru', this.get('userAccount.mailru'));
-      this.set('yandex', this.get('userAccount.yandex'));
-      this.set('gosuslugi', this.get('userAccount.gosuslugi'));
-      this.set('useSocialBlock', this.get('vk') || this.get('facebook') || this.get('twitter') || this.get('google') || this.get('microsoft') || this.get('github') || this.get('ok') || this.get('mailru') || this.get('yandex') || this.get('gosuslugi'));
-    },
+      this._super.apply(this, arguments);
 
-    vk: false,
-    facebook: false,
-    twitter: false,
-    google: false,
-    microsoft: false,
-    github: false,
-    ok: false,
-    mailru: false,
-    yandex: false,
-    gosuslugi: false,
-    useSocialBlock: false,
-
-    username: undefined,
-    password: undefined,
-    remember: true,
-    actions: {
-      login: function login() {
-        this.get('userAccount').login(this.get('username'), this.get('password'));
-      },
-      register: function register() {
-        this.transitionToRoute('register');
-      },
-      pwdReset: function pwdReset() {
-        this.transitionToRoute('pwd-reset');
-      },
-      test: function test(reCaptchaResponse) {
-        console.log(reCaptchaResponse);
-      }
-    }
-  });
-});
-define('ember-flexberry-account/controllers/pwd-reset', ['exports', 'ember'], function (exports, _ember) {
-  'use strict';
-
-  exports['default'] = _ember['default'].Controller.extend({
-    username: undefined,
-    actions: {
-      register: function register() {
-        this.transitionToRoute('register');
-      },
-      login: function login() {
-        this.transitionToRoute('login');
-      },
-      pwdReset: function pwdReset() {
-        var username = this.get('username');
-        this.get('userAccount').pwdReset(username);
-      }
-    }
-  });
-});
-define('ember-flexberry-account/controllers/register', ['exports', 'ember'], function (exports, _ember) {
-  'use strict';
-
-  exports['default'] = _ember['default'].Controller.extend({
-    userAccount: _ember['default'].inject.service('user-account'),
-    init: function init() {
       this.set('vk', this.get('userAccount.vk'));
       this.set('facebook', this.get('userAccount.facebook'));
       this.set('twitter', this.get('userAccount.twitter'));
@@ -80742,6 +80789,30 @@ define('ember-flexberry-account/controllers/register', ['exports', 'ember'], fun
     }
   });
 });
+define('ember-flexberry-account/components/flexberry-user-profile', ['exports', 'ember'], function (exports, _ember) {
+  /**
+    @module ember-flexberry-account
+  */
+
+  'use strict';
+
+  exports['default'] = _ember['default'].Component.extend({});
+});
+define('ember-flexberry-account/controllers/login', ['exports', 'ember'], function (exports, _ember) {
+  'use strict';
+
+  exports['default'] = _ember['default'].Controller.extend({});
+});
+define('ember-flexberry-account/controllers/pwd-reset', ['exports', 'ember'], function (exports, _ember) {
+  'use strict';
+
+  exports['default'] = _ember['default'].Controller.extend({});
+});
+define('ember-flexberry-account/controllers/register', ['exports', 'ember'], function (exports, _ember) {
+  'use strict';
+
+  exports['default'] = _ember['default'].Controller.extend({});
+});
 define('ember-flexberry-account/controllers/user-profile', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
@@ -80753,7 +80824,21 @@ define('ember-flexberry-account/locales/en/translations', ['exports'], function 
   exports['default'] = {
     forms: {
       login: {
-        caption: 'Login',
+        caption: 'Login'
+      },
+      register: {
+        caption: 'Register new user'
+      },
+      'pwd-reset': {
+        caption: 'Reset password'
+      },
+
+      'user-profile': {
+        caption: 'User profile'
+      }
+    },
+    components: {
+      login: {
         'username-label': 'User name (E-mail):',
         'password-label': 'Password:',
         'remember-label': 'Remember:',
@@ -80766,7 +80851,6 @@ define('ember-flexberry-account/locales/en/translations', ['exports'], function 
         'pwd-reset-button-text': 'Reset password'
       },
       register: {
-        caption: 'Register new user',
         'username-label': 'Login (E-mail):',
         'surname-label': 'Surname:',
         'name-label': 'Name:',
@@ -80782,7 +80866,6 @@ define('ember-flexberry-account/locales/en/translations', ['exports'], function 
         'pwd-reset-button-text': 'Reset password'
       },
       'pwd-reset': {
-        caption: 'Reset password',
         'username-label': 'Username',
         'captcha-label': '[CAPTCHA]',
         'pwd-reset-button-title': 'Reset password request',
@@ -80792,9 +80875,7 @@ define('ember-flexberry-account/locales/en/translations', ['exports'], function 
         'register-button-title': 'Quick registration process',
         'register-button-text': 'Register'
       },
-      'user-profile': {
-        caption: 'User profile'
-      }
+      'user-profile': {}
     }
   };
 });
@@ -80804,7 +80885,22 @@ define('ember-flexberry-account/locales/ru/translations', ['exports'], function 
   exports['default'] = {
     forms: {
       login: {
-        caption: 'Вход в систему',
+        caption: 'Вход в систему'
+      },
+      register: {
+        caption: 'Регистрация нового пользователя'
+      },
+      'pwd-reset': {
+        caption: 'Восстановление пароля'
+      },
+
+      'user-profile': {
+        caption: 'Профиль пользователя'
+      }
+    },
+
+    components: {
+      login: {
         'username-label': 'Логин (E-mail):',
         'password-label': 'Пароль:',
         'remember-label': 'Запомнить:',
@@ -80817,7 +80913,6 @@ define('ember-flexberry-account/locales/ru/translations', ['exports'], function 
         'pwd-reset-button-text': 'Восстановить пароль'
       },
       register: {
-        caption: 'Регистрация нового пользователя',
         'username-label': 'Логин (E-mail):',
         'surname-label': 'Фамилия:',
         'name-label': 'Имя:',
@@ -80833,7 +80928,6 @@ define('ember-flexberry-account/locales/ru/translations', ['exports'], function 
         'pwd-reset-button-text': 'Восстановить пароль'
       },
       'pwd-reset': {
-        caption: 'Восстановление пароля',
         'username-label': 'Логин (E-mail)',
         'captcha-label': '[CAPTCHA]',
         'pwd-reset-button-title': 'Запрос на восстановление пароля для указанного логина',
@@ -80843,9 +80937,7 @@ define('ember-flexberry-account/locales/ru/translations', ['exports'], function 
         'register-button-title': 'Пройти быструю процедуру регистрации',
         'register-button-text': 'Зарегистрироваться'
       },
-      'user-profile': {
-        caption: 'Профиль пользователя'
-      }
+      'user-profile': {}
     }
   };
 });

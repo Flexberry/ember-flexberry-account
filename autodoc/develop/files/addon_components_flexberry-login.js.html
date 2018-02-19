@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ember-flexberry-account - Flexberry Documentation</title>
+    <title>addon/components/flexberry-login.js - Flexberry Documentation</title>
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -88,30 +88,80 @@
                 <div id="docs-main">
                     <div class="content">
 <div class="page-header">
-    <h1>ember-flexberry-account <small>Module</small></h1>
+    <h1>addon/components/flexberry-login.js <small>File</small></h1>
 </div>
 
-<div class="clearfix well well-small">
+<div class="file">
+    <pre class="prettyprint linenums">
+/**
+  @module ember-flexberry-account
+*/
 
+import Ember from &#x27;ember&#x27;;
 
-        <div class="foundat">
-            Defined in: <a href="../files/addon_components_flexberry-login.js.html#l1"><code>addon&#x2F;components&#x2F;flexberry-login.js:1</code></a>
-        </div>
+export default Ember.Component.extend({
 
-</div>
+  userAccount: Ember.inject.service(&#x27;user-account&#x27;),
 
+  init: function() {
+    this._super(...arguments);
 
-<div class="moduledesc well well-small">
-    
-</div>
+    this.set(&#x27;vk&#x27;, this.get(&#x27;userAccount.vk&#x27;));
+    this.set(&#x27;facebook&#x27;, this.get(&#x27;userAccount.facebook&#x27;));
+    this.set(&#x27;twitter&#x27;, this.get(&#x27;userAccount.twitter&#x27;));
+    this.set(&#x27;google&#x27;, this.get(&#x27;userAccount.google&#x27;));
+    this.set(&#x27;microsoft&#x27;, this.get(&#x27;userAccount.microsoft&#x27;));
+    this.set(&#x27;github&#x27;, this.get(&#x27;userAccount.github&#x27;));
+    this.set(&#x27;ok&#x27;, this.get(&#x27;userAccount.ok&#x27;));
+    this.set(&#x27;mailru&#x27;, this.get(&#x27;userAccount.mailru&#x27;));
+    this.set(&#x27;yandex&#x27;, this.get(&#x27;userAccount.yandex&#x27;));
+    this.set(&#x27;gosuslugi&#x27;, this.get(&#x27;userAccount.gosuslugi&#x27;));
+    this.set(&#x27;useSocialBlock&#x27;, (
+      this.get(&#x27;vk&#x27;) ||
+      this.get(&#x27;facebook&#x27;) ||
+      this.get(&#x27;twitter&#x27;) ||
+      this.get(&#x27;google&#x27;) ||
+      this.get(&#x27;microsoft&#x27;) ||
+      this.get(&#x27;github&#x27;) ||
+      this.get(&#x27;ok&#x27;) ||
+      this.get(&#x27;mailru&#x27;) ||
+      this.get(&#x27;yandex&#x27;) ||
+      this.get(&#x27;gosuslugi&#x27;)
+    ));
+  },
 
+  vk: false,
+  facebook: false,
+  twitter: false,
+  google: false,
+  microsoft: false,
+  github: false,
+  ok: false,
+  mailru: false,
+  yandex: false,
+  gosuslugi: false,
+  useSocialBlock: false,
 
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-    </div>
+  username: undefined,
+  password: undefined,
+  remember: true,
+  actions: {
+    login: function() {
+      this.get(&#x27;userAccount&#x27;).login(this.get(&#x27;username&#x27;), this.get(&#x27;password&#x27;));
+    },
+    register: function() {
+      this.transitionToRoute(&#x27;register&#x27;);
+    },
+    pwdReset: function() {
+      this.transitionToRoute(&#x27;pwd-reset&#x27;);
+    },
+    test(reCaptchaResponse) {
+      console.log(reCaptchaResponse);
+    }
+  }
+});
 
-    <div class="yui3-u-1-2">
-    </div>
+    </pre>
 </div>
                     </div>
                 </div>

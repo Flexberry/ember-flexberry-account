@@ -4,11 +4,39 @@
         "version": "develop"
     },
     "files": {
-        "addon/components/flexberry-recaptcha.js": {
-            "name": "addon/components/flexberry-recaptcha.js",
+        "addon/components/flexberry-login.js": {
+            "name": "addon/components/flexberry-login.js",
             "modules": {
                 "ember-flexberry-account": 1
             },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "addon/components/flexberry-pwd-reset.js": {
+            "name": "addon/components/flexberry-pwd-reset.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "addon/components/flexberry-recaptcha.js": {
+            "name": "addon/components/flexberry-recaptcha.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "addon/components/flexberry-register.js": {
+            "name": "addon/components/flexberry-register.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "addon/components/flexberry-user-profile.js": {
+            "name": "addon/components/flexberry-user-profile.js",
+            "modules": {},
             "classes": {},
             "fors": {},
             "namespaces": {}
@@ -30,7 +58,7 @@
             "fors": {},
             "namespaces": {},
             "tag": "module",
-            "file": "addon/components/flexberry-recaptcha.js",
+            "file": "addon/components/flexberry-login.js",
             "line": 1
         }
     },
