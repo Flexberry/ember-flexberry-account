@@ -7,7 +7,12 @@
 
 <div class="username-div">
 {{t "components.register.username-label"}}<br/>
-{{input type="email" value=username readonly=readonly}}
+{{#if captchaPassed}}
+  {{input type="email" value=username}}
+{{else}}
+  {{input type="email" value=username readonly=captchaPassed}}
+{{/if}}
+
 {{#if validUsername}}
 ok!
 {{/if}}
@@ -33,6 +38,7 @@ Enter password: <br/>
 <div class="register-div">
   <button
     class="ui register-button button"
+    disabled={{allowRegistration}}
     title={{t "components.register.register-button-title"}}
     {{action "register"}}>
       {{t "components.register.register-button-text"}}
@@ -61,7 +67,6 @@ Enter password: <br/>
     title={{t "components.register.login-button-title"}}
     {{action "login"}}>
     {{t "components.register.login-button-text"}}
-    disabled={{allowRegistration}}
   </button>
   <button class="ui pwd-reset-button button"
     title={{t "components.register.pwd-reset-button-title"}}

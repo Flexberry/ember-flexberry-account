@@ -55,7 +55,7 @@ export default Ember.Component.extend({
 
   captchaPassed: false,
 
-  readonly: Ember.computed('captchaPassed', function() { return this.captchaPassed; }),
+  unameReadonly: Ember.computed('captchaPassed', function() { return this.captchaPassed; }),
 
   p1: undefined,
   p2: undefined,
@@ -89,7 +89,7 @@ export default Ember.Component.extend({
       this.transitionToRoute('pwd-reset');
     },
     captchaSuccess: function() {
-
+      this.set('captchaPassed', true);
     }
   }
 });
