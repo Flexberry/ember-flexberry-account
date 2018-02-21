@@ -1,15 +1,20 @@
-<div class="username-div">
-  {{t "components.pwd-reset.username-label"}}<br/>
-  {{input type="text" value=username}}
-</div>
 <div class="captcha-div">
    {{t "components.pwd-reset.captcha-label"}}<br/>
-   {{flexberry-recaptcha}}
+   {{flexberry-recaptcha onSuccess=(action "captchaSuccess")}}
+</div>
+<div class="username-div">
+  {{t "components.pwd-reset.username-label"}}<br/>
+  {{#if captchaPassed}}
+    {{input type="text" value=username}}
+  {{else}}
+    {{input type="text" readonly=true}}
+  {{/if}}
 </div>
 <div class="pwd-reset-div">
   <button
     class="ui pwd-reset-button button"
     title={{t "components.pwd-reset.pwd-reset-button-title"}}
+    disabled={{allowReset}}
     {{action "pwdReset"}}>
       {{t "components.pwd-reset.pwd-reset-button-text"}}
   </button>

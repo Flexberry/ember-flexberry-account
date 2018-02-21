@@ -50,6 +50,8 @@ export default Ember.Component.extend({
   username: undefined,
   password: undefined,
   remember: true,
+  allowToLogin: Ember.computed('username', 'password', function() { return Ember.isEmpty(this.username) || Ember.isEmpty(this.password); }),
+
   actions: {
     login: function() {
       this.get('userAccount').login(this.get('username'), this.get('password'));
