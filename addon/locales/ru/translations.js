@@ -30,9 +30,7 @@ export default {
     },
     register: {
       'username-label': 'Логин (E-mail):',
-      'surname-label': 'Фамилия:',
-      'name-label': 'Имя:',
-      'middlename-label': 'Отчество:',
+      'full-name-label': 'Фамилия, Имя, Отчество:',
       'captcha-label': '[CAPTCHA]',
       'register-button-title': 'Зарегистрировать пользователя',
       'register-button-text': 'Регистрация',

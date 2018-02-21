@@ -48,32 +48,37 @@ export default Ember.Component.extend({
   useSocialBlock: false,
 
   username: undefined,
-  surname: undefined,
-  name: undefined,
-  middlename: undefined,
+  fullName: undefined,
   validUsername: false,
+  validFullname: false,
 
   captchaPassed: false,
 
-  unameReadonly: Ember.computed('captchaPassed', function() { return this.captchaPassed; }),
-
-  p1: undefined,
-  p2: undefined,
-  validPassword: Ember.computed('p1', 'p2', function() { return p1 === p2; }),
-
   allowRegistration: Ember.computed(
     'validUsername',
-    'validPassword',
-    'captchaPassed',
-    function() { return !this.validUsername && !this.validPassword && !this.captchaPassed;}
+    'validFullname',
+    function() { return !(this.validUsername && this.validFullname);}
   ),
 
   actions: {
+    captchaSuccess: function() {
+      this.set('captchaPassed', true);
+    },
     validateUsername: function() {
+
       let username = this.get('username');
       let userAccountService = this.get('userAccount');
+
       let validateUsernameResult = userAccountService.validateUsername(username);
+
       this.set('validUsername', validateUsernameResult);
+    },
+    validateFullname: function() {
+      if (!Ember.isEmpty(this.fullName)) {
+        this.set('validFullname', true);
+      } else {
+        this.set('validFullname', false);
+      }
     },
     register: function() {
       let username = this.get('username');
@@ -83,13 +88,10 @@ export default Ember.Component.extend({
       this.get('userAccount').register(username, surname, name, middlename);
     },
     login: function() {
-      this.transitionToRoute('login');
+      Ember.getOwner(this).lookup('router:main').transitionTo('login');
     },
     pwdReset: function() {
-      this.transitionToRoute('pwd-reset');
-    },
-    captchaSuccess: function() {
-      this.set('captchaPassed', true);
+      Ember.getOwner(this).lookup('router:main').transitionTo('pwd-reset');
     }
   }
 });

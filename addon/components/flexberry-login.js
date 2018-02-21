@@ -55,10 +55,10 @@ export default Ember.Component.extend({
       this.get('userAccount').login(this.get('username'), this.get('password'));
     },
     register: function() {
-      this.transitionToRoute('register');
+      Ember.getOwner(this).lookup('router:main').transitionTo('register');
     },
     pwdReset: function() {
-      this.transitionToRoute('pwd-reset');
+      Ember.getOwner(this).lookup('router:main').transitionTo('pwd-reset');
     },
     test(reCaptchaResponse) {
       console.log(reCaptchaResponse);

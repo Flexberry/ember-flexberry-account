@@ -29,9 +29,7 @@ export default {
     },
     register: {
       'username-label': 'Login (E-mail):',
-      'surname-label': 'Surname:',
-      'name-label': 'Name:',
-      'middlename-label': 'Middlename:',
+      'full-name-label': 'Full name:',
       'captcha-label': '[Captcha]',
       'register-button-title': 'Register new user',
       'register-button-text': 'Register',

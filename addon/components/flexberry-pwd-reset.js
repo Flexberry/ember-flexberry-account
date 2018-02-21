@@ -8,10 +8,10 @@ export default Ember.Component.extend({
   username: undefined,
   actions: {
     register: function() {
-      this.transitionToRoute('register');
+      Ember.getOwner(this).lookup('router:main').transitionTo('register');
     },
     login: function() {
-      this.transitionToRoute('login');
+      Ember.getOwner(this).lookup('router:main').transitionTo('login');
     },
     pwdReset: function() {
       let username = this.get('username');

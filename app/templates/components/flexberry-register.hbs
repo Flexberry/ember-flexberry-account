@@ -8,38 +8,32 @@
 <div class="username-div">
 {{t "components.register.username-label"}}<br/>
 {{#if captchaPassed}}
-  {{input type="email" value=username}}
+  {{input type="email" value=username focus-out="validateUsername"}}
 {{else}}
-  {{input type="email" value=username readonly=captchaPassed}}
+  {{input type="email" readonly=true}}
 {{/if}}
 
 {{#if validUsername}}
 ok!
 {{/if}}
 </div>
-<div class="surname-div">
- {{t "components.register.surname-label"}}<br/>
- {{input type="text" value=surname}}
-</div>
-<div class="name-div">
-{{t "components.register.name-label"}}<br/>
- {{input type="text" value=name}}
-</div>
-<div class="middle-name-div">
-{{t "components.register.middlename-label"}}<br/>
- {{input type="text" value=middlename}}
-</div>
-<div class="middle-name-div">
-Enter password: <br/>
- {{input type="password" value=p1}}
- Re-enter password: <br/>
- {{input type="password" value=p2}}
+<div class="full-name-div">
+ {{t "components.register.full-name-label"}}<br/>
+ {{#if captchaPassed}}
+  {{input type="text" value=fullName focus-out="validateFullname"}}
+ {{else}}
+  {{input type="text" readonly=true}}
+{{/if}}
+
+{{#if validFullname}}
+ok!
+{{/if}}
 </div>
 <div class="register-div">
   <button
     class="ui register-button button"
-    disabled={{allowRegistration}}
     title={{t "components.register.register-button-title"}}
+    disabled={{allowRegistration}}
     {{action "register"}}>
       {{t "components.register.register-button-text"}}
   </button>
