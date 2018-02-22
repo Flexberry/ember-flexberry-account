@@ -74,9 +74,11 @@ export default Ember.Component.extend({
     @default false
   */
   validFullname: Ember.computed('fullName', function() {
-      if (!Ember.isEmpty(this.fullName)) return true;
-
-      return false;
+      if (!Ember.isEmpty(this.fullName)) {
+        return true;
+      } else {
+        return false;
+      }
     }),
 
   /**
