@@ -30,8 +30,7 @@ export default {
     },
     register: {
       'username-label': 'Логин (E-mail):',
-      'full-name-label': 'Фамилия, Имя, Отчество:',
-      'captcha-label': '[CAPTCHA]',
+      'full-name-label': 'ФИО',
       'register-button-title': 'Зарегистрировать пользователя',
       'register-button-text': 'Регистрация',
       'register-with-label': 'Зарегистрироваться при помощи:',
@@ -43,7 +42,6 @@ export default {
     },
     'pwd-reset': {
       'username-label': 'Логин (E-mail)',
-      'captcha-label': '[CAPTCHA]',
       'pwd-reset-button-title': 'Запрос на восстановление пароля для указанного логина',
       'pwd-reset-button-text': 'Восстановить пароль',
       'login-button-title': 'Войти в систему по логину и паролю',
