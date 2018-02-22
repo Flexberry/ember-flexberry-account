@@ -54,16 +54,23 @@ ok!
   </div>
 </div>
 {{/if}}
+
+{{#if showNavBlock}}
 <div class="login-reset-div">
   {{t "components.register.login-reset-label"}}<br/>
+  {{#if showLoginButton}}
   <button class="ui login-button button"
     title={{t "components.register.login-button-title"}}
     {{action "login"}}>
     {{t "components.register.login-button-text"}}
   </button>
+  {{/if}}
+  {{#if showPwdResetButton}}
   <button class="ui pwd-reset-button button"
     title={{t "components.register.pwd-reset-button-title"}}
     {{action "pwdReset"}}>
       {{t "components.register.pwd-reset-button-text"}}
   </button>
+  {{/if}}
 </div>
+{{/if}}

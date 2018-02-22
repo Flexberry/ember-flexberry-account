@@ -33,15 +33,21 @@
   </div>
 </div>
 {{/if}}
+{{#if useNavBlock}}
 <div class="register-reset-div">
+  {{#if showRegButton}}
   <button class="ui register-button button"
     title={{t "components.login.register-button-title"}}
     {{action "register"}}>
       {{t "components.login.register-button-text"}}
   </button>
+  {{/if}}
+  {{#if showPwdResetButton}}
   <button class="ui pwd-reset-button button"
   title={{t "components.login.pwd-reset-button-title"}}
   {{action "pwdReset"}}>
     {{t "components.login.pwd-reset-button-text"}}
   </button>
+  {{/if}}
 </div>
+{{/if}}

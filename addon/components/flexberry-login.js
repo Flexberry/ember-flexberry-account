@@ -19,6 +19,24 @@ export default Ember.Component.extend({
   yandex: false,
   gosuslugi: false,
   useSocialBlock: false,
+  useNavBlock: false,
+  /**
+    Stores if we gonna show registration button or not.
+
+    @property showRegButton
+    @type Boolean
+    @default false
+  */
+  showRegButton: false,
+
+  /**
+    Stores if we gonna show password reset button or not.
+
+    @property showPwdResetButton
+    @type Boolean
+    @default false
+  */
+  showPwdResetButton: false,
 
   /**
     This field stores username.

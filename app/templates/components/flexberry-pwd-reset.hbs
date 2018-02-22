@@ -18,15 +18,21 @@
       {{t "components.pwd-reset.pwd-reset-button-text"}}
   </button>
 </div>
+{{#if showNavBlock}}
 <div class="login-register-div">
+  {{#if showPwdResetButton}}
   <button class="ui login-button button"
     title={{t "components.pwd-reset.login-button-title"}}
     {{action "login"}}>
       {{t "components.pwd-reset.login-button-text"}}
   </button>
+  {{/if}}
+  {{#if showRegButton}}
   <button class="ui register-button button"
     title={{t "components.pwd-reset.register-button-title"}}
     {{action "register"}}>
       {{t "components.pwd-reset.register-button-text"}}
   </button>
+  {{/if}}
 </div>
+{{/if}}

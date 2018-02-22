@@ -6,6 +6,26 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
+  useNavBlock: false,
+
+  /**
+    Stores if we gonna show registration button or not.
+
+    @property showRegButton
+    @type Boolean
+    @default false
+  */
+  showRegButton: false,
+
+  /**
+    Stores if we gonna show login button or not.
+
+    @property showLoginButton
+    @type Boolean
+    @default false
+  */
+  showLoginButton: false,
+
   /**
     This field stores username.
 

@@ -19,6 +19,25 @@ export default Ember.Component.extend({
   yandex: false,
   gosuslugi: false,
   useSocialBlock: false,
+  useNavBlock: false,
+
+  /**
+    Stores if we gonna show login button or not.
+
+    @property showLoginButton
+    @type Boolean
+    @default false
+  */
+  showLoginButton: false,
+
+  /**
+    Stores if we gonna show password reset button or not.
+
+    @property showPwdResetButton
+    @type Boolean
+    @default false
+  */
+  showPwdResetButton: false,
 
   /**
     This field stores username.
@@ -47,16 +66,18 @@ export default Ember.Component.extend({
   */
   validUsername: false,
 
-  ///TODO: computed field
-
   /**
-    This field stores whether fullname is valid or not.
+    This computed field shows whether fullname is valid or not.
 
     @property validFullname
     @type Boolean
     @default false
   */
-  validFullname: false,
+  validFullname: Ember.computed('fullName', function() {
+      if (!Ember.isEmpty(this.fullName)) return true;
+
+      return false;
+    }),
 
   /**
     This field stores if captcha is passed successfully.
@@ -96,19 +117,6 @@ export default Ember.Component.extend({
       let validateUsernameResult = userAccountService.validateUsername(username);
 
       this.set('validUsername', validateUsernameResult);
-    },
-
-    /**
-      This action is called when fullName field is out of focus.
-
-      @method actions.validateUsername
-    */
-    validateFullname: function() {
-      if (!Ember.isEmpty(this.fullName)) {
-        this.set('validFullname', true);
-      } else {
-        this.set('validFullname', false);
-      }
     },
 
     /**
