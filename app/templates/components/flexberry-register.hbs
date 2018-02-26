@@ -12,9 +12,8 @@
   {{input type="email" readonly=true}}
 {{/if}}
 
-{{#if validUsername}}
-<i class="green check icon"></i>
-{{/if}}
+{{{usernameFlag}}}
+
 </div>
 <div class="full-name-div">
  {{t "components.register.full-name-label"}}<br/>
@@ -25,7 +24,7 @@
 {{/if}}
 
 {{#if validFullname}}
-<i class="green check icon"></i>
+  <i class="green check icon"></i>
 {{/if}}
 </div>
 <div class="register-div">

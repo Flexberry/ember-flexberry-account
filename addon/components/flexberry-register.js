@@ -66,6 +66,8 @@ export default Ember.Component.extend({
   */
   validUsername: false,
 
+  usernameFlag: undefined,
+
   /**
     This computed field shows whether fullname is valid or not.
 
@@ -119,6 +121,11 @@ export default Ember.Component.extend({
       let validateUsernameResult = userAccountService.validateUsername(username);
 
       this.set('validUsername', validateUsernameResult);
+      if (validateUsernameResult === false) {
+        this.set('usernameFlag', '<i class="red times icon">');
+      } else {
+        this.set('usernameFlag', '<i class="green check icon">');
+      }
     },
 
     /**
