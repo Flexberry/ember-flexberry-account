@@ -29,10 +29,7 @@ export default {
     },
     register: {
       'username-label': 'Login (E-mail):',
-      'surname-label': 'Surname:',
-      'name-label': 'Name:',
-      'middlename-label': 'Middlename:',
-      'captcha-label': '[Captcha]',
+      'full-name-label': 'Full name:',
       'register-button-title': 'Register new user',
       'register-button-text': 'Register',
       'register-with-label': 'Register with:',
@@ -44,7 +41,6 @@ export default {
     },
     'pwd-reset': {
       'username-label': 'Username',
-      'captcha-label': '[CAPTCHA]',
       'pwd-reset-button-title': 'Reset password request',
       'pwd-reset-button-text': 'Reset password',
       'login-button-title': 'Login with username and password',

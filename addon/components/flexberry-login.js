@@ -8,6 +8,114 @@ export default Ember.Component.extend({
 
   userAccount: Ember.inject.service('user-account'),
 
+  vk: false,
+  facebook: false,
+  twitter: false,
+  google: false,
+  microsoft: false,
+  github: false,
+  ok: false,
+  mailru: false,
+  yandex: false,
+  gosuslugi: false,
+  useSocialBlock: false,
+  useNavBlock: false,
+  /**
+    Stores if we gonna show registration button or not.
+
+    @property showRegButton
+    @type Boolean
+    @default false
+  */
+  showRegButton: false,
+
+  /**
+    Stores if we gonna show password reset button or not.
+
+    @property showPwdResetButton
+    @type Boolean
+    @default false
+  */
+  showPwdResetButton: false,
+
+  /**
+    This field stores username.
+
+    @property username
+    @type String
+    @default undefined
+  */
+  username: undefined,
+
+  /**
+    This field stores password.
+
+    @property password
+    @type String
+    @default undefined
+  */
+  password: undefined,
+
+  /**
+    This field stores whether to remember values or not.
+
+    @property remember
+    @type Boolean
+    @default true
+  */
+  remember: true,
+
+  /**
+    This computed field shows whether login is allowed or not.
+
+    @property allowToLogin
+    @type Boolean
+    @default false
+  */
+  allowToLogin: Ember.computed('username', 'password', function() { return Ember.isEmpty(this.username) || Ember.isEmpty(this.password); }),
+
+  actions: {
+
+    /**
+      This action is called when login button is pressed.
+
+      @method actions.login
+    */
+    login: function() {
+      let loginResult = this.get('userAccount').login(this.get('username'), this.get('password'));
+      if (loginResult) {
+        if (Ember.isPresent(this.get('onSuccess'))) {
+          this.get('onSuccess')();
+        }
+      } else {
+        if (Ember.isPresent(this.get('onFail'))) {
+          this.get('onFail')();
+        }
+      }
+    },
+
+    /**
+      This action is called when register button is pressed.
+
+      @method actions.register
+    */
+    register: function() {
+      Ember.getOwner(this).lookup('router:main').transitionTo('register');
+    },
+
+    /**
+      This action is called when password reset button is pressed.
+
+      @method actions.pwdReset
+    */
+    pwdReset: function() {
+      Ember.getOwner(this).lookup('router:main').transitionTo('pwd-reset');
+    }
+  },
+
+  /**
+    Initializes component.
+  */
   init: function() {
     this._super(...arguments);
 
@@ -34,34 +142,4 @@ export default Ember.Component.extend({
       this.get('gosuslugi')
     ));
   },
-
-  vk: false,
-  facebook: false,
-  twitter: false,
-  google: false,
-  microsoft: false,
-  github: false,
-  ok: false,
-  mailru: false,
-  yandex: false,
-  gosuslugi: false,
-  useSocialBlock: false,
-
-  username: undefined,
-  password: undefined,
-  remember: true,
-  actions: {
-    login: function() {
-      this.get('userAccount').login(this.get('username'), this.get('password'));
-    },
-    register: function() {
-      this.transitionToRoute('register');
-    },
-    pwdReset: function() {
-      this.transitionToRoute('pwd-reset');
-    },
-    test(reCaptchaResponse) {
-      console.log(reCaptchaResponse);
-    }
-  }
 });

@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Changed
+* Components:
+  * Add GUI logic to `flexberry-login`, `flexberry-register`, `flexberry-user-profile`, `flexberry-login`, `flexberry-pwd-reset`.
+
+
+## [0.1.0-alpha.2]
 ### Added
 * Components:
     * `flexberry-login`. Incapsulates logic for user login.

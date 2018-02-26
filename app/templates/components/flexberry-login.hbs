@@ -6,14 +6,12 @@
   {{t "components.login.password-label"}}<br/>
   {{input type="password" value=password}}
 </div>
-<div class="captcha-div">
-  {{flexberry-recaptcha onSuccess=(action "test")}}
-</div>
 <div class="login-div">
   {{t "components.login.remember-label"}} {{input type="checkbox" checked=remember}}
   <button
     class="ui login-button button"
     title={{t "components.login.login-button-title"}}
+    disabled={{allowToLogin}}
     {{action "login"}}>
       {{t "components.login.login-button-text"}}
   </button>
@@ -35,15 +33,21 @@
   </div>
 </div>
 {{/if}}
+{{#if useNavBlock}}
 <div class="register-reset-div">
+  {{#if showRegButton}}
   <button class="ui register-button button"
     title={{t "components.login.register-button-title"}}
     {{action "register"}}>
       {{t "components.login.register-button-text"}}
   </button>
+  {{/if}}
+  {{#if showPwdResetButton}}
   <button class="ui pwd-reset-button button"
   title={{t "components.login.pwd-reset-button-title"}}
   {{action "pwdReset"}}>
     {{t "components.login.pwd-reset-button-text"}}
   </button>
+  {{/if}}
 </div>
+{{/if}}
