@@ -3,12 +3,12 @@ module.exports = {
   afterInstall: function() {
     var _this = this;
 
-    var env1 = '  var ENV = {'+
+    var env1 = '  var ENV = {' +
     '\n    recaptcha: {' +
-    '\n      //These values are for automated tests.'+
-    '\n      //Values are taken from https://developers.google.com/recaptcha/docs/faq'+
-    '\n      //TODO: change them. These are not for production. Remember to change sekret key in backend!'+
-    '\n      siteKey: \'6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI\''+
+    '\n      //These values are for automated tests.' +
+    '\n      //Values are taken from https://developers.google.com/recaptcha/docs/faq' +
+    '\n      //TODO: change them. These are not for production. Remember to change sekret key in backend!' +
+    '\n      siteKey: \'6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI\'' +
   '    },';
 
     return _this.insertIntoFile(
@@ -34,8 +34,8 @@ module.exports = {
             ).then(function() {
               return _this.insertIntoFile(
                 'config/environment.js',
-                env1
-            })
+                env1);
+            });
           });
   },
 
