@@ -118,14 +118,17 @@ export default Ember.Component.extend({
       let username = this.get('username');
       let userAccountService = this.get('userAccount');
 
-      let validateUsernameResult = userAccountService.validateUsername(username);
-
-      this.set('validUsername', validateUsernameResult);
-      if (validateUsernameResult === false) {
+      let validateUsernameResult = userAccountService.validateUsername(username).then((result) => {
+        this.set('validUsername', result);
+        if (result) {
+          this.set('usernameFlag', '<i class="green check icon">');
+        } else {
+          this.set('usernameFlag', '<i class="red times icon">');
+        }
+      }).catch(() => {
+        this.set('validUsername', result);
         this.set('usernameFlag', '<i class="red times icon">');
-      } else {
-        this.set('usernameFlag', '<i class="green check icon">');
-      }
+      });
     },
 
     /**
