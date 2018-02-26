@@ -139,7 +139,17 @@ export default Ember.Component.extend({
     register: function() {
       let username = this.get('username');
       let fullName = this.get('fullName');
-      this.get('userAccount').register(username, fullName);
+      let result = this.get('userAccount').register(username, fullName);
+
+      if (result) {
+        if (Ember.isPresent(this.get('onSuccess'))) {
+          this.get('onSuccess')();
+        }
+      } else {
+        if (Ember.isPresent(this.get('onFail'))) {
+          this.get('onFail')();
+        }
+      }
     },
 
     /**

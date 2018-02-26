@@ -98,7 +98,7 @@ export default Ember.Service.extend({
 
     @method validateUsername
     @param username {String} User name for validation.
-    @return {Boolean} Returns validation result.
+    @return {Promise} Returns validation result.
   */
   validateUsername(username) {
     let enabled = this.get('enabled');
