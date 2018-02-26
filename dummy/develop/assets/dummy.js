@@ -822,11 +822,11 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             "loc": {
               "source": null,
               "start": {
-                "line": 25,
+                "line": 23,
                 "column": 4
               },
               "end": {
-                "line": 25,
+                "line": 23,
                 "column": 48
               }
             },
@@ -849,7 +849,7 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "VK"], ["loc", [null, [25, 14], [25, 48]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "VK"], ["loc", [null, [23, 14], [23, 48]]]]],
           locals: [],
           templates: []
         };
@@ -862,11 +862,11 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             "loc": {
               "source": null,
               "start": {
-                "line": 26,
+                "line": 24,
                 "column": 4
               },
               "end": {
-                "line": 26,
+                "line": 24,
                 "column": 60
               }
             },
@@ -889,7 +889,7 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Facebook"], ["loc", [null, [26, 20], [26, 60]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Facebook"], ["loc", [null, [24, 20], [24, 60]]]]],
           locals: [],
           templates: []
         };
@@ -902,11 +902,11 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             "loc": {
               "source": null,
               "start": {
-                "line": 27,
+                "line": 25,
                 "column": 4
               },
               "end": {
-                "line": 27,
+                "line": 25,
                 "column": 58
               }
             },
@@ -929,7 +929,7 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Twitter"], ["loc", [null, [27, 19], [27, 58]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Twitter"], ["loc", [null, [25, 19], [25, 58]]]]],
           locals: [],
           templates: []
         };
@@ -942,11 +942,11 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             "loc": {
               "source": null,
               "start": {
-                "line": 28,
+                "line": 26,
                 "column": 4
               },
               "end": {
-                "line": 28,
+                "line": 26,
                 "column": 56
               }
             },
@@ -969,7 +969,7 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Google"], ["loc", [null, [28, 18], [28, 56]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Google"], ["loc", [null, [26, 18], [26, 56]]]]],
           locals: [],
           templates: []
         };
@@ -982,11 +982,11 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             "loc": {
               "source": null,
               "start": {
-                "line": 29,
+                "line": 27,
                 "column": 4
               },
               "end": {
-                "line": 29,
+                "line": 27,
                 "column": 62
               }
             },
@@ -1009,7 +1009,7 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Microsoft"], ["loc", [null, [29, 21], [29, 62]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Microsoft"], ["loc", [null, [27, 21], [27, 62]]]]],
           locals: [],
           templates: []
         };
@@ -1022,11 +1022,11 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             "loc": {
               "source": null,
               "start": {
-                "line": 30,
+                "line": 28,
                 "column": 4
               },
               "end": {
-                "line": 30,
+                "line": 28,
                 "column": 56
               }
             },
@@ -1049,7 +1049,7 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "GitHub"], ["loc", [null, [30, 18], [30, 56]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "GitHub"], ["loc", [null, [28, 18], [28, 56]]]]],
           locals: [],
           templates: []
         };
@@ -1062,11 +1062,11 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             "loc": {
               "source": null,
               "start": {
-                "line": 31,
+                "line": 29,
                 "column": 4
               },
               "end": {
-                "line": 31,
+                "line": 29,
                 "column": 48
               }
             },
@@ -1089,7 +1089,7 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "OK"], ["loc", [null, [31, 14], [31, 48]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "OK"], ["loc", [null, [29, 14], [29, 48]]]]],
           locals: [],
           templates: []
         };
@@ -1102,11 +1102,11 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             "loc": {
               "source": null,
               "start": {
-                "line": 32,
+                "line": 30,
                 "column": 4
               },
               "end": {
-                "line": 32,
+                "line": 30,
                 "column": 57
               }
             },
@@ -1129,7 +1129,7 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Mail.ru"], ["loc", [null, [32, 18], [32, 57]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Mail.ru"], ["loc", [null, [30, 18], [30, 57]]]]],
           locals: [],
           templates: []
         };
@@ -1142,11 +1142,11 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             "loc": {
               "source": null,
               "start": {
-                "line": 33,
+                "line": 31,
                 "column": 4
               },
               "end": {
-                "line": 33,
+                "line": 31,
                 "column": 56
               }
             },
@@ -1169,7 +1169,7 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Yandex"], ["loc", [null, [33, 18], [33, 56]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Yandex"], ["loc", [null, [31, 18], [31, 56]]]]],
           locals: [],
           templates: []
         };
@@ -1182,11 +1182,11 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             "loc": {
               "source": null,
               "start": {
-                "line": 34,
+                "line": 32,
                 "column": 4
               },
               "end": {
-                "line": 34,
+                "line": 32,
                 "column": 62
               }
             },
@@ -1209,7 +1209,7 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Gosuslugi"], ["loc", [null, [34, 21], [34, 62]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Gosuslugi"], ["loc", [null, [32, 21], [32, 62]]]]],
           locals: [],
           templates: []
         };
@@ -1221,11 +1221,11 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
           "loc": {
             "source": null,
             "start": {
-              "line": 21,
+              "line": 19,
               "column": 0
             },
             "end": {
-              "line": 37,
+              "line": 35,
               "column": 0
             }
           },
@@ -1300,25 +1300,178 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
           return el0;
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var element0 = dom.childAt(fragment, [0]);
-          var element1 = dom.childAt(element0, [4]);
+          var element3 = dom.childAt(fragment, [0]);
+          var element4 = dom.childAt(element3, [4]);
           var morphs = new Array(11);
-          morphs[0] = dom.createMorphAt(element0, 1, 1);
-          morphs[1] = dom.createMorphAt(element1, 1, 1);
-          morphs[2] = dom.createMorphAt(element1, 3, 3);
-          morphs[3] = dom.createMorphAt(element1, 5, 5);
-          morphs[4] = dom.createMorphAt(element1, 7, 7);
-          morphs[5] = dom.createMorphAt(element1, 9, 9);
-          morphs[6] = dom.createMorphAt(element1, 11, 11);
-          morphs[7] = dom.createMorphAt(element1, 13, 13);
-          morphs[8] = dom.createMorphAt(element1, 15, 15);
-          morphs[9] = dom.createMorphAt(element1, 17, 17);
-          morphs[10] = dom.createMorphAt(element1, 19, 19);
+          morphs[0] = dom.createMorphAt(element3, 1, 1);
+          morphs[1] = dom.createMorphAt(element4, 1, 1);
+          morphs[2] = dom.createMorphAt(element4, 3, 3);
+          morphs[3] = dom.createMorphAt(element4, 5, 5);
+          morphs[4] = dom.createMorphAt(element4, 7, 7);
+          morphs[5] = dom.createMorphAt(element4, 9, 9);
+          morphs[6] = dom.createMorphAt(element4, 11, 11);
+          morphs[7] = dom.createMorphAt(element4, 13, 13);
+          morphs[8] = dom.createMorphAt(element4, 15, 15);
+          morphs[9] = dom.createMorphAt(element4, 17, 17);
+          morphs[10] = dom.createMorphAt(element4, 19, 19);
           return morphs;
         },
-        statements: [["inline", "t", ["components.login.login-with-label"], [], ["loc", [null, [23, 2], [23, 43]]]], ["block", "if", [["get", "vk", ["loc", [null, [25, 10], [25, 12]]]]], [], 0, null, ["loc", [null, [25, 4], [25, 55]]]], ["block", "if", [["get", "facebook", ["loc", [null, [26, 10], [26, 18]]]]], [], 1, null, ["loc", [null, [26, 4], [26, 67]]]], ["block", "if", [["get", "twitter", ["loc", [null, [27, 10], [27, 17]]]]], [], 2, null, ["loc", [null, [27, 4], [27, 65]]]], ["block", "if", [["get", "google", ["loc", [null, [28, 10], [28, 16]]]]], [], 3, null, ["loc", [null, [28, 4], [28, 63]]]], ["block", "if", [["get", "microsoft", ["loc", [null, [29, 10], [29, 19]]]]], [], 4, null, ["loc", [null, [29, 4], [29, 69]]]], ["block", "if", [["get", "github", ["loc", [null, [30, 10], [30, 16]]]]], [], 5, null, ["loc", [null, [30, 4], [30, 63]]]], ["block", "if", [["get", "ok", ["loc", [null, [31, 10], [31, 12]]]]], [], 6, null, ["loc", [null, [31, 4], [31, 55]]]], ["block", "if", [["get", "mailru", ["loc", [null, [32, 10], [32, 16]]]]], [], 7, null, ["loc", [null, [32, 4], [32, 64]]]], ["block", "if", [["get", "yandex", ["loc", [null, [33, 10], [33, 16]]]]], [], 8, null, ["loc", [null, [33, 4], [33, 63]]]], ["block", "if", [["get", "gosuslugi", ["loc", [null, [34, 10], [34, 19]]]]], [], 9, null, ["loc", [null, [34, 4], [34, 69]]]]],
+        statements: [["inline", "t", ["components.login.login-with-label"], [], ["loc", [null, [21, 2], [21, 43]]]], ["block", "if", [["get", "vk", ["loc", [null, [23, 10], [23, 12]]]]], [], 0, null, ["loc", [null, [23, 4], [23, 55]]]], ["block", "if", [["get", "facebook", ["loc", [null, [24, 10], [24, 18]]]]], [], 1, null, ["loc", [null, [24, 4], [24, 67]]]], ["block", "if", [["get", "twitter", ["loc", [null, [25, 10], [25, 17]]]]], [], 2, null, ["loc", [null, [25, 4], [25, 65]]]], ["block", "if", [["get", "google", ["loc", [null, [26, 10], [26, 16]]]]], [], 3, null, ["loc", [null, [26, 4], [26, 63]]]], ["block", "if", [["get", "microsoft", ["loc", [null, [27, 10], [27, 19]]]]], [], 4, null, ["loc", [null, [27, 4], [27, 69]]]], ["block", "if", [["get", "github", ["loc", [null, [28, 10], [28, 16]]]]], [], 5, null, ["loc", [null, [28, 4], [28, 63]]]], ["block", "if", [["get", "ok", ["loc", [null, [29, 10], [29, 12]]]]], [], 6, null, ["loc", [null, [29, 4], [29, 55]]]], ["block", "if", [["get", "mailru", ["loc", [null, [30, 10], [30, 16]]]]], [], 7, null, ["loc", [null, [30, 4], [30, 64]]]], ["block", "if", [["get", "yandex", ["loc", [null, [31, 10], [31, 16]]]]], [], 8, null, ["loc", [null, [31, 4], [31, 63]]]], ["block", "if", [["get", "gosuslugi", ["loc", [null, [32, 10], [32, 19]]]]], [], 9, null, ["loc", [null, [32, 4], [32, 69]]]]],
         locals: [],
         templates: [child0, child1, child2, child3, child4, child5, child6, child7, child8, child9]
+      };
+    })();
+    var child1 = (function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 38,
+                "column": 2
+              },
+              "end": {
+                "line": 44,
+                "column": 2
+              }
+            },
+            "moduleName": "dummy/templates/components/flexberry-login.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("  ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("button");
+            dom.setAttribute(el1, "class", "ui register-button button");
+            var el2 = dom.createTextNode("\n      ");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createComment("");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createTextNode("\n  ");
+            dom.appendChild(el1, el2);
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var element1 = dom.childAt(fragment, [1]);
+            var morphs = new Array(3);
+            morphs[0] = dom.createAttrMorph(element1, 'title');
+            morphs[1] = dom.createElementMorph(element1);
+            morphs[2] = dom.createMorphAt(element1, 1, 1);
+            return morphs;
+          },
+          statements: [["attribute", "title", ["subexpr", "t", ["components.login.register-button-title"], [], ["loc", [null, [40, 10], [40, 56]]]]], ["element", "action", ["register"], [], ["loc", [null, [41, 4], [41, 25]]]], ["inline", "t", ["components.login.register-button-text"], [], ["loc", [null, [42, 6], [42, 51]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child1 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 45,
+                "column": 2
+              },
+              "end": {
+                "line": 51,
+                "column": 2
+              }
+            },
+            "moduleName": "dummy/templates/components/flexberry-login.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("  ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("button");
+            dom.setAttribute(el1, "class", "ui pwd-reset-button button");
+            var el2 = dom.createTextNode("\n    ");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createComment("");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createTextNode("\n  ");
+            dom.appendChild(el1, el2);
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var element0 = dom.childAt(fragment, [1]);
+            var morphs = new Array(3);
+            morphs[0] = dom.createAttrMorph(element0, 'title');
+            morphs[1] = dom.createElementMorph(element0);
+            morphs[2] = dom.createMorphAt(element0, 1, 1);
+            return morphs;
+          },
+          statements: [["attribute", "title", ["subexpr", "t", ["components.login.pwd-reset-button-title"], [], ["loc", [null, [47, 8], [47, 55]]]]], ["element", "action", ["pwdReset"], [], ["loc", [null, [48, 2], [48, 23]]]], ["inline", "t", ["components.login.pwd-reset-button-text"], [], ["loc", [null, [49, 4], [49, 50]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.4.6",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 36,
+              "column": 0
+            },
+            "end": {
+              "line": 53,
+              "column": 0
+            }
+          },
+          "moduleName": "dummy/templates/components/flexberry-login.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createElement("div");
+          dom.setAttribute(el1, "class", "register-reset-div");
+          var el2 = dom.createTextNode("\n");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element2 = dom.childAt(fragment, [0]);
+          var morphs = new Array(2);
+          morphs[0] = dom.createMorphAt(element2, 1, 1);
+          morphs[1] = dom.createMorphAt(element2, 2, 2);
+          return morphs;
+        },
+        statements: [["block", "if", [["get", "showRegButton", ["loc", [null, [38, 8], [38, 21]]]]], [], 0, null, ["loc", [null, [38, 2], [44, 9]]]], ["block", "if", [["get", "showPwdResetButton", ["loc", [null, [45, 8], [45, 26]]]]], [], 1, null, ["loc", [null, [45, 2], [51, 9]]]]],
+        locals: [],
+        templates: [child0, child1]
       };
     })();
     return {
@@ -1335,7 +1488,7 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
             "column": 0
           },
           "end": {
-            "line": 50,
+            "line": 54,
             "column": 0
           }
         },
@@ -1382,17 +1535,6 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "captcha-div");
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("div");
         dom.setAttribute(el1, "class", "login-div");
         var el2 = dom.createTextNode("\n  ");
         dom.appendChild(el1, el2);
@@ -1420,78 +1562,281 @@ define("dummy/templates/components/flexberry-login", ["exports"], function (expo
         dom.appendChild(el0, el1);
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
-        var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "register-reset-div");
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("button");
-        dom.setAttribute(el2, "class", "ui register-button button");
-        var el3 = dom.createTextNode("\n      ");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n  ");
-        dom.appendChild(el2, el3);
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("button");
-        dom.setAttribute(el2, "class", "ui pwd-reset-button button");
-        var el3 = dom.createTextNode("\n    ");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n  ");
-        dom.appendChild(el2, el3);
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
+        var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element2 = dom.childAt(fragment, [0]);
-        var element3 = dom.childAt(fragment, [2]);
-        var element4 = dom.childAt(fragment, [6]);
-        var element5 = dom.childAt(element4, [5]);
-        var element6 = dom.childAt(fragment, [9]);
-        var element7 = dom.childAt(element6, [1]);
-        var element8 = dom.childAt(element6, [3]);
-        var morphs = new Array(17);
-        morphs[0] = dom.createMorphAt(element2, 1, 1);
-        morphs[1] = dom.createMorphAt(element2, 4, 4);
-        morphs[2] = dom.createMorphAt(element3, 1, 1);
-        morphs[3] = dom.createMorphAt(element3, 4, 4);
-        morphs[4] = dom.createMorphAt(dom.childAt(fragment, [4]), 1, 1);
-        morphs[5] = dom.createMorphAt(element4, 1, 1);
-        morphs[6] = dom.createMorphAt(element4, 3, 3);
-        morphs[7] = dom.createAttrMorph(element5, 'title');
-        morphs[8] = dom.createElementMorph(element5);
-        morphs[9] = dom.createMorphAt(element5, 1, 1);
-        morphs[10] = dom.createMorphAt(fragment, 8, 8, contextualElement);
-        morphs[11] = dom.createAttrMorph(element7, 'title');
-        morphs[12] = dom.createElementMorph(element7);
-        morphs[13] = dom.createMorphAt(element7, 1, 1);
-        morphs[14] = dom.createAttrMorph(element8, 'title');
-        morphs[15] = dom.createElementMorph(element8);
-        morphs[16] = dom.createMorphAt(element8, 1, 1);
+        var element5 = dom.childAt(fragment, [0]);
+        var element6 = dom.childAt(fragment, [2]);
+        var element7 = dom.childAt(fragment, [4]);
+        var element8 = dom.childAt(element7, [5]);
+        var morphs = new Array(12);
+        morphs[0] = dom.createMorphAt(element5, 1, 1);
+        morphs[1] = dom.createMorphAt(element5, 4, 4);
+        morphs[2] = dom.createMorphAt(element6, 1, 1);
+        morphs[3] = dom.createMorphAt(element6, 4, 4);
+        morphs[4] = dom.createMorphAt(element7, 1, 1);
+        morphs[5] = dom.createMorphAt(element7, 3, 3);
+        morphs[6] = dom.createAttrMorph(element8, 'title');
+        morphs[7] = dom.createAttrMorph(element8, 'disabled');
+        morphs[8] = dom.createElementMorph(element8);
+        morphs[9] = dom.createMorphAt(element8, 1, 1);
+        morphs[10] = dom.createMorphAt(fragment, 6, 6, contextualElement);
+        morphs[11] = dom.createMorphAt(fragment, 7, 7, contextualElement);
+        dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["inline", "t", ["components.login.username-label"], [], ["loc", [null, [2, 2], [2, 41]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "username", ["loc", [null, [3, 28], [3, 36]]]]], [], []]], ["loc", [null, [3, 2], [3, 38]]]], ["inline", "t", ["components.login.password-label"], [], ["loc", [null, [6, 2], [6, 41]]]], ["inline", "input", [], ["type", "password", "value", ["subexpr", "@mut", [["get", "password", ["loc", [null, [7, 32], [7, 40]]]]], [], []]], ["loc", [null, [7, 2], [7, 42]]]], ["inline", "flexberry-recaptcha", [], ["onSuccess", ["subexpr", "action", ["test"], [], ["loc", [null, [10, 34], [10, 49]]]]], ["loc", [null, [10, 2], [10, 51]]]], ["inline", "t", ["components.login.remember-label"], [], ["loc", [null, [13, 2], [13, 41]]]], ["inline", "input", [], ["type", "checkbox", "checked", ["subexpr", "@mut", [["get", "remember", ["loc", [null, [13, 74], [13, 82]]]]], [], []]], ["loc", [null, [13, 42], [13, 84]]]], ["attribute", "title", ["subexpr", "t", ["components.login.login-button-title"], [], ["loc", [null, [16, 10], [16, 53]]]]], ["element", "action", ["login"], [], ["loc", [null, [17, 4], [17, 22]]]], ["inline", "t", ["components.login.login-button-text"], [], ["loc", [null, [18, 6], [18, 48]]]], ["block", "if", [["get", "useSocialBlock", ["loc", [null, [21, 6], [21, 20]]]]], [], 0, null, ["loc", [null, [21, 0], [37, 7]]]], ["attribute", "title", ["subexpr", "t", ["components.login.register-button-title"], [], ["loc", [null, [40, 10], [40, 56]]]]], ["element", "action", ["register"], [], ["loc", [null, [41, 4], [41, 25]]]], ["inline", "t", ["components.login.register-button-text"], [], ["loc", [null, [42, 6], [42, 51]]]], ["attribute", "title", ["subexpr", "t", ["components.login.pwd-reset-button-title"], [], ["loc", [null, [45, 8], [45, 55]]]]], ["element", "action", ["pwdReset"], [], ["loc", [null, [46, 2], [46, 23]]]], ["inline", "t", ["components.login.pwd-reset-button-text"], [], ["loc", [null, [47, 4], [47, 50]]]]],
+      statements: [["inline", "t", ["components.login.username-label"], [], ["loc", [null, [2, 2], [2, 41]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "username", ["loc", [null, [3, 28], [3, 36]]]]], [], []]], ["loc", [null, [3, 2], [3, 38]]]], ["inline", "t", ["components.login.password-label"], [], ["loc", [null, [6, 2], [6, 41]]]], ["inline", "input", [], ["type", "password", "value", ["subexpr", "@mut", [["get", "password", ["loc", [null, [7, 32], [7, 40]]]]], [], []]], ["loc", [null, [7, 2], [7, 42]]]], ["inline", "t", ["components.login.remember-label"], [], ["loc", [null, [10, 2], [10, 41]]]], ["inline", "input", [], ["type", "checkbox", "checked", ["subexpr", "@mut", [["get", "remember", ["loc", [null, [10, 74], [10, 82]]]]], [], []]], ["loc", [null, [10, 42], [10, 84]]]], ["attribute", "title", ["subexpr", "t", ["components.login.login-button-title"], [], ["loc", [null, [13, 10], [13, 53]]]]], ["attribute", "disabled", ["get", "allowToLogin", ["loc", [null, [14, 15], [14, 27]]]]], ["element", "action", ["login"], [], ["loc", [null, [15, 4], [15, 22]]]], ["inline", "t", ["components.login.login-button-text"], [], ["loc", [null, [16, 6], [16, 48]]]], ["block", "if", [["get", "useSocialBlock", ["loc", [null, [19, 6], [19, 20]]]]], [], 0, null, ["loc", [null, [19, 0], [35, 7]]]], ["block", "if", [["get", "useNavBlock", ["loc", [null, [36, 6], [36, 17]]]]], [], 1, null, ["loc", [null, [36, 0], [53, 7]]]]],
       locals: [],
-      templates: [child0]
+      templates: [child0, child1]
     };
   })());
 });
 define("dummy/templates/components/flexberry-pwd-reset", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
+    var child0 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.4.6",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 6,
+              "column": 2
+            },
+            "end": {
+              "line": 8,
+              "column": 2
+            }
+          },
+          "moduleName": "dummy/templates/components/flexberry-pwd-reset.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("    ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "username", ["loc", [null, [7, 30], [7, 38]]]]], [], []]], ["loc", [null, [7, 4], [7, 40]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
+    var child1 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.4.6",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 8,
+              "column": 2
+            },
+            "end": {
+              "line": 10,
+              "column": 2
+            }
+          },
+          "moduleName": "dummy/templates/components/flexberry-pwd-reset.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("    ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [["inline", "input", [], ["type", "text", "readonly", true], ["loc", [null, [9, 4], [9, 39]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
+    var child2 = (function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 23,
+                "column": 2
+              },
+              "end": {
+                "line": 29,
+                "column": 2
+              }
+            },
+            "moduleName": "dummy/templates/components/flexberry-pwd-reset.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("  ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("button");
+            dom.setAttribute(el1, "class", "ui login-button button");
+            var el2 = dom.createTextNode("\n      ");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createComment("");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createTextNode("\n  ");
+            dom.appendChild(el1, el2);
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var element1 = dom.childAt(fragment, [1]);
+            var morphs = new Array(3);
+            morphs[0] = dom.createAttrMorph(element1, 'title');
+            morphs[1] = dom.createElementMorph(element1);
+            morphs[2] = dom.createMorphAt(element1, 1, 1);
+            return morphs;
+          },
+          statements: [["attribute", "title", ["subexpr", "t", ["components.pwd-reset.login-button-title"], [], ["loc", [null, [25, 10], [25, 57]]]]], ["element", "action", ["login"], [], ["loc", [null, [26, 4], [26, 22]]]], ["inline", "t", ["components.pwd-reset.login-button-text"], [], ["loc", [null, [27, 6], [27, 52]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child1 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 30,
+                "column": 2
+              },
+              "end": {
+                "line": 36,
+                "column": 2
+              }
+            },
+            "moduleName": "dummy/templates/components/flexberry-pwd-reset.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("  ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("button");
+            dom.setAttribute(el1, "class", "ui register-button button");
+            var el2 = dom.createTextNode("\n      ");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createComment("");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createTextNode("\n  ");
+            dom.appendChild(el1, el2);
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var element0 = dom.childAt(fragment, [1]);
+            var morphs = new Array(3);
+            morphs[0] = dom.createAttrMorph(element0, 'title');
+            morphs[1] = dom.createElementMorph(element0);
+            morphs[2] = dom.createMorphAt(element0, 1, 1);
+            return morphs;
+          },
+          statements: [["attribute", "title", ["subexpr", "t", ["components.pwd-reset.register-button-title"], [], ["loc", [null, [32, 10], [32, 60]]]]], ["element", "action", ["register"], [], ["loc", [null, [33, 4], [33, 25]]]], ["inline", "t", ["components.pwd-reset.register-button-text"], [], ["loc", [null, [34, 6], [34, 55]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.4.6",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 21,
+              "column": 0
+            },
+            "end": {
+              "line": 38,
+              "column": 0
+            }
+          },
+          "moduleName": "dummy/templates/components/flexberry-pwd-reset.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createElement("div");
+          dom.setAttribute(el1, "class", "login-register-div");
+          var el2 = dom.createTextNode("\n");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element2 = dom.childAt(fragment, [0]);
+          var morphs = new Array(2);
+          morphs[0] = dom.createMorphAt(element2, 1, 1);
+          morphs[1] = dom.createMorphAt(element2, 2, 2);
+          return morphs;
+        },
+        statements: [["block", "if", [["get", "showPwdResetButton", ["loc", [null, [23, 8], [23, 26]]]]], [], 0, null, ["loc", [null, [23, 2], [29, 9]]]], ["block", "if", [["get", "showRegButton", ["loc", [null, [30, 8], [30, 21]]]]], [], 1, null, ["loc", [null, [30, 2], [36, 9]]]]],
+        locals: [],
+        templates: [child0, child1]
+      };
+    })();
     return {
       meta: {
         "fragmentReason": {
           "name": "missing-wrapper",
-          "problems": ["multiple-nodes"]
+          "problems": ["multiple-nodes", "wrong-type"]
         },
         "revision": "Ember@2.4.6",
         "loc": {
@@ -1501,7 +1846,7 @@ define("dummy/templates/components/flexberry-pwd-reset", ["exports"], function (
             "column": 0
           },
           "end": {
-            "line": 29,
+            "line": 39,
             "column": 0
           }
         },
@@ -1514,14 +1859,8 @@ define("dummy/templates/components/flexberry-pwd-reset", ["exports"], function (
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "username-div");
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("br");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
+        dom.setAttribute(el1, "class", "captcha-div");
+        var el2 = dom.createTextNode("\n   ");
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
@@ -1531,18 +1870,16 @@ define("dummy/templates/components/flexberry-pwd-reset", ["exports"], function (
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "captcha-div");
-        var el2 = dom.createTextNode("\n   ");
+        dom.setAttribute(el1, "class", "username-div");
+        var el2 = dom.createTextNode("\n  ");
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("br");
         dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n   ");
+        var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
@@ -1565,63 +1902,28 @@ define("dummy/templates/components/flexberry-pwd-reset", ["exports"], function (
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
-        var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "login-register-div");
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("button");
-        dom.setAttribute(el2, "class", "ui login-button button");
-        var el3 = dom.createTextNode("\n      ");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n  ");
-        dom.appendChild(el2, el3);
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("button");
-        dom.setAttribute(el2, "class", "ui register-button button");
-        var el3 = dom.createTextNode("\n      ");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n  ");
-        dom.appendChild(el2, el3);
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
+        var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [0]);
-        var element1 = dom.childAt(fragment, [2]);
-        var element2 = dom.childAt(fragment, [4, 1]);
-        var element3 = dom.childAt(fragment, [6]);
-        var element4 = dom.childAt(element3, [1]);
-        var element5 = dom.childAt(element3, [3]);
-        var morphs = new Array(13);
-        morphs[0] = dom.createMorphAt(element0, 1, 1);
-        morphs[1] = dom.createMorphAt(element0, 4, 4);
-        morphs[2] = dom.createMorphAt(element1, 1, 1);
-        morphs[3] = dom.createMorphAt(element1, 4, 4);
-        morphs[4] = dom.createAttrMorph(element2, 'title');
-        morphs[5] = dom.createElementMorph(element2);
-        morphs[6] = dom.createMorphAt(element2, 1, 1);
-        morphs[7] = dom.createAttrMorph(element4, 'title');
-        morphs[8] = dom.createElementMorph(element4);
-        morphs[9] = dom.createMorphAt(element4, 1, 1);
-        morphs[10] = dom.createAttrMorph(element5, 'title');
-        morphs[11] = dom.createElementMorph(element5);
-        morphs[12] = dom.createMorphAt(element5, 1, 1);
+        var element3 = dom.childAt(fragment, [2]);
+        var element4 = dom.childAt(fragment, [4, 1]);
+        var morphs = new Array(8);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0]), 1, 1);
+        morphs[1] = dom.createMorphAt(element3, 1, 1);
+        morphs[2] = dom.createMorphAt(element3, 4, 4);
+        morphs[3] = dom.createAttrMorph(element4, 'title');
+        morphs[4] = dom.createAttrMorph(element4, 'disabled');
+        morphs[5] = dom.createElementMorph(element4);
+        morphs[6] = dom.createMorphAt(element4, 1, 1);
+        morphs[7] = dom.createMorphAt(fragment, 6, 6, contextualElement);
+        dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["inline", "t", ["components.pwd-reset.username-label"], [], ["loc", [null, [2, 2], [2, 45]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "username", ["loc", [null, [3, 28], [3, 36]]]]], [], []]], ["loc", [null, [3, 2], [3, 38]]]], ["inline", "t", ["components.pwd-reset.captcha-label"], [], ["loc", [null, [6, 3], [6, 45]]]], ["content", "flexberry-recaptcha", ["loc", [null, [7, 3], [7, 26]]]], ["attribute", "title", ["subexpr", "t", ["components.pwd-reset.pwd-reset-button-title"], [], ["loc", [null, [12, 10], [12, 61]]]]], ["element", "action", ["pwdReset"], [], ["loc", [null, [13, 4], [13, 25]]]], ["inline", "t", ["components.pwd-reset.pwd-reset-button-text"], [], ["loc", [null, [14, 6], [14, 56]]]], ["attribute", "title", ["subexpr", "t", ["components.pwd-reset.login-button-title"], [], ["loc", [null, [19, 10], [19, 57]]]]], ["element", "action", ["login"], [], ["loc", [null, [20, 4], [20, 22]]]], ["inline", "t", ["components.pwd-reset.login-button-text"], [], ["loc", [null, [21, 6], [21, 52]]]], ["attribute", "title", ["subexpr", "t", ["components.pwd-reset.register-button-title"], [], ["loc", [null, [24, 10], [24, 60]]]]], ["element", "action", ["register"], [], ["loc", [null, [25, 4], [25, 25]]]], ["inline", "t", ["components.pwd-reset.register-button-text"], [], ["loc", [null, [26, 6], [26, 55]]]]],
+      statements: [["inline", "flexberry-recaptcha", [], ["onSuccess", ["subexpr", "action", ["captchaSuccess"], [], ["loc", [null, [2, 35], [2, 60]]]]], ["loc", [null, [2, 3], [2, 62]]]], ["inline", "t", ["components.pwd-reset.username-label"], [], ["loc", [null, [5, 2], [5, 45]]]], ["block", "if", [["get", "captchaPassed", ["loc", [null, [6, 8], [6, 21]]]]], [], 0, 1, ["loc", [null, [6, 2], [10, 9]]]], ["attribute", "title", ["subexpr", "t", ["components.pwd-reset.pwd-reset-button-title"], [], ["loc", [null, [15, 10], [15, 61]]]]], ["attribute", "disabled", ["get", "allowReset", ["loc", [null, [16, 15], [16, 25]]]]], ["element", "action", ["pwdReset"], [], ["loc", [null, [17, 4], [17, 25]]]], ["inline", "t", ["components.pwd-reset.pwd-reset-button-text"], [], ["loc", [null, [18, 6], [18, 56]]]], ["block", "if", [["get", "showNavBlock", ["loc", [null, [21, 6], [21, 18]]]]], [], 2, null, ["loc", [null, [21, 0], [38, 7]]]]],
       locals: [],
-      templates: []
+      templates: [child0, child1, child2]
     };
   })());
 });
@@ -1635,11 +1937,11 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
           "loc": {
             "source": null,
             "start": {
-              "line": 4,
+              "line": 9,
               "column": 0
             },
             "end": {
-              "line": 6,
+              "line": 11,
               "column": 0
             }
           },
@@ -1651,7 +1953,180 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
         hasRendered: false,
         buildFragment: function buildFragment(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("ok!\n");
+          var el1 = dom.createTextNode("  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [["inline", "input", [], ["type", "email", "value", ["subexpr", "@mut", [["get", "username", ["loc", [null, [10, 29], [10, 37]]]]], [], []], "focus-out", "validateUsername"], ["loc", [null, [10, 2], [10, 68]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
+    var child1 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.4.6",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 11,
+              "column": 0
+            },
+            "end": {
+              "line": 13,
+              "column": 0
+            }
+          },
+          "moduleName": "dummy/templates/components/flexberry-register.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [["inline", "input", [], ["type", "email", "readonly", true], ["loc", [null, [12, 2], [12, 38]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
+    var child2 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.4.6",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 20,
+              "column": 1
+            },
+            "end": {
+              "line": 22,
+              "column": 1
+            }
+          },
+          "moduleName": "dummy/templates/components/flexberry-register.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "fullName", ["loc", [null, [21, 28], [21, 36]]]]], [], []], "focus-out", "validateFullname"], ["loc", [null, [21, 2], [21, 67]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
+    var child3 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.4.6",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 22,
+              "column": 1
+            },
+            "end": {
+              "line": 24,
+              "column": 0
+            }
+          },
+          "moduleName": "dummy/templates/components/flexberry-register.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment("");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [["inline", "input", [], ["type", "text", "readonly", true], ["loc", [null, [23, 2], [23, 37]]]]],
+        locals: [],
+        templates: []
+      };
+    })();
+    var child4 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.4.6",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 26,
+              "column": 0
+            },
+            "end": {
+              "line": 28,
+              "column": 0
+            }
+          },
+          "moduleName": "dummy/templates/components/flexberry-register.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("i");
+          dom.setAttribute(el1, "class", "green check icon");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
           dom.appendChild(el0, el1);
           return el0;
         },
@@ -1663,7 +2138,7 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
         templates: []
       };
     })();
-    var child1 = (function () {
+    var child5 = (function () {
       var child0 = (function () {
         return {
           meta: {
@@ -1672,11 +2147,11 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             "loc": {
               "source": null,
               "start": {
-                "line": 36,
+                "line": 43,
                 "column": 4
               },
               "end": {
-                "line": 36,
+                "line": 43,
                 "column": 48
               }
             },
@@ -1699,7 +2174,7 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "VK"], ["loc", [null, [36, 14], [36, 48]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "VK"], ["loc", [null, [43, 14], [43, 48]]]]],
           locals: [],
           templates: []
         };
@@ -1712,11 +2187,11 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             "loc": {
               "source": null,
               "start": {
-                "line": 37,
+                "line": 44,
                 "column": 4
               },
               "end": {
-                "line": 37,
+                "line": 44,
                 "column": 60
               }
             },
@@ -1739,7 +2214,7 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Facebook"], ["loc", [null, [37, 20], [37, 60]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Facebook"], ["loc", [null, [44, 20], [44, 60]]]]],
           locals: [],
           templates: []
         };
@@ -1752,11 +2227,11 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             "loc": {
               "source": null,
               "start": {
-                "line": 38,
+                "line": 45,
                 "column": 4
               },
               "end": {
-                "line": 38,
+                "line": 45,
                 "column": 58
               }
             },
@@ -1779,7 +2254,7 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Twitter"], ["loc", [null, [38, 19], [38, 58]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Twitter"], ["loc", [null, [45, 19], [45, 58]]]]],
           locals: [],
           templates: []
         };
@@ -1792,11 +2267,11 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             "loc": {
               "source": null,
               "start": {
-                "line": 39,
+                "line": 46,
                 "column": 4
               },
               "end": {
-                "line": 39,
+                "line": 46,
                 "column": 56
               }
             },
@@ -1819,7 +2294,7 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Google"], ["loc", [null, [39, 18], [39, 56]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Google"], ["loc", [null, [46, 18], [46, 56]]]]],
           locals: [],
           templates: []
         };
@@ -1832,11 +2307,11 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             "loc": {
               "source": null,
               "start": {
-                "line": 40,
+                "line": 47,
                 "column": 4
               },
               "end": {
-                "line": 40,
+                "line": 47,
                 "column": 62
               }
             },
@@ -1859,7 +2334,7 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Microsoft"], ["loc", [null, [40, 21], [40, 62]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Microsoft"], ["loc", [null, [47, 21], [47, 62]]]]],
           locals: [],
           templates: []
         };
@@ -1872,11 +2347,11 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             "loc": {
               "source": null,
               "start": {
-                "line": 41,
+                "line": 48,
                 "column": 4
               },
               "end": {
-                "line": 41,
+                "line": 48,
                 "column": 56
               }
             },
@@ -1899,7 +2374,7 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "GitHub"], ["loc", [null, [41, 18], [41, 56]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "GitHub"], ["loc", [null, [48, 18], [48, 56]]]]],
           locals: [],
           templates: []
         };
@@ -1912,11 +2387,11 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             "loc": {
               "source": null,
               "start": {
-                "line": 42,
+                "line": 49,
                 "column": 4
               },
               "end": {
-                "line": 42,
+                "line": 49,
                 "column": 48
               }
             },
@@ -1939,7 +2414,7 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "OK"], ["loc", [null, [42, 14], [42, 48]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "OK"], ["loc", [null, [49, 14], [49, 48]]]]],
           locals: [],
           templates: []
         };
@@ -1952,11 +2427,11 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             "loc": {
               "source": null,
               "start": {
-                "line": 43,
+                "line": 50,
                 "column": 4
               },
               "end": {
-                "line": 43,
+                "line": 50,
                 "column": 57
               }
             },
@@ -1979,7 +2454,7 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Mail.ru"], ["loc", [null, [43, 18], [43, 57]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Mail.ru"], ["loc", [null, [50, 18], [50, 57]]]]],
           locals: [],
           templates: []
         };
@@ -1992,11 +2467,11 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             "loc": {
               "source": null,
               "start": {
-                "line": 44,
+                "line": 51,
                 "column": 4
               },
               "end": {
-                "line": 44,
+                "line": 51,
                 "column": 56
               }
             },
@@ -2019,7 +2494,7 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Yandex"], ["loc", [null, [44, 18], [44, 56]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Yandex"], ["loc", [null, [51, 18], [51, 56]]]]],
           locals: [],
           templates: []
         };
@@ -2032,11 +2507,11 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             "loc": {
               "source": null,
               "start": {
-                "line": 45,
+                "line": 52,
                 "column": 4
               },
               "end": {
-                "line": 45,
+                "line": 52,
                 "column": 62
               }
             },
@@ -2059,7 +2534,7 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             dom.insertBoundary(fragment, null);
             return morphs;
           },
-          statements: [["inline", "input", [], ["type", "button", "value", "Gosuslugi"], ["loc", [null, [45, 21], [45, 62]]]]],
+          statements: [["inline", "input", [], ["type", "button", "value", "Gosuslugi"], ["loc", [null, [52, 21], [52, 62]]]]],
           locals: [],
           templates: []
         };
@@ -2071,11 +2546,11 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
           "loc": {
             "source": null,
             "start": {
-              "line": 32,
+              "line": 39,
               "column": 0
             },
             "end": {
-              "line": 48,
+              "line": 55,
               "column": 0
             }
           },
@@ -2150,25 +2625,185 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
           return el0;
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var element0 = dom.childAt(fragment, [0]);
-          var element1 = dom.childAt(element0, [4]);
+          var element3 = dom.childAt(fragment, [0]);
+          var element4 = dom.childAt(element3, [4]);
           var morphs = new Array(11);
-          morphs[0] = dom.createMorphAt(element0, 1, 1);
-          morphs[1] = dom.createMorphAt(element1, 1, 1);
-          morphs[2] = dom.createMorphAt(element1, 3, 3);
-          morphs[3] = dom.createMorphAt(element1, 5, 5);
-          morphs[4] = dom.createMorphAt(element1, 7, 7);
-          morphs[5] = dom.createMorphAt(element1, 9, 9);
-          morphs[6] = dom.createMorphAt(element1, 11, 11);
-          morphs[7] = dom.createMorphAt(element1, 13, 13);
-          morphs[8] = dom.createMorphAt(element1, 15, 15);
-          morphs[9] = dom.createMorphAt(element1, 17, 17);
-          morphs[10] = dom.createMorphAt(element1, 19, 19);
+          morphs[0] = dom.createMorphAt(element3, 1, 1);
+          morphs[1] = dom.createMorphAt(element4, 1, 1);
+          morphs[2] = dom.createMorphAt(element4, 3, 3);
+          morphs[3] = dom.createMorphAt(element4, 5, 5);
+          morphs[4] = dom.createMorphAt(element4, 7, 7);
+          morphs[5] = dom.createMorphAt(element4, 9, 9);
+          morphs[6] = dom.createMorphAt(element4, 11, 11);
+          morphs[7] = dom.createMorphAt(element4, 13, 13);
+          morphs[8] = dom.createMorphAt(element4, 15, 15);
+          morphs[9] = dom.createMorphAt(element4, 17, 17);
+          morphs[10] = dom.createMorphAt(element4, 19, 19);
           return morphs;
         },
-        statements: [["inline", "t", ["components.register.register-with-label"], [], ["loc", [null, [34, 2], [34, 49]]]], ["block", "if", [["get", "vk", ["loc", [null, [36, 10], [36, 12]]]]], [], 0, null, ["loc", [null, [36, 4], [36, 55]]]], ["block", "if", [["get", "facebook", ["loc", [null, [37, 10], [37, 18]]]]], [], 1, null, ["loc", [null, [37, 4], [37, 67]]]], ["block", "if", [["get", "twitter", ["loc", [null, [38, 10], [38, 17]]]]], [], 2, null, ["loc", [null, [38, 4], [38, 65]]]], ["block", "if", [["get", "google", ["loc", [null, [39, 10], [39, 16]]]]], [], 3, null, ["loc", [null, [39, 4], [39, 63]]]], ["block", "if", [["get", "microsoft", ["loc", [null, [40, 10], [40, 19]]]]], [], 4, null, ["loc", [null, [40, 4], [40, 69]]]], ["block", "if", [["get", "github", ["loc", [null, [41, 10], [41, 16]]]]], [], 5, null, ["loc", [null, [41, 4], [41, 63]]]], ["block", "if", [["get", "ok", ["loc", [null, [42, 10], [42, 12]]]]], [], 6, null, ["loc", [null, [42, 4], [42, 55]]]], ["block", "if", [["get", "mailru", ["loc", [null, [43, 10], [43, 16]]]]], [], 7, null, ["loc", [null, [43, 4], [43, 64]]]], ["block", "if", [["get", "yandex", ["loc", [null, [44, 10], [44, 16]]]]], [], 8, null, ["loc", [null, [44, 4], [44, 63]]]], ["block", "if", [["get", "gosuslugi", ["loc", [null, [45, 10], [45, 19]]]]], [], 9, null, ["loc", [null, [45, 4], [45, 69]]]]],
+        statements: [["inline", "t", ["components.register.register-with-label"], [], ["loc", [null, [41, 2], [41, 49]]]], ["block", "if", [["get", "vk", ["loc", [null, [43, 10], [43, 12]]]]], [], 0, null, ["loc", [null, [43, 4], [43, 55]]]], ["block", "if", [["get", "facebook", ["loc", [null, [44, 10], [44, 18]]]]], [], 1, null, ["loc", [null, [44, 4], [44, 67]]]], ["block", "if", [["get", "twitter", ["loc", [null, [45, 10], [45, 17]]]]], [], 2, null, ["loc", [null, [45, 4], [45, 65]]]], ["block", "if", [["get", "google", ["loc", [null, [46, 10], [46, 16]]]]], [], 3, null, ["loc", [null, [46, 4], [46, 63]]]], ["block", "if", [["get", "microsoft", ["loc", [null, [47, 10], [47, 19]]]]], [], 4, null, ["loc", [null, [47, 4], [47, 69]]]], ["block", "if", [["get", "github", ["loc", [null, [48, 10], [48, 16]]]]], [], 5, null, ["loc", [null, [48, 4], [48, 63]]]], ["block", "if", [["get", "ok", ["loc", [null, [49, 10], [49, 12]]]]], [], 6, null, ["loc", [null, [49, 4], [49, 55]]]], ["block", "if", [["get", "mailru", ["loc", [null, [50, 10], [50, 16]]]]], [], 7, null, ["loc", [null, [50, 4], [50, 64]]]], ["block", "if", [["get", "yandex", ["loc", [null, [51, 10], [51, 16]]]]], [], 8, null, ["loc", [null, [51, 4], [51, 63]]]], ["block", "if", [["get", "gosuslugi", ["loc", [null, [52, 10], [52, 19]]]]], [], 9, null, ["loc", [null, [52, 4], [52, 69]]]]],
         locals: [],
         templates: [child0, child1, child2, child3, child4, child5, child6, child7, child8, child9]
+      };
+    })();
+    var child6 = (function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 60,
+                "column": 2
+              },
+              "end": {
+                "line": 66,
+                "column": 2
+              }
+            },
+            "moduleName": "dummy/templates/components/flexberry-register.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("  ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("button");
+            dom.setAttribute(el1, "class", "ui login-button button");
+            var el2 = dom.createTextNode("\n    ");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createComment("");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createTextNode("\n  ");
+            dom.appendChild(el1, el2);
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var element1 = dom.childAt(fragment, [1]);
+            var morphs = new Array(3);
+            morphs[0] = dom.createAttrMorph(element1, 'title');
+            morphs[1] = dom.createElementMorph(element1);
+            morphs[2] = dom.createMorphAt(element1, 1, 1);
+            return morphs;
+          },
+          statements: [["attribute", "title", ["subexpr", "t", ["components.register.login-button-title"], [], ["loc", [null, [62, 10], [62, 56]]]]], ["element", "action", ["login"], [], ["loc", [null, [63, 4], [63, 22]]]], ["inline", "t", ["components.register.login-button-text"], [], ["loc", [null, [64, 4], [64, 49]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      var child1 = (function () {
+        return {
+          meta: {
+            "fragmentReason": false,
+            "revision": "Ember@2.4.6",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 67,
+                "column": 2
+              },
+              "end": {
+                "line": 73,
+                "column": 2
+              }
+            },
+            "moduleName": "dummy/templates/components/flexberry-register.hbs"
+          },
+          isEmpty: false,
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("  ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("button");
+            dom.setAttribute(el1, "class", "ui pwd-reset-button button");
+            var el2 = dom.createTextNode("\n      ");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createComment("");
+            dom.appendChild(el1, el2);
+            var el2 = dom.createTextNode("\n  ");
+            dom.appendChild(el1, el2);
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var element0 = dom.childAt(fragment, [1]);
+            var morphs = new Array(3);
+            morphs[0] = dom.createAttrMorph(element0, 'title');
+            morphs[1] = dom.createElementMorph(element0);
+            morphs[2] = dom.createMorphAt(element0, 1, 1);
+            return morphs;
+          },
+          statements: [["attribute", "title", ["subexpr", "t", ["components.register.pwd-reset-button-title"], [], ["loc", [null, [69, 10], [69, 60]]]]], ["element", "action", ["pwdReset"], [], ["loc", [null, [70, 4], [70, 25]]]], ["inline", "t", ["components.register.pwd-reset-button-text"], [], ["loc", [null, [71, 6], [71, 55]]]]],
+          locals: [],
+          templates: []
+        };
+      })();
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.4.6",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 57,
+              "column": 0
+            },
+            "end": {
+              "line": 75,
+              "column": 0
+            }
+          },
+          "moduleName": "dummy/templates/components/flexberry-register.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createElement("div");
+          dom.setAttribute(el1, "class", "login-reset-div");
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("br");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element2 = dom.childAt(fragment, [0]);
+          var morphs = new Array(3);
+          morphs[0] = dom.createMorphAt(element2, 1, 1);
+          morphs[1] = dom.createMorphAt(element2, 4, 4);
+          morphs[2] = dom.createMorphAt(element2, 5, 5);
+          return morphs;
+        },
+        statements: [["inline", "t", ["components.register.login-reset-label"], [], ["loc", [null, [59, 2], [59, 47]]]], ["block", "if", [["get", "showLoginButton", ["loc", [null, [60, 8], [60, 23]]]]], [], 0, null, ["loc", [null, [60, 2], [66, 9]]]], ["block", "if", [["get", "showPwdResetButton", ["loc", [null, [67, 8], [67, 26]]]]], [], 1, null, ["loc", [null, [67, 2], [73, 9]]]]],
+        locals: [],
+        templates: [child0, child1]
       };
     })();
     return {
@@ -2185,7 +2820,7 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
             "column": 0
           },
           "end": {
-            "line": 62,
+            "line": 76,
             "column": 0
           }
         },
@@ -2197,6 +2832,17 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "captcha-div");
+        var el2 = dom.createTextNode("\n   ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n\n");
+        dom.appendChild(el0, el1);
         var el1 = dom.createElement("div");
         dom.setAttribute(el1, "class", "username-div");
         var el2 = dom.createTextNode("\n");
@@ -2213,73 +2859,26 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n");
+        dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "surname-div");
+        dom.setAttribute(el1, "class", "full-name-div");
         var el2 = dom.createTextNode("\n ");
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("br");
         dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n ");
+        var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "name-div");
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
         var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("br");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "middle-name-div");
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("br");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "captcha-div");
-        var el2 = dom.createTextNode("\n   ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("br");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n   ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
@@ -2304,81 +2903,36 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
         dom.appendChild(el0, el1);
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
-        var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "login-reset-div");
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("br");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("button");
-        dom.setAttribute(el2, "class", "ui login-button button");
-        var el3 = dom.createTextNode("\n      ");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n  ");
-        dom.appendChild(el2, el3);
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n  ");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createElement("button");
-        dom.setAttribute(el2, "class", "ui pwd-reset-button button");
-        var el3 = dom.createTextNode("\n      ");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n  ");
-        dom.appendChild(el2, el3);
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element2 = dom.childAt(fragment, [0]);
-        var element3 = dom.childAt(fragment, [2]);
-        var element4 = dom.childAt(fragment, [4]);
-        var element5 = dom.childAt(fragment, [6]);
-        var element6 = dom.childAt(fragment, [8]);
-        var element7 = dom.childAt(fragment, [10, 1]);
-        var element8 = dom.childAt(fragment, [13]);
-        var element9 = dom.childAt(element8, [4]);
-        var element10 = dom.childAt(element8, [6]);
-        var morphs = new Array(22);
-        morphs[0] = dom.createMorphAt(element2, 1, 1);
-        morphs[1] = dom.createMorphAt(element2, 4, 4);
-        morphs[2] = dom.createMorphAt(element2, 6, 6);
-        morphs[3] = dom.createMorphAt(element3, 1, 1);
-        morphs[4] = dom.createMorphAt(element3, 4, 4);
-        morphs[5] = dom.createMorphAt(element4, 1, 1);
-        morphs[6] = dom.createMorphAt(element4, 4, 4);
-        morphs[7] = dom.createMorphAt(element5, 1, 1);
-        morphs[8] = dom.createMorphAt(element5, 4, 4);
-        morphs[9] = dom.createMorphAt(element6, 1, 1);
-        morphs[10] = dom.createMorphAt(element6, 4, 4);
-        morphs[11] = dom.createAttrMorph(element7, 'title');
-        morphs[12] = dom.createElementMorph(element7);
-        morphs[13] = dom.createMorphAt(element7, 1, 1);
-        morphs[14] = dom.createMorphAt(fragment, 12, 12, contextualElement);
-        morphs[15] = dom.createMorphAt(element8, 1, 1);
-        morphs[16] = dom.createAttrMorph(element9, 'title');
-        morphs[17] = dom.createElementMorph(element9);
-        morphs[18] = dom.createMorphAt(element9, 1, 1);
-        morphs[19] = dom.createAttrMorph(element10, 'title');
-        morphs[20] = dom.createElementMorph(element10);
-        morphs[21] = dom.createMorphAt(element10, 1, 1);
+        var element5 = dom.childAt(fragment, [2]);
+        var element6 = dom.childAt(fragment, [4]);
+        var element7 = dom.childAt(fragment, [6, 1]);
+        var morphs = new Array(13);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0]), 1, 1);
+        morphs[1] = dom.createMorphAt(element5, 1, 1);
+        morphs[2] = dom.createMorphAt(element5, 4, 4);
+        morphs[3] = dom.createUnsafeMorphAt(element5, 6, 6);
+        morphs[4] = dom.createMorphAt(element6, 1, 1);
+        morphs[5] = dom.createMorphAt(element6, 4, 4);
+        morphs[6] = dom.createMorphAt(element6, 6, 6);
+        morphs[7] = dom.createAttrMorph(element7, 'title');
+        morphs[8] = dom.createAttrMorph(element7, 'disabled');
+        morphs[9] = dom.createElementMorph(element7);
+        morphs[10] = dom.createMorphAt(element7, 1, 1);
+        morphs[11] = dom.createMorphAt(fragment, 8, 8, contextualElement);
+        morphs[12] = dom.createMorphAt(fragment, 10, 10, contextualElement);
+        dom.insertBoundary(fragment, null);
         return morphs;
       },
-      statements: [["inline", "t", ["components.register.username-label"], [], ["loc", [null, [2, 0], [2, 42]]]], ["inline", "input", [], ["type", "email", "value", ["subexpr", "@mut", [["get", "username", ["loc", [null, [3, 27], [3, 35]]]]], [], []]], ["loc", [null, [3, 0], [3, 37]]]], ["block", "if", [["get", "validUsername", ["loc", [null, [4, 6], [4, 19]]]]], [], 0, null, ["loc", [null, [4, 0], [6, 7]]]], ["inline", "t", ["components.register.surname-label"], [], ["loc", [null, [9, 1], [9, 42]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "surname", ["loc", [null, [10, 27], [10, 34]]]]], [], []]], ["loc", [null, [10, 1], [10, 36]]]], ["inline", "t", ["components.register.name-label"], [], ["loc", [null, [13, 0], [13, 38]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "name", ["loc", [null, [14, 27], [14, 31]]]]], [], []]], ["loc", [null, [14, 1], [14, 33]]]], ["inline", "t", ["components.register.middlename-label"], [], ["loc", [null, [17, 0], [17, 44]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "middlename", ["loc", [null, [18, 27], [18, 37]]]]], [], []]], ["loc", [null, [18, 1], [18, 39]]]], ["inline", "t", ["components.register.captcha-label"], [], ["loc", [null, [21, 3], [21, 44]]]], ["content", "flexberry-recaptcha", ["loc", [null, [22, 3], [22, 26]]]], ["attribute", "title", ["subexpr", "t", ["components.register.register-button-title"], [], ["loc", [null, [27, 10], [27, 59]]]]], ["element", "action", ["register"], [], ["loc", [null, [28, 4], [28, 25]]]], ["inline", "t", ["components.register.register-button-text"], [], ["loc", [null, [29, 6], [29, 54]]]], ["block", "if", [["get", "useSocialBlock", ["loc", [null, [32, 6], [32, 20]]]]], [], 1, null, ["loc", [null, [32, 0], [48, 7]]]], ["inline", "t", ["components.register.login-reset-label"], [], ["loc", [null, [50, 2], [50, 47]]]], ["attribute", "title", ["subexpr", "t", ["components.register.login-button-title"], [], ["loc", [null, [52, 10], [52, 56]]]]], ["element", "action", ["login"], [], ["loc", [null, [53, 4], [53, 22]]]], ["inline", "t", ["components.register.login-button-text"], [], ["loc", [null, [54, 6], [54, 51]]]], ["attribute", "title", ["subexpr", "t", ["components.register.pwd-reset-button-title"], [], ["loc", [null, [57, 10], [57, 60]]]]], ["element", "action", ["pwdReset"], [], ["loc", [null, [58, 4], [58, 25]]]], ["inline", "t", ["components.register.pwd-reset-button-text"], [], ["loc", [null, [59, 6], [59, 55]]]]],
+      statements: [["inline", "flexberry-recaptcha", [], ["onSuccess", ["subexpr", "action", ["captchaSuccess"], [], ["loc", [null, [3, 15], [3, 40]]]]], ["loc", [null, [2, 3], [4, 5]]]], ["inline", "t", ["components.register.username-label"], [], ["loc", [null, [8, 0], [8, 42]]]], ["block", "if", [["get", "captchaPassed", ["loc", [null, [9, 6], [9, 19]]]]], [], 0, 1, ["loc", [null, [9, 0], [13, 7]]]], ["content", "usernameFlag", ["loc", [null, [15, 0], [15, 18]]]], ["inline", "t", ["components.register.full-name-label"], [], ["loc", [null, [19, 1], [19, 44]]]], ["block", "if", [["get", "captchaPassed", ["loc", [null, [20, 7], [20, 20]]]]], [], 2, 3, ["loc", [null, [20, 1], [24, 7]]]], ["block", "if", [["get", "validFullname", ["loc", [null, [26, 6], [26, 19]]]]], [], 4, null, ["loc", [null, [26, 0], [28, 7]]]], ["attribute", "title", ["subexpr", "t", ["components.register.register-button-title"], [], ["loc", [null, [33, 10], [33, 59]]]]], ["attribute", "disabled", ["get", "allowRegistration", ["loc", [null, [34, 15], [34, 32]]]]], ["element", "action", ["register"], [], ["loc", [null, [35, 4], [35, 25]]]], ["inline", "t", ["components.register.register-button-text"], [], ["loc", [null, [36, 6], [36, 54]]]], ["block", "if", [["get", "useSocialBlock", ["loc", [null, [39, 6], [39, 20]]]]], [], 5, null, ["loc", [null, [39, 0], [55, 7]]]], ["block", "if", [["get", "showNavBlock", ["loc", [null, [57, 6], [57, 18]]]]], [], 6, null, ["loc", [null, [57, 0], [75, 7]]]]],
       locals: [],
-      templates: [child0, child1]
+      templates: [child0, child1, child2, child3, child4, child5, child6]
     };
   })());
 });
@@ -2679,7 +3233,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.1.0-alpha.3"});
+  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.1.0-alpha.3+1b057563"});
 }
 
 /* jshint ignore:end */

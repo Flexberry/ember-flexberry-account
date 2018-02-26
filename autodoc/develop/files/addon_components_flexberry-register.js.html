@@ -103,6 +103,168 @@ export default Ember.Component.extend({
 
   userAccount: Ember.inject.service(&#x27;user-account&#x27;),
 
+  vk: false,
+  facebook: false,
+  twitter: false,
+  google: false,
+  microsoft: false,
+  github: false,
+  ok: false,
+  mailru: false,
+  yandex: false,
+  gosuslugi: false,
+  useSocialBlock: false,
+  useNavBlock: false,
+
+  /**
+    Stores if we gonna show login button or not.
+
+    @property showLoginButton
+    @type Boolean
+    @default false
+  */
+  showLoginButton: false,
+
+  /**
+    Stores if we gonna show password reset button or not.
+
+    @property showPwdResetButton
+    @type Boolean
+    @default false
+  */
+  showPwdResetButton: false,
+
+  /**
+    This field stores username.
+
+    @property username
+    @type String
+    @default undefined
+  */
+  username: undefined,
+
+  /**
+    This field stores full name.
+
+    @property fullName
+    @type String
+    @default undefined
+  */
+  fullName: undefined,
+
+  /**
+    This field stores if username is valid.
+
+    @property validUsername
+    @type Boolean
+    @default false
+  */
+  validUsername: false,
+
+  usernameFlag: undefined,
+
+  /**
+    This computed field shows whether fullname is valid or not.
+
+    @property validFullname
+    @type Boolean
+    @default false
+  */
+  validFullname: Ember.computed(&#x27;fullName&#x27;, function() {
+      if (!Ember.isEmpty(this.fullName)) {
+        return true;
+      } else {
+        return false;
+      }
+    }),
+
+  /**
+    This field stores if captcha is passed successfully.
+
+    @property captchaPassed
+    @type Boolean
+    @default false
+  */
+  captchaPassed: false,
+
+  allowRegistration: Ember.computed(
+    &#x27;validUsername&#x27;,
+    &#x27;validFullname&#x27;,
+    function() { return !(this.validUsername &amp;&amp; this.validFullname);}
+  ),
+
+  actions: {
+
+    /**
+      This action is called when captcha is successfully passed.
+
+      @method actions.captchaSuccess
+    */
+    captchaSuccess: function() {
+      this.set(&#x27;captchaPassed&#x27;, true);
+    },
+
+    /**
+      This action is called when username field is out of focus.
+
+      @method actions.validateUsername
+    */
+    validateUsername: function() {
+      let username = this.get(&#x27;username&#x27;);
+      let userAccountService = this.get(&#x27;userAccount&#x27;);
+
+      let result = userAccountService.validateUsername(username);
+      this.set(&#x27;validUsername&#x27;, result);
+      if (result) {
+        this.set(&#x27;usernameFlag&#x27;, &#x27;&lt;i class=&quot;green check icon&quot;&gt;&#x27;);
+      } else {
+        this.set(&#x27;usernameFlag&#x27;, &#x27;&lt;i class=&quot;red times icon&quot;&gt;&#x27;);
+      }
+    },
+
+    /**
+      This action is called when register button is pressed.
+
+      @method actions.register
+    */
+    register: function() {
+      let username = this.get(&#x27;username&#x27;);
+      let fullName = this.get(&#x27;fullName&#x27;);
+      let result = this.get(&#x27;userAccount&#x27;).register(username, fullName);
+
+      if (result) {
+        if (Ember.isPresent(this.get(&#x27;onSuccess&#x27;))) {
+          this.get(&#x27;onSuccess&#x27;)();
+        }
+      } else {
+        if (Ember.isPresent(this.get(&#x27;onFail&#x27;))) {
+          this.get(&#x27;onFail&#x27;)();
+        }
+      }
+    },
+
+    /**
+      This action is called when login button is pressed.
+
+      @method actions.login
+    */
+    login: function() {
+      Ember.getOwner(this).lookup(&#x27;router:main&#x27;).transitionTo(&#x27;login&#x27;);
+    },
+
+    /**
+      This action is called when pwdReset button is pressed.
+
+      @method actions.pwdReset
+    */
+    pwdReset: function() {
+      Ember.getOwner(this).lookup(&#x27;router:main&#x27;).transitionTo(&#x27;pwd-reset&#x27;);
+    }
+  },
+
+  /**
+    Initializes component.
+  */
   init: function() {
     this._super(...arguments);
 
@@ -128,46 +290,6 @@ export default Ember.Component.extend({
       this.get(&#x27;yandex&#x27;) ||
       this.get(&#x27;gosuslugi&#x27;)
     ));
-  },
-
-  vk: false,
-  facebook: false,
-  twitter: false,
-  google: false,
-  microsoft: false,
-  github: false,
-  ok: false,
-  mailru: false,
-  yandex: false,
-  gosuslugi: false,
-  useSocialBlock: false,
-
-  username: undefined,
-  surname: undefined,
-  name: undefined,
-  middlename: undefined,
-  validUsername: false,
-
-  actions: {
-    validateUsername: function() {
-      let username = this.get(&#x27;username&#x27;);
-      let userAccountService = this.get(&#x27;userAccount&#x27;);
-      let validateUsernameResult = userAccountService.validateUsername(username);
-      this.set(&#x27;validUsername&#x27;, validateUsernameResult);
-    },
-    register: function() {
-      let username = this.get(&#x27;username&#x27;);
-      let surname = this.get(&#x27;surname&#x27;);
-      let name = this.get(&#x27;name&#x27;);
-      let middlename = this.get(&#x27;middlename&#x27;);
-      this.get(&#x27;userAccount&#x27;).register(username, surname, name, middlename);
-    },
-    login: function() {
-      this.transitionToRoute(&#x27;login&#x27;);
-    },
-    pwdReset: function() {
-      this.transitionToRoute(&#x27;pwd-reset&#x27;);
-    }
   }
 });
 

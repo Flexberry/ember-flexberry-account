@@ -66,6 +66,197 @@
     "elements": {},
     "classitems": [
         {
+            "file": "addon/components/flexberry-login.js",
+            "line": 23,
+            "description": "Stores if we gonna show registration button or not.",
+            "itemtype": "property",
+            "name": "showRegButton",
+            "type": "Boolean",
+            "default": "false",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-login.js",
+            "line": 32,
+            "description": "Stores if we gonna show password reset button or not.",
+            "itemtype": "property",
+            "name": "showPwdResetButton",
+            "type": "Boolean",
+            "default": "false",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-login.js",
+            "line": 41,
+            "description": "This field stores username.",
+            "itemtype": "property",
+            "name": "username",
+            "type": "String",
+            "default": "undefined",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-login.js",
+            "line": 50,
+            "description": "This field stores password.",
+            "itemtype": "property",
+            "name": "password",
+            "type": "String",
+            "default": "undefined",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-login.js",
+            "line": 59,
+            "description": "This field stores whether to remember values or not.",
+            "itemtype": "property",
+            "name": "remember",
+            "type": "Boolean",
+            "default": "true",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-login.js",
+            "line": 68,
+            "description": "This computed field shows whether login is allowed or not.",
+            "itemtype": "property",
+            "name": "allowToLogin",
+            "type": "Boolean",
+            "default": "false",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-login.js",
+            "line": 79,
+            "description": "This action is called when login button is pressed.",
+            "itemtype": "method",
+            "name": "actions.login",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-login.js",
+            "line": 97,
+            "description": "This action is called when register button is pressed.",
+            "itemtype": "method",
+            "name": "actions.register",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-login.js",
+            "line": 106,
+            "description": "This action is called when password reset button is pressed.",
+            "itemtype": "method",
+            "name": "actions.pwdReset",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-login.js",
+            "line": 116,
+            "description": "Initializes component.",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-pwd-reset.js",
+            "line": 11,
+            "description": "Stores if we gonna show registration button or not.",
+            "itemtype": "property",
+            "name": "showRegButton",
+            "type": "Boolean",
+            "default": "false",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-pwd-reset.js",
+            "line": 20,
+            "description": "Stores if we gonna show login button or not.",
+            "itemtype": "property",
+            "name": "showLoginButton",
+            "type": "Boolean",
+            "default": "false",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-pwd-reset.js",
+            "line": 29,
+            "description": "This field stores username.",
+            "itemtype": "property",
+            "name": "username",
+            "type": "String",
+            "default": "undefined",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-pwd-reset.js",
+            "line": 38,
+            "description": "This field shows if captcha was successfully passed.",
+            "itemtype": "property",
+            "name": "captchaPassed",
+            "type": "Boolean",
+            "default": "false",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-pwd-reset.js",
+            "line": 47,
+            "description": "This computed field shows whether password reset is allowed or not.",
+            "itemtype": "property",
+            "name": "allowReset",
+            "type": "Boolean",
+            "default": "false",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-pwd-reset.js",
+            "line": 60,
+            "description": "This action is called when captcha is successfully passed.",
+            "itemtype": "method",
+            "name": "actions.captchaSuccess",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-pwd-reset.js",
+            "line": 69,
+            "description": "This action is called when register button is pressed.",
+            "itemtype": "method",
+            "name": "actions.register",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-pwd-reset.js",
+            "line": 78,
+            "description": "This action is called when login button is pressed.",
+            "itemtype": "method",
+            "name": "actions.login",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-pwd-reset.js",
+            "line": 87,
+            "description": "This action is called when password reset button is pressed.",
+            "itemtype": "method",
+            "name": "actions.pwdReset",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
             "file": "addon/components/flexberry-recaptcha.js",
             "line": 10,
             "description": "Component's CSS-classes names.",
@@ -133,6 +324,135 @@
             "file": "addon/components/flexberry-recaptcha.js",
             "line": 97,
             "description": "Initializes DOM-related component's properties.",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-register.js",
+            "line": 24,
+            "description": "Stores if we gonna show login button or not.",
+            "itemtype": "property",
+            "name": "showLoginButton",
+            "type": "Boolean",
+            "default": "false",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-register.js",
+            "line": 33,
+            "description": "Stores if we gonna show password reset button or not.",
+            "itemtype": "property",
+            "name": "showPwdResetButton",
+            "type": "Boolean",
+            "default": "false",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-register.js",
+            "line": 42,
+            "description": "This field stores username.",
+            "itemtype": "property",
+            "name": "username",
+            "type": "String",
+            "default": "undefined",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-register.js",
+            "line": 51,
+            "description": "This field stores full name.",
+            "itemtype": "property",
+            "name": "fullName",
+            "type": "String",
+            "default": "undefined",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-register.js",
+            "line": 60,
+            "description": "This field stores if username is valid.",
+            "itemtype": "property",
+            "name": "validUsername",
+            "type": "Boolean",
+            "default": "false",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-register.js",
+            "line": 71,
+            "description": "This computed field shows whether fullname is valid or not.",
+            "itemtype": "property",
+            "name": "validFullname",
+            "type": "Boolean",
+            "default": "false",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-register.js",
+            "line": 86,
+            "description": "This field stores if captcha is passed successfully.",
+            "itemtype": "property",
+            "name": "captchaPassed",
+            "type": "Boolean",
+            "default": "false",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-register.js",
+            "line": 103,
+            "description": "This action is called when captcha is successfully passed.",
+            "itemtype": "method",
+            "name": "actions.captchaSuccess",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-register.js",
+            "line": 112,
+            "description": "This action is called when username field is out of focus.",
+            "itemtype": "method",
+            "name": "actions.validateUsername",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-register.js",
+            "line": 130,
+            "description": "This action is called when register button is pressed.",
+            "itemtype": "method",
+            "name": "actions.register",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-register.js",
+            "line": 151,
+            "description": "This action is called when login button is pressed.",
+            "itemtype": "method",
+            "name": "actions.login",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-register.js",
+            "line": 160,
+            "description": "This action is called when pwdReset button is pressed.",
+            "itemtype": "method",
+            "name": "actions.pwdReset",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/components/flexberry-register.js",
+            "line": 170,
+            "description": "Initializes component.",
             "class": "",
             "module": "ember-flexberry-account"
         },
@@ -216,7 +536,7 @@
             ],
             "return": {
                 "description": "Returns validation result.",
-                "type": "Boolean"
+                "type": "Promise"
             },
             "class": "",
             "module": "ember-flexberry-account"
@@ -292,6 +612,10 @@
     ],
     "warnings": [
         {
+            "message": "Missing item type\nInitializes component.",
+            "line": " addon/components/flexberry-login.js:116"
+        },
+        {
             "message": "Missing item type\nComponent's CSS-classes names.",
             "line": " addon/components/flexberry-recaptcha.js:10"
         },
@@ -318,6 +642,10 @@
         {
             "message": "Missing item type\nInitializes DOM-related component's properties.",
             "line": " addon/components/flexberry-recaptcha.js:97"
+        },
+        {
+            "message": "Missing item type\nInitializes component.",
+            "line": " addon/components/flexberry-register.js:170"
         }
     ]
 }

@@ -80538,6 +80538,107 @@ define('ember-flexberry-account/components/flexberry-login', ['exports', 'ember'
 
     userAccount: _ember['default'].inject.service('user-account'),
 
+    vk: false,
+    facebook: false,
+    twitter: false,
+    google: false,
+    microsoft: false,
+    github: false,
+    ok: false,
+    mailru: false,
+    yandex: false,
+    gosuslugi: false,
+    useSocialBlock: false,
+    useNavBlock: false,
+    /**
+      Stores if we gonna show registration button or not.
+       @property showRegButton
+      @type Boolean
+      @default false
+    */
+    showRegButton: false,
+
+    /**
+      Stores if we gonna show password reset button or not.
+       @property showPwdResetButton
+      @type Boolean
+      @default false
+    */
+    showPwdResetButton: false,
+
+    /**
+      This field stores username.
+       @property username
+      @type String
+      @default undefined
+    */
+    username: undefined,
+
+    /**
+      This field stores password.
+       @property password
+      @type String
+      @default undefined
+    */
+    password: undefined,
+
+    /**
+      This field stores whether to remember values or not.
+       @property remember
+      @type Boolean
+      @default true
+    */
+    remember: true,
+
+    /**
+      This computed field shows whether login is allowed or not.
+       @property allowToLogin
+      @type Boolean
+      @default false
+    */
+    allowToLogin: _ember['default'].computed('username', 'password', function () {
+      return _ember['default'].isEmpty(this.username) || _ember['default'].isEmpty(this.password);
+    }),
+
+    actions: {
+
+      /**
+        This action is called when login button is pressed.
+         @method actions.login
+      */
+      login: function login() {
+        var loginResult = this.get('userAccount').login(this.get('username'), this.get('password'));
+        if (loginResult) {
+          if (_ember['default'].isPresent(this.get('onSuccess'))) {
+            this.get('onSuccess')();
+          }
+        } else {
+          if (_ember['default'].isPresent(this.get('onFail'))) {
+            this.get('onFail')();
+          }
+        }
+      },
+
+      /**
+        This action is called when register button is pressed.
+         @method actions.register
+      */
+      register: function register() {
+        _ember['default'].getOwner(this).lookup('router:main').transitionTo('register');
+      },
+
+      /**
+        This action is called when password reset button is pressed.
+         @method actions.pwdReset
+      */
+      pwdReset: function pwdReset() {
+        _ember['default'].getOwner(this).lookup('router:main').transitionTo('pwd-reset');
+      }
+    },
+
+    /**
+      Initializes component.
+    */
     init: function init() {
       this._super.apply(this, arguments);
 
@@ -80552,36 +80653,6 @@ define('ember-flexberry-account/components/flexberry-login', ['exports', 'ember'
       this.set('yandex', this.get('userAccount.yandex'));
       this.set('gosuslugi', this.get('userAccount.gosuslugi'));
       this.set('useSocialBlock', this.get('vk') || this.get('facebook') || this.get('twitter') || this.get('google') || this.get('microsoft') || this.get('github') || this.get('ok') || this.get('mailru') || this.get('yandex') || this.get('gosuslugi'));
-    },
-
-    vk: false,
-    facebook: false,
-    twitter: false,
-    google: false,
-    microsoft: false,
-    github: false,
-    ok: false,
-    mailru: false,
-    yandex: false,
-    gosuslugi: false,
-    useSocialBlock: false,
-
-    username: undefined,
-    password: undefined,
-    remember: true,
-    actions: {
-      login: function login() {
-        this.get('userAccount').login(this.get('username'), this.get('password'));
-      },
-      register: function register() {
-        this.transitionToRoute('register');
-      },
-      pwdReset: function pwdReset() {
-        this.transitionToRoute('pwd-reset');
-      },
-      test: function test(reCaptchaResponse) {
-        console.log(reCaptchaResponse);
-      }
     }
   });
 });
@@ -80593,17 +80664,94 @@ define('ember-flexberry-account/components/flexberry-pwd-reset', ['exports', 'em
   'use strict';
 
   exports['default'] = _ember['default'].Component.extend({
+
+    useNavBlock: false,
+
+    /**
+      Stores if we gonna show registration button or not.
+       @property showRegButton
+      @type Boolean
+      @default false
+    */
+    showRegButton: false,
+
+    /**
+      Stores if we gonna show login button or not.
+       @property showLoginButton
+      @type Boolean
+      @default false
+    */
+    showLoginButton: false,
+
+    /**
+      This field stores username.
+       @property username
+      @type String
+      @default undefined
+    */
     username: undefined,
+
+    /**
+      This field shows if captcha was successfully passed.
+       @property captchaPassed
+      @type Boolean
+      @default false
+    */
+    captchaPassed: false,
+
+    /**
+      This computed field shows whether password reset is allowed or not.
+       @property allowReset
+      @type Boolean
+      @default false
+    */
+    allowReset: _ember['default'].computed('username', function () {
+      return _ember['default'].isEmpty(this.username);
+    }),
+
     actions: {
+
+      /**
+        This action is called when captcha is successfully passed.
+         @method actions.captchaSuccess
+      */
+      captchaSuccess: function captchaSuccess() {
+        this.set('captchaPassed', true);
+      },
+
+      /**
+        This action is called when register button is pressed.
+         @method actions.register
+      */
       register: function register() {
-        this.transitionToRoute('register');
+        _ember['default'].getOwner(this).lookup('router:main').transitionTo('register');
       },
+
+      /**
+        This action is called when login button is pressed.
+         @method actions.login
+      */
       login: function login() {
-        this.transitionToRoute('login');
+        _ember['default'].getOwner(this).lookup('router:main').transitionTo('login');
       },
+
+      /**
+        This action is called when password reset button is pressed.
+         @method actions.pwdReset
+      */
       pwdReset: function pwdReset() {
         var username = this.get('username');
-        this.get('userAccount').pwdReset(username);
+        var result = this.get('userAccount').pwdReset(username);
+
+        if (result) {
+          if (_ember['default'].isPresent(this.get('onSuccess'))) {
+            this.get('onSuccess')();
+          }
+        } else {
+          if (_ember['default'].isPresent(this.get('onFail'))) {
+            this.get('onFail')();
+          }
+        }
       }
     }
   });
@@ -80732,6 +80880,154 @@ define('ember-flexberry-account/components/flexberry-register', ['exports', 'emb
 
     userAccount: _ember['default'].inject.service('user-account'),
 
+    vk: false,
+    facebook: false,
+    twitter: false,
+    google: false,
+    microsoft: false,
+    github: false,
+    ok: false,
+    mailru: false,
+    yandex: false,
+    gosuslugi: false,
+    useSocialBlock: false,
+    useNavBlock: false,
+
+    /**
+      Stores if we gonna show login button or not.
+       @property showLoginButton
+      @type Boolean
+      @default false
+    */
+    showLoginButton: false,
+
+    /**
+      Stores if we gonna show password reset button or not.
+       @property showPwdResetButton
+      @type Boolean
+      @default false
+    */
+    showPwdResetButton: false,
+
+    /**
+      This field stores username.
+       @property username
+      @type String
+      @default undefined
+    */
+    username: undefined,
+
+    /**
+      This field stores full name.
+       @property fullName
+      @type String
+      @default undefined
+    */
+    fullName: undefined,
+
+    /**
+      This field stores if username is valid.
+       @property validUsername
+      @type Boolean
+      @default false
+    */
+    validUsername: false,
+
+    usernameFlag: undefined,
+
+    /**
+      This computed field shows whether fullname is valid or not.
+       @property validFullname
+      @type Boolean
+      @default false
+    */
+    validFullname: _ember['default'].computed('fullName', function () {
+      if (!_ember['default'].isEmpty(this.fullName)) {
+        return true;
+      } else {
+        return false;
+      }
+    }),
+
+    /**
+      This field stores if captcha is passed successfully.
+       @property captchaPassed
+      @type Boolean
+      @default false
+    */
+    captchaPassed: false,
+
+    allowRegistration: _ember['default'].computed('validUsername', 'validFullname', function () {
+      return !(this.validUsername && this.validFullname);
+    }),
+
+    actions: {
+
+      /**
+        This action is called when captcha is successfully passed.
+         @method actions.captchaSuccess
+      */
+      captchaSuccess: function captchaSuccess() {
+        this.set('captchaPassed', true);
+      },
+
+      /**
+        This action is called when username field is out of focus.
+         @method actions.validateUsername
+      */
+      validateUsername: function validateUsername() {
+        var username = this.get('username');
+        var userAccountService = this.get('userAccount');
+
+        var result = userAccountService.validateUsername(username);
+        this.set('validUsername', result);
+        if (result) {
+          this.set('usernameFlag', '<i class="green check icon">');
+        } else {
+          this.set('usernameFlag', '<i class="red times icon">');
+        }
+      },
+
+      /**
+        This action is called when register button is pressed.
+         @method actions.register
+      */
+      register: function register() {
+        var username = this.get('username');
+        var fullName = this.get('fullName');
+        var result = this.get('userAccount').register(username, fullName);
+
+        if (result) {
+          if (_ember['default'].isPresent(this.get('onSuccess'))) {
+            this.get('onSuccess')();
+          }
+        } else {
+          if (_ember['default'].isPresent(this.get('onFail'))) {
+            this.get('onFail')();
+          }
+        }
+      },
+
+      /**
+        This action is called when login button is pressed.
+         @method actions.login
+      */
+      login: function login() {
+        _ember['default'].getOwner(this).lookup('router:main').transitionTo('login');
+      },
+
+      /**
+        This action is called when pwdReset button is pressed.
+         @method actions.pwdReset
+      */
+      pwdReset: function pwdReset() {
+        _ember['default'].getOwner(this).lookup('router:main').transitionTo('pwd-reset');
+      }
+    },
+
+    /**
+      Initializes component.
+    */
     init: function init() {
       this._super.apply(this, arguments);
 
@@ -80746,46 +81042,6 @@ define('ember-flexberry-account/components/flexberry-register', ['exports', 'emb
       this.set('yandex', this.get('userAccount.yandex'));
       this.set('gosuslugi', this.get('userAccount.gosuslugi'));
       this.set('useSocialBlock', this.get('vk') || this.get('facebook') || this.get('twitter') || this.get('google') || this.get('microsoft') || this.get('github') || this.get('ok') || this.get('mailru') || this.get('yandex') || this.get('gosuslugi'));
-    },
-
-    vk: false,
-    facebook: false,
-    twitter: false,
-    google: false,
-    microsoft: false,
-    github: false,
-    ok: false,
-    mailru: false,
-    yandex: false,
-    gosuslugi: false,
-    useSocialBlock: false,
-
-    username: undefined,
-    surname: undefined,
-    name: undefined,
-    middlename: undefined,
-    validUsername: false,
-
-    actions: {
-      validateUsername: function validateUsername() {
-        var username = this.get('username');
-        var userAccountService = this.get('userAccount');
-        var validateUsernameResult = userAccountService.validateUsername(username);
-        this.set('validUsername', validateUsernameResult);
-      },
-      register: function register() {
-        var username = this.get('username');
-        var surname = this.get('surname');
-        var name = this.get('name');
-        var middlename = this.get('middlename');
-        this.get('userAccount').register(username, surname, name, middlename);
-      },
-      login: function login() {
-        this.transitionToRoute('login');
-      },
-      pwdReset: function pwdReset() {
-        this.transitionToRoute('pwd-reset');
-      }
     }
   });
 });
@@ -80852,10 +81108,7 @@ define('ember-flexberry-account/locales/en/translations', ['exports'], function 
       },
       register: {
         'username-label': 'Login (E-mail):',
-        'surname-label': 'Surname:',
-        'name-label': 'Name:',
-        'middlename-label': 'Middlename:',
-        'captcha-label': '[Captcha]',
+        'full-name-label': 'Full name:',
         'register-button-title': 'Register new user',
         'register-button-text': 'Register',
         'register-with-label': 'Register with:',
@@ -80867,7 +81120,6 @@ define('ember-flexberry-account/locales/en/translations', ['exports'], function 
       },
       'pwd-reset': {
         'username-label': 'Username',
-        'captcha-label': '[CAPTCHA]',
         'pwd-reset-button-title': 'Reset password request',
         'pwd-reset-button-text': 'Reset password',
         'login-button-title': 'Login with username and password',
@@ -80914,10 +81166,7 @@ define('ember-flexberry-account/locales/ru/translations', ['exports'], function 
       },
       register: {
         'username-label': 'Логин (E-mail):',
-        'surname-label': 'Фамилия:',
-        'name-label': 'Имя:',
-        'middlename-label': 'Отчество:',
-        'captcha-label': '[CAPTCHA]',
+        'full-name-label': 'ФИО',
         'register-button-title': 'Зарегистрировать пользователя',
         'register-button-text': 'Регистрация',
         'register-with-label': 'Зарегистрироваться при помощи:',
@@ -80929,7 +81178,6 @@ define('ember-flexberry-account/locales/ru/translations', ['exports'], function 
       },
       'pwd-reset': {
         'username-label': 'Логин (E-mail)',
-        'captcha-label': '[CAPTCHA]',
         'pwd-reset-button-title': 'Запрос на восстановление пароля для указанного логина',
         'pwd-reset-button-text': 'Восстановить пароль',
         'login-button-title': 'Войти в систему по логину и паролю',
@@ -81060,7 +81308,7 @@ define('ember-flexberry-account/services/user-account', ['exports', 'ember'], fu
       Validate username.
        @method validateUsername
       @param username {String} User name for validation.
-      @return {Boolean} Returns validation result.
+      @return {Promise} Returns validation result.
     */
     validateUsername: function validateUsername(username) {
       var enabled = this.get('enabled');

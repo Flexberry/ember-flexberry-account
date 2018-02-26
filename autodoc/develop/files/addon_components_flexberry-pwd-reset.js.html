@@ -100,17 +100,103 @@
 import Ember from &#x27;ember&#x27;;
 
 export default Ember.Component.extend({
+
+  useNavBlock: false,
+
+  /**
+    Stores if we gonna show registration button or not.
+
+    @property showRegButton
+    @type Boolean
+    @default false
+  */
+  showRegButton: false,
+
+  /**
+    Stores if we gonna show login button or not.
+
+    @property showLoginButton
+    @type Boolean
+    @default false
+  */
+  showLoginButton: false,
+
+  /**
+    This field stores username.
+
+    @property username
+    @type String
+    @default undefined
+  */
   username: undefined,
+
+  /**
+    This field shows if captcha was successfully passed.
+
+    @property captchaPassed
+    @type Boolean
+    @default false
+  */
+  captchaPassed: false,
+
+  /**
+    This computed field shows whether password reset is allowed or not.
+
+    @property allowReset
+    @type Boolean
+    @default false
+  */
+  allowReset: Ember.computed(&#x27;username&#x27;, function() {
+    return Ember.isEmpty(this.username);
+  }),
+
   actions: {
+
+    /**
+      This action is called when captcha is successfully passed.
+
+      @method actions.captchaSuccess
+    */
+    captchaSuccess: function() {
+      this.set(&#x27;captchaPassed&#x27;, true);
+    },
+
+    /**
+      This action is called when register button is pressed.
+
+      @method actions.register
+    */
     register: function() {
-      this.transitionToRoute(&#x27;register&#x27;);
+      Ember.getOwner(this).lookup(&#x27;router:main&#x27;).transitionTo(&#x27;register&#x27;);
     },
+
+    /**
+      This action is called when login button is pressed.
+
+      @method actions.login
+    */
     login: function() {
-      this.transitionToRoute(&#x27;login&#x27;);
+      Ember.getOwner(this).lookup(&#x27;router:main&#x27;).transitionTo(&#x27;login&#x27;);
     },
+
+    /**
+      This action is called when password reset button is pressed.
+
+      @method actions.pwdReset
+    */
     pwdReset: function() {
       let username = this.get(&#x27;username&#x27;);
-      this.get(&#x27;userAccount&#x27;).pwdReset(username);
+      let result = this.get(&#x27;userAccount&#x27;).pwdReset(username);
+
+      if (result) {
+        if (Ember.isPresent(this.get(&#x27;onSuccess&#x27;))) {
+          this.get(&#x27;onSuccess&#x27;)();
+        }
+      } else {
+        if (Ember.isPresent(this.get(&#x27;onFail&#x27;))) {
+          this.get(&#x27;onFail&#x27;)();
+        }
+      }
     }
   }
 });
