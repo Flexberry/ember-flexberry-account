@@ -80607,16 +80607,24 @@ define('ember-flexberry-account/components/flexberry-login', ['exports', 'ember'
          @method actions.login
       */
       login: function login() {
-        var loginResult = this.get('userAccount').login(this.get('username'), this.get('password'));
-        if (loginResult) {
-          if (_ember['default'].isPresent(this.get('onSuccess'))) {
-            this.get('onSuccess')();
+        var _this = this;
+
+        var userAccount = this.get('userAccount');
+        userAccount.login(this.get('username'), this.get('password')).then(function (result) {
+          if (result) {
+            if (_ember['default'].isPresent(_this.get('onSuccess'))) {
+              _this.get('onSuccess')();
+            }
+          } else {
+            if (_ember['default'].isPresent(_this.get('onFail'))) {
+              _this.get('onFail')();
+            }
           }
-        } else {
-          if (_ember['default'].isPresent(this.get('onFail'))) {
-            this.get('onFail')();
+        })['catch'](function () {
+          if (_ember['default'].isPresent(_this.get('onFail'))) {
+            _this.get('onFail')();
           }
-        }
+        });
       },
 
       /**
@@ -80740,18 +80748,25 @@ define('ember-flexberry-account/components/flexberry-pwd-reset', ['exports', 'em
          @method actions.pwdReset
       */
       pwdReset: function pwdReset() {
-        var username = this.get('username');
-        var result = this.get('userAccount').pwdReset(username);
+        var _this = this;
 
-        if (result) {
-          if (_ember['default'].isPresent(this.get('onSuccess'))) {
-            this.get('onSuccess')();
+        var username = this.get('username');
+        var userAccount = this.get('userAccount');
+        userAccount.pwdReset(username).then(function (result) {
+          if (result) {
+            if (_ember['default'].isPresent(_this.get('onSuccess'))) {
+              _this.get('onSuccess')();
+            }
+          } else {
+            if (_ember['default'].isPresent(_this.get('onFail'))) {
+              _this.get('onFail')();
+            }
           }
-        } else {
-          if (_ember['default'].isPresent(this.get('onFail'))) {
-            this.get('onFail')();
+        })['catch'](function () {
+          if (_ember['default'].isPresent(_this.get('onFail'))) {
+            _this.get('onFail')();
           }
-        }
+        });
       }
     }
   });
@@ -80976,16 +80991,23 @@ define('ember-flexberry-account/components/flexberry-register', ['exports', 'emb
          @method actions.validateUsername
       */
       validateUsername: function validateUsername() {
-        var username = this.get('username');
-        var userAccountService = this.get('userAccount');
+        var _this = this;
 
-        var result = userAccountService.validateUsername(username);
-        this.set('validUsername', result);
-        if (result) {
-          this.set('usernameFlag', '<i class="green check icon">');
-        } else {
-          this.set('usernameFlag', '<i class="red times icon">');
-        }
+        var username = this.get('username');
+        var userAccount = this.get('userAccount');
+
+        userAccount.validateUsername(username).then(function (result) {
+          if (result) {
+            _this.set('usernameFlag', '<i class="green check icon">');
+          } else {
+            _this.set('usernameFlag', '<i class="red times icon">');
+          }
+
+          _this.set('validUsername', result);
+        })['catch'](function () {
+          _this.set('usernameFlag', '<i class="red times icon">');
+          _this.set('validUsername', false);
+        });
       },
 
       /**
@@ -80993,19 +81015,26 @@ define('ember-flexberry-account/components/flexberry-register', ['exports', 'emb
          @method actions.register
       */
       register: function register() {
+        var _this2 = this;
+
         var username = this.get('username');
         var fullName = this.get('fullName');
-        var result = this.get('userAccount').register(username, fullName);
-
-        if (result) {
-          if (_ember['default'].isPresent(this.get('onSuccess'))) {
-            this.get('onSuccess')();
+        var userAccount = this.get('userAccount');
+        userAccount.register(username, fullName).then(function (result) {
+          if (result) {
+            if (_ember['default'].isPresent(_this2.get('onSuccess'))) {
+              _this2.get('onSuccess')();
+            }
+          } else {
+            if (_ember['default'].isPresent(_this2.get('onFail'))) {
+              _this2.get('onFail')();
+            }
           }
-        } else {
-          if (_ember['default'].isPresent(this.get('onFail'))) {
-            this.get('onFail')();
+        })['catch'](function () {
+          if (_ember['default'].isPresent(_this2.get('onFail'))) {
+            _this2.get('onFail')();
           }
-        }
+        });
       },
 
       /**

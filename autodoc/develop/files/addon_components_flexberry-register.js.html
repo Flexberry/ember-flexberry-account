@@ -211,15 +211,23 @@ export default Ember.Component.extend({
     */
     validateUsername: function() {
       let username = this.get(&#x27;username&#x27;);
-      let userAccountService = this.get(&#x27;userAccount&#x27;);
+      let userAccount = this.get(&#x27;userAccount&#x27;);
 
-      let result = userAccountService.validateUsername(username);
-      this.set(&#x27;validUsername&#x27;, result);
-      if (result) {
-        this.set(&#x27;usernameFlag&#x27;, &#x27;&lt;i class=&quot;green check icon&quot;&gt;&#x27;);
-      } else {
+      userAccount.validateUsername(username)
+
+      .then((result) =&gt; {
+        if (result) {
+          this.set(&#x27;usernameFlag&#x27;, &#x27;&lt;i class=&quot;green check icon&quot;&gt;&#x27;);
+        } else {
+          this.set(&#x27;usernameFlag&#x27;, &#x27;&lt;i class=&quot;red times icon&quot;&gt;&#x27;);
+        }
+
+        this.set(&#x27;validUsername&#x27;, result);
+      })
+      .catch(() =&gt; {
         this.set(&#x27;usernameFlag&#x27;, &#x27;&lt;i class=&quot;red times icon&quot;&gt;&#x27;);
-      }
+        this.set(&#x27;validUsername&#x27;, false);
+      });
     },
 
     /**
@@ -230,17 +238,23 @@ export default Ember.Component.extend({
     register: function() {
       let username = this.get(&#x27;username&#x27;);
       let fullName = this.get(&#x27;fullName&#x27;);
-      let result = this.get(&#x27;userAccount&#x27;).register(username, fullName);
-
-      if (result) {
-        if (Ember.isPresent(this.get(&#x27;onSuccess&#x27;))) {
-          this.get(&#x27;onSuccess&#x27;)();
+      let userAccount = this.get(&#x27;userAccount&#x27;);
+      userAccount.register(username, fullName).then((result) =&gt; {
+        if (result) {
+          if (Ember.isPresent(this.get(&#x27;onSuccess&#x27;))) {
+            this.get(&#x27;onSuccess&#x27;)();
+          }
+        } else {
+          if (Ember.isPresent(this.get(&#x27;onFail&#x27;))) {
+            this.get(&#x27;onFail&#x27;)();
+          }
         }
-      } else {
+      })
+      .catch(() =&gt; {
         if (Ember.isPresent(this.get(&#x27;onFail&#x27;))) {
           this.get(&#x27;onFail&#x27;)();
         }
-      }
+      });
     },
 
     /**

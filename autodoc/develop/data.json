@@ -142,7 +142,7 @@
         },
         {
             "file": "addon/components/flexberry-login.js",
-            "line": 97,
+            "line": 106,
             "description": "This action is called when register button is pressed.",
             "itemtype": "method",
             "name": "actions.register",
@@ -151,7 +151,7 @@
         },
         {
             "file": "addon/components/flexberry-login.js",
-            "line": 106,
+            "line": 115,
             "description": "This action is called when password reset button is pressed.",
             "itemtype": "method",
             "name": "actions.pwdReset",
@@ -160,7 +160,7 @@
         },
         {
             "file": "addon/components/flexberry-login.js",
-            "line": 116,
+            "line": 125,
             "description": "Initializes component.",
             "class": "",
             "module": "ember-flexberry-account"
@@ -424,7 +424,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 130,
+            "line": 138,
             "description": "This action is called when register button is pressed.",
             "itemtype": "method",
             "name": "actions.register",
@@ -433,7 +433,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 151,
+            "line": 165,
             "description": "This action is called when login button is pressed.",
             "itemtype": "method",
             "name": "actions.login",
@@ -442,7 +442,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 160,
+            "line": 174,
             "description": "This action is called when pwdReset button is pressed.",
             "itemtype": "method",
             "name": "actions.pwdReset",
@@ -451,7 +451,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 170,
+            "line": 184,
             "description": "Initializes component.",
             "class": "",
             "module": "ember-flexberry-account"
@@ -613,7 +613,7 @@
     "warnings": [
         {
             "message": "Missing item type\nInitializes component.",
-            "line": " addon/components/flexberry-login.js:116"
+            "line": " addon/components/flexberry-login.js:125"
         },
         {
             "message": "Missing item type\nComponent's CSS-classes names.",
@@ -645,7 +645,7 @@
         },
         {
             "message": "Missing item type\nInitializes component.",
-            "line": " addon/components/flexberry-register.js:170"
+            "line": " addon/components/flexberry-register.js:184"
         }
     ]
 }
