@@ -82,16 +82,25 @@ export default Ember.Component.extend({
       @method actions.login
     */
     login: function() {
-      let loginResult = this.get('userAccount').login(this.get('username'), this.get('password'));
-      if (loginResult) {
-        if (Ember.isPresent(this.get('onSuccess'))) {
-          this.get('onSuccess')();
+      let userAccount = this.get('userAccount');
+      userAccount.login(this.get('username'), this.get('password'))
+      .then((result)=> {
+        if (result) {
+          if (Ember.isPresent(this.get('onSuccess'))) {
+            this.get('onSuccess')();
+          }
+        } else {
+          if (Ember.isPresent(this.get('onFail'))) {
+            this.get('onFail')();
+          }
         }
-      } else {
+
+      }).catch(() => {
         if (Ember.isPresent(this.get('onFail'))) {
           this.get('onFail')();
         }
       }
+    );
     },
 
     /**
