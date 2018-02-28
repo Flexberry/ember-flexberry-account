@@ -91,17 +91,23 @@ export default Ember.Component.extend({
     */
     pwdReset: function() {
       let username = this.get('username');
-      let result = this.get('userAccount').pwdReset(username);
-
-      if (result) {
-        if (Ember.isPresent(this.get('onSuccess'))) {
-          this.get('onSuccess')();
+      let userAccount = this.get('userAccount');
+      userAccount.pwdReset(username).then((result) => {
+        if (result) {
+          if (Ember.isPresent(this.get('onSuccess'))) {
+            this.get('onSuccess')();
+          }
+        } else {
+          if (Ember.isPresent(this.get('onFail'))) {
+            this.get('onFail')();
+          }
         }
-      } else {
+      })
+      .catch(() => {
         if (Ember.isPresent(this.get('onFail'))) {
           this.get('onFail')();
         }
-      }
+      });
     }
   }
 });

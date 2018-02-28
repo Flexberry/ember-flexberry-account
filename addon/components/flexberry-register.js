@@ -116,15 +116,23 @@ export default Ember.Component.extend({
     */
     validateUsername: function() {
       let username = this.get('username');
-      let userAccountService = this.get('userAccount');
+      let userAccount = this.get('userAccount');
 
-      let result = userAccountService.validateUsername(username);
-      this.set('validUsername', result);
-      if (result) {
-        this.set('usernameFlag', '<i class="green check icon">');
-      } else {
+      userAccount.validateUsername(username)
+
+      .then((result) => {
+        if (result) {
+          this.set('usernameFlag', '<i class="green check icon">');
+        } else {
+          this.set('usernameFlag', '<i class="red times icon">');
+        }
+
+        this.set('validUsername', result);
+      })
+      .catch(() => {
         this.set('usernameFlag', '<i class="red times icon">');
-      }
+        this.set('validUsername', false);
+      });
     },
 
     /**
@@ -135,17 +143,23 @@ export default Ember.Component.extend({
     register: function() {
       let username = this.get('username');
       let fullName = this.get('fullName');
-      let result = this.get('userAccount').register(username, fullName);
-
-      if (result) {
-        if (Ember.isPresent(this.get('onSuccess'))) {
-          this.get('onSuccess')();
+      let userAccount = this.get('userAccount');
+      userAccount.register(username, fullName).then((result) => {
+        if (result) {
+          if (Ember.isPresent(this.get('onSuccess'))) {
+            this.get('onSuccess')();
+          }
+        } else {
+          if (Ember.isPresent(this.get('onFail'))) {
+            this.get('onFail')();
+          }
         }
-      } else {
+      })
+      .catch(() => {
         if (Ember.isPresent(this.get('onFail'))) {
           this.get('onFail')();
         }
-      }
+      });
     },
 
     /**
