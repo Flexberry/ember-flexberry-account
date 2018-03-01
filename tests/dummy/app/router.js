@@ -10,6 +10,8 @@ Router.map(function() {
   this.route('pwd-reset');
   this.route('register');
   this.route('user-profile');
+  this.route('email-confirmation');
+  this.route('reg-end');
 });
 
 export default Router;

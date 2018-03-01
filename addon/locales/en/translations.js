@@ -12,6 +12,10 @@ export default {
 
     'user-profile': {
       caption: 'User profile'
+    },
+
+    'reg-end': {
+      caption: 'Thanks for registration! Check your Email for an activation link.'
     }
   },
   components: {
