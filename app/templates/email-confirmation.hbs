@@ -1,0 +1,24 @@
+<div class="email-confirmation-div">
+  {{#if activationError}}
+    <div class="ui error message">
+      <i class="close icon"></i>
+      <div class="header">
+        {{t "forms.email-confirmation.error-header"}}
+      </div>
+      {{t "forms.email-confirmation.error-text"}}
+    </div>
+  {{/if}}
+
+  {{#if loaderEnabled}}
+    <div class="ui active dimmer">
+      <div class="ui loader"></div>
+    </div>
+  {{/if}}
+
+  {{#if buttonEnabled}}
+    <button onclick={{action "verify"}}>{{t "forms.email-confirmation.confirm"}}</button>
+  {{else}}
+    <button disabled>{{t "forms.email-confirmation.confirm"}}</button>
+  {{/if}}
+
+</div>

@@ -164,5 +164,23 @@ export default Ember.Service.extend({
     }
 
     Ember.assert('Developer must override validateCaptcha() method of user-account service.');
-  }
+  },
+
+  /**
+    Activate account.
+
+    @method activateAccount
+    @param token {String} Activation token from email.
+    @return {Promise} Returns activation result.
+  */
+  activateAccount(token) {
+    let enabled = this.get('enabled');
+
+    if (!enabled) {
+      return;
+    }
+
+    Ember.assert('Developer must override activateAccount method of user-account service.' +
+    'Activation token: ' + token + '.');
+  },
 });

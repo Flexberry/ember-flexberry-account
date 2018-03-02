@@ -12,6 +12,15 @@ export default {
 
     'user-profile': {
       caption: 'User profile'
+    },
+
+    'reg-end': {
+      caption: 'Thanks for registration! Check your Email for an activation link.'
+    },
+    'email-confirmation': {
+      confirm: 'Activate account',
+      'error-header': 'Activation error',
+      'error-text': 'Link is invalid. Account had been activated before or link is incorrect.'
     }
   },
   components: {
