@@ -72,14 +72,6 @@ define('dummy/components/flexberry-user-profile', ['exports', 'ember-flexberry-a
     }
   });
 });
-define('dummy/controllers/email-confirmation', ['exports', 'ember-flexberry-account/controllers/email-confirmation'], function (exports, _emberFlexberryAccountControllersEmailConfirmation) {
-  Object.defineProperty(exports, 'default', {
-    enumerable: true,
-    get: function get() {
-      return _emberFlexberryAccountControllersEmailConfirmation['default'];
-    }
-  });
-});
 define('dummy/controllers/login', ['exports', 'ember-flexberry-account/controllers/login'], function (exports, _emberFlexberryAccountControllersLogin) {
   Object.defineProperty(exports, 'default', {
     enumerable: true,
@@ -147,13 +139,6 @@ define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/comp
     assert.ok(true, 'modules/ember-flexberry-account/components/flexberry-user-profile.js should pass jshint.');
   });
 });
-define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/controllers/email-confirmation.jshint', ['exports'], function (exports) {
-  QUnit.module('JSHint - modules/ember-flexberry-account/controllers/email-confirmation.js');
-  QUnit.test('should pass jshint', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'modules/ember-flexberry-account/controllers/email-confirmation.js should pass jshint.');
-  });
-});
 define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/controllers/login.jshint', ['exports'], function (exports) {
   QUnit.module('JSHint - modules/ember-flexberry-account/controllers/login.js');
   QUnit.test('should pass jshint', function (assert) {
@@ -203,13 +188,6 @@ define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/mode
     assert.ok(true, 'modules/ember-flexberry-account/models/user-profile.js should pass jshint.');
   });
 });
-define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/routes/email-confirmation.jshint', ['exports'], function (exports) {
-  QUnit.module('JSHint - modules/ember-flexberry-account/routes/email-confirmation.js');
-  QUnit.test('should pass jshint', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'modules/ember-flexberry-account/routes/email-confirmation.js should pass jshint.');
-  });
-});
 define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/routes/login.jshint', ['exports'], function (exports) {
   QUnit.module('JSHint - modules/ember-flexberry-account/routes/login.js');
   QUnit.test('should pass jshint', function (assert) {
@@ -222,13 +200,6 @@ define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/rout
   QUnit.test('should pass jshint', function (assert) {
     assert.expect(1);
     assert.ok(true, 'modules/ember-flexberry-account/routes/pwd-reset.js should pass jshint.');
-  });
-});
-define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/routes/reg-end.jshint', ['exports'], function (exports) {
-  QUnit.module('JSHint - modules/ember-flexberry-account/routes/reg-end.js');
-  QUnit.test('should pass jshint', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'modules/ember-flexberry-account/routes/reg-end.js should pass jshint.');
   });
 });
 define('dummy/ember-flexberry-account/tests/modules/ember-flexberry-account/routes/register.jshint', ['exports'], function (exports) {
@@ -484,8 +455,6 @@ define('dummy/router', ['exports', 'ember', 'dummy/config/environment'], functio
     this.route('pwd-reset');
     this.route('register');
     this.route('user-profile');
-    this.route('email-confirmation');
-    this.route('reg-end');
   });
 
   exports['default'] = Router;
@@ -3008,274 +2977,6 @@ define("dummy/templates/components/flexberry-user-profile", ["exports"], functio
     };
   })());
 });
-define("dummy/templates/email-confirmation", ["exports"], function (exports) {
-  exports["default"] = Ember.HTMLBars.template((function () {
-    var child0 = (function () {
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.4.6",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 2,
-              "column": 2
-            },
-            "end": {
-              "line": 10,
-              "column": 2
-            }
-          },
-          "moduleName": "dummy/templates/email-confirmation.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("    ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createElement("div");
-          dom.setAttribute(el1, "class", "ui error message");
-          var el2 = dom.createTextNode("\n      ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createElement("i");
-          dom.setAttribute(el2, "class", "close icon");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n      ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createElement("div");
-          dom.setAttribute(el2, "class", "header");
-          var el3 = dom.createTextNode("\n        ");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createComment("");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createTextNode("\n      ");
-          dom.appendChild(el2, el3);
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n      ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n    ");
-          dom.appendChild(el1, el2);
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var element1 = dom.childAt(fragment, [1]);
-          var morphs = new Array(2);
-          morphs[0] = dom.createMorphAt(dom.childAt(element1, [3]), 1, 1);
-          morphs[1] = dom.createMorphAt(element1, 5, 5);
-          return morphs;
-        },
-        statements: [["inline", "t", ["forms.email-confirmation.error-header"], [], ["loc", [null, [6, 8], [6, 53]]]], ["inline", "t", ["forms.email-confirmation.error-text"], [], ["loc", [null, [8, 6], [8, 49]]]]],
-        locals: [],
-        templates: []
-      };
-    })();
-    var child1 = (function () {
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.4.6",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 12,
-              "column": 2
-            },
-            "end": {
-              "line": 16,
-              "column": 2
-            }
-          },
-          "moduleName": "dummy/templates/email-confirmation.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("    ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createElement("div");
-          dom.setAttribute(el1, "class", "ui active dimmer");
-          var el2 = dom.createTextNode("\n      ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createElement("div");
-          dom.setAttribute(el2, "class", "ui loader");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n    ");
-          dom.appendChild(el1, el2);
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes() {
-          return [];
-        },
-        statements: [],
-        locals: [],
-        templates: []
-      };
-    })();
-    var child2 = (function () {
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.4.6",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 18,
-              "column": 2
-            },
-            "end": {
-              "line": 20,
-              "column": 2
-            }
-          },
-          "moduleName": "dummy/templates/email-confirmation.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("    ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createElement("button");
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var element0 = dom.childAt(fragment, [1]);
-          var morphs = new Array(2);
-          morphs[0] = dom.createAttrMorph(element0, 'onclick');
-          morphs[1] = dom.createMorphAt(element0, 0, 0);
-          return morphs;
-        },
-        statements: [["attribute", "onclick", ["subexpr", "action", ["verify"], [], ["loc", [null, [19, 20], [19, 39]]]]], ["inline", "t", ["forms.email-confirmation.confirm"], [], ["loc", [null, [19, 40], [19, 80]]]]],
-        locals: [],
-        templates: []
-      };
-    })();
-    var child3 = (function () {
-      return {
-        meta: {
-          "fragmentReason": false,
-          "revision": "Ember@2.4.6",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 20,
-              "column": 2
-            },
-            "end": {
-              "line": 22,
-              "column": 2
-            }
-          },
-          "moduleName": "dummy/templates/email-confirmation.hbs"
-        },
-        isEmpty: false,
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("    ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createElement("button");
-          dom.setAttribute(el1, "disabled", "");
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var morphs = new Array(1);
-          morphs[0] = dom.createMorphAt(dom.childAt(fragment, [1]), 0, 0);
-          return morphs;
-        },
-        statements: [["inline", "t", ["forms.email-confirmation.confirm"], [], ["loc", [null, [21, 21], [21, 61]]]]],
-        locals: [],
-        templates: []
-      };
-    })();
-    return {
-      meta: {
-        "fragmentReason": {
-          "name": "triple-curlies"
-        },
-        "revision": "Ember@2.4.6",
-        "loc": {
-          "source": null,
-          "start": {
-            "line": 1,
-            "column": 0
-          },
-          "end": {
-            "line": 25,
-            "column": 0
-          }
-        },
-        "moduleName": "dummy/templates/email-confirmation.hbs"
-      },
-      isEmpty: false,
-      arity: 0,
-      cachedFragment: null,
-      hasRendered: false,
-      buildFragment: function buildFragment(dom) {
-        var el0 = dom.createDocumentFragment();
-        var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "email-confirmation-div");
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        return el0;
-      },
-      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element2 = dom.childAt(fragment, [0]);
-        var morphs = new Array(3);
-        morphs[0] = dom.createMorphAt(element2, 1, 1);
-        morphs[1] = dom.createMorphAt(element2, 3, 3);
-        morphs[2] = dom.createMorphAt(element2, 5, 5);
-        return morphs;
-      },
-      statements: [["block", "if", [["get", "activationError", ["loc", [null, [2, 8], [2, 23]]]]], [], 0, null, ["loc", [null, [2, 2], [10, 9]]]], ["block", "if", [["get", "loaderEnabled", ["loc", [null, [12, 8], [12, 21]]]]], [], 1, null, ["loc", [null, [12, 2], [16, 9]]]], ["block", "if", [["get", "buttonEnabled", ["loc", [null, [18, 8], [18, 21]]]]], [], 2, 3, ["loc", [null, [18, 2], [22, 9]]]]],
-      locals: [],
-      templates: [child0, child1, child2, child3]
-    };
-  })());
-});
 define("dummy/templates/login", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
     return {
@@ -3375,57 +3076,6 @@ define("dummy/templates/pwd-reset", ["exports"], function (exports) {
         return morphs;
       },
       statements: [["inline", "t", ["forms.pwd-reset.caption"], [], ["loc", [null, [1, 4], [1, 35]]]], ["content", "flexberry-pwd-reset", ["loc", [null, [2, 0], [2, 23]]]]],
-      locals: [],
-      templates: []
-    };
-  })());
-});
-define("dummy/templates/reg-end", ["exports"], function (exports) {
-  exports["default"] = Ember.HTMLBars.template((function () {
-    return {
-      meta: {
-        "fragmentReason": {
-          "name": "triple-curlies"
-        },
-        "revision": "Ember@2.4.6",
-        "loc": {
-          "source": null,
-          "start": {
-            "line": 1,
-            "column": 0
-          },
-          "end": {
-            "line": 4,
-            "column": 0
-          }
-        },
-        "moduleName": "dummy/templates/reg-end.hbs"
-      },
-      isEmpty: false,
-      arity: 0,
-      cachedFragment: null,
-      hasRendered: false,
-      buildFragment: function buildFragment(dom) {
-        var el0 = dom.createDocumentFragment();
-        var el1 = dom.createElement("div");
-        dom.setAttribute(el1, "class", "reg-end-div");
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
-        dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        return el0;
-      },
-      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var morphs = new Array(1);
-        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0]), 1, 1);
-        return morphs;
-      },
-      statements: [["inline", "t", ["forms.reg-end.caption"], [], ["loc", [null, [2, 0], [2, 29]]]]],
       locals: [],
       templates: []
     };
@@ -3583,7 +3233,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.1.0-alpha.3+0dd2ae53"});
+  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.1.0-alpha.3+f7b45b66"});
 }
 
 /* jshint ignore:end */

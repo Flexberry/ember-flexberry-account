@@ -81083,97 +81083,6 @@ define('ember-flexberry-account/components/flexberry-user-profile', ['exports', 
 
   exports['default'] = _ember['default'].Component.extend({});
 });
-define('ember-flexberry-account/controllers/email-confirmation', ['exports', 'ember'], function (exports, _ember) {
-  'use strict';
-
-  exports['default'] = _ember['default'].Controller.extend({
-
-    userAccount: _ember['default'].inject.service('user-account'),
-
-    /**
-      Defines which query parameters the controller accepts. [More info.](http://emberjs.com/api/classes/Ember.Controller.html#property_queryParams).
-      @property queryParams
-      @type Array
-      @default ['token', 'fwd']
-    */
-    queryParams: ['token', 'fwd'],
-
-    /**
-      Activation token passed in query parameter.
-      @property token
-      @type String
-      @default null
-    */
-    token: null,
-    /**
-      Route to transit to passed in query parameter.
-      @property fwd
-      @type String
-      @default null
-    */
-    fwd: null,
-
-    /**
-      Flag indicates if activation button is enabled.
-      @property buttonEnabled
-      @type Boolean
-      @default true
-    */
-    buttonEnabled: true,
-
-    /**
-      Flag indicates if there was an error while activating.
-      @property activationError
-      @type Boolean
-      @default false
-    */
-    activationError: false,
-
-    /**
-      Flag indicates if there was an error while activating.
-      @property loaderEnabled
-      @type Boolean
-      @default false
-    */
-    loaderEnabled: false,
-
-    actions: {
-
-      /**
-        This action is called when activation button is pressed.
-         @method actions.verify
-      */
-      verify: function verify() {
-        var _this = this;
-
-        this.set('buttonEnabled', false);
-
-        var token = this.get('token');
-        var fwd = this.get('fwd');
-
-        if (_ember['default'].isEmpty(token)) {
-          this.set('activationError', true);
-          return;
-        }
-
-        var userAccount = this.get('userAccount');
-
-        userAccount.activateAccount(token).then(function () {
-          _this.set('loaderEnabled', false);
-
-          if (fwd != null) {
-            _this.transitionTo(fwd);
-          } else {
-            _this.transitionTo('/');
-          }
-        })['catch'](function () {
-          _this.set('loaderEnabled', false);
-          _this.set('activationError', true);
-        });
-      }
-    }
-  });
-});
 define('ember-flexberry-account/controllers/login', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
@@ -81211,15 +81120,6 @@ define('ember-flexberry-account/locales/en/translations', ['exports'], function 
 
       'user-profile': {
         caption: 'User profile'
-      },
-
-      'reg-end': {
-        caption: 'Thanks for registration! Check your Email for an activation link.'
-      },
-      'email-confirmation': {
-        confirm: 'Activate account',
-        'error-header': 'Activation error',
-        'error-text': 'Link is invalid. Account had been activated before or link is incorrect.'
       }
     },
     components: {
@@ -81277,16 +81177,6 @@ define('ember-flexberry-account/locales/ru/translations', ['exports'], function 
 
       'user-profile': {
         caption: 'Профиль пользователя'
-      },
-
-      'reg-end': {
-        caption: 'Спасибо за регистрацию! На указанный вами Email отправлено письмо со ссылкой для активации аккаунта.'
-      },
-
-      'email-confirmation': {
-        confirm: 'Активировать аккаунт',
-        'error-header': 'Ошибка активации',
-        'error-text': 'Ссылка недействительна. Либо, аккаунт уже активирован, либо вы переходите по неверной ссылке.'
       }
     },
 
@@ -81333,22 +81223,12 @@ define('ember-flexberry-account/models/user-profile', ['exports', 'ember-data'],
 
   exports['default'] = _emberData['default'].Model.extend({});
 });
-define('ember-flexberry-account/routes/email-confirmation', ['exports', 'ember'], function (exports, _ember) {
-  'use strict';
-
-  exports['default'] = _ember['default'].Route.extend({});
-});
 define('ember-flexberry-account/routes/login', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
   exports['default'] = _ember['default'].Route.extend({});
 });
 define('ember-flexberry-account/routes/pwd-reset', ['exports', 'ember'], function (exports, _ember) {
-  'use strict';
-
-  exports['default'] = _ember['default'].Route.extend({});
-});
-define('ember-flexberry-account/routes/reg-end', ['exports', 'ember'], function (exports, _ember) {
   'use strict';
 
   exports['default'] = _ember['default'].Route.extend({});
@@ -81516,22 +81396,6 @@ define('ember-flexberry-account/services/user-account', ['exports', 'ember'], fu
       }
 
       _ember['default'].assert('Developer must override validateCaptcha() method of user-account service.');
-    },
-
-    /**
-      Activate account.
-       @method activateAccount
-      @param token {String} Activation token from email.
-      @return {Promise} Returns activation result.
-    */
-    activateAccount: function activateAccount(token) {
-      var enabled = this.get('enabled');
-
-      if (!enabled) {
-        return;
-      }
-
-      _ember['default'].assert('Developer must override activateAccount method of user-account service.' + 'Activation token: ' + token + '.');
     }
   });
 });
