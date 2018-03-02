@@ -41,6 +41,13 @@
             "fors": {},
             "namespaces": {}
         },
+        "addon/controllers/email-confirmation.js": {
+            "name": "addon/controllers/email-confirmation.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
         "addon/services/user-account.js": {
             "name": "addon/services/user-account.js",
             "modules": {},
@@ -457,6 +464,81 @@
             "module": "ember-flexberry-account"
         },
         {
+            "file": "addon/controllers/email-confirmation.js",
+            "line": 7,
+            "description": "Defines which query parameters the controller accepts. [More info.](http://emberjs.com/api/classes/Ember.Controller.html#property_queryParams).",
+            "itemtype": "property",
+            "name": "queryParams",
+            "type": "Array",
+            "default": "['token', 'fwd']",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/controllers/email-confirmation.js",
+            "line": 15,
+            "description": "Activation token passed in query parameter.",
+            "itemtype": "property",
+            "name": "token",
+            "type": "String",
+            "default": "null",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/controllers/email-confirmation.js",
+            "line": 22,
+            "description": "Route to transit to passed in query parameter.",
+            "itemtype": "property",
+            "name": "fwd",
+            "type": "String",
+            "default": "null",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/controllers/email-confirmation.js",
+            "line": 30,
+            "description": "Flag indicates if activation button is enabled.",
+            "itemtype": "property",
+            "name": "buttonEnabled",
+            "type": "Boolean",
+            "default": "true",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/controllers/email-confirmation.js",
+            "line": 38,
+            "description": "Flag indicates if there was an error while activating.",
+            "itemtype": "property",
+            "name": "activationError",
+            "type": "Boolean",
+            "default": "false",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/controllers/email-confirmation.js",
+            "line": 46,
+            "description": "Flag indicates if there was an error while activating.",
+            "itemtype": "property",
+            "name": "loaderEnabled",
+            "type": "Boolean",
+            "default": "false",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/controllers/email-confirmation.js",
+            "line": 56,
+            "description": "This action is called when activation button is pressed.",
+            "itemtype": "method",
+            "name": "actions.verify",
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
             "file": "addon/services/user-account.js",
             "line": 8,
             "description": "Flag indicates whether user-account service is enabled or not.",
@@ -605,6 +687,26 @@
             "return": {
                 "description": "Returns if captcha valid.",
                 "type": "Boolean"
+            },
+            "class": "",
+            "module": "ember-flexberry-account"
+        },
+        {
+            "file": "addon/services/user-account.js",
+            "line": 169,
+            "description": "Activate account.",
+            "itemtype": "method",
+            "name": "activateAccount",
+            "params": [
+                {
+                    "name": "token",
+                    "description": "Activation token from email.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns activation result.",
+                "type": "Promise"
             },
             "class": "",
             "module": "ember-flexberry-account"

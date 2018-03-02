@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>addon/controllers/email-confirmation.js - Flexberry Documentation</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+	    <img alt="Flexberry Documentation" src="../assets/css/logo.png" style="max-height: 65%;" title="Flexberry Documentation">
+            Flexberry Documentation
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>develop</b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["modules/ember-flexberry-account"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+	    <div>
+	        <h3>APIs</h3>
+	        <div id="sidebar">
+	            <ul id="main-nav" class="nav nav-tabs" style="margin-bottom:0;">
+	                <li class="active"><a href="#classes" data-toggle="tab">Classes</a></li>
+	                <li><a href="#modules" data-toggle="tab">Modules</a></li>
+	            </ul>
+	    
+	            <div id="api-tabview-filter">
+	                <input type="search" placeholder="Type to filter APIs">
+	            </div>
+	    
+	            <div class="tab-content" style="border: 1px solid #DDD; border-top:0;">
+	                <div class="tab-pane active" id="classes">
+	                    <ul id="api-classes" class="nav nav-list">
+	                    </ul>
+	                </div>
+	    
+	                <div class="tab-pane" id="modules">
+	                    <ul id="api-modules" class="nav nav-list">
+	                            <li><a href="../modules/ember-flexberry-account.html">ember-flexberry-account</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+        </div>
+        <div class="span9">
+                <form id="options-form" class="form-inline pull-right">
+                    Show:
+                    <label for="api-show-inherited" class="checkbox">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected" class="checkbox">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private" class="checkbox">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated" class="checkbox">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </form>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<div class="page-header">
+    <h1>addon/controllers/email-confirmation.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums">
+import Ember from &#x27;ember&#x27;;
+
+export default Ember.Controller.extend({
+
+  userAccount: Ember.inject.service(&#x27;user-account&#x27;),
+
+  /**
+    Defines which query parameters the controller accepts. [More info.](http://emberjs.com/api/classes/Ember.Controller.html#property_queryParams).
+    @property queryParams
+    @type Array
+    @default [&#x27;token&#x27;, &#x27;fwd&#x27;]
+  */
+  queryParams: [&#x27;token&#x27;, &#x27;fwd&#x27;],
+
+  /**
+    Activation token passed in query parameter.
+    @property token
+    @type String
+    @default null
+  */
+  token: null,
+  /**
+    Route to transit to passed in query parameter.
+    @property fwd
+    @type String
+    @default null
+  */
+  fwd: null,
+
+  /**
+    Flag indicates if activation button is enabled.
+    @property buttonEnabled
+    @type Boolean
+    @default true
+  */
+  buttonEnabled: true,
+
+  /**
+    Flag indicates if there was an error while activating.
+    @property activationError
+    @type Boolean
+    @default false
+  */
+  activationError: false,
+
+  /**
+    Flag indicates if there was an error while activating.
+    @property loaderEnabled
+    @type Boolean
+    @default false
+  */
+  loaderEnabled: false,
+
+  actions: {
+
+    /**
+      This action is called when activation button is pressed.
+
+      @method actions.verify
+    */
+    verify() {
+      this.set(&#x27;buttonEnabled&#x27;, false);
+
+      let token = this.get(&#x27;token&#x27;);
+      let fwd = this.get(&#x27;fwd&#x27;);
+
+      if (Ember.isEmpty(token)) {
+        this.set(&#x27;activationError&#x27;, true);
+        return;
+      }
+
+      let userAccount = this.get(&#x27;userAccount&#x27;);
+
+      userAccount.activateAccount(token)
+      .then(() =&gt; {
+        this.set(&#x27;loaderEnabled&#x27;, false);
+
+        if (fwd != null) {
+          this.transitionTo(fwd);
+        } else {
+          this.transitionTo(&#x27;/&#x27;);
+        }
+
+      })
+      .catch(() =&gt; {
+        this.set(&#x27;loaderEnabled&#x27;, false);
+        this.set(&#x27;activationError&#x27;, true);
+      });
+    }
+  }
+});
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>
