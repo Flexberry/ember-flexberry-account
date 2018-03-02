@@ -48,14 +48,14 @@ export default Ember.Service.extend({
     @method login
     @return {Boolean} Returns user authenticated status.
   */
-  isUserAuthnticated() {
+  isUserAuthenticated() {
     let enabled = this.get('enabled');
 
     if (!enabled) {
       return;
     }
 
-    Ember.assert('Developer must override isUserAuthnticated method of user-account service.');
+    Ember.assert('Developer must override isUserAuthenticated method of user-account service.');
   },
 
   /**
