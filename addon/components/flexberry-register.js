@@ -76,7 +76,7 @@ export default Ember.Component.extend({
     @default false
   */
   validFullname: Ember.computed('fullName', function() {
-      if (!Ember.isEmpty(this.fullName)) {
+      if (!Ember.isEmpty(this.get('fullName'))) {
         return true;
       } else {
         return false;
@@ -95,7 +95,7 @@ export default Ember.Component.extend({
   allowRegistration: Ember.computed(
     'validUsername',
     'validFullname',
-    function() { return !(this.validUsername && this.validFullname);}
+    function() { return !(this.get('validUsername') && this.get('validFullname'));}
   ),
 
   actions: {
