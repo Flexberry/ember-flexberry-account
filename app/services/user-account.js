@@ -79,20 +79,4 @@ if (Ember.typeOf(gosuslugi) === 'boolean') {
   });
 }
 
-export default UserAccountService.reopen({
-
-  validateUsername(username) {
-    let enabled = this.get('enabled');
-
-    if (!enabled) {
-      return;
-    }
-
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-    return new Ember.RSVP.Promise((resolve, reject) => {
-      resolve(re.test(String(username).toLowerCase()));
-    });
-  },
-
-});
+export default UserAccountService;
