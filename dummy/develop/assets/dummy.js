@@ -538,86 +538,22 @@ define('dummy/services/i18n', ['exports', 'ember-i18n/services/i18n'], function 
     }
   });
 });
-define('dummy/services/user-account', ['exports', 'ember', 'ember-flexberry-account/services/user-account', 'dummy/config/environment'], function (exports, _ember, _emberFlexberryAccountServicesUserAccount, _dummyConfigEnvironment) {
+define('dummy/services/user-account', ['exports', 'ember', 'ember-flexberry-account/services/user-account'], function (exports, _ember, _emberFlexberryAccountServicesUserAccount) {
+  exports['default'] = _emberFlexberryAccountServicesUserAccount['default'].reopen({
+    validateUsername: function validateUsername(username) {
+      var enabled = this.get('enabled');
 
-  var enabled = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.enabled');
-  if (_ember['default'].typeOf(enabled) === 'boolean') {
-    _emberFlexberryAccountServicesUserAccount['default'].reopen({
-      enabled: enabled
-    });
-  }
+      if (!enabled) {
+        return;
+      }
 
-  var vk = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.vk');
-  if (_ember['default'].typeOf(vk) === 'boolean') {
-    _emberFlexberryAccountServicesUserAccount['default'].reopen({
-      vk: vk
-    });
-  }
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  var facebook = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.facebook');
-  if (_ember['default'].typeOf(facebook) === 'boolean') {
-    _emberFlexberryAccountServicesUserAccount['default'].reopen({
-      facebook: facebook
-    });
-  }
-
-  var twitter = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.twitter');
-  if (_ember['default'].typeOf(twitter) === 'boolean') {
-    _emberFlexberryAccountServicesUserAccount['default'].reopen({
-      twitter: twitter
-    });
-  }
-
-  var google = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.google');
-  if (_ember['default'].typeOf(google) === 'boolean') {
-    _emberFlexberryAccountServicesUserAccount['default'].reopen({
-      google: google
-    });
-  }
-
-  var microsoft = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.microsoft');
-  if (_ember['default'].typeOf(microsoft) === 'boolean') {
-    _emberFlexberryAccountServicesUserAccount['default'].reopen({
-      microsoft: microsoft
-    });
-  }
-
-  var github = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.github');
-  if (_ember['default'].typeOf(github) === 'boolean') {
-    _emberFlexberryAccountServicesUserAccount['default'].reopen({
-      github: github
-    });
-  }
-
-  var ok = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.ok');
-  if (_ember['default'].typeOf(ok) === 'boolean') {
-    _emberFlexberryAccountServicesUserAccount['default'].reopen({
-      ok: ok
-    });
-  }
-
-  var mailru = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.mailru');
-  if (_ember['default'].typeOf(mailru) === 'boolean') {
-    _emberFlexberryAccountServicesUserAccount['default'].reopen({
-      mailru: mailru
-    });
-  }
-
-  var yandex = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.yandex');
-  if (_ember['default'].typeOf(yandex) === 'boolean') {
-    _emberFlexberryAccountServicesUserAccount['default'].reopen({
-      yandex: yandex
-    });
-  }
-
-  var gosuslugi = _ember['default'].get(_dummyConfigEnvironment['default'], 'APP.userAccount.gosuslugi');
-  if (_ember['default'].typeOf(gosuslugi) === 'boolean') {
-    _emberFlexberryAccountServicesUserAccount['default'].reopen({
-      gosuslugi: gosuslugi
-    });
-  }
-
-  exports['default'] = _emberFlexberryAccountServicesUserAccount['default'];
+      return new _ember['default'].RSVP.Promise(function (resolve) {
+        resolve(re.test(String(username).toLowerCase()));
+      });
+    }
+  });
 });
 define("dummy/templates/application", ["exports"], function (exports) {
   exports["default"] = Ember.HTMLBars.template((function () {
@@ -2081,7 +2017,7 @@ define("dummy/templates/components/flexberry-register", ["exports"], function (e
           morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
           return morphs;
         },
-        statements: [["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "fullName", ["loc", [null, [21, 28], [21, 36]]]]], [], []], "focus-out", "validateFullname"], ["loc", [null, [21, 2], [21, 67]]]]],
+        statements: [["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "fullName", ["loc", [null, [21, 28], [21, 36]]]]], [], []]], ["loc", [null, [21, 2], [21, 38]]]]],
         locals: [],
         templates: []
       };
@@ -3583,7 +3519,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.1.0-alpha.4+3b455880"});
+  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.1.0-alpha.4+c6c5d521"});
 }
 
 /* jshint ignore:end */

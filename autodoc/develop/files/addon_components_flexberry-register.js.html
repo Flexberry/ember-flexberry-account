@@ -171,7 +171,7 @@ export default Ember.Component.extend({
     @default false
   */
   validFullname: Ember.computed(&#x27;fullName&#x27;, function() {
-      if (!Ember.isEmpty(this.fullName)) {
+      if (!Ember.isEmpty(this.get(&#x27;fullName&#x27;))) {
         return true;
       } else {
         return false;
@@ -190,7 +190,7 @@ export default Ember.Component.extend({
   allowRegistration: Ember.computed(
     &#x27;validUsername&#x27;,
     &#x27;validFullname&#x27;,
-    function() { return !(this.validUsername &amp;&amp; this.validFullname);}
+    function() { return !(this.get(&#x27;validUsername&#x27;) &amp;&amp; this.get(&#x27;validFullname&#x27;));}
   ),
 
   actions: {

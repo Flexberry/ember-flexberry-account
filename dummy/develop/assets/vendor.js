@@ -80957,7 +80957,7 @@ define('ember-flexberry-account/components/flexberry-register', ['exports', 'emb
       @default false
     */
     validFullname: _ember['default'].computed('fullName', function () {
-      if (!_ember['default'].isEmpty(this.fullName)) {
+      if (!_ember['default'].isEmpty(this.get('fullName'))) {
         return true;
       } else {
         return false;
@@ -80973,7 +80973,7 @@ define('ember-flexberry-account/components/flexberry-register', ['exports', 'emb
     captchaPassed: false,
 
     allowRegistration: _ember['default'].computed('validUsername', 'validFullname', function () {
-      return !(this.validUsername && this.validFullname);
+      return !(this.get('validUsername') && this.get('validFullname'));
     }),
 
     actions: {
