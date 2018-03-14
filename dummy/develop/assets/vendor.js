@@ -80672,6 +80672,13 @@ define('ember-flexberry-account/components/flexberry-pwd-reset', ['exports', 'em
   'use strict';
 
   exports['default'] = _ember['default'].Component.extend({
+    /**
+      Service that triggers user-account events.
+       @property userAccountService
+      @type {Class}
+      @default Ember.inject.service()
+    */
+    userAccount: _ember['default'].inject.service('user-account'),
 
     useNavBlock: false,
 
@@ -80941,6 +80948,14 @@ define('ember-flexberry-account/components/flexberry-register', ['exports', 'emb
     fullName: undefined,
 
     /**
+      Route to redirect after success registration.
+       @property goto
+      @type String
+      @default undefined
+    */
+    goto: undefined,
+
+    /**
       This field stores if username is valid.
        @property validUsername
       @type Boolean
@@ -81019,8 +81034,9 @@ define('ember-flexberry-account/components/flexberry-register', ['exports', 'emb
 
         var username = this.get('username');
         var fullName = this.get('fullName');
+        var goto = this.get('goto');
         var userAccount = this.get('userAccount');
-        userAccount.register(username, fullName).then(function (result) {
+        userAccount.register(username, fullName, goto).then(function (result) {
           if (result) {
             if (_ember['default'].isPresent(_this2.get('onSuccess'))) {
               _this2.get('onSuccess')();
@@ -81473,19 +81489,18 @@ define('ember-flexberry-account/services/user-account', ['exports', 'ember'], fu
       Register user.
        @method register
       @param username {String} User name for log in.
-      @param surname {String} User surname.
       @param name {String} User name.
-      @param middlename {String} User middlename.
+      @param redirectRoute {String} Route to redirect after registration.
       @return {Boolean} Returns register result.
     */
-    register: function register(username, surname, name, middlename) {
+    register: function register(username, name, redirectRoute) {
       var enabled = this.get('enabled');
 
       if (!enabled) {
         return;
       }
 
-      _ember['default'].assert('Developer must override register method of user-account service.' + ' You try register with username: ' + username + ', surname: ' + surname + ', name: ' + name + ', middlename: ' + middlename + '.');
+      _ember['default'].assert('Developer must override register method of user-account service.' + ' You try register with username: ' + username + ', name: ' + name + '.');
     },
     /**
       Reset password request for username.
