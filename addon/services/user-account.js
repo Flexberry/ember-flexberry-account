@@ -128,7 +128,7 @@ export default Ember.Service.extend({
     }
 
     Ember.assert('Developer must override register method of user-account service.' +
-    ' You try register with username: ' + username + ', name: ' + name + '.');
+    ' You try register with username: ' + username + ', name: ' + name + ', redirectRoute: ' + redirectRoute + '.');
   },
   /**
     Reset password request for username.
