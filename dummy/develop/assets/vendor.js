@@ -81500,7 +81500,7 @@ define('ember-flexberry-account/services/user-account', ['exports', 'ember'], fu
         return;
       }
 
-      _ember['default'].assert('Developer must override register method of user-account service.' + ' You try register with username: ' + username + ', name: ' + name + '.');
+      _ember['default'].assert('Developer must override register method of user-account service.' + ' You try register with username: ' + username + ', name: ' + name + ', redirectRoute: ' + redirectRoute + '.');
     },
     /**
       Reset password request for username.
