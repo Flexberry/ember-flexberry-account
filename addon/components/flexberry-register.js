@@ -58,6 +58,15 @@ export default Ember.Component.extend({
   fullName: undefined,
 
   /**
+    Route to redirect after success registration.
+
+    @property goto
+    @type String
+    @default undefined
+  */
+  goto: undefined,
+
+  /**
     This field stores if username is valid.
 
     @property validUsername
@@ -143,8 +152,9 @@ export default Ember.Component.extend({
     register: function() {
       let username = this.get('username');
       let fullName = this.get('fullName');
+      let goto = this.get('goto');
       let userAccount = this.get('userAccount');
-      userAccount.register(username, fullName).then((result) => {
+      userAccount.register(username, fullName, goto).then((result) => {
         if (result) {
           if (Ember.isPresent(this.get('onSuccess'))) {
             this.get('onSuccess')();

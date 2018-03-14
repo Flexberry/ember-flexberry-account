@@ -116,12 +116,11 @@ export default Ember.Service.extend({
 
     @method register
     @param username {String} User name for log in.
-    @param surname {String} User surname.
     @param name {String} User name.
-    @param middlename {String} User middlename.
+    @param redirectRoute {String} Route to redirect after registration.
     @return {Boolean} Returns register result.
   */
-  register(username, surname, name, middlename) {
+  register(username, name, redirectRoute) {
     let enabled = this.get('enabled');
 
     if (!enabled) {
@@ -129,8 +128,7 @@ export default Ember.Service.extend({
     }
 
     Ember.assert('Developer must override register method of user-account service.' +
-    ' You try register with username: ' + username + ', surname: ' + surname +
-    ', name: ' + name + ', middlename: ' + middlename + '.');
+    ' You try register with username: ' + username + ', name: ' + name + '.');
   },
   /**
     Reset password request for username.

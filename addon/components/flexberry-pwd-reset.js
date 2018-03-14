@@ -5,6 +5,14 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  /**
+    Service that triggers user-account events.
+
+    @property userAccountService
+    @type {Class}
+    @default Ember.inject.service()
+  */
+  userAccount: Ember.inject.service('user-account'),
 
   useNavBlock: false,
 
