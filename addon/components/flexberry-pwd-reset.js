@@ -14,7 +14,9 @@ export default Ember.Component.extend({
   */
   userAccount: Ember.inject.service('user-account'),
 
-  useNavBlock: false,
+  useNavBlock: Ember.computed('showPwdResetButton', 'showRegButton', function() {
+    return this.get('showPwdResetButton') || this.get('showRegButton');
+  }),
 
   /**
     Stores if we gonna show registration button or not.
@@ -111,9 +113,9 @@ export default Ember.Component.extend({
           }
         }
       })
-      .catch(() => {
+      .catch((reason) => {
         if (Ember.isPresent(this.get('onFail'))) {
-          this.get('onFail')();
+          this.get('onFail')(reason);
         }
       });
     }
