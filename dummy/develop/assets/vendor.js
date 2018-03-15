@@ -80549,7 +80549,11 @@ define('ember-flexberry-account/components/flexberry-login', ['exports', 'ember'
     yandex: false,
     gosuslugi: false,
     useSocialBlock: false,
-    useNavBlock: false,
+
+    useNavBlock: _ember['default'].computed('showPwdResetButton', 'showRegButton', function () {
+      return this.get('showPwdResetButton') || this.get('showRegButton');
+    }),
+
     /**
       Stores if we gonna show registration button or not.
        @property showRegButton
@@ -80620,9 +80624,9 @@ define('ember-flexberry-account/components/flexberry-login', ['exports', 'ember'
               _this.get('onFail')();
             }
           }
-        })['catch'](function () {
+        })['catch'](function (reason) {
           if (_ember['default'].isPresent(_this.get('onFail'))) {
-            _this.get('onFail')();
+            _this.get('onFail')(reason);
           }
         });
       },
@@ -80680,7 +80684,9 @@ define('ember-flexberry-account/components/flexberry-pwd-reset', ['exports', 'em
     */
     userAccount: _ember['default'].inject.service('user-account'),
 
-    useNavBlock: false,
+    useNavBlock: _ember['default'].computed('showPwdResetButton', 'showRegButton', function () {
+      return this.get('showPwdResetButton') || this.get('showRegButton');
+    }),
 
     /**
       Stores if we gonna show registration button or not.
@@ -80769,9 +80775,9 @@ define('ember-flexberry-account/components/flexberry-pwd-reset', ['exports', 'em
               _this.get('onFail')();
             }
           }
-        })['catch'](function () {
+        })['catch'](function (reason) {
           if (_ember['default'].isPresent(_this.get('onFail'))) {
-            _this.get('onFail')();
+            _this.get('onFail')(reason);
           }
         });
       }
@@ -80913,7 +80919,10 @@ define('ember-flexberry-account/components/flexberry-register', ['exports', 'emb
     yandex: false,
     gosuslugi: false,
     useSocialBlock: false,
-    useNavBlock: false,
+
+    useNavBlock: _ember['default'].computed('showPwdResetButton', 'showRegButton', function () {
+      return this.get('showPwdResetButton') || this.get('showRegButton');
+    }),
 
     /**
       Stores if we gonna show login button or not.
@@ -81046,9 +81055,9 @@ define('ember-flexberry-account/components/flexberry-register', ['exports', 'emb
               _this2.get('onFail')();
             }
           }
-        })['catch'](function () {
+        })['catch'](function (reason) {
           if (_ember['default'].isPresent(_this2.get('onFail'))) {
-            _this2.get('onFail')();
+            _this2.get('onFail')(reason);
           }
         });
       },

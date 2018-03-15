@@ -74,7 +74,7 @@
     "classitems": [
         {
             "file": "addon/components/flexberry-login.js",
-            "line": 23,
+            "line": 27,
             "description": "Stores if we gonna show registration button or not.",
             "itemtype": "property",
             "name": "showRegButton",
@@ -85,7 +85,7 @@
         },
         {
             "file": "addon/components/flexberry-login.js",
-            "line": 32,
+            "line": 36,
             "description": "Stores if we gonna show password reset button or not.",
             "itemtype": "property",
             "name": "showPwdResetButton",
@@ -96,7 +96,7 @@
         },
         {
             "file": "addon/components/flexberry-login.js",
-            "line": 41,
+            "line": 45,
             "description": "This field stores username.",
             "itemtype": "property",
             "name": "username",
@@ -107,7 +107,7 @@
         },
         {
             "file": "addon/components/flexberry-login.js",
-            "line": 50,
+            "line": 54,
             "description": "This field stores password.",
             "itemtype": "property",
             "name": "password",
@@ -118,7 +118,7 @@
         },
         {
             "file": "addon/components/flexberry-login.js",
-            "line": 59,
+            "line": 63,
             "description": "This field stores whether to remember values or not.",
             "itemtype": "property",
             "name": "remember",
@@ -129,7 +129,7 @@
         },
         {
             "file": "addon/components/flexberry-login.js",
-            "line": 68,
+            "line": 72,
             "description": "This computed field shows whether login is allowed or not.",
             "itemtype": "property",
             "name": "allowToLogin",
@@ -140,7 +140,7 @@
         },
         {
             "file": "addon/components/flexberry-login.js",
-            "line": 79,
+            "line": 83,
             "description": "This action is called when login button is pressed.",
             "itemtype": "method",
             "name": "actions.login",
@@ -149,7 +149,7 @@
         },
         {
             "file": "addon/components/flexberry-login.js",
-            "line": 106,
+            "line": 110,
             "description": "This action is called when register button is pressed.",
             "itemtype": "method",
             "name": "actions.register",
@@ -158,7 +158,7 @@
         },
         {
             "file": "addon/components/flexberry-login.js",
-            "line": 115,
+            "line": 119,
             "description": "This action is called when password reset button is pressed.",
             "itemtype": "method",
             "name": "actions.pwdReset",
@@ -167,7 +167,7 @@
         },
         {
             "file": "addon/components/flexberry-login.js",
-            "line": 125,
+            "line": 129,
             "description": "Initializes component.",
             "class": "",
             "module": "ember-flexberry-account"
@@ -185,7 +185,7 @@
         },
         {
             "file": "addon/components/flexberry-pwd-reset.js",
-            "line": 19,
+            "line": 21,
             "description": "Stores if we gonna show registration button or not.",
             "itemtype": "property",
             "name": "showRegButton",
@@ -196,7 +196,7 @@
         },
         {
             "file": "addon/components/flexberry-pwd-reset.js",
-            "line": 28,
+            "line": 30,
             "description": "Stores if we gonna show login button or not.",
             "itemtype": "property",
             "name": "showLoginButton",
@@ -207,7 +207,7 @@
         },
         {
             "file": "addon/components/flexberry-pwd-reset.js",
-            "line": 37,
+            "line": 39,
             "description": "This field stores username.",
             "itemtype": "property",
             "name": "username",
@@ -218,7 +218,7 @@
         },
         {
             "file": "addon/components/flexberry-pwd-reset.js",
-            "line": 46,
+            "line": 48,
             "description": "This field shows if captcha was successfully passed.",
             "itemtype": "property",
             "name": "captchaPassed",
@@ -229,7 +229,7 @@
         },
         {
             "file": "addon/components/flexberry-pwd-reset.js",
-            "line": 55,
+            "line": 57,
             "description": "This computed field shows whether password reset is allowed or not.",
             "itemtype": "property",
             "name": "allowReset",
@@ -240,7 +240,7 @@
         },
         {
             "file": "addon/components/flexberry-pwd-reset.js",
-            "line": 68,
+            "line": 70,
             "description": "This action is called when captcha is successfully passed.",
             "itemtype": "method",
             "name": "actions.captchaSuccess",
@@ -249,7 +249,7 @@
         },
         {
             "file": "addon/components/flexberry-pwd-reset.js",
-            "line": 77,
+            "line": 79,
             "description": "This action is called when register button is pressed.",
             "itemtype": "method",
             "name": "actions.register",
@@ -258,7 +258,7 @@
         },
         {
             "file": "addon/components/flexberry-pwd-reset.js",
-            "line": 86,
+            "line": 88,
             "description": "This action is called when login button is pressed.",
             "itemtype": "method",
             "name": "actions.login",
@@ -267,7 +267,7 @@
         },
         {
             "file": "addon/components/flexberry-pwd-reset.js",
-            "line": 95,
+            "line": 97,
             "description": "This action is called when password reset button is pressed.",
             "itemtype": "method",
             "name": "actions.pwdReset",
@@ -347,7 +347,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 24,
+            "line": 27,
             "description": "Stores if we gonna show login button or not.",
             "itemtype": "property",
             "name": "showLoginButton",
@@ -358,7 +358,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 33,
+            "line": 36,
             "description": "Stores if we gonna show password reset button or not.",
             "itemtype": "property",
             "name": "showPwdResetButton",
@@ -369,7 +369,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 42,
+            "line": 45,
             "description": "This field stores username.",
             "itemtype": "property",
             "name": "username",
@@ -380,7 +380,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 51,
+            "line": 54,
             "description": "This field stores full name.",
             "itemtype": "property",
             "name": "fullName",
@@ -391,7 +391,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 60,
+            "line": 63,
             "description": "Route to redirect after success registration.",
             "itemtype": "property",
             "name": "goto",
@@ -402,7 +402,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 69,
+            "line": 72,
             "description": "This field stores if username is valid.",
             "itemtype": "property",
             "name": "validUsername",
@@ -413,7 +413,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 80,
+            "line": 83,
             "description": "This computed field shows whether fullname is valid or not.",
             "itemtype": "property",
             "name": "validFullname",
@@ -424,7 +424,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 95,
+            "line": 98,
             "description": "This field stores if captcha is passed successfully.",
             "itemtype": "property",
             "name": "captchaPassed",
@@ -435,7 +435,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 112,
+            "line": 115,
             "description": "This action is called when captcha is successfully passed.",
             "itemtype": "method",
             "name": "actions.captchaSuccess",
@@ -444,7 +444,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 121,
+            "line": 124,
             "description": "This action is called when username field is out of focus.",
             "itemtype": "method",
             "name": "actions.validateUsername",
@@ -453,7 +453,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 147,
+            "line": 150,
             "description": "This action is called when register button is pressed.",
             "itemtype": "method",
             "name": "actions.register",
@@ -462,7 +462,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 175,
+            "line": 178,
             "description": "This action is called when login button is pressed.",
             "itemtype": "method",
             "name": "actions.login",
@@ -471,7 +471,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 184,
+            "line": 187,
             "description": "This action is called when pwdReset button is pressed.",
             "itemtype": "method",
             "name": "actions.pwdReset",
@@ -480,7 +480,7 @@
         },
         {
             "file": "addon/components/flexberry-register.js",
-            "line": 194,
+            "line": 197,
             "description": "Initializes component.",
             "class": "",
             "module": "ember-flexberry-account"
@@ -732,7 +732,7 @@
     "warnings": [
         {
             "message": "Missing item type\nInitializes component.",
-            "line": " addon/components/flexberry-login.js:125"
+            "line": " addon/components/flexberry-login.js:129"
         },
         {
             "message": "Missing item type\nComponent's CSS-classes names.",
@@ -764,7 +764,7 @@
         },
         {
             "message": "Missing item type\nInitializes component.",
-            "line": " addon/components/flexberry-register.js:194"
+            "line": " addon/components/flexberry-register.js:197"
         }
     ]
 }
