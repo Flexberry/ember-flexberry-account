@@ -1,6 +1,6 @@
 {
   "name": "ember-flexberry-account",
-  "version": "0.1.0-alpha.6",
+  "version": "0.1.0-alpha.7",
   "description": "User account management addon.",
   "directories": {
     "doc": "doc",
