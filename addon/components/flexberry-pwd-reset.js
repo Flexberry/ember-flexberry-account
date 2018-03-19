@@ -5,8 +5,18 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  /**
+    Service that triggers user-account events.
 
-  useNavBlock: false,
+    @property userAccountService
+    @type {Class}
+    @default Ember.inject.service()
+  */
+  userAccount: Ember.inject.service('user-account'),
+
+  useNavBlock: Ember.computed('showPwdResetButton', 'showRegButton', function() {
+    return this.get('showPwdResetButton') || this.get('showRegButton');
+  }),
 
   /**
     Stores if we gonna show registration button or not.
@@ -103,9 +113,9 @@ export default Ember.Component.extend({
           }
         }
       })
-      .catch(() => {
+      .catch((reason) => {
         if (Ember.isPresent(this.get('onFail'))) {
-          this.get('onFail')();
+          this.get('onFail')(reason);
         }
       });
     }

@@ -18,7 +18,7 @@
 <div class="full-name-div">
  {{t "components.register.full-name-label"}}<br/>
  {{#if captchaPassed}}
-  {{input type="text" value=fullName focus-out="validateFullname"}}
+  {{input type="text" value=fullName}}
  {{else}}
   {{input type="text" readonly=true}}
 {{/if}}

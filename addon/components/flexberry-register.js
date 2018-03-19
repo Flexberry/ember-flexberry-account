@@ -19,7 +19,10 @@ export default Ember.Component.extend({
   yandex: false,
   gosuslugi: false,
   useSocialBlock: false,
-  useNavBlock: false,
+
+  useNavBlock: Ember.computed('showPwdResetButton', 'showRegButton', function() {
+    return this.get('showPwdResetButton') || this.get('showRegButton');
+  }),
 
   /**
     Stores if we gonna show login button or not.
@@ -58,6 +61,15 @@ export default Ember.Component.extend({
   fullName: undefined,
 
   /**
+    Route to redirect after success registration.
+
+    @property goto
+    @type String
+    @default undefined
+  */
+  goto: undefined,
+
+  /**
     This field stores if username is valid.
 
     @property validUsername
@@ -76,7 +88,7 @@ export default Ember.Component.extend({
     @default false
   */
   validFullname: Ember.computed('fullName', function() {
-      if (!Ember.isEmpty(this.fullName)) {
+      if (!Ember.isEmpty(this.get('fullName'))) {
         return true;
       } else {
         return false;
@@ -95,7 +107,7 @@ export default Ember.Component.extend({
   allowRegistration: Ember.computed(
     'validUsername',
     'validFullname',
-    function() { return !(this.validUsername && this.validFullname);}
+    function() { return !(this.get('validUsername') && this.get('validFullname'));}
   ),
 
   actions: {
@@ -143,8 +155,9 @@ export default Ember.Component.extend({
     register: function() {
       let username = this.get('username');
       let fullName = this.get('fullName');
+      let goto = this.get('goto');
       let userAccount = this.get('userAccount');
-      userAccount.register(username, fullName).then((result) => {
+      userAccount.register(username, fullName, goto).then((result) => {
         if (result) {
           if (Ember.isPresent(this.get('onSuccess'))) {
             this.get('onSuccess')();
@@ -155,9 +168,9 @@ export default Ember.Component.extend({
           }
         }
       })
-      .catch(() => {
+      .catch((reason) => {
         if (Ember.isPresent(this.get('onFail'))) {
-          this.get('onFail')();
+          this.get('onFail')(reason);
         }
       });
     },
