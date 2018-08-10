@@ -40,7 +40,7 @@ export default {
     },
     register: {
       'username-label': 'Логин (E-mail):',
-      'full-name-label': 'ФИО',
+      'full-name-label': 'ФИО:',
       'register-button-title': 'Зарегистрировать пользователя',
       'register-button-text': 'Регистрация',
       'register-with-label': 'Зарегистрироваться при помощи:',
