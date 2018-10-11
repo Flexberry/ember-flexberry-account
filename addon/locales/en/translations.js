@@ -46,7 +46,10 @@ export default {
       'login-button-title': 'Login with username and password',
       'login-button-text': 'Login',
       'pwd-reset-button-title': 'If the password was lost, you can reset it',
-      'pwd-reset-button-text': 'Reset password'
+      'pwd-reset-button-text': 'Reset password',
+      'username-validation-text': 'Email address must contain the character "@".',
+      'username-exist-text': 'This email is already registered. You can ',
+      'username-or-text': 'or'
     },
     'pwd-reset': {
       'username-label': 'Username',

@@ -3,8 +3,9 @@
 */
 
 import Ember from 'ember';
+import UsernameCommonMixin from '../mixins/username-common';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(UsernameCommonMixin, {
 
   userAccount: Ember.inject.service('user-account'),
 
@@ -43,15 +44,6 @@ export default Ember.Component.extend({
   showPwdResetButton: false,
 
   /**
-    This field stores username.
-
-    @property username
-    @type String
-    @default undefined
-  */
-  username: undefined,
-
-  /**
     This field stores full name.
 
     @property fullName
@@ -78,7 +70,9 @@ export default Ember.Component.extend({
   */
   validUsername: false,
 
-  usernameFlag: undefined,
+  existUsername: false,
+
+  showValidUsernameMessages: false,
 
   /**
     This computed field shows whether fullname is valid or not.
@@ -107,7 +101,13 @@ export default Ember.Component.extend({
   allowRegistration: Ember.computed(
     'validUsername',
     'validFullname',
-    function() { return !(this.get('validUsername') && this.get('validFullname'));}
+    'existUsername',
+    function() { 
+      return !(this.get('validUsername')
+        && this.get('validFullname')
+        && this.get('existUsername')
+        && this.get('captchaPassed'));
+    }
   ),
 
   actions: {
@@ -129,20 +129,19 @@ export default Ember.Component.extend({
     validateUsername: function() {
       let username = this.get('username');
       let userAccount = this.get('userAccount');
-
-      userAccount.validateUsername(username)
-
-      .then((result) => {
+      this.set('showValidUsernameMessages', true);
+      userAccount.validateUsername(username).then((result) => {
         if (result) {
-          this.set('usernameFlag', '<i class="green check icon">');
-        } else {
-          this.set('usernameFlag', '<i class="red times icon">');
+          userAccount.existUsername(username).then((result) => {
+            this.set('existUsername', result);
+          })
+          .catch(() => {
+            this.set('existUsername', false);
+          });
         }
-
         this.set('validUsername', result);
       })
       .catch(() => {
-        this.set('usernameFlag', '<i class="red times icon">');
         this.set('validUsername', false);
       });
     },

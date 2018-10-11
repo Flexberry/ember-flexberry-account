@@ -9,17 +9,34 @@
 {{#if captchaPassed}}
   {{input type="email" value=username focus-out="validateUsername"}}
 {{else}}
-  {{input type="email" readonly=true}}
+  {{input type="email" placeholder=username readonly=true}}
 {{/if}}
 
-{{{usernameFlag}}}
+{{#if showValidUsernameMessages}}
+  {{#if validUsername}}
+    {{#unless existUsername}}
+      <p>{{t "components.register.username-exist-text"}}
+        {{#link-to 'login'}} 
+          {{t "components.register.login-button-text"}}
+        {{/link-to}} {{t "components.register.username-or-text"}} 
+        {{#link-to 'pwd-reset'}} 
+          {{t "components.register.pwd-reset-button-text"}}
+        {{/link-to}}.</p>
+        <i class="red x icon"></i>
+    {{else}}
+      <i class="green check icon"></i>
+    {{/unless}}
+  {{else}}
+    <p> {{t "components.register.username-validation-text"}} </p><i class="red x icon"></i>
+  {{/if}}
+{{/if}}
 
 </div>
 <div class="full-name-div">
  {{t "components.register.full-name-label"}}<br/>
- {{#if captchaPassed}}
+{{#if captchaPassed}}
   {{input type="text" value=fullName}}
- {{else}}
+  {{else}}
   {{input type="text" readonly=true}}
 {{/if}}
 

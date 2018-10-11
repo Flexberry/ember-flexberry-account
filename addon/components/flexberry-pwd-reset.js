@@ -3,8 +3,9 @@
 */
 
 import Ember from 'ember';
+import UsernameCommonMixin from '../mixins/username-common';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(UsernameCommonMixin, {
   /**
     Service that triggers user-account events.
 
@@ -37,15 +38,6 @@ export default Ember.Component.extend({
   showLoginButton: false,
 
   /**
-    This field stores username.
-
-    @property username
-    @type String
-    @default undefined
-  */
-  username: undefined,
-
-  /**
     This field shows if captcha was successfully passed.
 
     @property captchaPassed
@@ -61,8 +53,8 @@ export default Ember.Component.extend({
     @type Boolean
     @default false
   */
-  allowReset: Ember.computed('username', function() {
-    return Ember.isEmpty(this.username);
+  allowReset: Ember.computed('username', 'captchaPassed', function() {
+    return Ember.isEmpty(this.username) || !this.get('captchaPassed');
   }),
 
   actions: {

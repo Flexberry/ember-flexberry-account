@@ -3,8 +3,9 @@
 */
 
 import Ember from 'ember';
+import UsernameCommonMixin from '../mixins/username-common';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(UsernameCommonMixin, {
 
   userAccount: Ember.inject.service('user-account'),
 
@@ -42,14 +43,6 @@ export default Ember.Component.extend({
   */
   showPwdResetButton: false,
 
-  /**
-    This field stores username.
-
-    @property username
-    @type String
-    @default undefined
-  */
-  username: undefined,
 
   /**
     This field stores password.

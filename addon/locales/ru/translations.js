@@ -48,7 +48,10 @@ export default {
       'login-button-title': 'Войти в систему по логину и паролю',
       'login-button-text': 'Войти',
       'pwd-reset-button-title': 'Если пароль был утерян, то его можно восстановить',
-      'pwd-reset-button-text': 'Восстановить пароль'
+      'pwd-reset-button-text': 'Восстановить пароль',
+      'username-validation-text': 'Адрес электронной почты должен содержать символ "@".',
+      'username-exist-text': 'Данный email уже зарегестирован. Вы можете ',
+      'username-or-text': 'или'
     },
     'pwd-reset': {
       'username-label': 'Логин (E-mail)',
