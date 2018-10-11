@@ -46,6 +46,8 @@ export default Ember.Component.extend(UsernameCommonMixin, {
   */
   captchaPassed: false,
 
+  loadingState: false,
+
   /**
     This computed field shows whether password reset is allowed or not.
 
@@ -94,6 +96,7 @@ export default Ember.Component.extend(UsernameCommonMixin, {
     pwdReset: function() {
       let username = this.get('username');
       let userAccount = this.get('userAccount');
+      this.set('loadingState', true);
       userAccount.pwdReset(username).then((result) => {
         if (result) {
           if (Ember.isPresent(this.get('onSuccess'))) {
@@ -109,6 +112,9 @@ export default Ember.Component.extend(UsernameCommonMixin, {
         if (Ember.isPresent(this.get('onFail'))) {
           this.get('onFail')(reason);
         }
+      })
+      .finally(() => {
+        this.set('loadingState', false);
       });
     }
   }

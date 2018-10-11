@@ -1,5 +1,8 @@
+<div class="ui {{if loadingState "active"}} inverted dimmer">
+  <div class="ui text loader"></div>
+</div>
 <div class="captcha-div">
-   {{flexberry-recaptcha onSuccess=(action "captchaSuccess")}}
+  {{flexberry-recaptcha onSuccess=(action "captchaSuccess")}}
 </div>
 <div class="username-div">
   {{t "components.pwd-reset.username-label"}}<br/>
