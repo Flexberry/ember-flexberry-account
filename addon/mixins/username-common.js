@@ -20,4 +20,4 @@ export default Ember.Mixin.create({
     this._super(...arguments);
     this.set("username", this.usernameShared.firstObject);
   }
-})
+});

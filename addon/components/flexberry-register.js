@@ -103,10 +103,7 @@ export default Ember.Component.extend(UsernameCommonMixin, {
     'validFullname',
     'existUsername',
     function() { 
-      return !(this.get('validUsername')
-        && this.get('validFullname')
-        && this.get('existUsername')
-        && this.get('captchaPassed'));
+      return !(this.get('validUsername') && this.get('validFullname') && this.get('existUsername') && this.get('captchaPassed'));
     }
   ),
 
