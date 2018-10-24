@@ -93,24 +93,6 @@ export default Ember.Service.extend({
     Ember.assert('Developer must override logout method of user-account service.');
   },
 
-    /**
-    Exist username.
-
-    @method existUsername
-    @param username {String} User name for check.
-    @return {Promise} Returns check result.
-  */
-  existUsername(username) {
-    let enabled = this.get('enabled');
-
-    if (!enabled) {
-      return;
-    }
-
-    Ember.assert('Developer must override existUsername method of user-account service.' +
-    'Check username: ' + username + '.');
-  },
-
   /**
     Validate username.
 

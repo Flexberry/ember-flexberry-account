@@ -101,9 +101,8 @@ export default Ember.Component.extend(UsernameCommonMixin, {
   allowRegistration: Ember.computed(
     'validUsername',
     'validFullname',
-    'existUsername',
-    function() { 
-      return !(this.get('validUsername') && this.get('validFullname') && this.get('existUsername') && this.get('captchaPassed'));
+    function() {
+      return !(this.get('validUsername') && this.get('validFullname') && this.get('captchaPassed'));
     }
   ),
 
@@ -127,15 +126,12 @@ export default Ember.Component.extend(UsernameCommonMixin, {
       let username = this.get('username');
       let userAccount = this.get('userAccount');
       this.set('showValidUsernameMessages', true);
-      userAccount.validateUsername(username).then((result) => {
-        if (result) {
-          userAccount.existUsername(username).then((result) => {
-            this.set('existUsername', result);
-          })
-          .catch(() => {
-            this.set('existUsername', false);
-          });
+      userAccount.validateUsername(username)
+      .then((result) => {
+        if (!result) {
+          this.set('existUsername', username.match(/^ *$/) === null && username !== null && username.indexOf('@') !== -1);
         }
+
         this.set('validUsername', result);
       })
       .catch(() => {

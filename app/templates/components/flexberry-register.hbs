@@ -14,7 +14,9 @@
 
 {{#if showValidUsernameMessages}}
   {{#if validUsername}}
-    {{#unless existUsername}}
+    <i class="green check icon"></i>
+  {{else}}
+    {{#if existUsername}}
       <p>{{t "components.register.username-exist-text"}}
         {{#link-to 'login'}} 
           {{t "components.register.login-button-text"}}
@@ -24,10 +26,8 @@
         {{/link-to}}.</p>
         <i class="red x icon"></i>
     {{else}}
-      <i class="green check icon"></i>
-    {{/unless}}
-  {{else}}
-    <p> {{t "components.register.username-validation-text"}} </p><i class="red x icon"></i>
+      <p> {{t "components.register.username-validation-text"}} </p><i class="red x icon"></i>
+    {{/if}}
   {{/if}}
 {{/if}}
 
