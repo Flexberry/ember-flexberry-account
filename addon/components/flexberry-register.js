@@ -98,6 +98,8 @@ export default Ember.Component.extend(UsernameCommonMixin, {
   */
   captchaPassed: false,
 
+  clientResponse: null,
+
   allowRegistration: Ember.computed(
     'validUsername',
     'validFullname',
@@ -113,7 +115,8 @@ export default Ember.Component.extend(UsernameCommonMixin, {
 
       @method actions.captchaSuccess
     */
-    captchaSuccess: function() {
+    captchaSuccess: function(clientResponse) {
+      this.set('clientResponse', clientResponse);
       this.set('captchaPassed', true);
     },
 
@@ -148,8 +151,9 @@ export default Ember.Component.extend(UsernameCommonMixin, {
       let username = this.get('username');
       let fullName = this.get('fullName');
       let goto = this.get('goto');
+      let clientResponse = this.get('clientResponse');
       let userAccount = this.get('userAccount');
-      userAccount.register(username, fullName, goto).then((result) => {
+      userAccount.register(username, fullName, goto, clientResponse).then((result) => {
         if (result) {
           if (Ember.isPresent(this.get('onSuccess'))) {
             this.get('onSuccess')();

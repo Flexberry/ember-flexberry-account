@@ -46,6 +46,8 @@ export default Ember.Component.extend(UsernameCommonMixin, {
   */
   captchaPassed: false,
 
+  clientResponse: null,
+
   loadingState: false,
 
   /**
@@ -66,9 +68,10 @@ export default Ember.Component.extend(UsernameCommonMixin, {
 
       @method actions.captchaSuccess
     */
-    captchaSuccess: function() {
-      this.set('captchaPassed', true);
-    },
+   captchaSuccess: function(clientResponse) {
+    this.set('clientResponse', clientResponse);
+    this.set('captchaPassed', true);
+  },
 
     /**
       This action is called when register button is pressed.
@@ -95,9 +98,10 @@ export default Ember.Component.extend(UsernameCommonMixin, {
     */
     pwdReset: function() {
       let username = this.get('username');
+      let clientResponse = this.get('clientResponse');
       let userAccount = this.get('userAccount');
       this.set('loadingState', true);
-      userAccount.pwdReset(username).then((result) => {
+      userAccount.pwdReset(username, clientResponse).then((result) => {
         if (result) {
           if (Ember.isPresent(this.get('onSuccess'))) {
             this.get('onSuccess')();
