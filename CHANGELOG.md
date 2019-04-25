@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+## [0.1.0-beta.0] - 2019-04-25
 ### Fixed
 * Configuration getting in the `flexberry-recaptcha` component is implemented in a compatible way with different versions of the `Ember.js`.
 
