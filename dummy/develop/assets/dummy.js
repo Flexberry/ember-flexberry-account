@@ -284,7 +284,8 @@ define('dummy/initializers/container-debug-adapter', ['exports', 'ember-resolver
     }
   };
 });
-define('dummy/initializers/data-adapter', ['exports'], function (exports) {
+define('dummy/initializers/data-adapter', ['exports', 'ember'], function (exports, _ember) {
+
   /*
     This initializer is here to keep backwards compatibility with code depending
     on the `data-adapter` initializer (before Ember Data was an addon).
@@ -295,10 +296,10 @@ define('dummy/initializers/data-adapter', ['exports'], function (exports) {
   exports['default'] = {
     name: 'data-adapter',
     before: 'store',
-    initialize: function initialize() {}
+    initialize: _ember['default'].K
   };
 });
-define('dummy/initializers/ember-data', ['exports', 'ember-data/setup-container', 'ember-data'], function (exports, _emberDataSetupContainer, _emberData) {
+define('dummy/initializers/ember-data', ['exports', 'ember-data/setup-container', 'ember-data/-private/core'], function (exports, _emberDataSetupContainer, _emberDataPrivateCore) {
 
   /*
   
@@ -314,23 +315,16 @@ define('dummy/initializers/ember-data', ['exports', 'ember-data/setup-container'
   
     For example, imagine an Ember.js application with the following classes:
   
-    ```app/services/store.js
-    import DS from 'ember-data';
-  
-    export default DS.Store.extend({
+    App.StoreService = DS.Store.extend({
       adapter: 'custom'
     });
-    ```
   
-    ```app/controllers/posts.js
-    import { Controller } from '@ember/controller';
-  
-    export default Controller.extend({
+    App.PostsController = Ember.ArrayController.extend({
       // ...
     });
   
-    When the application is initialized, `ApplicationStore` will automatically be
-    instantiated, and the instance of `PostsController` will have its `store`
+    When the application is initialized, `App.ApplicationStore` will automatically be
+    instantiated, and the instance of `App.PostsController` will have its `store`
     property set to that instance.
   
     Note that this code will only be run if the `ember-application` package is
@@ -393,7 +387,8 @@ define('dummy/initializers/export-application-global', ['exports', 'ember', 'dum
     initialize: initialize
   };
 });
-define('dummy/initializers/injectStore', ['exports'], function (exports) {
+define('dummy/initializers/injectStore', ['exports', 'ember'], function (exports, _ember) {
+
   /*
     This initializer is here to keep backwards compatibility with code depending
     on the `injectStore` initializer (before Ember Data was an addon).
@@ -404,10 +399,11 @@ define('dummy/initializers/injectStore', ['exports'], function (exports) {
   exports['default'] = {
     name: 'injectStore',
     before: 'store',
-    initialize: function initialize() {}
+    initialize: _ember['default'].K
   };
 });
-define('dummy/initializers/store', ['exports'], function (exports) {
+define('dummy/initializers/store', ['exports', 'ember'], function (exports, _ember) {
+
   /*
     This initializer is here to keep backwards compatibility with code depending
     on the `store` initializer (before Ember Data was an addon).
@@ -418,10 +414,11 @@ define('dummy/initializers/store', ['exports'], function (exports) {
   exports['default'] = {
     name: 'store',
     after: 'ember-data',
-    initialize: function initialize() {}
+    initialize: _ember['default'].K
   };
 });
-define('dummy/initializers/transforms', ['exports'], function (exports) {
+define('dummy/initializers/transforms', ['exports', 'ember'], function (exports, _ember) {
+
   /*
     This initializer is here to keep backwards compatibility with code depending
     on the `transforms` initializer (before Ember Data was an addon).
@@ -432,13 +429,13 @@ define('dummy/initializers/transforms', ['exports'], function (exports) {
   exports['default'] = {
     name: 'transforms',
     before: 'store',
-    initialize: function initialize() {}
+    initialize: _ember['default'].K
   };
 });
-define("dummy/instance-initializers/ember-data", ["exports", "ember-data/initialize-store-service"], function (exports, _emberDataInitializeStoreService) {
+define("dummy/instance-initializers/ember-data", ["exports", "ember-data/-private/instance-initializers/initialize-store-service"], function (exports, _emberDataPrivateInstanceInitializersInitializeStoreService) {
   exports["default"] = {
     name: "ember-data",
-    initialize: _emberDataInitializeStoreService["default"]
+    initialize: _emberDataPrivateInstanceInitializersInitializeStoreService["default"]
   };
 });
 define('dummy/instance-initializers/ember-i18n', ['exports', 'ember-i18n/instance-initializers/ember-i18n'], function (exports, _emberI18nInstanceInitializersEmberI18n) {
@@ -3545,7 +3542,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.1.0-alpha.7"});
+  require("dummy/app")["default"].create({"backendUrl":"https://ember-flexberry-account.azurewebsites.net","backendUrls":{"root":"https://ember-flexberry-account.azurewebsites.net","api":"https://ember-flexberry-account.azurewebsites.net/odata"},"userAccount":{"enabled":true,"vk":false,"facebook":false,"twitter":false,"google":false,"microsoft":false,"github":true,"ok":false,"mailru":false,"yandex":false,"gosuslugi":false},"name":"ember-flexberry-account","version":"0.1.0-alpha.7+ff3d4b41"});
 }
 
 /* jshint ignore:end */

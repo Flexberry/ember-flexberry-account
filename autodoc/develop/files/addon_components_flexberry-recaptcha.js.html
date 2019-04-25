@@ -196,7 +196,7 @@ export default Ember.Component.extend({
     this._super(...arguments);
 
     // Import application config\environment.
-    let appConfig = getOwner(this)._lookupFactory(&#x27;config:environment&#x27;);
+    let appConfig = getOwner(this).resolveRegistration(&#x27;config:environment&#x27;);
     if (!Ember.isNone(appConfig)) {
       this.set(&#x27;appConfig&#x27;, appConfig);
     }
