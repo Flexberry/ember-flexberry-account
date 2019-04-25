@@ -27,7 +27,7 @@ before_install:
   - sudo chown root /opt/google/chrome/chrome-sandbox
   - sudo chmod 4755 /opt/google/chrome/chrome-sandbox
   - npm config set spin false
-  - npm install -g npm@^2
+  - npm install -g npm@^5
   - google-chrome-stable --headless --disable-gpu --no-sandbox --remote-debugging-port=9222 http://localhost &
 
 install:

@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Fixed
+* Configuration getting in the `flexberry-recaptcha` component is implemented in a compatible way with different versions of the `Ember.js`.
+
 ### Changed
 * Components:
   * Add GUI logic to `flexberry-login`, `flexberry-register`, `flexberry-user-profile`, `flexberry-login`, `flexberry-pwd-reset`.
