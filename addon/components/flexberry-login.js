@@ -86,25 +86,7 @@ export default Ember.Component.extend({
       @method actions.login
     */
     login: function() {
-      let userAccount = this.get('userAccount');
-      userAccount.login(this.get('username'), this.get('password'))
-      .then((result)=> {
-        if (result) {
-          if (Ember.isPresent(this.get('onSuccess'))) {
-            this.get('onSuccess')();
-          }
-        } else {
-          if (Ember.isPresent(this.get('onFail'))) {
-            this.get('onFail')();
-          }
-        }
-
-      }).catch((reason) => {
-        if (Ember.isPresent(this.get('onFail'))) {
-          this.get('onFail')(reason);
-        }
-      }
-    );
+      this._login();
     },
 
     /**
@@ -154,5 +136,55 @@ export default Ember.Component.extend({
       this.get('yandex') ||
       this.get('gosuslugi')
     ));
+  },
+
+  /**
+    Initializes component's DOM-related properties.
+  */
+  didInsertElement() {
+    this._super(...arguments);
+
+    const textField = document.querySelectorAll('input');
+    const usernameField = textField[0];
+    const passwordField = textField[1];
+
+    let _this = this;
+    usernameField.addEventListener('keyup', function(event) {
+      if (event.keyCode === 13) {
+        _this._login();
+      }
+    });
+
+    passwordField.addEventListener('keyup', function(event) {
+      if (event.keyCode === 13) {
+        _this._login();
+      }
+    });
+  },
+
+  /**
+    Login function.
+
+    @method _login
+  */
+  _login() {
+    let userAccount = this.get('userAccount');
+    userAccount.login(this.get('username'), this.get('password'))
+    .then((result)=> {
+      if (result) {
+        if (Ember.isPresent(this.get('onSuccess'))) {
+          this.get('onSuccess')();
+        }
+      } else {
+        if (Ember.isPresent(this.get('onFail'))) {
+          this.get('onFail')();
+        }
+      }
+
+    }).catch((reason) => {
+      if (Ember.isPresent(this.get('onFail'))) {
+        this.get('onFail')(reason);
+      }
+    });
   },
 });
