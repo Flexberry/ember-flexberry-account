@@ -148,18 +148,25 @@ export default Ember.Component.extend({
     const usernameField = textField[0];
     const passwordField = textField[1];
 
-    let _this = this;
-    usernameField.addEventListener('keyup', function(event) {
-      if (event.keyCode === 13) {
-        _this._login();
-      }
-    });
+    usernameField.addEventListener('keyup', loginByEnter(event))
+    passwordField.addEventListener('keyup', loginByEnter(event))
+  },
 
-    passwordField.addEventListener('keyup', function(event) {
-      if (event.keyCode === 13) {
-        _this._login();
-      }
-    });
+  willDestroyElement() {
+    this._super(...arguments);
+
+    const textField = document.querySelectorAll('input');
+    const usernameField = textField[0];
+    const passwordField = textField[1];
+
+    usernameField.removeEventListener('keyup', loginByEnter(event))
+    passwordField.removeEventListener('keyup', loginByEnter(event))
+  },
+
+  loginByEnter(event) {
+    if (event.keyCode === 13) {
+      this._login();
+    }
   },
 
   /**
