@@ -144,28 +144,30 @@ export default Ember.Component.extend({
   didInsertElement() {
     this._super(...arguments);
 
-    const textField = document.querySelectorAll('input');
-    const usernameField = textField[0];
-    const passwordField = textField[1];
+    const usernameField = document.querySelector('.username-div input');
+    const passwordField = document.querySelector('.password-div input');
 
-    usernameField.addEventListener('keyup', loginByEnter(event))
-    passwordField.addEventListener('keyup', loginByEnter(event))
+    let _this = this;
+
+    usernameField.addEventListener('keyup', this.loginByEnter.bind(null, _this))
+    passwordField.addEventListener('keyup', this.loginByEnter.bind(null, _this))
   },
 
   willDestroyElement() {
     this._super(...arguments);
 
-    const textField = document.querySelectorAll('input');
-    const usernameField = textField[0];
-    const passwordField = textField[1];
+    const usernameField = document.querySelector('.username-div input');
+    const passwordField = document.querySelector('.password-div input');
 
-    usernameField.removeEventListener('keyup', loginByEnter(event))
-    passwordField.removeEventListener('keyup', loginByEnter(event))
+    let _this = this;
+
+    usernameField.removeEventListener('keyup', this.loginByEnter.bind(null, _this))
+    passwordField.removeEventListener('keyup', this.loginByEnter.bind(null, _this))
   },
 
-  loginByEnter(event) {
+  loginByEnter(_this, event) {
     if (event.keyCode === 13) {
-      this._login();
+      _this._login();
     }
   },
 
