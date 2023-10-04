@@ -103,8 +103,7 @@ export default Ember.Component.extend({
         if (Ember.isPresent(this.get('onFail'))) {
           this.get('onFail')(reason);
         }
-      }
-    );
+      });
     },
 
     /**
@@ -123,7 +122,13 @@ export default Ember.Component.extend({
     */
     pwdReset: function() {
       Ember.getOwner(this).lookup('router:main').transitionTo('pwd-reset');
-    }
+    },
+
+    onKeyPress(e) {
+      if (e.keyCode === 13) {
+        this.send('login');
+      }
+    },
   },
 
   /**
