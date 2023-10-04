@@ -98,7 +98,7 @@ export default Ember.Component.extend({
             this.get('onFail')();
           }
         }
-  
+
       }).catch((reason) => {
         if (Ember.isPresent(this.get('onFail'))) {
           this.get('onFail')(reason);
@@ -159,38 +159,5 @@ export default Ember.Component.extend({
       this.get('yandex') ||
       this.get('gosuslugi')
     ));
-  },
-
-  loginByEnter(event) {
-    if (event.keyCode === 13) {
-      this._login();
-    }
-  },
-
-  /**
-    Login function.
-
-    @method _login
-  */
-  _login() {
-    alert('login');
-    let userAccount = this.get('userAccount');
-    userAccount.login(this.get('username'), this.get('password'))
-    .then((result)=> {
-      if (result) {
-        if (Ember.isPresent(this.get('onSuccess'))) {
-          this.get('onSuccess')();
-        }
-      } else {
-        if (Ember.isPresent(this.get('onFail'))) {
-          this.get('onFail')();
-        }
-      }
-
-    }).catch((reason) => {
-      if (Ember.isPresent(this.get('onFail'))) {
-        this.get('onFail')(reason);
-      }
-    });
   },
 });
