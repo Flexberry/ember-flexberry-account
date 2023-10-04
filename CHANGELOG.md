@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+## [0.1.0-beta.2] - 2023-10-04
+### Fixed
+* Login with "Enter" key
 
 ## [0.1.0-beta.0] - 2019-04-25
 ### Fixed
