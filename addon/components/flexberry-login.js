@@ -86,7 +86,24 @@ export default Ember.Component.extend({
       @method actions.login
     */
     login: function() {
-      this._login();
+      let userAccount = this.get('userAccount');
+      userAccount.login(this.get('username'), this.get('password'))
+      .then((result)=> {
+        if (result) {
+          if (Ember.isPresent(this.get('onSuccess'))) {
+            this.get('onSuccess')();
+          }
+        } else {
+          if (Ember.isPresent(this.get('onFail'))) {
+            this.get('onFail')();
+          }
+        }
+  
+      }).catch((reason) => {
+        if (Ember.isPresent(this.get('onFail'))) {
+          this.get('onFail')(reason);
+        }
+      });
     },
 
     /**
@@ -105,7 +122,13 @@ export default Ember.Component.extend({
     */
     pwdReset: function() {
       Ember.getOwner(this).lookup('router:main').transitionTo('pwd-reset');
-    }
+    },
+
+    onKeyPress(e) {
+      if (e.keyCode === 13) {
+        this.send('login');
+      }
+    },
   },
 
   /**
@@ -138,36 +161,9 @@ export default Ember.Component.extend({
     ));
   },
 
-  /**
-    Initializes component's DOM-related properties.
-  */
-  didInsertElement() {
-    this._super(...arguments);
-
-    const usernameField = document.querySelector('.username-div input');
-    const passwordField = document.querySelector('.password-div input');
-
-    let _this = this;
-
-    usernameField.addEventListener('keyup', this.loginByEnter.bind(null, _this))
-    passwordField.addEventListener('keyup', this.loginByEnter.bind(null, _this))
-  },
-
-  willDestroyElement() {
-    this._super(...arguments);
-
-    const usernameField = document.querySelector('.username-div input');
-    const passwordField = document.querySelector('.password-div input');
-
-    let _this = this;
-
-    usernameField.removeEventListener('keyup', this.loginByEnter.bind(null, _this))
-    passwordField.removeEventListener('keyup', this.loginByEnter.bind(null, _this))
-  },
-
-  loginByEnter(_this, event) {
+  loginByEnter(event) {
     if (event.keyCode === 13) {
-      _this._login();
+      this._login();
     }
   },
 
@@ -177,6 +173,7 @@ export default Ember.Component.extend({
     @method _login
   */
   _login() {
+    alert('login');
     let userAccount = this.get('userAccount');
     userAccount.login(this.get('username'), this.get('password'))
     .then((result)=> {

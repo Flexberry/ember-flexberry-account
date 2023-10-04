@@ -1,10 +1,10 @@
 <div class="username-div">
   {{t "components.login.username-label"}}<br/>
-  {{input type="text" value=username}}
+  {{input type="text" keyPress=(action "onKeyPress") value=username}}
 </div>
 <div class="password-div">
   {{t "components.login.password-label"}}<br/>
-  {{input type="password" value=password}}
+  {{input type="password" keyPress=(action "onKeyPress") value=password}}
 </div>
 <div class="login-div">
   {{t "components.login.remember-label"}} {{input type="checkbox" checked=remember}}
