@@ -1,13 +1,28 @@
 <div class="username-div">
-  {{t "components.login.username-label"}}<br/>
-  {{input type="text" keyPress=(action "onKeyPress") value=username}}
+  <label for="username">{{t "components.login.username-label"}}</label>
+  {{input
+    type="text"
+    id="username"
+    keyPress=(action "onKeyPress")
+    value=username
+    placeholder="Введите логин"}}
 </div>
 <div class="password-div">
-  {{t "components.login.password-label"}}<br/>
-  {{input type="password" keyPress=(action "onKeyPress") value=password}}
+  <label for="password">{{t "components.login.password-label"}}</label>
+  {{input 
+    type="password"
+    id="password"
+    keyPress=(action "onKeyPress")
+    value=password
+    placeholder="Введите пароль"}}
+</div>
+<div class="remember-div">
+  <div class="ui checkbox">
+    {{input type="checkbox" id="remember" checked=remember}}
+    <label for="remember">{{t "components.login.remember-label"}}</label>
+  </div>
 </div>
 <div class="login-div">
-  {{t "components.login.remember-label"}} {{input type="checkbox" checked=remember}}
   <button
     class="ui login-button button"
     title={{t "components.login.login-button-title"}}
