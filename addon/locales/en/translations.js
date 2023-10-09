@@ -25,9 +25,9 @@ export default {
   },
   components: {
     login: {
-      'username-label': 'User name (E-mail):',
-      'password-label': 'Password:',
-      'remember-label': 'Remember:',
+      'username-label': 'User name (E-mail)',
+      'password-label': 'Password',
+      'remember-label': 'Remember',
       'login-button-title': 'Log in to the system using login and password',
       'login-button-text': 'Login',
       'login-with-label': 'Login with:',

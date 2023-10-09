@@ -124,8 +124,8 @@ export default Ember.Component.extend({
       Ember.getOwner(this).lookup('router:main').transitionTo('pwd-reset');
     },
 
-    onKeyPress(e) {
-      if (e.keyCode === 13) {
+    onKeyPress: function(e) {
+      if (e.keyCode === 13 && !this.get('allowToLogin')) {
         this.send('login');
       }
     },
