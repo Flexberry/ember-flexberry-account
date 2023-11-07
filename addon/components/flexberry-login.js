@@ -70,13 +70,13 @@ export default Ember.Component.extend({
   remember: true,
 
   /**
-    Flag used to hide unimplemented feature.
+    Flag used to hide field.
 
-    @property implemented
+    @property showField
     @type Boolean
     @default false
   */
-  implemented: false,
+  showField: false,
 
   /**
     This computed field shows whether login is allowed or not.
