@@ -70,6 +70,15 @@ export default Ember.Component.extend({
   remember: true,
 
   /**
+    Flag is used to hide remember me field.
+
+    @property showRemember
+    @type Boolean
+    @default false
+  */
+  showRemember: false,
+
+  /**
     This computed field shows whether login is allowed or not.
 
     @property allowToLogin
