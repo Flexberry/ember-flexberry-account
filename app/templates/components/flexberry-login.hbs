@@ -16,6 +16,14 @@
     value=password
     placeholder="Введите пароль"}}
 </div>
+{{#if implemented}}
+  <div class="remember-div">
+    <div class="ui checkbox">
+      {{input type="checkbox" id="remember" checked=remember}}
+      <label for="remember">{{t "components.login.remember-label"}}</label>
+    </div>
+  </div>
+{{/if}}
 <div class="login-div">
   <button
     class="ui login-button button"
